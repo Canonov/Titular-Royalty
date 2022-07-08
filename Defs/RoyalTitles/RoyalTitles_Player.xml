@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ============== Base Title ============================= -->
+
+  <RoyalTitleDef Abstract="True" Name="BasePlayerTitle" >
+    <tags>
+      <li>PlayerTitle</li>
+    </tags>
+    <awardThought>GainedTitle</awardThought>
+    <lostThought>LostTitle</lostThought>
+  </RoyalTitleDef>
+
+  <!-- ================= The Peasantry ============================= -->
+
+  <RoyalTitleDef Name="BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>4</favorCost>
+    <canBeInherited>False</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+  </RoyalTitleDef>
+
+
+   <!-- Serf -->
+  <RoyalTitleDef ParentName="BaseTitleLow">
+    <defName>Title_LRbase</defName>
+    <label>Serf</label>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+   <!-- Squire -->
+  <RoyalTitleDef ParentName="BaseTitleLow">
+    <defName>Title_LR_Squire</defName>
+    <label>Squire</label>
+    <labelFemale>Squiress</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+
+  <!-- ================= The Honorable ============================= -->
+
+  <RoyalTitleDef Name="BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>4</favorCost>
+    <canBeInherited>False</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+  </RoyalTitleDef>
+
+
+   <!-- Esquire -->
+  <RoyalTitleDef ParentName="BaseTitleMid">
+    <defName>Title_MR_Esquire</defName>
+    <label>Esquire</label>
+    <labelFemale>Esquiress</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+   <!-- Knight -->
+  <RoyalTitleDef ParentName="BaseTitleMid">
+    <defName>Title_MR_Knight</defName>
+    <label>Knight</label>
+    <labelFemale>Dame</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+   <!-- Baronet -->
+  <RoyalTitleDef ParentName="BaseTitleMid">
+    <defName>Title_MR_Baronet</defName>
+    <label>Baronet</label>
+    <labelFemale>Baronetess</labelFemale>
+    <canBeInherited>True</canBeInherited>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+
+  <!-- ================= Low Nobility ============================ -->
+
+  <RoyalTitleDef Name="BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>4</favorCost>
+    <canBeInherited>True</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+  </RoyalTitleDef>
+
+   <!-- Baron -->
+  <RoyalTitleDef ParentName="BaseTitleNoble">
+    <defName>Title_HR_Baron</defName>
+    <label>Baron</label>
+    <labelFemale>Baroness</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+   <!-- Viscount -->
+  <RoyalTitleDef ParentName="BaseTitleNoble">
+    <defName>Title_HR_Viscount</defName>
+    <label>Viscount</label>
+    <labelFemale>Viscountess</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+  <!-- ================= High Nobility ============================ -->
+
+  <RoyalTitleDef Name="BaseTitleHighNoble" ParentName="BaseTitleNoble" Abstract="True">
+    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+  </RoyalTitleDef>
+
+   <!-- Count -->
+  <RoyalTitleDef ParentName="BaseTitleHighNoble">
+    <defName>Title_HR_Count</defName>
+    <label>Count</label>
+    <labelFemale>Countess</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+   <!-- Duke -->
+  <RoyalTitleDef ParentName="BaseTitleHighNoble">
+    <defName>Title_HR_Duke</defName>
+    <label>Duke</label>
+    <labelFemale>Duchess</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+   <!-- Arch Duke -->
+  <RoyalTitleDef ParentName="BaseTitleHighNoble">
+    <defName>Title_HR_Archduke</defName>
+    <label>Archduke</label>
+    <labelFemale>Archduchess</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+  <!-- ================= Royalty ============================ -->
+
+  <RoyalTitleDef Name="BaseTitleRoyal" ParentName="BaseTitleNoble" Abstract="True">
+    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+  </RoyalTitleDef>
+
+   <!-- Prince -->
+  <RoyalTitleDef ParentName="BaseTitleRoyal">
+    <defName>Title_RY_Prince</defName>
+    <label>Prince</label>
+    <labelFemale>Princess</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+   <!-- Consort -->
+  <RoyalTitleDef ParentName="BaseTitleRoyal">
+    <defName>Title_RY_Consort</defName>
+    <label>Prince Consort</label>
+    <labelFemale>Queen</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+   <!-- King -->
+  <RoyalTitleDef ParentName="BaseTitleRoyal">
+    <defName>Title_RY_King</defName>
+    <label>King</label>
+    <labelFemale>Queen</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+</Defs>
