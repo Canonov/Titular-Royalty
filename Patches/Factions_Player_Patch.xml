@@ -20,12 +20,16 @@
 
     <li Class="PatchOperationAdd">
       <xpath>/Defs/FactionDef[defName="PlayerColony"]</xpath>
-      <royalFavorLabel>Prestige</royalFavorLabel>
+      <value>
+        <royalFavorLabel>Prestige</royalFavorLabel>
+      </value>
     </li>
 
     <li Class="PatchOperationAdd">
       <xpath>/Defs/FactionDef[defName="PlayerColony"]</xpath>
-      <royalFavorIconPath>UI/Icons/CrownIcon</royalFavorIconPath>
+      <value>
+        <royalFavorIconPath>UI/Icons/CrownIcon</royalFavorIconPath>
+      </value>
     </li>
   </operations>
 </Operation>
