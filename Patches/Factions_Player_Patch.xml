@@ -10,11 +10,22 @@
         <royalTitleTags></royalTitleTags>
       </value>
     </li>
+
     <li Class="PatchOperationAdd">
       <xpath>/Defs/FactionDef[defName="PlayerColony"]/royalTitleTags</xpath>
       <value>
         <li>PlayerTitle</li>
       </value>
+    </li>
+
+    <li Class="PatchOperationAdd">
+      <xpath>/Defs/FactionDef[defName="PlayerColony"]</xpath>
+      <royalFavorLabel>Prestige</royalFavorLabel>
+    </li>
+
+    <li Class="PatchOperationAdd">
+      <xpath>/Defs/FactionDef[defName="PlayerColony"]</xpath>
+      <royalFavorIconPath>UI/Icons/CrownIcon</royalFavorIconPath>
     </li>
   </operations>
 </Operation>
