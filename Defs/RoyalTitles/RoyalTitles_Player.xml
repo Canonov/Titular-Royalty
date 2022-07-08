@@ -40,6 +40,30 @@
   </RoyalTitleDef>
 
 
+  <!-- ================= Special Titles ============================= -->
+
+  <RoyalTitleDef Name="BaseTitleChurch" ParentName="BaseTitleLow" Abstract="True">
+    <favorCost>4</favorCost>
+  </RoyalTitleDef>
+
+   <!-- Monk / Nun -->
+  <RoyalTitleDef ParentName="BaseTitleChurch">
+    <defName>Title_CH_monk</defName>
+    <label>Monk</label>
+    <labelFemale>Nun</labelFemale>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+   <!-- Serf -->
+  <RoyalTitleDef ParentName="BaseTitleLow">
+    <defName>Title_LRbase</defName>
+    <label>Serf</label>
+    <description>TBD.</description>
+    <seniority>0</seniority>
+  </RoyalTitleDef>
+
+
   <!-- ================= The Honorable ============================= -->
 
   <RoyalTitleDef Name="BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
@@ -87,9 +111,10 @@
     <favorCost>4</favorCost>
     <canBeInherited>True</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
-    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
     <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>High</minExpectation>
   </RoyalTitleDef>
 
    <!-- Baron -->
@@ -112,8 +137,19 @@
 
   <!-- ================= High Nobility ============================ -->
 
-  <RoyalTitleDef Name="BaseTitleHighNoble" ParentName="BaseTitleNoble" Abstract="True">
+  <RoyalTitleDef Name="BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>4</favorCost>
+    <canBeInherited>True</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
     <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>High</minExpectation>
+    <disabledWorkTags>
+      <li>ManualDumb</li>
+      <li>PlantWork</li>
+      <li>Mining</li>
+    </disabledWorkTags>
   </RoyalTitleDef>
 
    <!-- Count -->
@@ -145,12 +181,38 @@
 
   <!-- ================= Royalty ============================ -->
 
-  <RoyalTitleDef Name="BaseTitleRoyal" ParentName="BaseTitleNoble" Abstract="True">
-    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+  <RoyalTitleDef Name="BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>4</favorCost>
+    <canBeInherited>False</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>High</minExpectation>
+    <disabledWorkTags>
+      <li>ManualDumb</li>
+      <li>PlantWork</li>
+      <li>Mining</li>
+    </disabledWorkTags>
+  </RoyalTitleDef>
+
+  <RoyalTitleDef Name="BaseTitleRoyal" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>4</favorCost>
+    <canBeInherited>True</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>SkyHigh</minExpectation>
+    <disabledWorkTags>
+      <li>ManualDumb</li>
+      <li>PlantWork</li>
+      <li>Mining</li>
+    </disabledWorkTags>
   </RoyalTitleDef>
 
    <!-- Prince -->
-  <RoyalTitleDef ParentName="BaseTitleRoyal">
+  <RoyalTitleDef ParentName="BaseTitleRoyalFamily">
     <defName>Title_RY_Prince</defName>
     <label>Prince</label>
     <labelFemale>Princess</labelFemale>
@@ -159,7 +221,7 @@
   </RoyalTitleDef>
 
    <!-- Consort -->
-  <RoyalTitleDef ParentName="BaseTitleRoyal">
+  <RoyalTitleDef ParentName="BaseTitleRoyalFamily">
     <defName>Title_RY_Consort</defName>
     <label>Prince Consort</label>
     <labelFemale>Queen</labelFemale>
