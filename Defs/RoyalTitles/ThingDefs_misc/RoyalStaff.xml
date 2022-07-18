@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BaseMeleeWeapon">
+    <defName>TitularRoyalty_Staff</defName>
+    <label>Staff of Royalty</label>
+    <description>A ceremonial staff made of gold and jewels. While it is a solid weapon to bash people with, its main purpose is ceremonial in nature with it being used to grant titles to members of your colony</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/PsyfocusStaff</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Ultra</techLevel>
+    <tradeTags>
+      <li>PsychicWeapon</li>
+    </tradeTags>
+    <weaponTags>
+      <li>TitleGrantingStaff</li>
+    </weaponTags>
+    <weaponClasses>
+    </weaponClasses>
+    <costStuffCount>50</costStuffCount>
+    <statBases>
+      <MarketValue>2000</MarketValue>
+      <Mass>1.2</Mass>
+    </statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>head</label>
+        <labelUsedInLogging>false</labelUsedInLogging>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.6</cooldownTime>
+      </li>
+    </tools>
+    <verbs>
+      <li>
+        <verbClass>Verb_TitleGranter</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1</warmupTime>
+        <range>5</range>
+        <burstShotCount>1</burstShotCount>
+        <!--<soundAiming>OrbitalTargeter_Aiming</soundAiming>-->
+        <!--<soundCast>OrbitalTargeter_Fire</soundCast>-->
+        <onlyManualCast>true</onlyManualCast>
+        <targetParams>
+          <canTargetLocations>false</canTargetLocations>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetSelf>true</canTargetSelf>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetMechs>false</canTargetMechs>
+          <onlyTargetColonists>true</onlyTargetColonists>
+        </targetParams>
+      </li>
+    </verbs>
+  </ThingDef>
+
+</Defs>
