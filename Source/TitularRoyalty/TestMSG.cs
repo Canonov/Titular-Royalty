@@ -8,7 +8,7 @@ namespace TitularRoyalty.Verbs
     {
         static TestMsg()
         {
-            Log.Message("Hello There");
+            Log.Message("Titular Royalty is Loaded");
         }
     }
 }
