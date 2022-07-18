@@ -41,9 +41,10 @@
         <hasStandardCommand>true</hasStandardCommand>
         <warmupTime>1</warmupTime>
         <range>5</range>
-        <burstShotCount>1</burstShotCount>
+        <!--<burstShotCount>1</burstShotCount>-->
         <!--<soundAiming>OrbitalTargeter_Aiming</soundAiming>-->
         <!--<soundCast>OrbitalTargeter_Fire</soundCast>-->
+        <targetable>true</targetable>
         <onlyManualCast>true</onlyManualCast>
         <targetParams>
           <canTargetLocations>false</canTargetLocations>
