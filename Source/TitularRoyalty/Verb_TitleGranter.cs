@@ -9,14 +9,29 @@ namespace TitularRoyalty
 
 	public class Verb_TitleGranter : Verb_CastBase
 	{
-		//public const float Points = 2500f;
+		private void TitleGranter(Pawn pawn, Faction fact)
+        {
+
+        }
 
 		protected override bool TryCastShot()
 		{
-			Log.Message($"Trying to Print Info");
-			Log.Message($"{currentTarget.GetType()}");
-			Log.Message($"{currentTarget.Thing is Pawn} | {currentTarget.HasThing} | {currentTarget.Cell}");
-			Log.Message($"end");
+
+			Log.Message(loadID);
+			Log.Message($"{CasterPawn.Name} tried to cast");
+			try
+            {
+				Log.Message($"Trying to Print Info");
+				Log.Message($"CurrentTarget Type: {currentTarget.GetType()}");
+				Log.Message($"IsPawn: {currentTarget.Thing is Pawn} | HasThing: {currentTarget.HasThing} | Cell: {currentTarget.Cell}");
+				Log.Message($"{currentTarget}");
+				Log.Message($"end");
+			}
+            catch
+            {
+				Log.Message("Failed to Load");
+            }
+
 			if (Faction.OfMechanoids == null)
 			{
 				Messages.Message("MessageNoFactionForVerbMechCluster".Translate(), caster, MessageTypeDefOf.RejectInput, null, historical: false);
@@ -30,6 +45,10 @@ namespace TitularRoyalty
             {
 				Log.Message("Target is pawn, wow");
 				Log.Message($"Target: {currentTarget.Pawn.Name}");
+
+				TitleGranter(currentTarget.Pawn, Faction.OfPlayer);
+
+				//currentTarget.Pawn.royalty.TryUpdateTitle(Faction.OfPlayer, sendLetter: true, RoyalTitleDef);
             }
 			//MechClusterUtility.SpawnCluster(currentTarget.Cell, caster.Map, MechClusterGenerator.GenerateClusterSketch(2500f, caster.Map, startDormant: true, forceNoConditionCauser: true));
 			return true;

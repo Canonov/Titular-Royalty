@@ -37,7 +37,7 @@
     </tools>
     <verbs>
       <li>
-        <verbClass>Verb_TitleGranter</verbClass>
+        <verbClass>TitularRoyalty.Verb_TitleGranter</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <warmupTime>1</warmupTime>
         <range>5</range>
@@ -53,6 +53,7 @@
           <canTargetBuildings>false</canTargetBuildings>
           <canTargetMechs>false</canTargetMechs>
           <onlyTargetColonists>true</onlyTargetColonists>
+          <neverTargetIncapacitated>true</neverTargetIncapacitated>
         </targetParams>
       </li>
     </verbs>
