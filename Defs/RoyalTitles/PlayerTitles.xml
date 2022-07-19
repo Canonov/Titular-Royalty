@@ -3,70 +3,7 @@
 
   <!-- ============== Base Titles ============================= -->
 
-  <RoyalTitleDef Abstract="True" Name="BasePlayerTitle" >
-    <tags>
-      <li>PlayerTitle</li>
-    </tags>
-    <awardThought>GainedTitle</awardThought>
-    <lostThought>LostTitle</lostThought>
-  </RoyalTitleDef>
 
-  <RoyalTitleDef Name="BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
-    <canBeInherited>False</canBeInherited>
-    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
-    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
-    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
-  </RoyalTitleDef>
-
-  <RoyalTitleDef Name="BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
-    <canBeInherited>True</canBeInherited>
-    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
-    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
-    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
-    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
-    <minExpectation>High</minExpectation>
-  </RoyalTitleDef>
-
-  <RoyalTitleDef Name="BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
-    <canBeInherited>False</canBeInherited>
-    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
-    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
-    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
-    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
-  </RoyalTitleDef>
-
-  <RoyalTitleDef Name="BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
-    <canBeInherited>True</canBeInherited>
-    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
-    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
-    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
-    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
-    <minExpectation>High</minExpectation>
-    <disabledWorkTags>
-      <li>ManualDumb</li>
-      <li>PlantWork</li>
-      <li>Mining</li>
-    </disabledWorkTags>
-  </RoyalTitleDef>
-
-  <RoyalTitleDef Name="BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
-    <canBeInherited>False</canBeInherited>
-    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
-    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
-    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
-    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
-    <minExpectation>High</minExpectation>
-    <disabledWorkTags>
-      <li>ManualDumb</li>
-      <li>PlantWork</li>
-      <li>Mining</li>
-    </disabledWorkTags>
-  </RoyalTitleDef>
 
   <!-- ================= The Peasantry ============================= -->
 
@@ -164,6 +101,8 @@
     <labelFemale>Countess</labelFemale>
     <description>No Description.</description>
     <seniority>1000</seniority>
+    <minExpectation>Noble</minExpectation>
+    
   </RoyalTitleDef>
 
    <!-- Duke -->
@@ -173,6 +112,7 @@
     <labelFemale>Duchess</labelFemale>
     <description>No Description.</description>
     <seniority>1100</seniority>
+    <grantedAbilities><li>Speech</li></grantedAbilities>
   </RoyalTitleDef>
 
    <!-- Arch Duke -->
@@ -182,6 +122,7 @@
     <labelFemale>Archduchess</labelFemale>
     <description>No Description.</description>
     <seniority>1200</seniority>
+    <grantedAbilities><li>Speech</li></grantedAbilities>
   </RoyalTitleDef>
 
   <!-- ================= Royalty ============================ -->
@@ -216,14 +157,21 @@
     <canBeInherited>True</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
-    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
+    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
-    <minExpectation>SkyHigh</minExpectation>
+    <minExpectation>Royal</minExpectation>
+    <grantedAbilities><li>Speech</li></grantedAbilities>
     <disabledWorkTags>
       <li>ManualDumb</li>
       <li>PlantWork</li>
       <li>Mining</li>
     </disabledWorkTags>
+    <decreeTags>
+      <li>All</li>
+    </decreeTags>
+    <disabledJoyKinds>
+      <li>Gaming_Dexterity</li>
+    </disabledJoyKinds>
   </RoyalTitleDef>
 
 </Defs>

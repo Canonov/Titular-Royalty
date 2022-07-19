@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <RoyalTitleDef Abstract="True" Name="BasePlayerTitle" >
+    <tags>
+      <li>PlayerTitle</li>
+    </tags>
+    <awardThought>GainedTitle</awardThought>
+    <lostThought>LostTitle</lostThought>
+  </RoyalTitleDef>
+
+  <RoyalTitleDef Name="BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>1</favorCost>
+    <canBeInherited>False</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+  </RoyalTitleDef>
+
+  <RoyalTitleDef Name="BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>1</favorCost>
+    <canBeInherited>False</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>Moderate</minExpectation>
+  </RoyalTitleDef>
+
+  <RoyalTitleDef Name="BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>1</favorCost>
+    <canBeInherited>True</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>High</minExpectation>
+  </RoyalTitleDef>
+
+  <RoyalTitleDef Name="BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>1</favorCost>
+    <canBeInherited>True</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>Noble</minExpectation>
+    <decreeTags>
+      <li>All</li>
+    </decreeTags>
+    <disabledJoyKinds>
+      <li>Gaming_Dexterity</li>
+    </disabledJoyKinds>
+    <disabledWorkTags>
+      <li>ManualDumb</li>
+      <li>PlantWork</li>
+      <li>Mining</li>
+    </disabledWorkTags>
+  </RoyalTitleDef>
+
+  <RoyalTitleDef Name="BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>1</favorCost>
+    <canBeInherited>False</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>High</minExpectation>
+    <disabledWorkTags>
+      <li>ManualDumb</li>
+      <li>PlantWork</li>
+      <li>Mining</li>
+    </disabledWorkTags>
+  </RoyalTitleDef>
+</Defs>
