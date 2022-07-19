@@ -47,8 +47,14 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>E:\BACKUP\STEAM\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialog_ChooseTitles.cs" />
+    <Compile Include="GameComponent_TitularRoyalty.cs" />
     <Compile Include="TestMSG.cs" />
     <Compile Include="Verb_TitleGranter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
