@@ -8,7 +8,7 @@
     <lostThought>LostTitle</lostThought>
   </RoyalTitleDef>
 
-  <RoyalTitleDef Name="BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
+  <RoyalTitleDef Name="TitularRoyalty_BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -16,7 +16,7 @@
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
   </RoyalTitleDef>
 
-  <RoyalTitleDef Name="BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
+  <RoyalTitleDef Name="TitularRoyalty_BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -26,7 +26,7 @@
     <minExpectation>Moderate</minExpectation>
   </RoyalTitleDef>
 
-  <RoyalTitleDef Name="BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
+  <RoyalTitleDef Name="TitularRoyalty_BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>True</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -36,7 +36,7 @@
     <minExpectation>High</minExpectation>
   </RoyalTitleDef>
 
-  <RoyalTitleDef Name="BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
+  <RoyalTitleDef Name="TitularRoyalty_BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>True</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -57,7 +57,7 @@
     </disabledWorkTags>
   </RoyalTitleDef>
 
-  <RoyalTitleDef Name="BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
+  <RoyalTitleDef Name="TitularRoyalty_BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>

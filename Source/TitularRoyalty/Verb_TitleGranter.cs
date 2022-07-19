@@ -2,6 +2,7 @@
 using RimWorld;
 using Verse;
 using Verse.AI;
+using System.Collections.Generic;
 
 
 namespace TitularRoyalty
@@ -11,11 +12,12 @@ namespace TitularRoyalty
 	{
 		private void TitleGranter(Pawn pawn, Faction fact)
         {
-			System.Collections.Generic.Dictionary<int, RoyalTitleDef> seniorityTitles = new System.Collections.Generic.Dictionary
+			//var seniorityTitles = new Dictionary<int, RoyalTitleDef>();
 
-			foreach (Def v in DefDatabase<RoyalTitleDef>.AllDefs)
+			foreach (RoyalTitleDef v in DefDatabase<RoyalTitleDef>.AllDefs)
             {
-				Log.Message($"Defname: {v.ToString()} Label: {v.label}");
+				Log.Message($"Defname: {v.ToString()} Label: {v.label} \nTags: {v.tags}\n");
+				
             }
         }
 

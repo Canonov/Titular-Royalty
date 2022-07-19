@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-  <!-- ============== Base Titles ============================= -->
-
-
-
   <!-- ================= The Peasantry ============================= -->
 
    <!-- Freeman -->
-  <RoyalTitleDef ParentName="BaseTitleLow">
-    <defName>Title_LR_Freeman</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+    <defName>TitularRoyalty_T_LR_Freeman</defName>
     <label>Free Tenant</label>
     <description>No Description.</description>
     <seniority>100</seniority>
   </RoyalTitleDef>
   
    <!-- Yeoman -->
-  <RoyalTitleDef ParentName="BaseTitleLow">
-    <defName>Title_LR_Yeoman</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+    <defName>TitularRoyalty_T_LR_Yeoman</defName>
     <label>Yeoman</label>
     <description>No Description.</description>
     <seniority>200</seniority>
@@ -26,8 +21,8 @@
 
   <!-- ================= The Gentry  ============================= -->
    <!-- Gentleman -->
-  <RoyalTitleDef ParentName="BaseTitleLow">
-    <defName>Title_LR_Gentleman</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+    <defName>TitularRoyalty_T_LR_Gentleman</defName>
     <label>Gentleman</label>
     <labelFemale>Lady</labelFemale>
     <description>No Description.</description>
@@ -35,8 +30,8 @@
   </RoyalTitleDef>
 
    <!-- Squire -->
-  <RoyalTitleDef ParentName="BaseTitleLow">
-    <defName>Title_LR_Squire</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+    <defName>TitularRoyalty_T_LR_Squire</defName>
     <label>Squire</label>
     <labelFemale>Squiress</labelFemale>
     <description>No Description.</description>
@@ -44,8 +39,8 @@
   </RoyalTitleDef>
 
    <!-- Esquire -->
-  <RoyalTitleDef ParentName="BaseTitleMid">
-    <defName>Title_MR_Esquire</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+    <defName>TitularRoyalty_T_MR_Esquire</defName>
     <label>Esquire</label>
     <labelFemale>Esquiress</labelFemale>
     <description>No Description.</description>
@@ -53,8 +48,8 @@
   </RoyalTitleDef>
 
    <!-- Knight -->
-  <RoyalTitleDef ParentName="BaseTitleMid">
-    <defName>Title_MR_Knight</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+    <defName>TitularRoyalty_T_MR_Knight</defName>
     <label>Knight</label>
     <labelFemale>Dame</labelFemale>
     <description>No Description.</description>
@@ -62,8 +57,8 @@
   </RoyalTitleDef>
 
    <!-- Baronet -->
-  <RoyalTitleDef ParentName="BaseTitleMid">
-    <defName>Title_MR_Baronet</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+    <defName>TitularRoyalty_T_MR_Baronet</defName>
     <label>Baronet</label>
     <labelFemale>Baronetess</labelFemale>
     <canBeInherited>True</canBeInherited>
@@ -75,8 +70,8 @@
   <!-- ================= Low Nobility ============================ -->
 
    <!-- Baron -->
-  <RoyalTitleDef ParentName="BaseTitleNoble">
-    <defName>Title_HR_Baron</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
+    <defName>TitularRoyalty_T_HR_Baron</defName>
     <label>Baron</label>
     <labelFemale>Baroness</labelFemale>
     <description>No Description.</description>
@@ -84,8 +79,8 @@
   </RoyalTitleDef>
 
    <!-- Viscount -->
-  <RoyalTitleDef ParentName="BaseTitleNoble">
-    <defName>Title_HR_Viscount</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
+    <defName>TitularRoyalty_T_HR_Viscount</defName>
     <label>Viscount</label>
     <labelFemale>Viscountess</labelFemale>
     <description>No Description.</description>
@@ -95,8 +90,8 @@
   <!-- ================= High Nobility ============================ -->
 
    <!-- Count -->
-  <RoyalTitleDef ParentName="BaseTitleHighNoble">
-    <defName>Title_HR_Count</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+    <defName>TitularRoyalty_T_HR_Count</defName>
     <label>Count</label>
     <labelFemale>Countess</labelFemale>
     <description>No Description.</description>
@@ -106,8 +101,8 @@
   </RoyalTitleDef>
 
    <!-- Duke -->
-  <RoyalTitleDef ParentName="BaseTitleHighNoble">
-    <defName>Title_HR_Duke</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+    <defName>TitularRoyalty_T_HR_Duke</defName>
     <label>Duke</label>
     <labelFemale>Duchess</labelFemale>
     <description>No Description.</description>
@@ -116,8 +111,8 @@
   </RoyalTitleDef>
 
    <!-- Arch Duke -->
-  <RoyalTitleDef ParentName="BaseTitleHighNoble">
-    <defName>Title_HR_Archduke</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+    <defName>TitularRoyalty_T_HR_Archduke</defName>
     <label>Archduke</label>
     <labelFemale>Archduchess</labelFemale>
     <description>No Description.</description>
@@ -128,8 +123,8 @@
   <!-- ================= Royalty ============================ -->
 
    <!-- Prince -->
-  <RoyalTitleDef ParentName="BaseTitleRoyalFamily">
-    <defName>Title_RY_Prince</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
+    <defName>TitularRoyalty_T_RY_Prince</defName>
     <label>Prince</label>
     <labelFemale>Princess</labelFemale>
     <description>No Description.</description>
@@ -137,8 +132,8 @@
   </RoyalTitleDef>
 
    <!-- Consort -->
-  <RoyalTitleDef ParentName="BaseTitleRoyalFamily">
-    <defName>Title_RY_Consort</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
+    <defName>TitularRoyalty_T_RY_Consort</defName>
     <label>Prince Consort</label>
     <labelFemale>Queen</labelFemale>
     <description>No Description.</description>
@@ -146,8 +141,8 @@
   </RoyalTitleDef>
 
    <!-- King -->
-  <RoyalTitleDef ParentName="BasePlayerTitle">
-    <defName>Title_RY_King</defName>
+  <RoyalTitleDef ParentName="TitularRoyalty_BasePlayerTitle">
+    <defName>TitularRoyalty_T_RY_King</defName>
     <label>King</label>
     <labelFemale>Queen</labelFemale>
     <description>No Description.</description>
