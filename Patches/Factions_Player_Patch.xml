@@ -69,14 +69,14 @@
 <Operation Class="PatchOperationReplace">
     <xpath>/Defs/FactionDef[defName="PlayerColony"]/label</xpath>
     <value>
-        <label>Kingdom</label>
+        <label>New Realm</label>
     </value>
 </Operation>
 
 <Operation Class="PatchOperationReplace">
     <xpath>/Defs/FactionDef[defName="PlayerColony"]/description</xpath>
     <value>
-        <description>A recently established faction, lead by your King</description>
+        <description>A recently established faction, lead by your Monarch</description>
     </value>
 </Operation>
  
