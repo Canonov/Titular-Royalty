@@ -11,9 +11,11 @@ namespace TitularRoyalty
 	{
 		private void TitleGranter(Pawn pawn, Faction fact)
         {
-			foreach (Def titleDefs in DefDatabase<RoyalTitleDef>.AllDefs)
+			System.Collections.Generic.Dictionary<int, RoyalTitleDef> seniorityTitles = new System.Collections.Generic.Dictionary
+
+			foreach (Def v in DefDatabase<RoyalTitleDef>.AllDefs)
             {
-				Log.Message($"Defname: {titleDefs.ToString()} Label: {titleDefs.label}");
+				Log.Message($"Defname: {v.ToString()} Label: {v.label}");
             }
         }
 
