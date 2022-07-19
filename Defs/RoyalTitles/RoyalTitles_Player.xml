@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <!-- ============== Base Title ============================= -->
+  <!-- ============== Base Titles ============================= -->
 
   <RoyalTitleDef Abstract="True" Name="BasePlayerTitle" >
     <tags>
@@ -11,8 +11,6 @@
     <lostThought>LostTitle</lostThought>
   </RoyalTitleDef>
 
-  <!-- ================= The Peasantry ============================= -->
-
   <RoyalTitleDef Name="BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>False</canBeInherited>
@@ -20,95 +18,6 @@
     <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
   </RoyalTitleDef>
-
-
-   <!-- Serf 
-  <RoyalTitleDef ParentName="BaseTitleLow">
-    <defName>Title_LRbase</defName>
-    <label>Serf</label>
-    <description>No Description.</description>
-    <seniority>0</seniority>
-  </RoyalTitleDef>-->
-
-
-
-  <!-- ================= Special Titles ============================= -->
-
-  <RoyalTitleDef Name="BaseTitleChurch" ParentName="BaseTitleLow" Abstract="True">
-    <favorCost>1</favorCost>
-  </RoyalTitleDef>
-
-   <!-- Monk / Nun -->
-  <RoyalTitleDef ParentName="BaseTitleChurch">
-    <defName>Title_CH_monk</defName>
-    <label>Monk</label>
-    <labelFemale>Nun</labelFemale>
-    <description>No Description.</description>
-    <seniority>200</seniority>
-  </RoyalTitleDef>
-
-   <!-- Priest -->
-  <RoyalTitleDef ParentName="BaseTitleChurch">
-    <defName>Title_CH_priest</defName>
-    <label>Priest</label>
-    <labelFemale>Priestess</labelFemale>
-    <description>No Description.</description>
-    <seniority>210</seniority>
-  </RoyalTitleDef>
-
-
-   <!-- Squire -->
-  <RoyalTitleDef ParentName="BaseTitleLow">
-    <defName>Title_LR_Squire</defName>
-    <label>Squire</label>
-    <labelFemale>Squiress</labelFemale>
-    <description>No Description.</description>
-    <seniority>300</seniority>
-  </RoyalTitleDef>
-
-
-  <!-- ================= The Honorable ============================= -->
-
-  <RoyalTitleDef Name="BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
-    <canBeInherited>False</canBeInherited>
-    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
-    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
-    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
-    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
-  </RoyalTitleDef>
-
-
-   <!-- Esquire -->
-  <RoyalTitleDef ParentName="BaseTitleMid">
-    <defName>Title_MR_Esquire</defName>
-    <label>Esquire</label>
-    <labelFemale>Esquiress</labelFemale>
-    <description>No Description.</description>
-    <seniority>350</seniority>
-  </RoyalTitleDef>
-
-   <!-- Knight -->
-  <RoyalTitleDef ParentName="BaseTitleMid">
-    <defName>Title_MR_Knight</defName>
-    <label>Knight</label>
-    <labelFemale>Dame</labelFemale>
-    <description>No Description.</description>
-    <seniority>400</seniority>
-  </RoyalTitleDef>
-
-   <!-- Baronet -->
-  <RoyalTitleDef ParentName="BaseTitleMid">
-    <defName>Title_MR_Baronet</defName>
-    <label>Baronet</label>
-    <labelFemale>Baronetess</labelFemale>
-    <canBeInherited>True</canBeInherited>
-    <description>No Description.</description>
-    <seniority>450</seniority>
-  </RoyalTitleDef>
-
-
-  <!-- ================= Low Nobility ============================ -->
 
   <RoyalTitleDef Name="BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
@@ -120,25 +29,14 @@
     <minExpectation>High</minExpectation>
   </RoyalTitleDef>
 
-   <!-- Baron -->
-  <RoyalTitleDef ParentName="BaseTitleNoble">
-    <defName>Title_HR_Baron</defName>
-    <label>Baron</label>
-    <labelFemale>Baroness</labelFemale>
-    <description>No Description.</description>
-    <seniority>500</seniority>
+  <RoyalTitleDef Name="BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>1</favorCost>
+    <canBeInherited>False</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
   </RoyalTitleDef>
-
-   <!-- Viscount -->
-  <RoyalTitleDef ParentName="BaseTitleNoble">
-    <defName>Title_HR_Viscount</defName>
-    <label>Viscount</label>
-    <labelFemale>Viscountess</labelFemale>
-    <description>No Description.</description>
-    <seniority>600</seniority>
-  </RoyalTitleDef>
-
-  <!-- ================= High Nobility ============================ -->
 
   <RoyalTitleDef Name="BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
@@ -155,35 +53,6 @@
     </disabledWorkTags>
   </RoyalTitleDef>
 
-   <!-- Count -->
-  <RoyalTitleDef ParentName="BaseTitleHighNoble">
-    <defName>Title_HR_Count</defName>
-    <label>Count</label>
-    <labelFemale>Countess</labelFemale>
-    <description>No Description.</description>
-    <seniority>700</seniority>
-  </RoyalTitleDef>
-
-   <!-- Duke -->
-  <RoyalTitleDef ParentName="BaseTitleHighNoble">
-    <defName>Title_HR_Duke</defName>
-    <label>Duke</label>
-    <labelFemale>Duchess</labelFemale>
-    <description>No Description.</description>
-    <seniority>800</seniority>
-  </RoyalTitleDef>
-
-   <!-- Arch Duke -->
-  <RoyalTitleDef ParentName="BaseTitleHighNoble">
-    <defName>Title_HR_Archduke</defName>
-    <label>Archduke</label>
-    <labelFemale>Archduchess</labelFemale>
-    <description>No Description.</description>
-    <seniority>900</seniority>
-  </RoyalTitleDef>
-
-  <!-- ================= Royalty ============================ -->
-
   <RoyalTitleDef Name="BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>False</canBeInherited>
@@ -199,8 +68,151 @@
     </disabledWorkTags>
   </RoyalTitleDef>
 
-  <RoyalTitleDef Name="BaseTitleRoyal" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
+  <!-- ================= The Peasantry ============================= -->
+
+   <!-- Freeman -->
+  <RoyalTitleDef ParentName="BaseTitleLow">
+    <defName>Title_LR_Freeman</defName>
+    <label>Free Tenant</label>
+    <description>No Description.</description>
+    <seniority>100</seniority>
+  </RoyalTitleDef>
+  
+   <!-- Yeoman -->
+  <RoyalTitleDef ParentName="BaseTitleLow">
+    <defName>Title_LR_Yeoman</defName>
+    <label>Yeoman</label>
+    <description>No Description.</description>
+    <seniority>200</seniority>
+  </RoyalTitleDef>
+
+
+  <!-- ================= The Gentry  ============================= -->
+   <!-- Gentleman -->
+  <RoyalTitleDef ParentName="BaseTitleLow">
+    <defName>Title_LR_Gentleman</defName>
+    <label>Gentleman</label>
+    <labelFemale>Lady</labelFemale>
+    <description>No Description.</description>
+    <seniority>300</seniority>
+  </RoyalTitleDef>
+
+   <!-- Squire -->
+  <RoyalTitleDef ParentName="BaseTitleLow">
+    <defName>Title_LR_Squire</defName>
+    <label>Squire</label>
+    <labelFemale>Squiress</labelFemale>
+    <description>No Description.</description>
+    <seniority>400</seniority>
+  </RoyalTitleDef>
+
+   <!-- Esquire -->
+  <RoyalTitleDef ParentName="BaseTitleMid">
+    <defName>Title_MR_Esquire</defName>
+    <label>Esquire</label>
+    <labelFemale>Esquiress</labelFemale>
+    <description>No Description.</description>
+    <seniority>500</seniority>
+  </RoyalTitleDef>
+
+   <!-- Knight -->
+  <RoyalTitleDef ParentName="BaseTitleMid">
+    <defName>Title_MR_Knight</defName>
+    <label>Knight</label>
+    <labelFemale>Dame</labelFemale>
+    <description>No Description.</description>
+    <seniority>600</seniority>
+  </RoyalTitleDef>
+
+   <!-- Baronet -->
+  <RoyalTitleDef ParentName="BaseTitleMid">
+    <defName>Title_MR_Baronet</defName>
+    <label>Baronet</label>
+    <labelFemale>Baronetess</labelFemale>
+    <canBeInherited>True</canBeInherited>
+    <description>No Description.</description>
+    <seniority>700</seniority>
+  </RoyalTitleDef>
+
+
+  <!-- ================= Low Nobility ============================ -->
+
+   <!-- Baron -->
+  <RoyalTitleDef ParentName="BaseTitleNoble">
+    <defName>Title_HR_Baron</defName>
+    <label>Baron</label>
+    <labelFemale>Baroness</labelFemale>
+    <description>No Description.</description>
+    <seniority>800</seniority>
+  </RoyalTitleDef>
+
+   <!-- Viscount -->
+  <RoyalTitleDef ParentName="BaseTitleNoble">
+    <defName>Title_HR_Viscount</defName>
+    <label>Viscount</label>
+    <labelFemale>Viscountess</labelFemale>
+    <description>No Description.</description>
+    <seniority>900</seniority>
+  </RoyalTitleDef>
+
+  <!-- ================= High Nobility ============================ -->
+
+   <!-- Count -->
+  <RoyalTitleDef ParentName="BaseTitleHighNoble">
+    <defName>Title_HR_Count</defName>
+    <label>Count</label>
+    <labelFemale>Countess</labelFemale>
+    <description>No Description.</description>
+    <seniority>1000</seniority>
+  </RoyalTitleDef>
+
+   <!-- Duke -->
+  <RoyalTitleDef ParentName="BaseTitleHighNoble">
+    <defName>Title_HR_Duke</defName>
+    <label>Duke</label>
+    <labelFemale>Duchess</labelFemale>
+    <description>No Description.</description>
+    <seniority>1100</seniority>
+  </RoyalTitleDef>
+
+   <!-- Arch Duke -->
+  <RoyalTitleDef ParentName="BaseTitleHighNoble">
+    <defName>Title_HR_Archduke</defName>
+    <label>Archduke</label>
+    <labelFemale>Archduchess</labelFemale>
+    <description>No Description.</description>
+    <seniority>1200</seniority>
+  </RoyalTitleDef>
+
+  <!-- ================= Royalty ============================ -->
+
+   <!-- Prince -->
+  <RoyalTitleDef ParentName="BaseTitleRoyalFamily">
+    <defName>Title_RY_Prince</defName>
+    <label>Prince</label>
+    <labelFemale>Princess</labelFemale>
+    <description>No Description.</description>
+    <seniority>1300</seniority>
+  </RoyalTitleDef>
+
+   <!-- Consort -->
+  <RoyalTitleDef ParentName="BaseTitleRoyalFamily">
+    <defName>Title_RY_Consort</defName>
+    <label>Prince Consort</label>
+    <labelFemale>Queen</labelFemale>
+    <description>No Description.</description>
+    <seniority>1400</seniority>
+  </RoyalTitleDef>
+
+   <!-- King -->
+  <RoyalTitleDef ParentName="BasePlayerTitle">
+    <defName>Title_RY_King</defName>
+    <label>King</label>
+    <labelFemale>Queen</labelFemale>
+    <description>No Description.</description>
+    <seniority>1500</seniority>
+
+    <favorCost>100</favorCost>
     <canBeInherited>True</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
@@ -212,33 +224,6 @@
       <li>PlantWork</li>
       <li>Mining</li>
     </disabledWorkTags>
-  </RoyalTitleDef>
-
-   <!-- Prince -->
-  <RoyalTitleDef ParentName="BaseTitleRoyalFamily">
-    <defName>Title_RY_Prince</defName>
-    <label>Prince</label>
-    <labelFemale>Princess</labelFemale>
-    <description>No Description.</description>
-    <seniority>950</seniority>
-  </RoyalTitleDef>
-
-   <!-- Consort -->
-  <RoyalTitleDef ParentName="BaseTitleRoyalFamily">
-    <defName>Title_RY_Consort</defName>
-    <label>Prince Consort</label>
-    <labelFemale>Queen</labelFemale>
-    <description>No Description.</description>
-    <seniority>951</seniority>
-  </RoyalTitleDef>
-
-   <!-- King -->
-  <RoyalTitleDef ParentName="BaseTitleRoyal">
-    <defName>Title_RY_King</defName>
-    <label>King</label>
-    <labelFemale>Queen</labelFemale>
-    <description>No Description.</description>
-    <seniority>1000</seniority>
   </RoyalTitleDef>
 
 </Defs>
