@@ -141,7 +141,7 @@
   </RoyalTitleDef>
 
    <!-- King -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BasePlayerTitle">
+  <RoyalTitleDef ParentName="BasePlayerTitle">
     <defName>TitularRoyalty_T_RY_King</defName>
     <label>King</label>
     <labelFemale>Queen</labelFemale>
