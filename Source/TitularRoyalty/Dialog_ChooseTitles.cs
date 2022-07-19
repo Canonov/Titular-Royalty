@@ -10,7 +10,7 @@ namespace TitularRoyalty
     public class Dialog_ChooseTitles : Window
     {
 
-        public Pawn thingToChange;
+        public Pawn chosenPawn;
         private Vector2 scrollPosition = new Vector2(0, 0);
         public int columnCount = 4;
 
@@ -18,11 +18,11 @@ namespace TitularRoyalty
 
         public Dialog_ChooseTitles(Pawn targPawn)
         {
-            this.thingToChange = targPawn;
+            this.chosenPawn = targPawn;
             doCloseX = true;
             doCloseButton = true;
             closeOnClickedOutside = true;
-            foreach (RoyalTitleDef v in DefDatabase<RoyalTitleDef>.AllDefs)
+            foreach (RoyalTitleDef v in DefDatabase<RoyalTitleDef>.AllDefsListForReading)
             {
                 //Log.Message($"Defname: {v.ToString()} Label: {v.label}");
                 foreach (var li in v.tags)
@@ -86,7 +86,11 @@ namespace TitularRoyalty
                         Widgets.LabelFit(rectIcon, title.LabelCap);
                         if (Widgets.ButtonInvisible(rectIcon))
                         {
-                            thingToChange.royalty.TryUpdateTitle(Faction.OfPlayer, true, title);
+                            Log.Message($"Fired {title.label} for pawn {chosenPawn.Name}");
+                            if (chosenPawn != null && chosenPawn.royalty != null)
+                            {
+                                chosenPawn.royalty.SetTitle(Faction.OfPlayer, title, grantRewards: true, sendLetter: true);
+                            }
                             //thingToChange.DirtyMapMesh(thingToChange.Map);
                             Close();
                         }
