@@ -13,7 +13,6 @@ namespace TitularRoyalty
         public Pawn chosenPawn;
         private Vector2 scrollPosition = new Vector2(0, 0);
         public int columnCount = 1;
-
         Dictionary<RoyalTitleDef, int> seniorityTitles = new Dictionary<RoyalTitleDef, int>();
 
         public Dialog_ChooseTitles(Pawn targPawn)
@@ -36,9 +35,9 @@ namespace TitularRoyalty
             }
 
         }
-        private string getDisplayTitle(RoyalTitleDef title, Gender gender)
+        private string GetDisplayTitle(RoyalTitleDef title, Gender gender)
         {
-            // Prince-Consort doesn't fit and consort is gender neutral
+            // Prince-Consort doesn't fit in the GUI and Queen would show up twice
             if (title.defName == "TitularRoyalty_T_RY_Consort")
             {
                 return "Consort";
@@ -83,7 +82,7 @@ namespace TitularRoyalty
                             80f, 32f);
                         //GUI.DrawTexture(rectIcon, style.Graphic.MatSingle.mainTexture, ScaleMode.StretchToFill, alphaBlend: true, 0f, color, 0f, 0f);
                         //Widgets.Label(rectIcon, title.LabelCap);
-                        if (Widgets.ButtonText(rectIcon, getDisplayTitle(title, chosenPawn.gender), drawBackground: true))
+                        if (Widgets.ButtonText(rectIcon, GetDisplayTitle(title, chosenPawn.gender), drawBackground: true))
                         {
                             //Log.Message($"Fired {title.label} for pawn {chosenPawn.Name}");
                             if (chosenPawn != null && chosenPawn.royalty != null)
@@ -101,7 +100,7 @@ namespace TitularRoyalty
                             }
                             Close();
                         }*/
-                        TooltipHandler.TipRegion(rectIcon, title.LabelCap);
+                        TooltipHandler.TipRegion(rectIcon, GetDisplayTitle(title, chosenPawn.gender));
                     }
                     foreachI++;
                 }
