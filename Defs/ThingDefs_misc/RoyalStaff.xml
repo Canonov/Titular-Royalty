@@ -37,8 +37,9 @@
     </tools>
     <verbs>
       <li>
-        <label>Grant Titles</label>
+        <label>grant titles</label>
         <verbClass>TitularRoyalty.Verb_TitleGranter</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
         <warmupTime>0.5</warmupTime>
         <range>5</range>
         <!--<burstShotCount>1</burstShotCount>-->
