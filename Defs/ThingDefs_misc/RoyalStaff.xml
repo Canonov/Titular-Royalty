@@ -37,9 +37,9 @@
     </tools>
     <verbs>
       <li>
+        <label>Grant Titles</label>
         <verbClass>TitularRoyalty.Verb_TitleGranter</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <warmupTime>1</warmupTime>
+        <warmupTime>0.5</warmupTime>
         <range>5</range>
         <!--<burstShotCount>1</burstShotCount>-->
         <!--<soundAiming>OrbitalTargeter_Aiming</soundAiming>-->
