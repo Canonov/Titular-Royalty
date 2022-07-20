@@ -2,3 +2,7 @@ C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Titular-Royalty\Asse
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.csproj.AssemblyReference.cache
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.csproj.CoreCompileInputs.cache
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.dll
+D:\Programs\RimWorld\Mods\Titular-Royalty\Assemblies\TitularRoyalty.dll
+D:\Programs\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.csproj.AssemblyReference.cache
+D:\Programs\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.csproj.CoreCompileInputs.cache
+D:\Programs\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.dll

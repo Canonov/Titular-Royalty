@@ -6,22 +6,30 @@
     <label>Staff of Royalty</label>
     <description>A ceremonial staff made of gold and jewels. While it is a solid weapon to bash people with, its main purpose is ceremonial in nature with it being used to grant titles to members of your colony</description>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponMelee/PsyfocusStaff</texPath>
+      <texPath>Things/Item/Equipment/RoyalScepter</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <techLevel>Ultra</techLevel>
-    <tradeTags>
-      <li>PsychicWeapon</li>
-    </tradeTags>
+    <techLevel>Medieval</techLevel>
+    <tradeability>None</tradeability>
+    <tradeNeverStack>true</tradeNeverStack>
     <weaponTags>
       <li>TitleGrantingStaff</li>
     </weaponTags>
     <weaponClasses>
     </weaponClasses>
-    <costStuffCount>50</costStuffCount>
+    <costList>
+      <Gold>75</Gold>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>Smithing</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
     <statBases>
-      <MarketValue>2000</MarketValue>
+      <MarketValue>100</MarketValue>
       <Mass>1.2</Mass>
+      <WorkToMake>2000</WorkToMake>
     </statBases>
     <equippedAngleOffset>-65</equippedAngleOffset>
     <tools>
@@ -37,9 +45,10 @@
     </tools>
     <verbs>
       <li>
+        <label>grant titles</label>
         <verbClass>TitularRoyalty.Verb_TitleGranter</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
-        <warmupTime>1</warmupTime>
+        <warmupTime>0.5</warmupTime>
         <range>5</range>
         <!--<burstShotCount>1</burstShotCount>-->
         <!--<soundAiming>OrbitalTargeter_Aiming</soundAiming>-->
