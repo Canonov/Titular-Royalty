@@ -12,7 +12,7 @@ namespace TitularRoyalty
 
         public Pawn chosenPawn;
         private Vector2 scrollPosition = new Vector2(0, 0);
-        public int columnCount = 4;
+        public int columnCount = 1;
 
         Dictionary<RoyalTitleDef, int> seniorityTitles = new Dictionary<RoyalTitleDef, int>();
 
@@ -36,8 +36,21 @@ namespace TitularRoyalty
             }
 
         }
-
-        public override Vector2 InitialSize => new Vector2(620f, 500f);
+        private string getDisplayTitle(RoyalTitleDef title, Gender gender)
+        {
+            // Prince-Consort doesn't fit and consort is gender neutral
+            if (title.defName == "TitularRoyalty_T_RY_Consort")
+            {
+                return "Consort";
+            }
+            // Only women use different titles
+            if (gender == Gender.Female)
+            {
+                return title.labelFemale;
+            }
+            return title.label;
+        }
+        public override Vector2 InitialSize => new Vector2(620f / 4f, 500f);
         public override void DoWindowContents(Rect inRect)
         {
             Text.Font = GameFont.Small;
@@ -49,7 +62,7 @@ namespace TitularRoyalty
             if (seniorityTitles.Count > 0)
             {
 
-                Widgets.Label(new Rect(0, 10, 300f, 30f), "TR_choosetitle".Translate());
+                Widgets.Label(new Rect(10, 10, 300f, 30f), "TR_choosetitle".Translate());
 
                 var viewRect = new Rect(0f, 30f, outRect.width - 16f, (seniorityTitles.Count / 4) * 128f + 256f);
 
@@ -62,10 +75,10 @@ namespace TitularRoyalty
                 Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
 
 
-                Rect rectIconFirst = new Rect(10, 20f, 128f, 128f);
+                Rect rectIconFirst = new Rect(10, 20f, 80f, 32f);
 
                 //GUI.DrawTexture(rectIconFirst, thingToChange.DefaultGraphic.MatSingle.mainTexture, ScaleMode.StretchToFill, alphaBlend: true, 0f, color, 0f, 0f);
-                Widgets.LabelFit(rectIconFirst, "what".Translate());
+                //Widgets.LabelFit(rectIconFirst, "what".Translate());
                 /*if (Widgets.ButtonInvisible(rectIconFirst))
                 {
                     thingToChange.StyleDef = null;
@@ -81,10 +94,13 @@ namespace TitularRoyalty
                     RoyalTitleDef title = pair.Key;
                     if (title != null)
                     {
-                        Rect rectIcon = new Rect((128 * (foreachI % columnCount)) + 10, (128 * (foreachI / columnCount)) + 128f, 128f, 128f);
+                        Rect rectIcon = new Rect(
+                            (64 * (foreachI % columnCount)) + 10,
+                            (32 * (foreachI / columnCount)) + 32f,
+                            80f, 32f);
                         //GUI.DrawTexture(rectIcon, style.Graphic.MatSingle.mainTexture, ScaleMode.StretchToFill, alphaBlend: true, 0f, color, 0f, 0f);
-                        Widgets.LabelFit(rectIcon, title.LabelCap);
-                        if (Widgets.ButtonInvisible(rectIcon))
+                        //Widgets.Label(rectIcon, title.LabelCap);
+                        if (Widgets.ButtonText(rectIcon, getDisplayTitle(title, chosenPawn.gender), drawBackground: true))
                         {
                             Log.Message($"Fired {title.label} for pawn {chosenPawn.Name}");
                             if (chosenPawn != null && chosenPawn.royalty != null)
@@ -94,6 +110,16 @@ namespace TitularRoyalty
                             //thingToChange.DirtyMapMesh(thingToChange.Map);
                             Close();
                         }
+                        /*if (Widgets.ButtonInvisible(rectIcon))
+                        {
+                            Log.Message($"Fired {title.label} for pawn {chosenPawn.Name}");
+                            if (chosenPawn != null && chosenPawn.royalty != null)
+                            {
+                                chosenPawn.royalty.SetTitle(Faction.OfPlayer, title, grantRewards: true, sendLetter: true);
+                            }
+                            //thingToChange.DirtyMapMesh(thingToChange.Map);
+                            Close();
+                        }*/ //DELETE IF THIS WORKS
                         TooltipHandler.TipRegion(rectIcon, title.LabelCap);
                     }
                     foreachI++;

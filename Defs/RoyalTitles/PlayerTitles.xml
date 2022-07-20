@@ -5,7 +5,7 @@
    <!-- Freeman -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Freeman</defName>
-    <label>Free Tenant</label>
+    <label>Freeholder</label>
     <description>No Description.</description>
     <seniority>100</seniority>
   </RoyalTitleDef>
