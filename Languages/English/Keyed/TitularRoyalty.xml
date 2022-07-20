@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<!-- EN: Wear {0} -->
+	<Verb_TitleGranter>Grant Title</Verb_TitleGranter>
+
+	<!-- EN: Toggle wearing {0} attached to apparel. -->
+	<TR_CurrentTitle>Current Title</TR_CurrentTitle>
+	<TR_choosetitle>Title Selector</TR_choosetitle>
+
+</LanguageData>
