@@ -18,7 +18,7 @@
     <weaponClasses>
     </weaponClasses>
     <costList>
-      <gold>75</gold>
+      <Gold>75</Gold>
     </costList>
     <recipeMaker>
       <researchPrerequisite>Smithing</researchPrerequisite>
