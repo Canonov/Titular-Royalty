@@ -49,7 +49,7 @@ namespace TitularRoyalty
             }
             return title.label;
         }
-        public override Vector2 InitialSize => new Vector2(620f / 4f, 500f);
+        public override Vector2 InitialSize => new Vector2(700f / 4f, 500f);
         public override void DoWindowContents(Rect inRect)
         {
             Text.Font = GameFont.Small;
@@ -61,7 +61,7 @@ namespace TitularRoyalty
             if (seniorityTitles.Count > 0)
             {
 
-                Widgets.Label(new Rect(10, 10, 300f, 30f), "TR_choosetitle".Translate());
+                Widgets.Label(new Rect(15, 10, 300f, 30f), "TR_choosetitle".Translate());
                 var viewRect = new Rect(0f, 30f, outRect.width - 16f, (seniorityTitles.Count / 4) * 128f + 256f);
                 Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
 
@@ -77,9 +77,9 @@ namespace TitularRoyalty
                     if (title != null)
                     {
                         Rect rectIcon = new Rect(
-                            (64 * (foreachI % columnCount)) + 10,
+                            (32 * (foreachI % columnCount)) + 10,
                             (32 * (foreachI / columnCount)) + 32f,
-                            80f, 32f);
+                            125f, 32f);
                         //GUI.DrawTexture(rectIcon, style.Graphic.MatSingle.mainTexture, ScaleMode.StretchToFill, alphaBlend: true, 0f, color, 0f, 0f);
                         //Widgets.Label(rectIcon, title.LabelCap);
                         if (Widgets.ButtonText(rectIcon, GetDisplayTitle(title, chosenPawn.gender), drawBackground: true))
