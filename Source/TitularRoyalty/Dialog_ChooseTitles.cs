@@ -44,7 +44,7 @@ namespace TitularRoyalty
                 return "Consort";
             }
             // Only women use different titles
-            if (gender == Gender.Female)
+            if (gender == Gender.Female && title.labelFemale != null)
             {
                 return title.labelFemale;
             }
@@ -63,28 +63,11 @@ namespace TitularRoyalty
             {
 
                 Widgets.Label(new Rect(10, 10, 300f, 30f), "TR_choosetitle".Translate());
-
                 var viewRect = new Rect(0f, 30f, outRect.width - 16f, (seniorityTitles.Count / 4) * 128f + 256f);
-
-                /*Color color = thingToChange.Graphic.Color;
-                if (thingToChange.Stuff != null)
-                {
-                    color = thingToChange.def.GetColorForStuff(thingToChange.Stuff);
-                }*/
-
                 Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
 
 
                 Rect rectIconFirst = new Rect(10, 20f, 80f, 32f);
-
-                //GUI.DrawTexture(rectIconFirst, thingToChange.DefaultGraphic.MatSingle.mainTexture, ScaleMode.StretchToFill, alphaBlend: true, 0f, color, 0f, 0f);
-                //Widgets.LabelFit(rectIconFirst, "what".Translate());
-                /*if (Widgets.ButtonInvisible(rectIconFirst))
-                {
-                    thingToChange.StyleDef = null;
-                    thingToChange.DirtyMapMesh(thingToChange.Map);
-                    Close();
-                }*/
                 TooltipHandler.TipRegion(rectIconFirst, "TR_CurrentTitle".Translate());
 
                 int foreachI = 0;
@@ -102,12 +85,11 @@ namespace TitularRoyalty
                         //Widgets.Label(rectIcon, title.LabelCap);
                         if (Widgets.ButtonText(rectIcon, getDisplayTitle(title, chosenPawn.gender), drawBackground: true))
                         {
-                            Log.Message($"Fired {title.label} for pawn {chosenPawn.Name}");
+                            //Log.Message($"Fired {title.label} for pawn {chosenPawn.Name}");
                             if (chosenPawn != null && chosenPawn.royalty != null)
                             {
                                 chosenPawn.royalty.SetTitle(Faction.OfPlayer, title, grantRewards: true, sendLetter: true);
                             }
-                            //thingToChange.DirtyMapMesh(thingToChange.Map);
                             Close();
                         }
                         /*if (Widgets.ButtonInvisible(rectIcon))
@@ -117,9 +99,8 @@ namespace TitularRoyalty
                             {
                                 chosenPawn.royalty.SetTitle(Faction.OfPlayer, title, grantRewards: true, sendLetter: true);
                             }
-                            //thingToChange.DirtyMapMesh(thingToChange.Map);
                             Close();
-                        }*/ //DELETE IF THIS WORKS
+                        }*/
                         TooltipHandler.TipRegion(rectIcon, title.LabelCap);
                     }
                     foreachI++;
