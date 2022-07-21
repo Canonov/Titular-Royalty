@@ -31,7 +31,17 @@ namespace TitularRoyalty
                         seniorityTitles.Add(v, v.seniority);
                     }
                 }
-
+                if (v.defName == "TitularRoyalty_T_RY_King")
+                {
+                    if (v.HasModExtension<AlternateTitlesExtension>())
+                    {
+                        var atlist = v.GetModExtension<AlternateTitlesExtension>().AlternateTitles;
+                        foreach (string i in atlist)
+                        {
+                            Log.Message($"Titular Royalty RY_King: {i}");
+                        }
+                    }
+                }
             }
 
         }
@@ -104,6 +114,8 @@ namespace TitularRoyalty
                     }
                     foreachI++;
                 }
+
+                Widgets.EndScrollView();
             }
             else
             {
