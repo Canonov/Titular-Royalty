@@ -33,7 +33,6 @@
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Squire</defName>
     <label>Squire</label>
-    <labelFemale>Squiress</labelFemale>
     <description>No Description.</description>
     <seniority>400</seniority>
   </RoyalTitleDef>
@@ -42,7 +41,6 @@
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Esquire</defName>
     <label>Esquire</label>
-    <labelFemale>Esquiress</labelFemale>
     <description>No Description.</description>
     <seniority>500</seniority>
   </RoyalTitleDef>
@@ -101,23 +99,21 @@
   </RoyalTitleDef>
 
    <!-- Duke -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_HR_Duke</defName>
     <label>Duke</label>
     <labelFemale>Duchess</labelFemale>
     <description>No Description.</description>
     <seniority>1100</seniority>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
   </RoyalTitleDef>
 
    <!-- Arch Duke -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_HR_Archduke</defName>
     <label>Archduke</label>
     <labelFemale>Archduchess</labelFemale>
     <description>No Description.</description>
     <seniority>1200</seniority>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
   </RoyalTitleDef>
 
   <!-- ================= Royalty ============================ -->
