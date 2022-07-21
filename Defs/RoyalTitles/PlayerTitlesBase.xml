@@ -8,6 +8,7 @@
     <lostThought>LostTitle</lostThought>
   </RoyalTitleDef>
 
+  <!-- Lowest Level -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>False</canBeInherited>
@@ -16,6 +17,7 @@
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
   </RoyalTitleDef>
 
+  <!-- The Gentry -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>False</canBeInherited>
@@ -26,6 +28,7 @@
     <minExpectation>Moderate</minExpectation>
   </RoyalTitleDef>
 
+  <!-- Baronet Plus -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>True</canBeInherited>
@@ -36,6 +39,8 @@
     <minExpectation>High</minExpectation>
   </RoyalTitleDef>
 
+
+  <!-- Count Level -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>True</canBeInherited>
@@ -57,6 +62,31 @@
     </disabledWorkTags>
   </RoyalTitleDef>
 
+
+  <!-- Duke Level -->
+  <RoyalTitleDef Name="TitularRoyalty_BaseTitleDukePlus" ParentName="BasePlayerTitle" Abstract="True">
+    <favorCost>1</favorCost>
+    <canBeInherited>True</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>Noble</minExpectation>
+    <grantedAbilities><li>Speech</li></grantedAbilities>
+    <decreeTags>
+      <li>All</li>
+    </decreeTags>
+    <disabledJoyKinds>
+      <li>Gaming_Dexterity</li>
+    </disabledJoyKinds>
+    <disabledWorkTags>
+      <li>ManualDumb</li>
+      <li>PlantWork</li>
+      <li>Mining</li>
+    </disabledWorkTags>
+  </RoyalTitleDef>
+
+  <!-- Family of the King / Emperor -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
     <canBeInherited>False</canBeInherited>
