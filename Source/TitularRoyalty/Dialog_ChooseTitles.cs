@@ -38,7 +38,7 @@ namespace TitularRoyalty
         private string GetDisplayTitle(RoyalTitleDef title, Gender gender)
         {
             // Prince-Consort doesn't fit in the GUI and Queen would show up twice
-            if (title.defName == "TitularRoyalty_T_RY_Consort")
+            if (title.label == "Prince Consort")
             {
                 return "Consort";
             }
@@ -85,7 +85,7 @@ namespace TitularRoyalty
                         if (Widgets.ButtonText(rectIcon, GetDisplayTitle(title, chosenPawn.gender), drawBackground: true))
                         {
                             //Log.Message($"Fired {title.label} for pawn {chosenPawn.Name}");
-                            if (chosenPawn != null && chosenPawn.royalty != null)
+                            if (chosenPawn != null && chosenPawn.royalty != null && chosenPawn.royalty.GetCurrentTitle(Faction.OfPlayer) != title)
                             {
                                 chosenPawn.royalty.SetTitle(Faction.OfPlayer, title, grantRewards: true, sendLetter: true);
                             }
@@ -104,9 +104,6 @@ namespace TitularRoyalty
                     }
                     foreachI++;
                 }
-
-                Widgets.EndScrollView();
-
             }
             else
             {

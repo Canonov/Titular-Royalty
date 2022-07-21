@@ -127,7 +127,7 @@
 
    <!-- Crown Prince -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
-    <defName>TitularRoyalty_T_RY_Prince</defName>
+    <defName>TitularRoyalty_T_RY_CrownPrince</defName>
     <label>Crown Prince</label>
     <labelFemale>Crown Princess</labelFemale>
     <description>No Description.</description>

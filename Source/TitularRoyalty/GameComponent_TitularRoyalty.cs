@@ -1,5 +1,4 @@
 ﻿//using System; 
-/*
 using RimWorld;
 using Verse;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ namespace TitularRoyalty
 {
     public class GameComponent_TitularRoyalty : GameComponent
     {
-		private class FactionTitleList
+		/*private class FactionTitleList
 		{
 			Faction _thefaction;
 			Dictionary<int, RoyalTitleDef> _titles;
@@ -31,9 +30,32 @@ namespace TitularRoyalty
 			{
 				_titles.Add(senior, title);
 			}
+		}*/
+		private void ChangeTitles(string rt, List<RoyalTitleDef> titles)
+        {
+			// list of tuple (titleDef, maleTitle, femaleTitle)
+
 		}
 
-		private void OnGameStart()
+		private void ManageTitleLoc()
+        {
+			string realmType = "Kingdom";
+			var titles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
+
+			switch (realmType)
+            {
+				case "Kingdom":
+					break;
+				case "Empire":
+					ChangeTitles(realmType, titles);
+					break;
+				default:
+					Log.Error("Titular Royalty: Invalid RealmType saved");
+					break;
+			}
+        }
+
+		public void OnGameStart()
         {
 
         }
@@ -49,4 +71,3 @@ namespace TitularRoyalty
         }
     }
 }
-*/
