@@ -54,7 +54,6 @@ namespace TitularRoyalty
 
 		private void ManageTitleLoc()
         {
-			Log.Message("Before Realmtype");
 			string realmType = GetRealmType();
 			Log.Message(realmType);
 
@@ -73,11 +72,9 @@ namespace TitularRoyalty
 
 			foreach (RoyalTitleDef v in titles)
 			{
-				Log.Message("first foreach");
 				if (v.modExtensions != null) { 
 					foreach (AlternateTitlesExtension ext in v.modExtensions)
 					{
-						Log.Message("second foreach");
 						if (ext.realmType == realmType)
 						{
 							// Female Labels
@@ -103,7 +100,6 @@ namespace TitularRoyalty
 					}
 				}
 			}
-			Log.Message("Titles Changed");
 		}
 
 		public void OnGameStart()
@@ -113,13 +109,11 @@ namespace TitularRoyalty
 
         public override void LoadedGame()
         {
-			Log.Message("LoadedGame");
 			ManageTitleLoc();
 		}
 
         public override void StartedNewGame()
         {
-			Log.Message("NewGame");
 			ManageTitleLoc();
 		}
     }

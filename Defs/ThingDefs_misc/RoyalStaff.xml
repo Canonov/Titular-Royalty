@@ -29,7 +29,7 @@
     <statBases>
       <MarketValue>100</MarketValue>
       <Mass>1.2</Mass>
-      <WorkToMake>2000</WorkToMake>
+      <WorkToMake>12000</WorkToMake>
     </statBases>
     <equippedAngleOffset>-65</equippedAngleOffset>
     <tools>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Canon's Titular Royalty</name>
+  <name>Titular Royalty</name>
   <packageId>Canon.TitularRoyalty</packageId>
   <author>Canon</author>
   <supportedVersions>
@@ -15,6 +15,6 @@
   <loadAfter>
     <!--<li>brrainz.harmony</li>-->
   </loadAfter>
-  <description>TBD
+  <description>Adds titles to the player faction you can grant to your pawns with the Staff of Royalty
 </description>
 </ModMetaData>
