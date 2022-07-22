@@ -31,6 +31,12 @@ namespace TitularRoyalty
 				_titles.Add(senior, title);
 			}
 		}*/
+
+		public GameComponent_TitularRoyalty()
+        {
+
+        }
+
 		private void ChangeTitles(string rt, List<RoyalTitleDef> titles)
         {
 			// list of tuple (titleDef, maleTitle, femaleTitle)
