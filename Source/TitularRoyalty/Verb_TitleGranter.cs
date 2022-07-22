@@ -19,7 +19,6 @@ namespace TitularRoyalty
 			if (currentTarget.HasThing && currentTarget.Thing is Pawn && currentTarget.Pawn.IsColonist && currentTarget.Pawn.royalty != null)
             {
 				Log.Message($"Opening title GUI for: {currentTarget.Pawn.Name}");
-
 				Dialog_ChooseTitles window = new Dialog_ChooseTitles(currentTarget.Pawn);
 				Find.WindowStack.Add(window);
 

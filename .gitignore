@@ -427,3 +427,6 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudio
 Source/TitularRoyalty/obj/Debug/TitularRoyalty.csproj.AssemblyReference.cache
 *.cache
+Source/TitularRoyalty/.vs/TitularRoyalty/v17/.suo
+*.cache
+Source/TitularRoyalty/obj/Debug/TitularRoyalty.csproj.AssemblyReference.cache

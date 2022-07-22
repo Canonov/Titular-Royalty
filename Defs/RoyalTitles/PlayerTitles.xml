@@ -18,7 +18,6 @@
     <seniority>200</seniority>
   </RoyalTitleDef>
 
-
   <!-- ================= The Gentry  ============================= -->
    <!-- Gentleman -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
@@ -33,7 +32,6 @@
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Squire</defName>
     <label>Squire</label>
-    <labelFemale>Squiress</labelFemale>
     <description>No Description.</description>
     <seniority>400</seniority>
   </RoyalTitleDef>
@@ -42,7 +40,6 @@
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Esquire</defName>
     <label>Esquire</label>
-    <labelFemale>Esquiress</labelFemale>
     <description>No Description.</description>
     <seniority>500</seniority>
   </RoyalTitleDef>
@@ -65,7 +62,6 @@
     <description>No Description.</description>
     <seniority>700</seniority>
   </RoyalTitleDef>
-
 
   <!-- ================= Low Nobility ============================ -->
 
@@ -101,23 +97,21 @@
   </RoyalTitleDef>
 
    <!-- Duke -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_HR_Duke</defName>
     <label>Duke</label>
     <labelFemale>Duchess</labelFemale>
     <description>No Description.</description>
     <seniority>1100</seniority>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
   </RoyalTitleDef>
 
    <!-- Arch Duke -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_HR_Archduke</defName>
     <label>Archduke</label>
     <labelFemale>Archduchess</labelFemale>
     <description>No Description.</description>
     <seniority>1200</seniority>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
   </RoyalTitleDef>
 
   <!-- ================= Royalty ============================ -->
@@ -131,6 +125,15 @@
     <seniority>1300</seniority>
   </RoyalTitleDef>
 
+   <!-- Crown Prince -->
+  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+    <defName>TitularRoyalty_T_RY_CrownPrince</defName>
+    <label>Crown Prince</label>
+    <labelFemale>Crown Princess</labelFemale>
+    <description>No Description.</description>
+    <seniority>1350</seniority>
+  </RoyalTitleDef>
+
    <!-- Consort -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
     <defName>TitularRoyalty_T_RY_Consort</defName>
@@ -140,11 +143,23 @@
     <seniority>1400</seniority>
   </RoyalTitleDef>
 
-   <!-- King -->
+   <!-- King -->1
   <RoyalTitleDef ParentName="BasePlayerTitle">
     <defName>TitularRoyalty_T_RY_King</defName>
     <label>King</label>
     <labelFemale>Queen</labelFemale>
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Emperor</label>
+        <labelf>Empress</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Kingx</label>
+        <labelf>Queenx</labelf>
+      </li>
+    </modExtensions>
     <description>No Description.</description>
     <seniority>1500</seniority>
 
@@ -156,6 +171,7 @@
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
     <minExpectation>Royal</minExpectation>
     <grantedAbilities><li>Speech</li></grantedAbilities>
+    <speechCooldown>900000</speechCooldown>
     <disabledWorkTags>
       <li>ManualDumb</li>
       <li>PlantWork</li>
@@ -167,6 +183,28 @@
     <disabledJoyKinds>
       <li>Gaming_Dexterity</li>
     </disabledJoyKinds>
+    <foodRequirement>
+      <minQuality>MealFine</minQuality>
+      <allowedTypes>Processed, Liquor</allowedTypes>
+      <allowedDefs>
+        <li>Ambrosia</li>
+        <li>Milk</li>
+        <li>RawBerries</li>
+      </allowedDefs>
+    </foodRequirement>
+    <throneRoomRequirements>
+      <li Class="RoomRequirement_HasAssignedThroneAnyOf">
+        <things>
+          <li>GrandThrone</li>
+        </things>
+      </li>
+      <li Class="RoomRequirement_Area">
+        <area>8</area>
+      </li>
+	    <li Class="RoomRequirement_Impressiveness">
+        <impressiveness>45</impressiveness>
+      </li>
+    </throneRoomRequirements>
   </RoyalTitleDef>
 
 </Defs>
