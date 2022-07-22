@@ -143,7 +143,7 @@
     <seniority>1400</seniority>
   </RoyalTitleDef>
 
-   <!-- King -->
+   <!-- King -->1
   <RoyalTitleDef ParentName="BasePlayerTitle">
     <defName>TitularRoyalty_T_RY_King</defName>
     <label>King</label>
@@ -153,6 +153,11 @@
         <realmType>Empire</realmType>
         <label>Emperor</label>
         <labelf>Empress</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Kingx</label>
+        <labelf>Queenx</labelf>
       </li>
     </modExtensions>
     <description>No Description.</description>

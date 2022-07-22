@@ -32,7 +32,7 @@ namespace TitularRoyalty
 			}
 		}*/
 
-		public GameComponent_TitularRoyalty()
+		public GameComponent_TitularRoyalty(Game game)
         {
 
         }
@@ -54,7 +54,9 @@ namespace TitularRoyalty
 
 		private void ManageTitleLoc()
         {
+			Log.Message("Before Realmtype");
 			string realmType = GetRealmType();
+			Log.Message(realmType);
 
 			var titles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
 
@@ -62,35 +64,42 @@ namespace TitularRoyalty
             {
 				case "Empire":
 					break;
+				case "Kingdom":
+					break;
 				default:
 					Log.Error("Titular Royalty: Invalid RealmType");
 					return;
 			}
+
 			foreach (RoyalTitleDef v in titles)
 			{
-				foreach (AlternateTitlesExtension ext in v.modExtensions)
-				{
-					if (ext.realmType == realmType)
+				Log.Message("first foreach");
+				if (v.modExtensions != null) { 
+					foreach (AlternateTitlesExtension ext in v.modExtensions)
 					{
-						// Female Labels
-						if (v.labelFemale != null && ext.labelf != "none")
+						Log.Message("second foreach");
+						if (ext.realmType == realmType)
 						{
-							v.labelFemale = ext.labelf;
-						}
-						else if (v.labelFemale != null && v.labelFemale == "none")
-						{
-							v.labelFemale = null;
-							//v.labelFemale = ext.label;
-						}
-						else if (v.labelFemale == null && v.labelFemale != "none")
-						{
-							v.labelFemale = ext.labelf;
-						}
-						// and if they're both null we don't need to do anything
+							// Female Labels
+							if (v.labelFemale != null && ext.labelf != "none")
+							{
+								v.labelFemale = ext.labelf;
+							}
+							else if (v.labelFemale != null && v.labelFemale == "none")
+							{
+								v.labelFemale = null;
+								//v.labelFemale = ext.label;
+							}
+							else if (v.labelFemale == null && v.labelFemale != "none")
+							{
+								v.labelFemale = ext.labelf;
+							}
+							// and if they're both null we don't need to do anything
 
-						v.label = ext.label; // Change the male label
+							v.label = ext.label; // Change the male label
 
-						break; // You can only have one of these so break the loop
+							break; // You can only have one of these so break the loop
+						}
 					}
 				}
 			}
@@ -104,11 +113,13 @@ namespace TitularRoyalty
 
         public override void LoadedGame()
         {
+			Log.Message("LoadedGame");
 			ManageTitleLoc();
 		}
 
         public override void StartedNewGame()
         {
+			Log.Message("NewGame");
 			ManageTitleLoc();
 		}
     }

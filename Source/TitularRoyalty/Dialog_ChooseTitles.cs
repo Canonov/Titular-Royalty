@@ -56,7 +56,6 @@ namespace TitularRoyalty
             outRect.yMin += 30f;
             outRect.yMax -= 40f;
 
-
             if (seniorityTitles.Count > 0)
             {
 
@@ -69,6 +68,9 @@ namespace TitularRoyalty
                 TooltipHandler.TipRegion(rectIconFirst, "TR_CurrentTitle".Translate());
 
                 int foreachI = 0;
+
+
+
                 foreach (var pair in seniorityTitles.OrderBy(p => p.Value))
                 {
                     // work with pair.Key and pair.Value
