@@ -9,6 +9,5 @@ namespace TitularRoyalty
         public string realmType;
         public string label;
         public string labelf = "none";
-    
     }
 }

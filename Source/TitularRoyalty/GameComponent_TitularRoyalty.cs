@@ -37,69 +37,65 @@ namespace TitularRoyalty
 
         }
 
-
-
-		public void HandleTitle(List<RoyalTitleDef> titles, string rt)
+		public string GetRealmType()
         {
-			if (rt == "Kingdom")
+			string realmType = LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType;
+
+			if (realmType != null)
             {
-				return;
+				return realmType;
+            }
+			else
+            {
+				Log.Warning("no RealmType Found");
+				return "Kingdom";
+            }
+		}
+
+		private void ManageTitleLoc()
+        {
+			string realmType = GetRealmType();
+
+			var titles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
+
+			switch (realmType)
+            {
+				case "Empire":
+					break;
+				default:
+					Log.Error("Titular Royalty: Invalid RealmType");
+					return;
 			}
-
-			//string defaultLabel = title.label;
-			//string defaultLabelF = "none";
-			//if (title.labelFemale != null) { defaultLabelF = title.labelFemale; }
-
 			foreach (RoyalTitleDef v in titles)
 			{
-
 				foreach (AlternateTitlesExtension ext in v.modExtensions)
-                {
-					if (ext.realmType == rt)
-                    {
+				{
+					if (ext.realmType == realmType)
+					{
 						// Female Labels
 						if (v.labelFemale != null && ext.labelf != "none")
-                        {
+						{
 							v.labelFemale = ext.labelf;
-                        }
+						}
 						else if (v.labelFemale != null && v.labelFemale == "none")
-                        {
+						{
 							v.labelFemale = null;
 							//v.labelFemale = ext.label;
-                        }
+						}
 						else if (v.labelFemale == null && v.labelFemale != "none")
-                        {
+						{
 							v.labelFemale = ext.labelf;
-                        }
+						}
 						// and if they're both null we don't need to do anything
 
 						v.label = ext.label; // Change the male label
 
 						break; // You can only have one of these so break the loop
-                    }
-                }
+					}
+				}
 			}
-
-
-
+			Log.Message("Titles Changed");
 		}
-
-		private void ManageTitleLoc()
-        {
-			string realmType = "Kingdom";
-			var titles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
-
-			switch (realmType)
-            {
-				case "Kingdom":
-					break;
-				case "Empire":
-					break;
-				default:
-					Log.Error("Titular Royalty: Invalid RealmType saved");
-					break;
-			}
-        }
 
 		public void OnGameStart()
         {
@@ -108,12 +104,12 @@ namespace TitularRoyalty
 
         public override void LoadedGame()
         {
-
-        }
+			ManageTitleLoc();
+		}
 
         public override void StartedNewGame()
         {
-
-        }
+			ManageTitleLoc();
+		}
     }
 }
