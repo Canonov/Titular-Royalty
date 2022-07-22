@@ -6,7 +6,9 @@ namespace TitularRoyalty
 {
     public class AlternateTitlesExtension : DefModExtension 
     {
-        public List<string> AlternateTitles = new List<string>();
+        public string realmType;
+        public string label;
+        public string labelf = "none";
     
     }
 }

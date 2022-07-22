@@ -150,11 +150,9 @@
     <labelFemale>Queen</labelFemale>
     <modExtensions>
       <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <AlternateTitles>
-          <li>E:Obunga</li>
-          <li>k:Talos</li>
-          <li>R:Chaddus</li>
-        </AlternateTitles>
+        <realmType>Empire</realmType>
+        <label>Emperor</label>
+        <labelf>Empress</labelf>
       </li>
     </modExtensions>
     <description>No Description.</description>

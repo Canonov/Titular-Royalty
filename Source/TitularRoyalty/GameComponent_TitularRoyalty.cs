@@ -37,9 +37,50 @@ namespace TitularRoyalty
 
         }
 
-		private void ChangeTitles(string rt, List<RoyalTitleDef> titles)
+
+
+		public void HandleTitle(List<RoyalTitleDef> titles, string rt)
         {
-			// list of tuple (titleDef, maleTitle, femaleTitle)
+			if (rt == "Kingdom")
+            {
+				return;
+			}
+
+			//string defaultLabel = title.label;
+			//string defaultLabelF = "none";
+			//if (title.labelFemale != null) { defaultLabelF = title.labelFemale; }
+
+			foreach (RoyalTitleDef v in titles)
+			{
+
+				foreach (AlternateTitlesExtension ext in v.modExtensions)
+                {
+					if (ext.realmType == rt)
+                    {
+						// Female Labels
+						if (v.labelFemale != null && ext.labelf != "none")
+                        {
+							v.labelFemale = ext.labelf;
+                        }
+						else if (v.labelFemale != null && v.labelFemale == "none")
+                        {
+							v.labelFemale = null;
+							//v.labelFemale = ext.label;
+                        }
+						else if (v.labelFemale == null && v.labelFemale != "none")
+                        {
+							v.labelFemale = ext.labelf;
+                        }
+						// and if they're both null we don't need to do anything
+
+						v.label = ext.label; // Change the male label
+
+						break; // You can only have one of these so break the loop
+                    }
+                }
+			}
+
+
 
 		}
 
@@ -53,7 +94,6 @@ namespace TitularRoyalty
 				case "Kingdom":
 					break;
 				case "Empire":
-					ChangeTitles(realmType, titles);
 					break;
 				default:
 					Log.Error("Titular Royalty: Invalid RealmType saved");
