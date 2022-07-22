@@ -64,7 +64,7 @@ namespace TitularRoyalty
                 Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
 
 
-                Rect rectIconFirst = new Rect(10, 20f, 80f, 32f);
+                Rect rectIconFirst = new Rect(10, 20f, 80f, 24f);
                 TooltipHandler.TipRegion(rectIconFirst, "TR_CurrentTitle".Translate());
 
                 int foreachI = 0;

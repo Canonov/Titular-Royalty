@@ -141,6 +141,19 @@
     <labelFemale>Queen</labelFemale>
     <description>No Description.</description>
     <seniority>1400</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Imperial Consort</label>
+        <labelf>Empress</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Prince Consort</label>
+        <labelf>Queen</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- King -->1
@@ -148,18 +161,6 @@
     <defName>TitularRoyalty_T_RY_King</defName>
     <label>King</label>
     <labelFemale>Queen</labelFemale>
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
-        <label>Emperor</label>
-        <labelf>Empress</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Kingx</label>
-        <labelf>Queenx</labelf>
-      </li>
-    </modExtensions>
     <description>No Description.</description>
     <seniority>1500</seniority>
 
@@ -205,6 +206,19 @@
         <impressiveness>45</impressiveness>
       </li>
     </throneRoomRequirements>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Emperor</label>
+        <labelf>Empress</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>King</label>
+        <labelf>Queen</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
 </Defs>
