@@ -31,7 +31,7 @@
   <!-- Baronet Plus -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
-    <canBeInherited>True</canBeInherited>
+    <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
     <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
@@ -43,7 +43,7 @@
   <!-- Count Level -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
-    <canBeInherited>True</canBeInherited>
+    <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
     <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
@@ -75,7 +75,7 @@
   <!-- Duke Level -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleDukePlus" ParentName="BasePlayerTitle" Abstract="True">
     <favorCost>1</favorCost>
-    <canBeInherited>True</canBeInherited>
+    <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
     <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>

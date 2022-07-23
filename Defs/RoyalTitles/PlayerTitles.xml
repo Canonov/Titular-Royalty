@@ -72,6 +72,19 @@
     <labelFemale>Baroness</labelFemale>
     <description>No Description.</description>
     <seniority>800</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Baron</label>
+        <labelf>Baroness</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Baron</label>
+        <labelf>Baroness</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Viscount -->
@@ -85,13 +98,13 @@
     <modExtensions>
       <li Class="TitularRoyalty.AlternateTitlesExtension">
         <realmType>Empire</realmType>
-        <label>Prince</label>
-        <labelf>Princess</labelf>
+        <label>Viscount</label>
+        <labelf>Viscountess</labelf>
       </li>
       <li Class="TitularRoyalty.AlternateTitlesExtension">
         <realmType>Kingdom</realmType>
-        <label>Prince</label>
-        <labelf>Princess</labelf>
+        <label>Viscount</label>
+        <labelf>Viscountess</labelf>
       </li>
       <li Class="TitularRoyalty.AlternateTitlesExtension">
         <realmType>Roman</realmType>
@@ -277,7 +290,7 @@
     <seniority>1500</seniority>
 
     <favorCost>100</favorCost>
-    <canBeInherited>True</canBeInherited>
+    <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
     <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
