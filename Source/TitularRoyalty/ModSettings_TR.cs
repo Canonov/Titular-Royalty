@@ -26,7 +26,7 @@ namespace TitularRoyalty
             this.settings = GetSettings<TRSettings>();
         }
 
-        public static string[] realmTypes = { "Kingdom", "Empire" };
+        public static string[] realmTypes = { "Kingdom", "Empire", "Roman" };
 
         public override void DoSettingsWindowContents(Rect inRect)
         {

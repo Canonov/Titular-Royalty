@@ -47,7 +47,7 @@ namespace TitularRoyalty
             }
 			else
             {
-				Log.Warning("no RealmType Found");
+				Log.Warning("no RealmType Found : Defaulting to Kingdom");
 				return "Kingdom";
             }
 		}
@@ -64,6 +64,8 @@ namespace TitularRoyalty
 				case "Empire":
 					break;
 				case "Kingdom":
+					break;
+				case "Roman":
 					break;
 				default:
 					Log.Error("Titular Royalty: Invalid RealmType");
