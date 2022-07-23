@@ -72,6 +72,19 @@
     <labelFemale>Baroness</labelFemale>
     <description>No Description.</description>
     <seniority>800</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Baron</label>
+        <labelf>Baroness</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Baron</label>
+        <labelf>Baroness</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Viscount -->
@@ -81,6 +94,24 @@
     <labelFemale>Viscountess</labelFemale>
     <description>No Description.</description>
     <seniority>900</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Viscount</label>
+        <labelf>Viscountess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Viscount</label>
+        <labelf>Viscountess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Roman</realmType>
+        <label>Comes</label>
+        <labelf>none</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
   <!-- ================= High Nobility ============================ -->
@@ -94,6 +125,23 @@
     <seniority>1000</seniority>
     <minExpectation>Noble</minExpectation>
     
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Count</label>
+        <labelf>Countess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Count</label>
+        <labelf>Countess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Roman</realmType>
+        <label>Rector</label>
+        <labelf>Rectrix</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Duke -->
@@ -103,6 +151,24 @@
     <labelFemale>Duchess</labelFemale>
     <description>No Description.</description>
     <seniority>1100</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Duke</label>
+        <labelf>Duchess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Duke</label>
+        <labelf>Duchess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Roman</realmType>
+        <label>Vicarius</label>
+        <labelf>none</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Arch Duke -->
@@ -112,6 +178,24 @@
     <labelFemale>Archduchess</labelFemale>
     <description>No Description.</description>
     <seniority>1200</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Archduke</label>
+        <labelf>Archduchess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Archduke</label>
+        <labelf>Archduchess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Roman</realmType>
+        <label>Praetorian Prefect</label>
+        <labelf>none</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
   <!-- ================= Royalty ============================ -->
@@ -123,6 +207,24 @@
     <labelFemale>Princess</labelFemale>
     <description>No Description.</description>
     <seniority>1300</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Prince</label>
+        <labelf>Princess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Prince</label>
+        <labelf>Princess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Roman</realmType>
+        <label>Nobilissimus</label>
+        <labelf>none</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Crown Prince -->
@@ -130,8 +232,26 @@
     <defName>TitularRoyalty_T_RY_CrownPrince</defName>
     <label>Crown Prince</label>
     <labelFemale>Crown Princess</labelFemale>
-    <description>No Description.</description>
+    <description>The Main heir of the Realm.</description>
     <seniority>1350</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Crown Prince</label>
+        <labelf>Crown Princess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Crown Prince</label>
+        <labelf>Crown Princess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Roman</realmType>
+        <label>Caesar</label>
+        <labelf>Caesaressa</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Consort -->
@@ -139,7 +259,7 @@
     <defName>TitularRoyalty_T_RY_Consort</defName>
     <label>Prince Consort</label>
     <labelFemale>Queen</labelFemale>
-    <description>No Description.</description>
+    <description>Spouse of the ruler.</description>
     <seniority>1400</seniority>
 
     <modExtensions>
@@ -153,6 +273,11 @@
         <label>Prince Consort</label>
         <labelf>Queen</labelf>
       </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Roman</realmType>
+        <label>Imperator (Consort)</label>
+        <labelf>Imperatrix</labelf>
+      </li>
     </modExtensions>
   </RoyalTitleDef>
 
@@ -161,11 +286,11 @@
     <defName>TitularRoyalty_T_RY_King</defName>
     <label>King</label>
     <labelFemale>Queen</labelFemale>
-    <description>No Description.</description>
+    <description>Ruler of your colony.</description>
     <seniority>1500</seniority>
 
     <favorCost>100</favorCost>
-    <canBeInherited>True</canBeInherited>
+    <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
     <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
@@ -217,6 +342,11 @@
         <realmType>Kingdom</realmType>
         <label>King</label>
         <labelf>Queen</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Roman</realmType>
+        <label>Imperator</label>
+        <labelf>Imperatrix</labelf>
       </li>
     </modExtensions>
   </RoyalTitleDef>
