@@ -8,7 +8,6 @@ using HarmonyLib;
 namespace TitularRoyalty
 {
 
-    /*
     [HarmonyPatch(typeof(Pawn_RoyaltyTracker), nameof(Pawn_RoyaltyTracker.RefundPermits))]
     class TRPermitPatch
     {
@@ -21,16 +20,5 @@ namespace TitularRoyalty
             return;
         }
     }
-    */
-
-    [HarmonyPatch(typeof(PermitsCardUtility), nameof(PermitsCardUtility.ShowSwitchFactionButton))]
-    class TRPermitPatch
-    {
-        static void Prefix()
-        {
-
-        }
-    }
-
 
 }
