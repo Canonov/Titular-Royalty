@@ -81,7 +81,6 @@
     <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
     <minExpectation>Noble</minExpectation>
-    <permitPointsAwarded>1</permitPointsAwarded>
     <grantedAbilities>
       <li>Speech</li>
     </grantedAbilities>

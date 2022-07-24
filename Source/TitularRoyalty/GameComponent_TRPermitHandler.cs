@@ -15,17 +15,18 @@ namespace TitularRoyalty
         public void UpdatePermits(Pawn pawn)
         {
             var pawnTitle = pawn.royalty.GetCurrentTitle(Faction.OfPlayer);
-            
-            if (!pawnTitle.HasModExtension<TitlePlayerPermitsExtension>())
-            {
-                return;
-            }
 
-            foreach (RoyalTitlePermitDef item in pawnTitle.GetModExtension<TitlePlayerPermitsExtension>().permits)
-            {
-                pawn.royalty.AddPermit(item, Faction.OfPlayer);
-            }
+            // Add new permits and Remove permits you no longer have permission to
 
+            var pawnTitlePermits = pawnTitle.GetModExtension<TitlePlayerPermitsExtension>().permits;
+
+            //pawn.royalty.factionPermits.Clear();
+            pawn.royalty.RefundPermits(0, Faction.OfPlayer);
+
+            foreach (RoyalTitlePermitDef item in pawnTitlePermits)
+            {
+                //pawn.royalty.AddPermit(item, Faction.OfPlayer);
+            }
         }
 
         public override void LoadedGame()
@@ -41,10 +42,7 @@ namespace TitularRoyalty
 
         public override void StartedNewGame()
         {
-            foreach (Pawn pawn in PawnsFinder.AllMaps_FreeColonists)
-            {
-                UpdatePermits(pawn);
-            }
+
         }
 
     }

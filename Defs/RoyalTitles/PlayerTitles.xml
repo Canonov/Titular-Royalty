@@ -384,11 +384,17 @@
         <label>Tsar</label>
         <labelf>Tsar</labelf>
       </li>
+
+      <li Class="TitularRoyalty.TitlePlayerPermitsExtension">
+        <permits>
+          <li>SilverDrop</li>
+        </permits>
+      </li>
     </modExtensions>
   </RoyalTitleDef>
 
   <!-- King -->
-  1
+  
   <RoyalTitleDef ParentName="BasePlayerTitle">
     <defName>TitularRoyalty_T_RY_King</defName>
     <label>King</label>

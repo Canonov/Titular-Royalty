@@ -2,6 +2,7 @@
 using UnityEngine;
 using Verse;
 using SettingsHelper;
+using HarmonyLib;
 
 namespace TitularRoyalty
 {
@@ -24,6 +25,10 @@ namespace TitularRoyalty
         public TitularRoyaltyMod(ModContentPack content) : base(content)
         {
             this.settings = GetSettings<TRSettings>();
+
+            // Harmony Stuff
+            var harmony = new Harmony("com.TitularRoyalty.patches");
+            harmony.PatchAll();
         }
 
         public static string[] realmTypes = { "Kingdom", "Empire", "Roman"};
