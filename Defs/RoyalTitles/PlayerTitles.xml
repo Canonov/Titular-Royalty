@@ -8,6 +8,19 @@
     <label>Freeholder</label>
     <description>No Description.</description>
     <seniority>100</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Baron</label>
+        <labelf>none</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Baron</label>
+        <labelf>none</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
   
    <!-- Yeoman -->
@@ -16,6 +29,19 @@
     <label>Yeoman</label>
     <description>No Description.</description>
     <seniority>200</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Yeoman</label>
+        <labelf>none</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Yeoman</label>
+        <labelf>none</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
   <!-- ================= The Gentry  ============================= -->
@@ -26,6 +52,19 @@
     <labelFemale>Lady</labelFemale>
     <description>No Description.</description>
     <seniority>300</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Gentleman</label>
+        <labelf>Lady</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Gentleman</label>
+        <labelf>Lady</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Squire -->
@@ -34,6 +73,19 @@
     <label>Squire</label>
     <description>No Description.</description>
     <seniority>400</seniority>
+  
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Squire</label>
+        <labelf>none</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Squire</label>
+        <labelf>none</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Esquire -->
@@ -42,6 +94,19 @@
     <label>Esquire</label>
     <description>No Description.</description>
     <seniority>500</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Esquire</label>
+        <labelf>none</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Esquire</label>
+        <labelf>none</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Knight -->
@@ -51,6 +116,19 @@
     <labelFemale>Dame</labelFemale>
     <description>No Description.</description>
     <seniority>600</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Knight</label>
+        <labelf>Dame</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Knight</label>
+        <labelf>Dame</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
    <!-- Baronet -->
@@ -61,6 +139,19 @@
     <canBeInherited>True</canBeInherited>
     <description>No Description.</description>
     <seniority>700</seniority>
+
+    <modExtensions>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Empire</realmType>
+        <label>Baronet</label>
+        <labelf>Baronetess</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Kingdom</realmType>
+        <label>Baronet</label>
+        <labelf>Baronetess</labelf>
+      </li>
+    </modExtensions>
   </RoyalTitleDef>
 
   <!-- ================= Low Nobility ============================ -->
@@ -195,6 +286,11 @@
         <label>Praetorian Prefect</label>
         <labelf>none</labelf>
       </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Russian</realmType>
+        <label>Grand Duke</label>
+        <labelf>Grand Duchess</labelf>
+      </li>
     </modExtensions>
   </RoyalTitleDef>
 
@@ -251,6 +347,11 @@
         <label>Caesar</label>
         <labelf>Caesaressa</labelf>
       </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Russian</realmType>
+        <label>Tsesarevich</label>
+        <labelf>Tsesarevna</labelf>
+      </li>
     </modExtensions>
   </RoyalTitleDef>
 
@@ -277,6 +378,11 @@
         <realmType>Roman</realmType>
         <label>Imperator</label>
         <labelf>Imperatrix</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Russian</realmType>
+        <label>Tsar</label>
+        <labelf>Tsar</labelf>
       </li>
     </modExtensions>
   </RoyalTitleDef>
@@ -347,6 +453,11 @@
         <realmType>Roman</realmType>
         <label>Imperator</label>
         <labelf>Imperatrix</labelf>
+      </li>
+      <li Class="TitularRoyalty.AlternateTitlesExtension">
+        <realmType>Russian</realmType>
+        <label>Emperor</label>
+        <labelf>Emperor</labelf>
       </li>
     </modExtensions>
   </RoyalTitleDef>
