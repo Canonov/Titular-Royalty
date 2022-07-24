@@ -47,7 +47,7 @@ namespace TitularRoyalty
             }
 			else
             {
-				Log.Warning("no RealmType Found");
+				Log.Warning("no RealmType Found : Defaulting to Kingdom");
 				return "Kingdom";
             }
 		}
@@ -64,6 +64,8 @@ namespace TitularRoyalty
 				case "Empire":
 					break;
 				case "Kingdom":
+					break;
+				case "Roman":
 					break;
 				default:
 					Log.Error("Titular Royalty: Invalid RealmType");
@@ -82,12 +84,12 @@ namespace TitularRoyalty
 							{
 								v.labelFemale = ext.labelf;
 							}
-							else if (v.labelFemale != null && v.labelFemale == "none")
+							else if (v.labelFemale != null && ext.labelf == "none")
 							{
 								v.labelFemale = null;
 								//v.labelFemale = ext.label;
 							}
-							else if (v.labelFemale == null && v.labelFemale != "none")
+							else if (v.labelFemale == null && ext.labelf != "none")
 							{
 								v.labelFemale = ext.labelf;
 							}

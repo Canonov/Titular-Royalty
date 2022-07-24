@@ -37,7 +37,7 @@ namespace TitularRoyalty
         private string GetDisplayTitle(RoyalTitleDef title, Gender gender)
         {
             // Prince-Consort doesn't fit in the GUI and Queen would show up twice
-            if (title.label == "Prince Consort")
+            if (title.defName == "TitularRoyalty_T_RY_Consort")
             {
                 return "Consort";
             }
