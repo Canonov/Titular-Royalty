@@ -12,21 +12,6 @@ namespace TitularRoyalty
 
         }
 
-        public List<RoyalTitlePermitDef> GetPermits()
-        {
-            List<RoyalTitlePermitDef> playerPermits = new List<RoyalTitlePermitDef>();
-            
-            foreach (RoyalTitlePermitDef item in DefDatabase<RoyalTitlePermitDef>.AllDefsListForReading)
-            {
-                if (item.HasModExtension<IsPlayerPermit>())
-                {
-                    playerPermits.Add(item);
-                }
-            }
-
-            return playerPermits;
-        }
-
         public void UpdatePermits(Pawn pawn)
         {
             var pawnTitle = pawn.royalty.GetCurrentTitle(Faction.OfPlayer);
