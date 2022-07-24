@@ -55,7 +55,7 @@ namespace TitularRoyalty
 		private void ManageTitleLoc()
         {
 			string realmType = GetRealmType();
-			Log.Message(realmType);
+			//Log.Message(realmType);
 
 			var titles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
 
@@ -104,6 +104,35 @@ namespace TitularRoyalty
 			}
 		}
 
+		public void ChangeFactionForPermits(Faction playerFaction)
+        {
+			Log.Message($"ran ChangeFactionforPermits with arg {playerFaction} : {playerFaction.def.defName}");
+			foreach (RoyalTitlePermitDef permit in DefDatabase<RoyalTitlePermitDef>.AllDefsListForReading)
+            {
+				if (permit.HasModExtension<PlayerPermitExtension>())
+                {
+					try
+					{
+						permit.faction.defName = playerFaction.def.defName;
+					}
+					catch
+					{
+						Log.Error($"Failed to change permit {permit.defName}'s faction from {permit.faction.defName} to {playerFaction.def.defName}");
+					}
+				}
+
+				try
+				{
+					Log.Message($"2: {permit.defName} | {permit.faction.defName}");
+					Log.Message($"2: {permit.faction.defName}");
+				}
+				catch
+				{
+					Log.Warning("failed 2");
+				}
+			}
+        }
+
 		public void OnGameStart()
         {
 
@@ -111,11 +140,13 @@ namespace TitularRoyalty
 
         public override void LoadedGame()
         {
+			//ChangeFactionForPermits(Faction.OfPlayer);
 			ManageTitleLoc();
 		}
 
         public override void StartedNewGame()
         {
+			//ChangeFactionForPermits(Faction.OfPlayer);
 			ManageTitleLoc();
 		}
     }

@@ -12,4 +12,9 @@ namespace TitularRoyalty
 
         //public bool enabled = true;
     }
+
+    public class PlayerPermitExtension : DefModExtension
+    {
+
+    }
 }

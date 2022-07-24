@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TitularRoyalty.TR_RoyalTitlePermitDef Name="TR_DropResourcesBase" Abstract="True">
+    <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
+    <faction>PlayerColony</faction>
+    <minTitle>TitularRoyalty_T_LR_Freeman</minTitle>
+    <!--<permitPointCost>1</permitPointCost>-->
+    <cooldownDays>45</cooldownDays>
+    <usableOnWorldMap>true</usableOnWorldMap>
+    <royalAid>
+      <targetingRange>39.9</targetingRange>
+    </royalAid>
+    <modExtensions>
+      <li Class="TitularRoyalty.PlayerPermitExtension"></li>
+    </modExtensions>
+  </TitularRoyalty.TR_RoyalTitlePermitDef>
+
+  <TitularRoyalty.TR_RoyalTitlePermitDef ParentName="TR_DropResourcesBase">
+    <defName>TestSteelDrop</defName>
+    <label>steel drop</label>
+    <description>Call for a drop of 250 steel.</description>
+    <faction>PlayerColony</faction>
+    <permitPointCost>1</permitPointCost>
+    <uiPosition>(1,1)</uiPosition>
+    <royalAid>
+      <itemsToDrop>
+        <Steel>250</Steel>
+      </itemsToDrop>
+      <favorCost>4</favorCost>
+    </royalAid>
+  </TitularRoyalty.TR_RoyalTitlePermitDef>
+</Defs>

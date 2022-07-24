@@ -58,11 +58,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefModExtension_TR.cs" />
+    <Compile Include="TR_DefModExtensions.cs" />
     <Compile Include="Dialog_ChooseTitles.cs" />
     <Compile Include="GameComponent_TitularRoyalty.cs" />
-    <Compile Include="ModSettings_TR.cs" />
+    <Compile Include="TR_ModSettings.cs" />
     <Compile Include="TestMSG.cs" />
+    <Compile Include="TR_RoyalTitlePermitDef.cs" />
+    <Compile Include="TR_ScriptedTitlePermitWorker.cs" />
+    <Compile Include="TR_TitlePermitWorker.cs" />
     <Compile Include="Verb_TitleGranter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
