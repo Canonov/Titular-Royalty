@@ -84,12 +84,12 @@ namespace TitularRoyalty
 							{
 								v.labelFemale = ext.labelf;
 							}
-							else if (v.labelFemale != null && v.labelFemale == "none")
+							else if (v.labelFemale != null && ext.labelf == "none")
 							{
 								v.labelFemale = null;
 								//v.labelFemale = ext.label;
 							}
-							else if (v.labelFemale == null && v.labelFemale != "none")
+							else if (v.labelFemale == null && ext.labelf != "none")
 							{
 								v.labelFemale = ext.labelf;
 							}
