@@ -464,13 +464,14 @@
         <labelf>Emperor</labelf>
       </li>
 
-      <!-- Permits, fuck you tynan -->
+      <!-- Permits, because Tynan decided to not allow the player faction in the permit select screen -->
       <li Class="TitularRoyalty.TitlePlayerPermitsExtension">
         <permits>
           <li>TestSteelDrop</li>
+          <li>SilverDrop</li>
         </permits>
       </li>
-      
+
     </modExtensions>
   </RoyalTitleDef>
 

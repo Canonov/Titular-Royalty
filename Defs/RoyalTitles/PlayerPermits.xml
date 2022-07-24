@@ -10,9 +10,6 @@
     <royalAid>
       <targetingRange>39.9</targetingRange>
     </royalAid>
-    <modExtensions>
-      <li Class="TitularRoyalty.IsPlayerPermit"></li>
-    </modExtensions>
   </RoyalTitlePermitDef>
 
   <RoyalTitlePermitDef ParentName="TR_DropResourcesBase">
