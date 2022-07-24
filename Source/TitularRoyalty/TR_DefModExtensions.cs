@@ -13,8 +13,14 @@ namespace TitularRoyalty
         //public bool enabled = true;
     }
 
-    public class PlayerPermitExtension : DefModExtension
+    // Used to see if a permit is for the player
+    public class IsPlayerPermit : DefModExtension
     {
-
     }
+
+    public class TitlePlayerPermitsExtension : DefModExtension
+    {
+        public List<RoyalTitlePermitDef> permits;
+    }
+
 }

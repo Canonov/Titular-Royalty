@@ -442,6 +442,7 @@
     </throneRoomRequirements>
 
     <modExtensions>
+      <!-- Alternate Titles -->
       <li Class="TitularRoyalty.AlternateTitlesExtension">
         <realmType>Empire</realmType>
         <label>Emperor</label>
@@ -462,10 +463,15 @@
         <label>Emperor</label>
         <labelf>Emperor</labelf>
       </li>
+
+      <!-- Permits, fuck you tynan -->
+      <li Class="TitularRoyalty.TitlePlayerPermitsExtension">
+        <permits>
+          <li>TestSteelDrop</li>
+        </permits>
+      </li>
+      
     </modExtensions>
-    <permits>
-      <li>TestSteelDrop</li>
-    </permits>
   </RoyalTitleDef>
 
 </Defs>
