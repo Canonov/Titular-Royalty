@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <!-- ================= The Peasantry ============================= -->
 
-   <!-- Freeman -->
+  <!-- Freeman -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Freeman</defName>
     <label>Freeholder</label>
@@ -22,8 +22,8 @@
       </li>
     </modExtensions>
   </RoyalTitleDef>
-  
-   <!-- Yeoman -->
+
+  <!-- Yeoman -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Yeoman</defName>
     <label>Yeoman</label>
@@ -45,7 +45,7 @@
   </RoyalTitleDef>
 
   <!-- ================= The Gentry  ============================= -->
-   <!-- Gentleman -->
+  <!-- Gentleman -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Gentleman</defName>
     <label>Gentleman</label>
@@ -67,13 +67,13 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- Squire -->
+  <!-- Squire -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Squire</defName>
     <label>Squire</label>
     <description>No Description.</description>
     <seniority>400</seniority>
-  
+
     <modExtensions>
       <li Class="TitularRoyalty.AlternateTitlesExtension">
         <realmType>Empire</realmType>
@@ -88,7 +88,7 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- Esquire -->
+  <!-- Esquire -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Esquire</defName>
     <label>Esquire</label>
@@ -109,7 +109,7 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- Knight -->
+  <!-- Knight -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Knight</defName>
     <label>Knight</label>
@@ -131,7 +131,7 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- Baronet -->
+  <!-- Baronet -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Baronet</defName>
     <label>Baronet</label>
@@ -156,7 +156,7 @@
 
   <!-- ================= Low Nobility ============================ -->
 
-   <!-- Baron -->
+  <!-- Baron -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
     <defName>TitularRoyalty_T_HR_Baron</defName>
     <label>Baron</label>
@@ -178,7 +178,7 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- Viscount -->
+  <!-- Viscount -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
     <defName>TitularRoyalty_T_HR_Viscount</defName>
     <label>Viscount</label>
@@ -207,7 +207,7 @@
 
   <!-- ================= High Nobility ============================ -->
 
-   <!-- Count -->
+  <!-- Count -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
     <defName>TitularRoyalty_T_HR_Count</defName>
     <label>Count</label>
@@ -215,7 +215,7 @@
     <description>No Description.</description>
     <seniority>1000</seniority>
     <minExpectation>Noble</minExpectation>
-    
+
     <modExtensions>
       <li Class="TitularRoyalty.AlternateTitlesExtension">
         <realmType>Empire</realmType>
@@ -235,7 +235,7 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- Duke -->
+  <!-- Duke -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_HR_Duke</defName>
     <label>Duke</label>
@@ -262,7 +262,7 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- Arch Duke -->
+  <!-- Arch Duke -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_HR_Archduke</defName>
     <label>Archduke</label>
@@ -296,7 +296,7 @@
 
   <!-- ================= Royalty ============================ -->
 
-   <!-- Prince -->
+  <!-- Prince -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
     <defName>TitularRoyalty_T_RY_Prince</defName>
     <label>Prince</label>
@@ -323,7 +323,7 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- Crown Prince -->
+  <!-- Crown Prince -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_RY_CrownPrince</defName>
     <label>Crown Prince</label>
@@ -355,7 +355,7 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- Consort -->
+  <!-- Consort -->
   <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
     <defName>TitularRoyalty_T_RY_Consort</defName>
     <label>Prince Consort</label>
@@ -387,7 +387,8 @@
     </modExtensions>
   </RoyalTitleDef>
 
-   <!-- King -->1
+  <!-- King -->
+  1
   <RoyalTitleDef ParentName="BasePlayerTitle">
     <defName>TitularRoyalty_T_RY_King</defName>
     <label>King</label>
@@ -402,7 +403,9 @@
     <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
     <minExpectation>Royal</minExpectation>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
+    <grantedAbilities>
+      <li>Speech</li>
+    </grantedAbilities>
     <speechCooldown>900000</speechCooldown>
     <disabledWorkTags>
       <li>ManualDumb</li>
@@ -433,7 +436,7 @@
       <li Class="RoomRequirement_Area">
         <area>8</area>
       </li>
-	    <li Class="RoomRequirement_Impressiveness">
+      <li Class="RoomRequirement_Impressiveness">
         <impressiveness>45</impressiveness>
       </li>
     </throneRoomRequirements>
@@ -460,6 +463,9 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
+    <permits>
+      <li>TestSteelDrop</li>
+    </permits>
   </RoyalTitleDef>
 
 </Defs>
