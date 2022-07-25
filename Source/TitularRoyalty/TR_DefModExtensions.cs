@@ -13,9 +13,4 @@ namespace TitularRoyalty
         //public bool enabled = true;
     }
 
-    public class TitlePlayerPermitsExtension : DefModExtension
-    {
-        public List<RoyalTitlePermitDef> permits;
-    }
-
 }

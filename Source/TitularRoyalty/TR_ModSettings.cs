@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
 using SettingsHelper;
 using HarmonyLib;
+using static HarmonyLib.AccessTools;
 
 namespace TitularRoyalty
 {
@@ -16,9 +19,12 @@ namespace TitularRoyalty
         }
     }
 
+
+
     public class TitularRoyaltyMod : Mod
     {
-        // A reference to our settings.
+        // BEGIN SETTINGS
+
         TRSettings settings;
 
         // A mandatory constructor which resolves the reference to our settings.
@@ -28,7 +34,7 @@ namespace TitularRoyalty
 
             // Harmony Stuff
             var harmony = new Harmony("com.TitularRoyalty.patches");
-            harmony.PatchAll();
+
         }
 
         public static string[] realmTypes = { "Kingdom", "Empire", "Roman"};
@@ -53,5 +59,12 @@ namespace TitularRoyalty
         {
             return "Titular Royalty"; //.Translate()
         }
+
+
+        // END SETTINGS
+        //===================================
+        // BEGIN HARMONY
+
     }
+
 }

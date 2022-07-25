@@ -89,16 +89,6 @@ namespace TitularRoyalty
                             if (chosenPawn != null && chosenPawn.royalty != null && chosenPawn.royalty.GetCurrentTitle(Faction.OfPlayer) != title)
                             {
                                 chosenPawn.royalty.SetTitle(Faction.OfPlayer, title, grantRewards: true, sendLetter: true);
-
-                                // Add the appropriate permits
-                                if (title.HasModExtension<TitlePlayerPermitsExtension>())
-                                {
-                                    foreach (RoyalTitlePermitDef item in title.GetModExtension<TitlePlayerPermitsExtension>().permits)
-                                    {
-                                        chosenPawn.royalty.AddPermit(item, Faction.OfPlayer);
-                                    }
-                                }
-
                             }
                             Close();
                         }
