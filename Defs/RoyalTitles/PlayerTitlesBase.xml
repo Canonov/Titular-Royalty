@@ -10,7 +10,7 @@
 
   <!-- Lowest Level -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
+    <favorCost>100</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
@@ -19,7 +19,7 @@
 
   <!-- The Gentry -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
+    <favorCost>100</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
@@ -30,7 +30,7 @@
 
   <!-- Baronet Plus -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
+    <favorCost>100</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
@@ -42,7 +42,7 @@
 
   <!-- Count Level -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
+    <favorCost>100</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
@@ -74,7 +74,7 @@
 
   <!-- Duke Level -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleDukePlus" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
+    <favorCost>100</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
@@ -123,7 +123,7 @@
 
   <!-- Family of the King / Emperor -->
   <RoyalTitleDef Name="TitularRoyalty_BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
-    <favorCost>1</favorCost>
+    <favorCost>100</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
