@@ -18,7 +18,7 @@ namespace TitularRoyalty
 
             if (title.labelFemale == null)
             {
-                curSecondName = "none";
+                curSecondName = "remove";
             }
             else
             {
@@ -28,7 +28,7 @@ namespace TitularRoyalty
 
             nameMessageKey = "maleorneutraltitle";
             invalidNameMessageKey = "invalidmaletitle";
-            secondNameMessageKey = "femaletitlenonetodisable";
+            secondNameMessageKey = "femaletitleremovetodisable";
             invalidSecondNameMessageKey = "invalidfemaletitle";
             gainedNameMessageKey = "trtitlechanged";
 
