@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialog_TitleRenamer.cs" />
+    <Compile Include="TR_DebugActions.cs" />
     <Compile Include="TR_DefModExtensions.cs" />
     <Compile Include="Dialog_ChooseTitles.cs" />
     <Compile Include="GameComponent_TitularRoyalty.cs" />

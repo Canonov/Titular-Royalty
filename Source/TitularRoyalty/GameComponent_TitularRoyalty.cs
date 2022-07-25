@@ -7,30 +7,9 @@ namespace TitularRoyalty
 {
     public class GameComponent_TitularRoyalty : GameComponent
     {
-		/*private class FactionTitleList
-		{
-			Faction _thefaction;
-			Dictionary<int, RoyalTitleDef> _titles;
 
-			public FactionTitleList(Faction inputfaction)
-			{
-				_thefaction = inputfaction;
-			}
-			public Faction TheFaction
-			{
-				get { return _thefaction; }
-				set { _thefaction = value; }
-			}
-			public Dictionary<int, RoyalTitleDef> Titles
-			{
-				get { return _titles; }
-			}
-
-			public void AppendTitle(int senior, RoyalTitleDef title)
-			{
-				_titles.Add(senior, title);
-			}
-		}*/
+		public List<string> labelsm = new List<string>();
+		public List<string> labelsf = new List<string>();
 
 		public GameComponent_TitularRoyalty(Game game)
         {
@@ -47,7 +26,7 @@ namespace TitularRoyalty
             }
 			else
             {
-				Log.Warning("no RealmType Found : Defaulting to Kingdom");
+				Log.Warning("Titular Royalty: no RealmType Found : Defaulting to Kingdom");
 				return "Kingdom";
             }
 		}
@@ -106,20 +85,78 @@ namespace TitularRoyalty
 			}
 		}
 
-		public void SaveTest()
-        {
-			amogus = "test";
-        }
-
-		public string amogus;
-
         public override void ExposeData()
         {
-            base.ExposeData();
-			Log.Message(amogus);
-			Scribe_Values.Look(ref amogus, "testsavemogus", "defaultvalue");
-			Log.Message(amogus);
+			List<RoyalTitleDef> playerTitles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
+
+			if (labelsf.Count == 0)
+			{
+				foreach (RoyalTitleDef title in playerTitles)
+				{
+					if (title.tags.Contains("PlayerTitle"))
+                    {
+						labelsf.Add("none");
+					}
+				}
+			}
+			if (labelsm.Count == 0)
+			{
+				foreach (RoyalTitleDef title in playerTitles)
+				{
+					if (title.tags.Contains("PlayerTitle"))
+					{
+						labelsm.Add("none");
+					}
+				}
+			}
+			base.ExposeData();
+
+			// This saves the lists
+			Scribe_Collections.Look(ref labelsm, "CustomTitlesM", LookMode.Value);
+			Scribe_Collections.Look(ref labelsf, "CustomTitlesF", LookMode.Value);
 		}
+
+        public void SaveTitleChange(Gender gender, int Seniority, string s)
+        {
+			var titlesSeniorityOrder = Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading;
+
+			if (labelsf.Count == 0 || labelsm.Count == 0)
+            {
+				Log.Error("Titular Royalty: Invalid save data count");
+				return;
+            }
+
+			int i = 0;
+			if (gender == Gender.Female)
+            {
+                foreach (RoyalTitleDef item in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
+                {
+					if (item.seniority == Seniority)
+					{
+						labelsf[i] = s;
+                    }
+					i++;
+				}
+            }
+			else
+            {
+				foreach (RoyalTitleDef item in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
+				{
+					if (item.seniority == Seniority)
+					{
+						labelsm[i] = s;
+					}
+					i++;
+				}
+			}
+
+            for (int v = 0; v < labelsm.Count; v++)
+            {
+                Log.Message($"{labelsm[v]} {labelsf[v]}");
+            }
+
+			ExposeData();
+        }
 
         public void OnGameStart()
         {
@@ -130,13 +167,15 @@ namespace TitularRoyalty
         {
 			//ChangeFactionForPermits(Faction.OfPlayer);
 			ManageTitleLoc();
-			SaveTest();
 		}
 
         public override void StartedNewGame()
         {
 			//ChangeFactionForPermits(Faction.OfPlayer);
 			ManageTitleLoc();
+
+
+
 		}
     }
 }
