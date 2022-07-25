@@ -62,13 +62,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameComponent_TRPermitHandler.cs" />
     <Compile Include="TR_DefModExtensions.cs" />
     <Compile Include="Dialog_ChooseTitles.cs" />
     <Compile Include="GameComponent_TitularRoyalty.cs" />
     <Compile Include="TR_ModSettings.cs" />
-    <Compile Include="TestMSG.cs" />
-    <Compile Include="TR_RefundPermits_HarmonyPatch.cs" />
+    <Compile Include="TR_PlayerTitleDef.cs" />
     <Compile Include="Verb_TitleGranter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Reflection;
-using System.Reflection.Emit;
+//using System.Reflection;
+//using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
 using SettingsHelper;
-using HarmonyLib;
-using static HarmonyLib.AccessTools;
+//using HarmonyLib;
 
 namespace TitularRoyalty
 {
@@ -33,7 +32,7 @@ namespace TitularRoyalty
             this.settings = GetSettings<TRSettings>();
 
             // Harmony Stuff
-            var harmony = new Harmony("com.TitularRoyalty.patches");
+            //var harmony = new Harmony("com.TitularRoyalty.patches");
 
         }
 
@@ -63,7 +62,6 @@ namespace TitularRoyalty
 
         // END SETTINGS
         //===================================
-        // BEGIN HARMONY
 
     }
 

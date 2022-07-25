@@ -52,7 +52,7 @@ namespace TitularRoyalty
             }
 		}
 
-		private void ManageTitleLoc()
+		public void ManageTitleLoc()
         {
 			string realmType = GetRealmType();
 			//Log.Message(realmType);
@@ -72,30 +72,32 @@ namespace TitularRoyalty
 					return;
 			}
 
-			foreach (RoyalTitleDef v in titles)
+			foreach (RoyalTitleDef title in titles)
 			{
-				if (v.modExtensions != null) { 
-					foreach (AlternateTitlesExtension ext in v.modExtensions)
+				if (title.modExtensions != null) { 
+					foreach (AlternateTitlesExtension ext in title.modExtensions)
 					{
+
+
 						if (ext.realmType == realmType)
 						{
 							// Female Labels
-							if (v.labelFemale != null && ext.labelf != "none")
+							if (title.labelFemale != null && ext.labelf != "none")
 							{
-								v.labelFemale = ext.labelf;
+								title.labelFemale = ext.labelf;
 							}
-							else if (v.labelFemale != null && ext.labelf == "none")
+							else if (title.labelFemale != null && ext.labelf == "none")
 							{
-								v.labelFemale = null;
+								title.labelFemale = null;
 								//v.labelFemale = ext.label;
 							}
-							else if (v.labelFemale == null && ext.labelf != "none")
+							else if (title.labelFemale == null && ext.labelf != "none")
 							{
-								v.labelFemale = ext.labelf;
+								title.labelFemale = ext.labelf;
 							}
 							// and if they're both null we don't need to do anything
 
-							v.label = ext.label; // Change the male label
+							title.label = ext.label; // Change the male label
 
 							break; // You can only have one of these so break the loop
 						}
@@ -104,7 +106,22 @@ namespace TitularRoyalty
 			}
 		}
 
-		public void OnGameStart()
+		public void SaveTest()
+        {
+			amogus = "test";
+        }
+
+		public string amogus;
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+			Log.Message(amogus);
+			Scribe_Values.Look(ref amogus, "testsavemogus", "defaultvalue");
+			Log.Message(amogus);
+		}
+
+        public void OnGameStart()
         {
 
         }
@@ -113,6 +130,7 @@ namespace TitularRoyalty
         {
 			//ChangeFactionForPermits(Faction.OfPlayer);
 			ManageTitleLoc();
+			SaveTest();
 		}
 
         public override void StartedNewGame()
