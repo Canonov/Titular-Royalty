@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="1SettingsHelper, Version=1.3.0.37590, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Assemblies\1SettingsHelper.dll</HintPath>
@@ -58,11 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefModExtension_TR.cs" />
+    <Compile Include="GameComponent_TRPermitHandler.cs" />
+    <Compile Include="TR_DefModExtensions.cs" />
     <Compile Include="Dialog_ChooseTitles.cs" />
     <Compile Include="GameComponent_TitularRoyalty.cs" />
-    <Compile Include="ModSettings_TR.cs" />
+    <Compile Include="TR_ModSettings.cs" />
     <Compile Include="TestMSG.cs" />
+    <Compile Include="TR_RefundPermits_HarmonyPatch.cs" />
     <Compile Include="Verb_TitleGranter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

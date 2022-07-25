@@ -55,7 +55,7 @@ namespace TitularRoyalty
 		private void ManageTitleLoc()
         {
 			string realmType = GetRealmType();
-			Log.Message(realmType);
+			//Log.Message(realmType);
 
 			var titles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
 
@@ -111,11 +111,13 @@ namespace TitularRoyalty
 
         public override void LoadedGame()
         {
+			//ChangeFactionForPermits(Faction.OfPlayer);
 			ManageTitleLoc();
 		}
 
         public override void StartedNewGame()
         {
+			//ChangeFactionForPermits(Faction.OfPlayer);
 			ManageTitleLoc();
 		}
     }

@@ -12,4 +12,5 @@ namespace TitularRoyalty
 
         //public bool enabled = true;
     }
+
 }

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <RoyalTitleDef Abstract="True" Name="BasePlayerTitle" >
+  <RoyalTitleDef Abstract="True" Name="BasePlayerTitle">
     <tags>
       <li>PlayerTitle</li>
     </tags>
@@ -81,7 +81,9 @@
     <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
     <minExpectation>Noble</minExpectation>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
+    <grantedAbilities>
+      <li>Speech</li>
+    </grantedAbilities>
     <speechCooldown>1200000</speechCooldown>
     <decreeTags>
       <li>All</li>
@@ -113,7 +115,7 @@
       <li Class="RoomRequirement_Area">
         <area>8</area>
       </li>
-	    <li Class="RoomRequirement_Impressiveness">
+      <li Class="RoomRequirement_Impressiveness">
         <impressiveness>45</impressiveness>
       </li>
     </throneRoomRequirements>
