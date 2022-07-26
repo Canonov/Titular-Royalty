@@ -2,6 +2,7 @@
 using RimWorld;
 using Verse;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TitularRoyalty
 {
@@ -10,11 +11,31 @@ namespace TitularRoyalty
 
 		public List<string> labelsm = new List<string>();
 		public List<string> labelsf = new List<string>();
+		public List<RoyalTitleDef> playerTitles = new List<RoyalTitleDef>();
 
 		public GameComponent_TitularRoyalty(Game game)
         {
 
         }
+
+		public void PopulatePlayerTitles()
+        {
+			if (playerTitles.Any())
+            {
+				playerTitles.Clear();
+            }
+
+			foreach (RoyalTitleDef title in DefDatabase<RoyalTitleDef>.AllDefsListForReading.OrderBy(x => x.seniority) )
+            {
+				//Log.Message($"Populate Player Titles: {title.defName}, {title.seniority}");
+				if (title.tags.Contains("PlayerTitle"))
+                {
+					playerTitles.Add(title);
+                }
+
+			}
+
+		}
 
 		public string GetRealmType()
         {
@@ -31,12 +52,126 @@ namespace TitularRoyalty
             }
 		}
 
+		public void ResetTitles()
+        {
+			// change every item to none so they're ignored
+			for (int i = 0; i < labelsm.Count; i++)
+            {
+				labelsm[i] = "none";
+            }
+			for (int i = 0; i < labelsf.Count; i++)
+			{
+				labelsf[i] = "none";
+			}
+
+			// Save the changes, hopefully.
+			this.ExposeData();
+		}
+
+		/*public void DoTitleChange(string basert)
+        {
+			var playerTitlesOrdered = Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading;
+			List<string> rtListM = new List<string>();
+			List<string> rtListF = new List<string>();
+
+			for (int i = 0; i < playerTitlesOrdered.Count; i++)
+            {
+				rtListF[i] = "none"; rtListM[i] = "none";
+				if (playerTitlesOrdered[i].modExtensions != null)
+                {
+					foreach (AlternateTitlesExtension ext in playerTitlesOrdered[i].modExtensions)
+					{
+						if (ext.realmType == basert)
+						{
+
+						}
+					}
+				}
+
+            }
+
+
+		}*/
+
+		public void DoTitleChange(RoyalTitleDef title, string basert)
+        {
+			if (!playerTitles.Any())
+            {
+				Log.Message("Populating Titlelist");
+				PopulatePlayerTitles();
+            }
+
+			int titleIndex = playerTitles.IndexOf(title);
+
+			// Custom Titles
+			if (titleIndex >= 0)
+            {
+
+				// Female Title
+				if (labelsf[titleIndex] != "none")
+                {
+					if (labelsf[titleIndex] == "remove")
+                    {
+						title.labelFemale = null;
+                    }
+					else
+                    {
+						title.labelFemale = labelsf[titleIndex];
+                    }
+                }
+				else if (labelsf[titleIndex] == "none" && labelsm[titleIndex] != "none") // Just incase
+                {
+                    labelsf[titleIndex] = "remove";
+					title.labelFemale = null;
+                }
+
+				// Male Title
+				if (labelsm[titleIndex] != "none")
+				{
+					title.label = labelsm[titleIndex];
+					return;
+				}
+				
+			}
+			else
+            {
+				Log.Error("Titular Royalty: Failed DoTitleChange()");
+				return;
+            }
+
+			// TitleLists
+			if (title.modExtensions != null)
+            {
+				foreach (AlternateTitlesExtension ext in title.modExtensions)
+                {
+					if (ext.realmType == basert)
+                    {
+						// Male / Neutral Label
+						title.label = ext.label;
+
+						// Female Labels
+						if (ext.labelf == null || ext.labelf == "none")
+                        {
+							title.labelFemale = null;
+                        }
+						else
+                        {
+							title.labelFemale = ext.labelf;
+                        }
+
+						break;
+                    }
+                }
+            }
+
+        }
+
 		public void ManageTitleLoc()
         {
 			string realmType = GetRealmType();
 			//Log.Message(realmType);
 
-			var titles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
+			PopulatePlayerTitles();
 
 			switch (realmType)
             {
@@ -47,42 +182,17 @@ namespace TitularRoyalty
 				case "Roman":
 					break;
 				default:
-					Log.Error("Titular Royalty: Invalid RealmType");
-					return;
+					Log.Error("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
+					realmType = "Kingdom";
+					break;
 			}
 
-			foreach (RoyalTitleDef title in titles)
-			{
-				if (title.modExtensions != null) { 
-					foreach (AlternateTitlesExtension ext in title.modExtensions)
-					{
-
-
-						if (ext.realmType == realmType)
-						{
-							// Female Labels
-							if (title.labelFemale != null && ext.labelf != "none")
-							{
-								title.labelFemale = ext.labelf;
-							}
-							else if (title.labelFemale != null && ext.labelf == "none")
-							{
-								title.labelFemale = null;
-								//v.labelFemale = ext.label;
-							}
-							else if (title.labelFemale == null && ext.labelf != "none")
-							{
-								title.labelFemale = ext.labelf;
-							}
-							// and if they're both null we don't need to do anything
-
-							title.label = ext.label; // Change the male label
-
-							break; // You can only have one of these so break the loop
-						}
-					}
-				}
+			foreach (RoyalTitleDef title in playerTitles)
+            {
+				DoTitleChange(title, realmType);
 			}
+
+
 		}
 
         public override void ExposeData()
@@ -143,7 +253,7 @@ namespace TitularRoyalty
 				foreach (RoyalTitleDef item in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
 				{
 					if (item.seniority == Seniority)
-					{
+                    {
 						labelsm[i] = s;
 					}
 					i++;
@@ -173,9 +283,6 @@ namespace TitularRoyalty
         {
 			//ChangeFactionForPermits(Faction.OfPlayer);
 			ManageTitleLoc();
-
-
-
 		}
     }
 }

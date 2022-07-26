@@ -26,6 +26,12 @@ namespace TitularRoyalty {
 			}
 			Find.WindowStack.Add(new Dialog_DebugOptionListLister(list));
 		}
+
+		[DebugAction("Mods", "TR: Reset Custom Titles", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+		private static void TryResetCustomTitles()
+		{
+			Current.Game.GetComponent<GameComponent_TitularRoyalty>().ResetTitles();
+		}
 	}
 
 }

@@ -26,13 +26,14 @@ namespace TitularRoyalty
             }
             
 
-            nameMessageKey = "maleorneutraltitle";
-            invalidNameMessageKey = "invalidmaletitle";
-            secondNameMessageKey = "femaletitleremovetodisable";
-            invalidSecondNameMessageKey = "invalidfemaletitle";
-            gainedNameMessageKey = "trtitlechanged";
+            nameMessageKey = "TR_namemessage";
+            invalidNameMessageKey = "TR_invalidmessage";
+            secondNameMessageKey = "TR_namemessage2";
+            invalidSecondNameMessageKey = "TR_invalidmessage2";
+            gainedNameMessageKey = "TR_changedtitle";
 
             useSecondName = true;
+
         }
 
         protected override bool IsValidName(string s)
