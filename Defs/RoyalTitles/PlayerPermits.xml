@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-  <RoyalTitlePermitDef>
-    <defName>TR_dummypermit</defName>
-    <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
-    <faction>Empire</faction>
-    <!--<permitPointCost>1</permitPointCost>-->
-    <cooldownDays>45</cooldownDays>
-    <usableOnWorldMap>true</usableOnWorldMap>
-    <royalAid>
-      <targetingRange>39.9</targetingRange>
-    </royalAid>
-    <!--<modExtensions>
-      <li Class="TitularRoyalty.SelectPermitsEnabler"></li>
-    </modExtensions> -->
-  </RoyalTitlePermitDef>
-
-
-  <RoyalTitlePermitDef Name="TR_DropResourcesBase" Abstract="True">
+  <!--<RoyalTitlePermitDef Name="TR_DropResourcesBase" Abstract="True">
     <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
     <faction>PlayerColony</faction>
     <minTitle>TitularRoyalty_T_LR_Freeman</minTitle>
-    <!--<permitPointCost>1</permitPointCost>-->
+    <permitPointCost>1</permitPointCost>
     <cooldownDays>45</cooldownDays>
     <usableOnWorldMap>true</usableOnWorldMap>
     <royalAid>
@@ -41,5 +25,6 @@
       </itemsToDrop>
       <favorCost>4</favorCost>
     </royalAid>
-  </RoyalTitlePermitDef>
+  </RoyalTitlePermitDef>-->
+
 </Defs>

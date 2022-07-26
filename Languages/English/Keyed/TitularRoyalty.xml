@@ -7,6 +7,11 @@
 	<!-- EN: Toggle wearing {0} attached to apparel. -->
 	<TR_CurrentTitle>Current Title</TR_CurrentTitle>
 	<TR_choosetitle>Title Selector</TR_choosetitle>
-	<TitularRoyalty_Staff.verbs.grant_titles.label>Llença una granada de fragmentació</TitularRoyalty_Staff.verbs.grant_titles.label>
+
+	<TR_namemessage>Male Title (Put None in both boxes to reset to default)</TR_namemessage>
+	<TR_namemessage2>Female Title (Remove to disable and use male title for both)</TR_namemessage2>
+	<TR_invalidmessage>Male Title is Invalid</TR_invalidmessage>
+	<TR_invalidmessage2>Female Title is Invalid</TR_invalidmessage2>
+	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
 
 </LanguageData>
