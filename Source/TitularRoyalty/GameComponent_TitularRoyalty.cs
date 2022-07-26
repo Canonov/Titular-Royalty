@@ -168,11 +168,12 @@ namespace TitularRoyalty
 
 		}
 
-		/// <summary>
-		/// Changes a title name of the given seniority and gender
-		/// </summary>
-		/// <param name="gender">Gender you want to change Gender.Male or None, or Gender.Female</param>
-		/// <param name="Seniority">Seniority of your Title</param>
+        #region SaveData
+        /// <summary>
+        /// Changes a title name of the given seniority and gender
+        /// </summary>
+        /// <param name="gender">Gender you want to change Gender.Male or None, or Gender.Female</param>
+        /// <param name="Seniority">Seniority of your Title</param>
         public void SaveTitleChange(Gender gender, int Seniority, string s)
         {
 			var titlesSeniorityOrder = Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading;
@@ -264,11 +265,11 @@ namespace TitularRoyalty
 				ExposeData();
 			}
 		}
+        #endregion
 
 
-
-		// GameComponent Methods
-		public void OnGameStart()
+        #region GameComponent Methods
+        public void OnGameStart()
         {
 
         }
@@ -326,5 +327,6 @@ namespace TitularRoyalty
 			}
 			ManageTitleLoc();
 		}
+        #endregion
     }
 }
