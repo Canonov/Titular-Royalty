@@ -8,7 +8,6 @@ namespace TitularRoyalty
 {
     public class GameComponent_TitularRoyalty : GameComponent
     {
-
 		public List<string> labelsm = new List<string>();
 		public List<string> labelsf = new List<string>();
 		public List<RoyalTitleDef> playerTitles = new List<RoyalTitleDef>();
@@ -193,33 +192,43 @@ namespace TitularRoyalty
 
         public override void ExposeData()
         {
-			List<RoyalTitleDef> playerTitles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
+			try { 
+				//List<RoyalTitleDef> playerTitles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
 
-			if (labelsf.Count == 0)
-			{
-				foreach (RoyalTitleDef title in playerTitles)
+				if (labelsf.Count == 0)
 				{
-					if (title.tags.Contains("PlayerTitle"))
-                    {
-						labelsf.Add("none");
-					}
-				}
-			}
-			if (labelsm.Count == 0)
-			{
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					if (title.tags.Contains("PlayerTitle"))
+					foreach (RoyalTitleDef title in playerTitles)
 					{
-						labelsm.Add("none");
+						if (title.tags.Contains("PlayerTitle"))
+						{
+							labelsf.Add("none");
+						}
 					}
 				}
-			}
-			base.ExposeData();
+				if (labelsm.Count == 0)
+				{
+					foreach (RoyalTitleDef title in playerTitles)
+					{
+						if (title.tags.Contains("PlayerTitle"))
+						{
+							labelsm.Add("none");
+						}
+					}
+				}
+				base.ExposeData();
 
-			// This saves the lists
-			Scribe_Collections.Look(ref labelsm, "CustomTitlesM", LookMode.Value);
-			Scribe_Collections.Look(ref labelsf, "CustomTitlesF", LookMode.Value);
+				// This saves the lists
+				Scribe_Collections.Look(ref labelsm, "CustomTitlesM", LookMode.Value);
+				Scribe_Collections.Look(ref labelsf, "CustomTitlesF", LookMode.Value);
+			}
+			catch (System.NullReferenceException e)
+			{
+				Log.Message($"Titular Royalty: Loaded 1.1 save");
+				this.labelsm = new List<string>();
+				this.labelsf = new List<string>();
+				this.playerTitles = new List<RoyalTitleDef>();
+				ExposeData();
+			}
 		}
 
         public void SaveTitleChange(Gender gender, int Seniority, string s)
@@ -291,7 +300,7 @@ namespace TitularRoyalty
 						labelsm.Add("none");
 					}
 				}
-			}
+			 }
 			ManageTitleLoc();
 		}
 
