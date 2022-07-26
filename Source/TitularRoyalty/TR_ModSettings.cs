@@ -42,7 +42,7 @@ namespace TitularRoyalty
         {
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(inRect);
-            listingStandard.AddLabeledRadioList($"Realm Type, default is Kingdom, all Empire does is change the King title to Emperor,\nMore Coming Soon!",
+            listingStandard.AddLabeledRadioList($"Base Realm Type, default is Kingdom, all Empire does is change the King title to Emperor,\nMore Coming Soon!",
                                                  realmTypes, ref settings.realmType);
             listingStandard.AddHorizontalLine(3f);
             listingStandard.Gap(3f);
