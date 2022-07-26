@@ -12,20 +12,22 @@ namespace TitularRoyalty
 	{
 		protected override bool TryCastShot()
 		{
-			if (currentTarget.HasThing && currentTarget.Thing.Map != caster.Map)
-			{
-				return false;
-			}
-			if (currentTarget.HasThing && currentTarget.Thing is Pawn && currentTarget.Pawn.IsColonist && currentTarget.Pawn.royalty != null)
+			if (currentTarget.HasThing)
             {
-				Log.Message($"Opening title GUI for: {currentTarget.Pawn.Name}");
-				Dialog_ChooseTitles window = new Dialog_ChooseTitles(currentTarget.Pawn);
-				Find.WindowStack.Add(window);
+				if (currentTarget.Thing.Map != caster.Map)
+				{
+					return false;
+				}
+				if (currentTarget.Thing is Pawn && currentTarget.Pawn.IsColonist && currentTarget.Pawn.royalty != null)
+				{
+					Log.Message($"Opening title GUI for: {currentTarget.Pawn.Name}");
+					Dialog_ChooseTitles window = new Dialog_ChooseTitles(currentTarget.Pawn);
+					Find.WindowStack.Add(window);
 
-				return true;
-				//currentTarget.Pawn.royalty.TryUpdateTitle(Faction.OfPlayer, sendLetter: true, RoyalTitleDef);
+					return true;
+				}
 			}
-			//MechClusterUtility.SpawnCluster(currentTarget.Cell, caster.Map, MechClusterGenerator.GenerateClusterSketch(2500f, caster.Map, startDormant: true, forceNoConditionCauser: true));
+
 			return false;
 		}
 

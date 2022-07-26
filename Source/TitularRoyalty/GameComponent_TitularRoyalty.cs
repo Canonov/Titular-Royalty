@@ -7,7 +7,7 @@ using System.Linq;
 namespace TitularRoyalty
 {
     public class GameComponent_TitularRoyalty : GameComponent
-    {
+    {	
 		public List<string> labelsm = new List<string>();
 		public List<string> labelsf = new List<string>();
 		public List<RoyalTitleDef> playerTitles = new List<RoyalTitleDef>();
@@ -68,32 +68,7 @@ namespace TitularRoyalty
 			this.ExposeData();
 		}
 
-		/*public void DoTitleChange(string basert)
-        {
-			var playerTitlesOrdered = Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading;
-			List<string> rtListM = new List<string>();
-			List<string> rtListF = new List<string>();
-
-			for (int i = 0; i < playerTitlesOrdered.Count; i++)
-            {
-				rtListF[i] = "none"; rtListM[i] = "none";
-				if (playerTitlesOrdered[i].modExtensions != null)
-                {
-					foreach (AlternateTitlesExtension ext in playerTitlesOrdered[i].modExtensions)
-					{
-						if (ext.realmType == basert)
-						{
-
-						}
-					}
-				}
-
-            }
-
-
-		}*/
-
-		public void DoTitleChange(RoyalTitleDef title, string basert)
+        public void DoTitleChange(RoyalTitleDef title, string basert)
         {
 			int titleIndex = playerTitles.IndexOf(title);
 
@@ -237,14 +212,16 @@ namespace TitularRoyalty
 
 			if (labelsf.Count == 0 || labelsm.Count == 0)
             {
-				Log.Error("Titular Royalty: Invalid save data count");
+				Log.Error("Titular Royalty: Invalid save data count"); // Should never happen but who knows
 				return;
             }
 
 			int i = 0;
+
+			// Female Titles
 			if (gender == Gender.Female)
             {
-                foreach (RoyalTitleDef item in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
+                foreach (RoyalTitleDef item in titlesSeniorityOrder)
                 {
 					if (item.seniority == Seniority)
 					{
@@ -253,9 +230,10 @@ namespace TitularRoyalty
 					i++;
 				}
             }
+			// Male or Neutral Titles
 			else
             {
-				foreach (RoyalTitleDef item in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
+				foreach (RoyalTitleDef item in titlesSeniorityOrder)
 				{
 					if (item.seniority == Seniority)
                     {
@@ -265,10 +243,12 @@ namespace TitularRoyalty
 				}
 			}
 
-            //for (int v = 0; v < labelsm.Count; v++)
-            //{
-            //    Log.Message($"{labelsm[v]} {labelsf[v]}");
-            //}
+			#if DEBUG
+			for (int v = 0; v < labelsm.Count; v++)
+            {
+                Log.Message($"{labelsm[v]} {labelsf[v]}");
+            }
+			#endif
 
 			ExposeData();
         }
