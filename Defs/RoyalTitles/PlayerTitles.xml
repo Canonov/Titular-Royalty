@@ -12,12 +12,12 @@
         <modExtensions>
             <li Class="TitularRoyalty.AlternateTitlesExtension">
                 <realmType>Empire</realmType>
-                <label>Baron</label>
+                <label>Freeholder</label>
                 <labelf>none</labelf>
             </li>
             <li Class="TitularRoyalty.AlternateTitlesExtension">
                 <realmType>Kingdom</realmType>
-                <label>Baron</label>
+                <label>Freeholder</label>
                 <labelf>none</labelf>
             </li>
         </modExtensions>
