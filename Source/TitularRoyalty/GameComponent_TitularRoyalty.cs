@@ -7,16 +7,20 @@ using System.Linq;
 namespace TitularRoyalty
 {
     public class GameComponent_TitularRoyalty : GameComponent
-    {
+    {	
+		// Labels and PlayerTitles lists
 		public List<string> labelsm = new List<string>();
 		public List<string> labelsf = new List<string>();
 		public List<RoyalTitleDef> playerTitles = new List<RoyalTitleDef>();
 
-		public GameComponent_TitularRoyalty(Game game)
+		public GameComponent_TitularRoyalty(Game game) // Needs Game game or else Rimworld throws a fit and errors.
         {
 
         }
 
+		/// <summary>
+		/// Adds all the TitleDefs that are meant for the player to a list
+		/// </summary>
 		public void PopulatePlayerTitles()
         {
 			Log.Message("Populating Titlelist");
@@ -37,21 +41,9 @@ namespace TitularRoyalty
 
 		}
 
-		public string GetRealmType()
-        {
-			string realmType = LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType;
-
-			if (realmType != null)
-            {
-				return realmType;
-            }
-			else
-            {
-				Log.Warning("Titular Royalty: no RealmType Found : Defaulting to Kingdom");
-				return "Kingdom";
-            }
-		}
-
+		/// <summary>
+		/// Resets all changed titles to their default realmType or Base Value
+		/// </summary>
 		public void ResetTitles()
         {
 			// change every item to none so they're ignored
@@ -68,32 +60,7 @@ namespace TitularRoyalty
 			this.ExposeData();
 		}
 
-		/*public void DoTitleChange(string basert)
-        {
-			var playerTitlesOrdered = Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading;
-			List<string> rtListM = new List<string>();
-			List<string> rtListF = new List<string>();
-
-			for (int i = 0; i < playerTitlesOrdered.Count; i++)
-            {
-				rtListF[i] = "none"; rtListM[i] = "none";
-				if (playerTitlesOrdered[i].modExtensions != null)
-                {
-					foreach (AlternateTitlesExtension ext in playerTitlesOrdered[i].modExtensions)
-					{
-						if (ext.realmType == basert)
-						{
-
-						}
-					}
-				}
-
-            }
-
-
-		}*/
-
-		public void DoTitleChange(RoyalTitleDef title, string basert)
+        public void DoTitleChange(RoyalTitleDef title, string basert)
         {
 			int titleIndex = playerTitles.IndexOf(title);
 
@@ -160,39 +127,107 @@ namespace TitularRoyalty
 
         }
 
+		/// <summary>
+		/// Passes on the Realmtype 
+		/// </summary>
 		public void ManageTitleLoc()
         {
-			string realmType = GetRealmType();
-			//Log.Message(realmType);
+			string realmType = LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType;
 
-			//Log.Message("Populating Titlelist");
-			//PopulatePlayerTitles();
+			if (realmType != null)
+			{
+				#if DEBUG
+				Log.Message(realmType);
+				#endif
 
-			switch (realmType)
-            {
-				case "Empire":
-					break;
-				case "Kingdom":
-					break;
-				case "Roman":
-					break;
-				default:
-					Log.Error("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
-					realmType = "Kingdom";
-					break;
+				switch (realmType)
+				{
+					case "Empire":
+						break;
+					case "Kingdom":
+						break;
+					case "Roman":
+						break;
+					default:
+						Log.Error("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
+						realmType = "Kingdom";
+						break;
+				}
+
+				foreach (RoyalTitleDef title in playerTitles)
+				{
+					DoTitleChange(title, realmType);
+				}
 			}
-
-			foreach (RoyalTitleDef title in playerTitles)
+			else
             {
-				DoTitleChange(title, realmType);
+				Log.Warning("Titular Royalty: no RealmType Found : Defaulting to Kingdom");
+				realmType = "Kingdom";
+				ManageTitleLoc();
 			}
-
 
 		}
 
-        public override void ExposeData()
+        #region SaveData
+        /// <summary>
+        /// Changes a title name of the given seniority and gender
+        /// </summary>
+        /// <param name="gender">Gender you want to change Gender.Male or None, or Gender.Female</param>
+        /// <param name="Seniority">Seniority of your Title</param>
+        public void SaveTitleChange(Gender gender, int Seniority, string s)
         {
-			try { 
+			var titlesSeniorityOrder = Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading;
+
+			if (labelsf.Count == 0 || labelsm.Count == 0)
+            {
+				Log.Error("Titular Royalty: Invalid save data count"); // Should never happen but who knows
+				return;
+            }
+
+			int i = 0;
+
+			// Female Titles
+			if (gender == Gender.Female)
+            {
+                foreach (RoyalTitleDef item in titlesSeniorityOrder)
+                {
+					if (item.seniority == Seniority)
+					{
+						labelsf[i] = s;
+                    }
+					i++;
+				}
+            }
+			// Male or Neutral Titles
+			else
+            {
+				foreach (RoyalTitleDef item in titlesSeniorityOrder)
+				{
+					if (item.seniority == Seniority)
+                    {
+						labelsm[i] = s;
+					}
+					i++;
+				}
+			}
+
+			#if DEBUG
+			for (int v = 0; v < labelsm.Count; v++)
+            {
+                Log.Message($"{labelsm[v]} {labelsf[v]}");
+            }
+			#endif
+
+			ExposeData();
+        }
+
+		/// <summary>
+		/// Saves & Loads the title data, if updating from a TR 1.1 save or the values are otherwise not found, generate new ones
+		/// </summary>
+		public override void ExposeData()
+		{
+			try
+			{
 				//List<RoyalTitleDef> playerTitles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
 
 				if (labelsf.Count == 0)
@@ -230,49 +265,10 @@ namespace TitularRoyalty
 				ExposeData();
 			}
 		}
+        #endregion
 
-        public void SaveTitleChange(Gender gender, int Seniority, string s)
-        {
-			var titlesSeniorityOrder = Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading;
 
-			if (labelsf.Count == 0 || labelsm.Count == 0)
-            {
-				Log.Error("Titular Royalty: Invalid save data count");
-				return;
-            }
-
-			int i = 0;
-			if (gender == Gender.Female)
-            {
-                foreach (RoyalTitleDef item in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
-                {
-					if (item.seniority == Seniority)
-					{
-						labelsf[i] = s;
-                    }
-					i++;
-				}
-            }
-			else
-            {
-				foreach (RoyalTitleDef item in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
-				{
-					if (item.seniority == Seniority)
-                    {
-						labelsm[i] = s;
-					}
-					i++;
-				}
-			}
-
-            //for (int v = 0; v < labelsm.Count; v++)
-            //{
-            //    Log.Message($"{labelsm[v]} {labelsf[v]}");
-            //}
-
-			ExposeData();
-        }
-
+        #region GameComponent Methods
         public void OnGameStart()
         {
 
@@ -331,5 +327,6 @@ namespace TitularRoyalty
 			}
 			ManageTitleLoc();
 		}
+        #endregion
     }
 }

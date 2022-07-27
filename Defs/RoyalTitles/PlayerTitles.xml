@@ -1,469 +1,469 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <!-- ================= The Peasantry ============================= -->
+    <!-- ================= The Peasantry ============================= -->
 
-  <!-- Freeman -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
-    <defName>TitularRoyalty_T_LR_Freeman</defName>
-    <label>Freeholder</label>
-    <description>No Description.</description>
-    <seniority>100</seniority>
+    <!-- Freeman -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+        <defName>TitularRoyalty_T_LR_Freeman</defName>
+        <label>Freeholder</label>
+        <description>No Description.</description>
+        <seniority>100</seniority>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
-        <label>Baron</label>
-        <labelf>none</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Baron</label>
-        <labelf>none</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Freeholder</label>
+                <labelf>none</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Freeholder</label>
+                <labelf>none</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-  <!-- Yeoman -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
-    <defName>TitularRoyalty_T_LR_Yeoman</defName>
-    <label>Yeoman</label>
-    <description>No Description.</description>
-    <seniority>200</seniority>
-
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Yeoman -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+        <defName>TitularRoyalty_T_LR_Yeoman</defName>
         <label>Yeoman</label>
-        <labelf>none</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Yeoman</label>
-        <labelf>none</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <description>No Description.</description>
+        <seniority>200</seniority>
 
-  <!-- ================= The Gentry  ============================= -->
-  <!-- Gentleman -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
-    <defName>TitularRoyalty_T_LR_Gentleman</defName>
-    <label>Gentleman</label>
-    <labelFemale>Lady</labelFemale>
-    <description>No Description.</description>
-    <seniority>300</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Yeoman</label>
+                <labelf>none</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Yeoman</label>
+                <labelf>none</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- ================= The Gentry  ============================= -->
+    <!-- Gentleman -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+        <defName>TitularRoyalty_T_LR_Gentleman</defName>
         <label>Gentleman</label>
-        <labelf>Lady</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Gentleman</label>
-        <labelf>Lady</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Lady</labelFemale>
+        <description>No Description.</description>
+        <seniority>300</seniority>
 
-  <!-- Squire -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
-    <defName>TitularRoyalty_T_LR_Squire</defName>
-    <label>Squire</label>
-    <description>No Description.</description>
-    <seniority>400</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Gentleman</label>
+                <labelf>Lady</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Gentleman</label>
+                <labelf>Lady</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Squire -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+        <defName>TitularRoyalty_T_LR_Squire</defName>
         <label>Squire</label>
-        <labelf>none</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Squire</label>
-        <labelf>none</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <description>No Description.</description>
+        <seniority>400</seniority>
 
-  <!-- Esquire -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
-    <defName>TitularRoyalty_T_MR_Esquire</defName>
-    <label>Esquire</label>
-    <description>No Description.</description>
-    <seniority>500</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Squire</label>
+                <labelf>none</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Squire</label>
+                <labelf>none</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Esquire -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+        <defName>TitularRoyalty_T_MR_Esquire</defName>
         <label>Esquire</label>
-        <labelf>none</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Esquire</label>
-        <labelf>none</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <description>No Description.</description>
+        <seniority>500</seniority>
 
-  <!-- Knight -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
-    <defName>TitularRoyalty_T_MR_Knight</defName>
-    <label>Knight</label>
-    <labelFemale>Dame</labelFemale>
-    <description>No Description.</description>
-    <seniority>600</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Esquire</label>
+                <labelf>none</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Esquire</label>
+                <labelf>none</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Knight -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+        <defName>TitularRoyalty_T_MR_Knight</defName>
         <label>Knight</label>
-        <labelf>Dame</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Knight</label>
-        <labelf>Dame</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Dame</labelFemale>
+        <description>No Description.</description>
+        <seniority>600</seniority>
 
-  <!-- Baronet -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
-    <defName>TitularRoyalty_T_MR_Baronet</defName>
-    <label>Baronet</label>
-    <labelFemale>Baronetess</labelFemale>
-    <canBeInherited>True</canBeInherited>
-    <description>No Description.</description>
-    <seniority>700</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Knight</label>
+                <labelf>Dame</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Knight</label>
+                <labelf>Dame</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Baronet -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+        <defName>TitularRoyalty_T_MR_Baronet</defName>
         <label>Baronet</label>
-        <labelf>Baronetess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Baronet</label>
-        <labelf>Baronetess</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Baronetess</labelFemale>
+        <canBeInherited>True</canBeInherited>
+        <description>No Description.</description>
+        <seniority>700</seniority>
 
-  <!-- ================= Low Nobility ============================ -->
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Baronet</label>
+                <labelf>Baronetess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Baronet</label>
+                <labelf>Baronetess</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-  <!-- Baron -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
-    <defName>TitularRoyalty_T_HR_Baron</defName>
-    <label>Baron</label>
-    <labelFemale>Baroness</labelFemale>
-    <description>No Description.</description>
-    <seniority>800</seniority>
+    <!-- ================= Low Nobility ============================ -->
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Baron -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
+        <defName>TitularRoyalty_T_HR_Baron</defName>
         <label>Baron</label>
-        <labelf>Baroness</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Baron</label>
-        <labelf>Baroness</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Baroness</labelFemale>
+        <description>No Description.</description>
+        <seniority>800</seniority>
 
-  <!-- Viscount -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
-    <defName>TitularRoyalty_T_HR_Viscount</defName>
-    <label>Viscount</label>
-    <labelFemale>Viscountess</labelFemale>
-    <description>No Description.</description>
-    <seniority>900</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Baron</label>
+                <labelf>Baroness</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Baron</label>
+                <labelf>Baroness</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Viscount -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
+        <defName>TitularRoyalty_T_HR_Viscount</defName>
         <label>Viscount</label>
-        <labelf>Viscountess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Viscount</label>
-        <labelf>Viscountess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Roman</realmType>
-        <label>Comes</label>
-        <labelf>none</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Viscountess</labelFemale>
+        <description>No Description.</description>
+        <seniority>900</seniority>
 
-  <!-- ================= High Nobility ============================ -->
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Viscount</label>
+                <labelf>Viscountess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Viscount</label>
+                <labelf>Viscountess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Comes</label>
+                <labelf>none</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-  <!-- Count -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
-    <defName>TitularRoyalty_T_HR_Count</defName>
-    <label>Count</label>
-    <labelFemale>Countess</labelFemale>
-    <description>No Description.</description>
-    <seniority>1000</seniority>
-    <minExpectation>Noble</minExpectation>
+    <!-- ================= High Nobility ============================ -->
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Count -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+        <defName>TitularRoyalty_T_HR_Count</defName>
         <label>Count</label>
-        <labelf>Countess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Count</label>
-        <labelf>Countess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Roman</realmType>
-        <label>Rector</label>
-        <labelf>Rectrix</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Countess</labelFemale>
+        <description>No Description.</description>
+        <seniority>1000</seniority>
+        <minExpectation>Noble</minExpectation>
 
-  <!-- Duke -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
-    <defName>TitularRoyalty_T_HR_Duke</defName>
-    <label>Duke</label>
-    <labelFemale>Duchess</labelFemale>
-    <description>No Description.</description>
-    <seniority>1100</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Count</label>
+                <labelf>Countess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Count</label>
+                <labelf>Countess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Rector</label>
+                <labelf>Rectrix</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Duke -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+        <defName>TitularRoyalty_T_HR_Duke</defName>
         <label>Duke</label>
-        <labelf>Duchess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Duke</label>
-        <labelf>Duchess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Roman</realmType>
-        <label>Vicarius</label>
-        <labelf>none</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Duchess</labelFemale>
+        <description>No Description.</description>
+        <seniority>1100</seniority>
 
-  <!-- Arch Duke -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
-    <defName>TitularRoyalty_T_HR_Archduke</defName>
-    <label>Archduke</label>
-    <labelFemale>Archduchess</labelFemale>
-    <description>No Description.</description>
-    <seniority>1200</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Duke</label>
+                <labelf>Duchess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Duke</label>
+                <labelf>Duchess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Vicarius</label>
+                <labelf>none</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Arch Duke -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+        <defName>TitularRoyalty_T_HR_Archduke</defName>
         <label>Archduke</label>
-        <labelf>Archduchess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Archduke</label>
-        <labelf>Archduchess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Roman</realmType>
-        <label>Praetorian Prefect</label>
-        <labelf>none</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Russian</realmType>
-        <label>Grand Duke</label>
-        <labelf>Grand Duchess</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Archduchess</labelFemale>
+        <description>No Description.</description>
+        <seniority>1200</seniority>
 
-  <!-- ================= Royalty ============================ -->
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Archduke</label>
+                <labelf>Archduchess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Archduke</label>
+                <labelf>Archduchess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Praetorian Prefect</label>
+                <labelf>none</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Russian</realmType>
+                <label>Grand Duke</label>
+                <labelf>Grand Duchess</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-  <!-- Prince -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
-    <defName>TitularRoyalty_T_RY_Prince</defName>
-    <label>Prince</label>
-    <labelFemale>Princess</labelFemale>
-    <description>No Description.</description>
-    <seniority>1300</seniority>
+    <!-- ================= Royalty ============================ -->
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Prince -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
+        <defName>TitularRoyalty_T_RY_Prince</defName>
         <label>Prince</label>
-        <labelf>Princess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Prince</label>
-        <labelf>Princess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Roman</realmType>
-        <label>Nobilissimus</label>
-        <labelf>none</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Princess</labelFemale>
+        <description>No Description.</description>
+        <seniority>1300</seniority>
 
-  <!-- Crown Prince -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
-    <defName>TitularRoyalty_T_RY_CrownPrince</defName>
-    <label>Crown Prince</label>
-    <labelFemale>Crown Princess</labelFemale>
-    <description>The Main heir of the Realm.</description>
-    <seniority>1350</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Prince</label>
+                <labelf>Princess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Prince</label>
+                <labelf>Princess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Nobilissimus</label>
+                <labelf>none</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
+    <!-- Crown Prince -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+        <defName>TitularRoyalty_T_RY_CrownPrince</defName>
         <label>Crown Prince</label>
-        <labelf>Crown Princess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
-        <label>Crown Prince</label>
-        <labelf>Crown Princess</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Roman</realmType>
-        <label>Caesar</label>
-        <labelf>Caesaressa</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Russian</realmType>
-        <label>Tsesarevich</label>
-        <labelf>Tsesarevna</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Crown Princess</labelFemale>
+        <description>The Main heir of the Realm.</description>
+        <seniority>1350</seniority>
 
-  <!-- Consort -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
-    <defName>TitularRoyalty_T_RY_Consort</defName>
-    <label>Prince Consort</label>
-    <labelFemale>Queen</labelFemale>
-    <description>Spouse of the ruler.</description>
-    <seniority>1400</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Crown Prince</label>
+                <labelf>Crown Princess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Crown Prince</label>
+                <labelf>Crown Princess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Caesar</label>
+                <labelf>Caesaressa</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Russian</realmType>
+                <label>Tsesarevich</label>
+                <labelf>Tsesarevna</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <modExtensions>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
-        <label>Imperial Consort</label>
-        <labelf>Empress</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
+    <!-- Consort -->
+    <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
+        <defName>TitularRoyalty_T_RY_Consort</defName>
         <label>Prince Consort</label>
-        <labelf>Queen</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Roman</realmType>
-        <label>Imperator</label>
-        <labelf>Imperatrix</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Russian</realmType>
-        <label>Tsar</label>
-        <labelf>Tsar</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Queen</labelFemale>
+        <description>Spouse of the ruler.</description>
+        <seniority>1400</seniority>
 
-  <!-- King -->
-  
-  <RoyalTitleDef ParentName="BasePlayerTitle">
-    <defName>TitularRoyalty_T_RY_King</defName>
-    <label>King</label>
-    <labelFemale>Queen</labelFemale>
-    <description>Ruler of your colony.</description>
-    <seniority>1500</seniority>
+        <modExtensions>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Imperial Consort</label>
+                <labelf>Empress</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>Prince Consort</label>
+                <labelf>Queen</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Imperator</label>
+                <labelf>Imperatrix</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Russian</realmType>
+                <label>Tsar</label>
+                <labelf>Tsar</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
-    <favorCost>100</favorCost>
-    <canBeInherited>False</canBeInherited>
-    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
-    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
-    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
-    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
-    <minExpectation>Royal</minExpectation>
-    <grantedAbilities>
-      <li>Speech</li>
-    </grantedAbilities>
-    <speechCooldown>900000</speechCooldown>
-    <disabledWorkTags>
-      <li>ManualDumb</li>
-      <li>PlantWork</li>
-      <li>Mining</li>
-    </disabledWorkTags>
-    <decreeTags>
-      <li>All</li>
-    </decreeTags>
-    <disabledJoyKinds>
-      <li>Gaming_Dexterity</li>
-    </disabledJoyKinds>
-    <foodRequirement>
-      <minQuality>MealFine</minQuality>
-      <allowedTypes>Processed, Liquor</allowedTypes>
-      <allowedDefs>
-        <li>Ambrosia</li>
-        <li>Milk</li>
-        <li>RawBerries</li>
-      </allowedDefs>
-    </foodRequirement>
-    <throneRoomRequirements>
-      <li Class="RoomRequirement_HasAssignedThroneAnyOf">
-        <things>
-          <li>GrandThrone</li>
-        </things>
-      </li>
-      <li Class="RoomRequirement_Area">
-        <area>8</area>
-      </li>
-      <li Class="RoomRequirement_Impressiveness">
-        <impressiveness>45</impressiveness>
-      </li>
-    </throneRoomRequirements>
+    <!-- King -->
 
-    <modExtensions>
-      <!-- Alternate Titles -->
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Empire</realmType>
-        <label>Emperor</label>
-        <labelf>Empress</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Kingdom</realmType>
+    <RoyalTitleDef ParentName="BasePlayerTitle">
+        <defName>TitularRoyalty_T_RY_King</defName>
         <label>King</label>
-        <labelf>Queen</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Roman</realmType>
-        <label>Imperator</label>
-        <labelf>Imperatrix</labelf>
-      </li>
-      <li Class="TitularRoyalty.AlternateTitlesExtension">
-        <realmType>Russian</realmType>
-        <label>Emperor</label>
-        <labelf>Emperor</labelf>
-      </li>
-    </modExtensions>
-  </RoyalTitleDef>
+        <labelFemale>Queen</labelFemale>
+        <description>Ruler of your colony.</description>
+        <seniority>1500</seniority>
+
+        <favorCost>100</favorCost>
+        <canBeInherited>False</canBeInherited>
+        <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+        <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+        <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+        <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+        <minExpectation>Royal</minExpectation>
+        <grantedAbilities>
+            <li>Speech</li>
+        </grantedAbilities>
+        <speechCooldown>900000</speechCooldown>
+        <disabledWorkTags>
+            <li>ManualDumb</li>
+            <li>PlantWork</li>
+            <li>Mining</li>
+        </disabledWorkTags>
+        <decreeTags>
+            <li>All</li>
+        </decreeTags>
+        <disabledJoyKinds>
+            <li>Gaming_Dexterity</li>
+        </disabledJoyKinds>
+        <foodRequirement>
+            <minQuality>MealFine</minQuality>
+            <allowedTypes>Processed, Liquor</allowedTypes>
+            <allowedDefs>
+                <li>Ambrosia</li>
+                <li>Milk</li>
+                <li>RawBerries</li>
+            </allowedDefs>
+        </foodRequirement>
+        <throneRoomRequirements>
+            <li Class="RoomRequirement_HasAssignedThroneAnyOf">
+                <things>
+                    <li>GrandThrone</li>
+                </things>
+            </li>
+            <li Class="RoomRequirement_Area">
+                <area>8</area>
+            </li>
+            <li Class="RoomRequirement_Impressiveness">
+                <impressiveness>45</impressiveness>
+            </li>
+        </throneRoomRequirements>
+
+        <modExtensions>
+            <!-- Alternate Titles -->
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Empire</realmType>
+                <label>Emperor</label>
+                <labelf>Empress</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Kingdom</realmType>
+                <label>King</label>
+                <labelf>Queen</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Imperator</label>
+                <labelf>Imperatrix</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Russian</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
 
 </Defs>
