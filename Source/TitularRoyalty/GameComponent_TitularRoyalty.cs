@@ -256,12 +256,17 @@ namespace TitularRoyalty
 				Scribe_Collections.Look(ref labelsm, "CustomTitlesM", LookMode.Value);
 				Scribe_Collections.Look(ref labelsf, "CustomTitlesF", LookMode.Value);
 			}
-			catch (System.NullReferenceException e)
+			catch (System.NullReferenceException ex)
 			{
 				Log.Message($"Titular Royalty: Loaded 1.1 save");
+
+				#if DEBUG
+				Log.Error($"TRSafe: {ex}");
+				#endif
+
 				this.labelsm = new List<string>();
 				this.labelsf = new List<string>();
-				this.playerTitles = new List<RoyalTitleDef>();
+				this.playerTitles =		new List<RoyalTitleDef>();
 				ExposeData();
 			}
 		}
