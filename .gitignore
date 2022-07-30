@@ -431,3 +431,4 @@ Source/TitularRoyalty/.vs/TitularRoyalty/v17/.suo
 *.cache
 Source/TitularRoyalty/obj/Debug/TitularRoyalty.csproj.AssemblyReference.cache
 Source/TitularRoyalty/.vs/TitularRoyalty/v17/.suo
+*.vsidx

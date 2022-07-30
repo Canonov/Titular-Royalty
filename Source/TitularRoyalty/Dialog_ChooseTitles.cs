@@ -32,6 +32,15 @@ namespace TitularRoyalty
                     }
                 }
             }
+            
+            if(seniorityTitles.Count == 0)
+            {
+                Log.Error("Titular Royalty: Couldn't fill dialog titles");
+            }
+            else
+            {
+                Log.Message("Titular Royalty: Dialog titles filled");
+            }
 
         }
         private string GetDisplayTitle(RoyalTitleDef title, Gender gender)
