@@ -125,7 +125,7 @@ namespace TitularRoyalty
             else
             {
                 Widgets.Label(new Rect(0, 10, 300f, 30f), "TR_NoTitles".Translate());
-                Log.Error($"Couldn't fill title dialog, relevant variable for author: {seniorityTitles.Count}");
+                Log.Error($"Titular Royalty: Couldn't fill title dialog, relevant variable for author: {seniorityTitles.Count}");
             }
 
 

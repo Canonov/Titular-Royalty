@@ -23,7 +23,7 @@ namespace TitularRoyalty
 		/// </summary>
 		public void PopulatePlayerTitles()
         {
-			Log.Message("Populating Titlelist");
+			Log.Message("Titular Royalty: Populating Titlelist");
 			if (playerTitles.Count > 0)
             {
 				playerTitles.Clear();
