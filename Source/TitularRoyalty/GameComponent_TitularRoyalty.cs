@@ -211,13 +211,6 @@ namespace TitularRoyalty
 				}
 			}
 
-			#if DEBUG
-			for (int v = 0; v < labelsm.Count; v++)
-            {
-                Log.Message($"{labelsm[v]} {labelsf[v]}");
-            }
-			#endif
-
 			ExposeData();
         }
 
@@ -259,11 +252,6 @@ namespace TitularRoyalty
 			catch (System.NullReferenceException ex)
 			{
 				Log.Message($"Titular Royalty: Loaded 1.1 save");
-
-				#if DEBUG
-				Log.Error($"TRSafe: {ex}");
-				#endif
-
 				this.labelsm = new List<string>();
 				this.labelsf = new List<string>();
 				this.playerTitles =		new List<RoyalTitleDef>();
