@@ -136,7 +136,7 @@
         <defName>TitularRoyalty_T_MR_Baronet</defName>
         <label>Baronet</label>
         <labelFemale>Baronetess</labelFemale>
-        <canBeInherited>True</canBeInherited>
+        <canBeInherited>False</canBeInherited>
         <description>No Description.</description>
         <seniority>700</seniority>
 

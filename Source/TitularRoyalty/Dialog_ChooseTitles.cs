@@ -101,7 +101,16 @@ namespace TitularRoyalty
                             //Log.Message($"Fired {title.label} for pawn {chosenPawn.Name}");
                             if (chosenPawn != null && chosenPawn.royalty != null && chosenPawn.royalty.GetCurrentTitle(Faction.OfPlayer) != title)
                             {
-                                chosenPawn.royalty.SetTitle(Faction.OfPlayer, title, grantRewards: true, sendLetter: true);
+                                try
+                                {
+                                    chosenPawn.royalty.SetTitle(Faction.OfPlayer, title, grantRewards: true, sendLetter: true);
+                                }
+                                catch (System.NullReferenceException exn)
+                                {
+                                    Log.Error($"Titular Royalty: Failed vanilla royalty set title\nException Info: {exn}");
+
+                                }
+                                
                             }
                             Close();
                         }
@@ -115,8 +124,8 @@ namespace TitularRoyalty
                             Close();
                         }*/
                         TooltipHandler.TipRegion(rectIcon, GetDisplayTitle(title, chosenPawn.gender));
+                        foreachI++;
                     }
-                    foreachI++;
                 }
 
 
