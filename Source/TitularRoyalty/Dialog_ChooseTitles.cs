@@ -71,6 +71,7 @@ namespace TitularRoyalty
 
             if (seniorityTitles.Count > 0)
             {
+                Log.Message("Trying to fill title dialog.");
 
                 Widgets.Label(new Rect(15, 10, 300f, 30f), "TR_choosetitle".Translate());
                 var viewRect = new Rect(0f, 30f, outRect.width - 16f, (seniorityTitles.Count / 4) * 128f + 256f);
@@ -119,11 +120,13 @@ namespace TitularRoyalty
                     foreachI++;
                 }
 
+
                 Widgets.EndScrollView();
             }
             else
             {
                 Widgets.Label(new Rect(0, 10, 300f, 30f), "TR_NoTitles".Translate());
+                Log.Error($"Couldn't fill title dialog, relevant variable for author: {seniorityTitles.Count}");
             }
 
 
