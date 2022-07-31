@@ -24,12 +24,16 @@ namespace TitularRoyalty
             foreach (RoyalTitleDef v in DefDatabase<RoyalTitleDef>.AllDefsListForReading)
             {
                 //Log.Message($"Defname: {v.ToString()} Label: {v.label}");
-                foreach (var li in v.tags)
+                /*foreach (var li in v.tags)
                 {
                     if (li.Contains("PlayerTitle"))
                     {
                         seniorityTitles.Add(v, v.seniority);
                     }
+                }*/
+                if (v.HasModExtension<AlternateTitlesExtension>() && v.tags.Contains("PlayerTitle"))
+                {
+                    seniorityTitles.Add(v, v.seniority);
                 }
             }
             
