@@ -20,6 +20,11 @@
                 <label>Freeholder</label>
                 <labelf>none</labelf>
             </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Auxiliary</label>
+                <labelf>none</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -39,6 +44,11 @@
             <li Class="TitularRoyalty.AlternateTitlesExtension">
                 <realmType>Kingdom</realmType>
                 <label>Yeoman</label>
+                <labelf>none</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Citizen</label>
                 <labelf>none</labelf>
             </li>
         </modExtensions>
@@ -64,6 +74,11 @@
                 <label>Gentleman</label>
                 <labelf>Lady</labelf>
             </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Cadet</label>
+                <labelf>none</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -85,6 +100,11 @@
                 <label>Squire</label>
                 <labelf>none</labelf>
             </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Legionnaire</label>
+                <labelf>none</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -104,6 +124,11 @@
             <li Class="TitularRoyalty.AlternateTitlesExtension">
                 <realmType>Kingdom</realmType>
                 <label>Esquire</label>
+                <labelf>none</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Centurion</label>
                 <labelf>none</labelf>
             </li>
         </modExtensions>
@@ -128,6 +153,11 @@
                 <label>Knight</label>
                 <labelf>Dame</labelf>
             </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Legatus</label>
+                <labelf>none</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -150,6 +180,11 @@
                 <realmType>Kingdom</realmType>
                 <label>Baronet</label>
                 <labelf>Baronetess</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Senator</label>
+                <labelf>none</labelf>
             </li>
         </modExtensions>
     </RoyalTitleDef>
@@ -174,6 +209,11 @@
                 <realmType>Kingdom</realmType>
                 <label>Baron</label>
                 <labelf>Baroness</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Roman</realmType>
+                <label>Tribune</label>
+                <labelf>none</labelf>
             </li>
         </modExtensions>
     </RoyalTitleDef>
