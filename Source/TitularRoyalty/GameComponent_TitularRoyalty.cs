@@ -132,39 +132,48 @@ namespace TitularRoyalty
 		/// </summary>
 		public void ManageTitleLoc()
         {
+			bool hasRealm = false;
 			string realmType = LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType;
 
-			if (realmType != null)
-			{
-				#if DEBUG
-				Log.Message(realmType);
-				#endif
-
-				switch (realmType)
-				{
-					case "Empire":
-						break;
-					case "Kingdom":
-						break;
-					case "Roman":
-						break;
-					default:
-						Log.Error("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
-						realmType = "Kingdom";
-						break;
-				}
-
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					DoTitleChange(title, realmType);
-				}
-			}
-			else
+			while(!hasRealm)
             {
-				Log.Warning("Titular Royalty: no RealmType Found : Defaulting to Kingdom");
-				realmType = "Kingdom";
-				ManageTitleLoc();
+				if (realmType != null)
+				{
+					Log.Message(realmType);
+
+					switch (realmType)
+					{
+						case "Empire":
+							break;
+						case "Kingdom":
+							break;
+						case "Roman":
+							break;
+						default:
+							Log.Message("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
+							LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType = "Kingdom";
+							LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().ExposeData();
+							realmType = "Kingdom";
+							break;
+					}
+
+					foreach (RoyalTitleDef title in playerTitles)
+					{
+						DoTitleChange(title, realmType);
+					}
+					hasRealm = true;
+				}
+				else
+				{
+					Log.Message("Titular Royalty: no RealmType Found : Defaulting to Kingdom");
+					LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType = "Kingdom";
+					LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().ExposeData();
+					realmType = "Kingdom";
+					continue;
+				}
+				break;
 			}
+
 
 		}
 
