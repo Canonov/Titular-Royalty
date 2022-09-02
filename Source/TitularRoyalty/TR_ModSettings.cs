@@ -42,21 +42,16 @@ namespace TitularRoyalty
         {
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(inRect);
-            listingStandard.AddLabeledRadioList($"Base Realm Type, default is Kingdom, all Empire does is change the King title to Emperor,\nMore Coming Soon!",
+            listingStandard.AddLabeledRadioList("TR_selectorexplanation".Translate(),
                                                  realmTypes, ref settings.realmType);
-            listingStandard.AddHorizontalLine(3f);
-            listingStandard.Gap(3f);
-            listingStandard.Label("Roman Type is WIP only has high rank titles, feel free to suggest low rank ones.");
-            //listingStandard.CheckboxLabeled("exampleBoolExplanation", ref settings.exampleBool, "exampleBoolToolTip");
-            //listingStandard.Label("exampleFloatExplanation");
-            //settings.exampleFloat = listingStandard.Slider(settings.exampleFloat, 100f, 300f);
+            //listingStandard.AddHorizontalLine(3f);
             listingStandard.End();
             base.DoSettingsWindowContents(inRect);
         }
 
         public override string SettingsCategory()
         {
-            return "Titular Royalty"; //.Translate()
+            return "TR_modname".Translate();
         }
 
 

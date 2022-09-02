@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-	<!-- EN: Wear {0} -->
+	<!-- Verb Name -->
 	<Verb_TitleGranter>Grant Title</Verb_TitleGranter>
 
-	<!-- EN: Toggle wearing {0} attached to apparel. -->
+	<!-- Title Renamer and Selector -->
 	<TR_CurrentTitle>Current Title</TR_CurrentTitle>
 	<TR_choosetitle>Title Selector</TR_choosetitle>
 
@@ -13,5 +13,9 @@
 	<TR_invalidmessage>Male Title is Invalid</TR_invalidmessage>
 	<TR_invalidmessage2>Female Title is Invalid</TR_invalidmessage2>
 	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
+
+	<!-- Settings Menu -->
+	<TR_modname>Titular Royalty</TR_modname>
+	<TR_selectorexplanation>Base Realm Type, default is Kingdom, all Empire does is change the King title to Emperor, Roman is based on Late Roman Empire</TR_selectorexplanation>
 
 </LanguageData>
