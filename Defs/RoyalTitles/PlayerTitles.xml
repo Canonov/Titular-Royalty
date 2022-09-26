@@ -25,6 +25,17 @@
                 <label>Auxiliary</label>
                 <labelf>none</labelf>
             </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -50,6 +61,17 @@
                 <realmType>Roman</realmType>
                 <label>Citizen</label>
                 <labelf>none</labelf>
+            </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
             </li>
         </modExtensions>
     </RoyalTitleDef>
@@ -79,6 +101,17 @@
                 <label>Cadet</label>
                 <labelf>none</labelf>
             </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -105,6 +138,17 @@
                 <label>Legionnaire</label>
                 <labelf>none</labelf>
             </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -130,6 +174,17 @@
                 <realmType>Roman</realmType>
                 <label>Centurion</label>
                 <labelf>none</labelf>
+            </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
             </li>
         </modExtensions>
     </RoyalTitleDef>
@@ -158,6 +213,17 @@
                 <label>Legatus</label>
                 <labelf>none</labelf>
             </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -185,6 +251,17 @@
                 <realmType>Roman</realmType>
                 <label>Senator</label>
                 <labelf>none</labelf>
+            </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
             </li>
         </modExtensions>
     </RoyalTitleDef>
@@ -215,6 +292,17 @@
                 <label>Tribune</label>
                 <labelf>none</labelf>
             </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -241,6 +329,17 @@
                 <realmType>Roman</realmType>
                 <label>Comes</label>
                 <labelf>none</labelf>
+            </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
             </li>
         </modExtensions>
     </RoyalTitleDef>
@@ -272,6 +371,17 @@
                 <label>Rector</label>
                 <labelf>Rectrix</labelf>
             </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -298,6 +408,17 @@
                 <realmType>Roman</realmType>
                 <label>Vicarius</label>
                 <labelf>none</labelf>
+            </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
             </li>
         </modExtensions>
     </RoyalTitleDef>
@@ -331,6 +452,17 @@
                 <label>Grand Duke</label>
                 <labelf>Grand Duchess</labelf>
             </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -359,6 +491,17 @@
                 <realmType>Roman</realmType>
                 <label>Nobilissimus</label>
                 <labelf>none</labelf>
+            </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
             </li>
         </modExtensions>
     </RoyalTitleDef>
@@ -392,6 +535,17 @@
                 <label>Tsesarevich</label>
                 <labelf>Tsesarevna</labelf>
             </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
         </modExtensions>
     </RoyalTitleDef>
 
@@ -423,6 +577,17 @@
                 <realmType>Russian</realmType>
                 <label>Tsar</label>
                 <labelf>Tsar</labelf>
+            </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
             </li>
         </modExtensions>
     </RoyalTitleDef>
@@ -493,6 +658,7 @@
                 <label>King</label>
                 <labelf>Queen</labelf>
             </li>
+
             <li Class="TitularRoyalty.AlternateTitlesExtension">
                 <realmType>Roman</realmType>
                 <label>Imperator</label>
@@ -500,6 +666,17 @@
             </li>
             <li Class="TitularRoyalty.AlternateTitlesExtension">
                 <realmType>Russian</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Sultanate</realmType>
+                <label>Emperor</label>
+                <labelf>Emperor</labelf>
+            </li>
+            <li Class="TitularRoyalty.AlternateTitlesExtension">
+                <realmType>Caliphate</realmType>
                 <label>Emperor</label>
                 <labelf>Emperor</labelf>
             </li>

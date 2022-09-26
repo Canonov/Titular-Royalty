@@ -149,6 +149,10 @@ namespace TitularRoyalty
 							break;
 						case "Roman":
 							break;
+						case "Caliphate":
+							break;
+						case "Sultanate":
+							break;
 						default:
 							Log.Message("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
 							LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType = "Kingdom";
