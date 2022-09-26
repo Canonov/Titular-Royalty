@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- Adding the Titles to the Faction -->
+<Operation Class="PatchOperationSequence">
+  <operations>
+    <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
+      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <value>
+        <royalTitleTags></royalTitleTags>
+      </value>
+    </li>
+
+    <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
+      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]/royalTitleTags</xpath>
+      <value>
+        <li>PlayerTitle</li>
+      </value>
+    </li>
+
+    <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
+      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <value>
+        <royalFavorLabel>Prestige</royalFavorLabel>
+      </value>
+    </li>
+
+    <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
+      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <value>
+        <royalFavorIconPath>UI/Icons/CrownIcon</royalFavorIconPath>
+      </value>
+    </li>
+  </operations>
+</Operation>
+
+
+<!-- Add the Inheritance Relations -->
+<Operation Class="PatchOperationSequence">
+  <operations>
+    <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
+      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <value>
+        <royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
+      </value>
+    </li>
+    <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
+      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <value>
+        <royalTitleInheritanceRelations>
+            <li>Child</li>
+            <li>Grandchild</li>
+            <li>GreatGrandchild</li>
+            <li>NephewOrNiece</li>
+            <li>Spouse</li>
+            <li>Sibling</li>
+            <li>HalfSibling</li>
+            <li>Cousin</li>
+            <li>Parent</li>
+            <li>UncleOrAunt</li>
+        </royalTitleInheritanceRelations>
+      </value>
+    </li>
+  </operations>
+</Operation>
+
+</Patch>
