@@ -5,28 +5,28 @@
 <Operation Class="PatchOperationSequence">
   <operations>
     <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
-      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <xpath>/Defs/FactionDef[defName="Ant_AntiniumHivePlayer"]</xpath>
       <value>
         <royalTitleTags></royalTitleTags>
       </value>
     </li>
 
     <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
-      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]/royalTitleTags</xpath>
+      <xpath>/Defs/FactionDef[defName="Ant_AntiniumHivePlayer"]/royalTitleTags</xpath>
       <value>
         <li>PlayerTitle</li>
       </value>
     </li>
 
     <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
-      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <xpath>/Defs/FactionDef[defName="Ant_AntiniumHivePlayer"]</xpath>
       <value>
         <royalFavorLabel>Prestige</royalFavorLabel>
       </value>
     </li>
 
     <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
-      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <xpath>/Defs/FactionDef[defName="Ant_AntiniumHivePlayer"]</xpath>
       <value>
         <royalFavorIconPath>UI/Icons/CrownIcon</royalFavorIconPath>
       </value>
@@ -39,13 +39,13 @@
 <Operation Class="PatchOperationSequence">
   <operations>
     <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
-      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <xpath>/Defs/FactionDef[defName="Ant_AntiniumHivePlayer"]</xpath>
       <value>
         <royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
       </value>
     </li>
     <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
-      <xpath>/Defs/FactionDef[@Name="Ant_AntiniumHivePlayer"]</xpath>
+      <xpath>/Defs/FactionDef[defName="Ant_AntiniumHivePlayer"]</xpath>
       <value>
         <royalTitleInheritanceRelations>
             <li>Child</li>
