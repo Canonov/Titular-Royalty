@@ -6,3 +6,8 @@ D:\Programs\RimWorld\Mods\Titular-Royalty\Assemblies\TitularRoyalty.dll
 D:\Programs\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.csproj.AssemblyReference.cache
 D:\Programs\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.csproj.CoreCompileInputs.cache
 D:\Programs\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.csproj.AssemblyReference.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.csproj.CoreCompileInputs.cache
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\Titular-Royalty\1.4\Assemblies\TitularRoyalty.dll
+E:\SteamLibrary\steamapps\common\RimWorld\Mods\Titular-Royalty\Source\TitularRoyalty\obj\Debug\TitularRoyalty.csproj.CopyComplete

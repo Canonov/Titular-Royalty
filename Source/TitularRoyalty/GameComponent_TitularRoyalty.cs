@@ -262,7 +262,7 @@ namespace TitularRoyalty
 				Scribe_Collections.Look(ref labelsm, "CustomTitlesM", LookMode.Value);
 				Scribe_Collections.Look(ref labelsf, "CustomTitlesF", LookMode.Value);
 			}
-			catch (System.NullReferenceException ex)
+			catch (System.NullReferenceException)
 			{
 				Log.Message($"Titular Royalty: Loaded 1.1 save");
 				this.labelsm = new List<string>();
