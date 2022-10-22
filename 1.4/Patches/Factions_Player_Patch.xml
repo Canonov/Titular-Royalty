@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- Adding the Titles to the Faction -->
+<Operation Class="PatchOperationSequence">
+  <operations>
+    <li Class="PatchOperationAdd">
+      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <value>
+        <royalTitleTags></royalTitleTags>
+      </value>
+    </li>
+
+    <li Class="PatchOperationAdd">
+      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]/royalTitleTags</xpath>
+      <value>
+        <li>PlayerTitle</li>
+      </value>
+    </li>
+
+    <li Class="PatchOperationAdd">
+      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <value>
+        <royalFavorLabel>Prestige</royalFavorLabel>
+      </value>
+    </li>
+
+    <li Class="PatchOperationAdd">
+      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <value>
+        <royalFavorIconPath>UI/Icons/CrownIcon</royalFavorIconPath>
+      </value>
+    </li>
+  </operations>
+</Operation>
+
+
+<!-- Add the Inheritance Relations -->
+<Operation Class="PatchOperationSequence">
+  <operations>
+    <li Class="PatchOperationAdd">
+      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <value>
+        <royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
+      </value>
+    </li>
+    <li Class="PatchOperationAdd">
+      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <value>
+        <royalTitleInheritanceRelations>
+            <li>Child</li>
+            <li>Grandchild</li>
+            <li>GreatGrandchild</li>
+            <li>NephewOrNiece</li>
+            <li>Spouse</li>
+            <li>Sibling</li>
+            <li>HalfSibling</li>
+            <li>Cousin</li>
+            <li>Parent</li>
+            <li>UncleOrAunt</li>
+        </royalTitleInheritanceRelations>
+      </value>
+    </li>
+  </operations>
+</Operation>
+
+
+<!-- Colony Fluff -->
+<!--<Operation Class="PatchOperationReplace">
+    <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]/label</xpath>
+    <value>
+        <label>New Realm</label>
+    </value>
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+    <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]/description</xpath>
+    <value>
+        <description>A recently established faction, lead by your Monarch</description>
+    </value>
+</Operation>-->
+ 
+</Patch>
