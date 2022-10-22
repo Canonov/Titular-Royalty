@@ -16,6 +16,8 @@
 
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>
-	<TR_selectorexplanation>Base Realm Type, default is Kingdom, all Empire does is change the King title to Emperor, Roman is based on Late Roman Empire</TR_selectorexplanation>
+	<TR_baserealmtype>Chosen Realm Type</TR_baserealmtype>
+	<TR_selectorexplanation>The Default is Kingdom, all Empire does is change the King title to Emperor\nRoman is based on Late Roman Empire, Roman Alt is contributed by Alexey Stukov#2163\nRussian, Byzantine and Nordic Titles coming soon</TR_selectorexplanation>
+	<TR_reloadsavefix>Make sure to save and reload if you're in the game to apply the changes.</TR_reloadsavefix>
 
 </LanguageData>

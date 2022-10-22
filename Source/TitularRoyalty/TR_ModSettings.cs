@@ -36,16 +36,28 @@ namespace TitularRoyalty
 
         }
 
-        public static string[] realmTypes = { "Kingdom", "Empire", "Roman"};
+        public static string[] realmTypes = { "Kingdom", "Empire", "Roman", "Roman (Alt)"};
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(inRect);
-            listingStandard.AddLabeledRadioList("TR_selectorexplanation".Translate(),
+
+            //Explains more about the titlesets
+            listingStandard.Label("TR_selectorexplanation".Translate());
+            listingStandard.AddHorizontalLine();
+
+            //Radio list to choose titles
+            listingStandard.AddLabeledRadioList("TR_baserealmtype".Translate(),
                                                  realmTypes, ref settings.realmType);
-            //listingStandard.AddHorizontalLine(3f);
+            listingStandard.Gap(24);
+            listingStandard.AddHorizontalLine();
+
+            //Explains that you need to reload the save for changes to apply
+            listingStandard.Gap(12);
+            listingStandard.Label("TR_reloadsavefix".Translate());
             listingStandard.End();
+
             base.DoSettingsWindowContents(inRect);
         }
 

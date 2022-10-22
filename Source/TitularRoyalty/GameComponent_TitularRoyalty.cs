@@ -13,7 +13,7 @@ namespace TitularRoyalty
 		public List<string> labelsf = new List<string>();
 		public List<RoyalTitleDef> playerTitles = new List<RoyalTitleDef>();
 
-		public GameComponent_TitularRoyalty(Game game) // Needs Game game or else Rimworld throws a fit and errors.
+		public GameComponent_TitularRoyalty(Game game) // Needs this or else Rimworld throws a fit and errors.
         {
 
         }
@@ -149,7 +149,9 @@ namespace TitularRoyalty
 							break;
 						case "Roman":
 							break;
-						case "Caliphate":
+                        case "Roman (Alt)":
+                            break;
+                        case "Caliphate":
 							break;
 						case "Sultanate":
 							break;
@@ -264,7 +266,7 @@ namespace TitularRoyalty
 			}
 			catch (System.NullReferenceException)
 			{
-				Log.Message($"Titular Royalty: Loaded 1.1 save");
+				Log.Message($"Titular Royalty: Loaded TR 1.1 save");
 				this.labelsm = new List<string>();
 				this.labelsf = new List<string>();
 				this.playerTitles =		new List<RoyalTitleDef>();
