@@ -36,7 +36,7 @@ namespace TitularRoyalty
 
         }
 
-        public static string[] realmTypes = { "Kingdom", "Empire", "Roman", "Roman (Alt)"};
+        public static string[] realmTypes = { "Kingdom", "Empire", "Roman", "Roman (Alt)" };
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
