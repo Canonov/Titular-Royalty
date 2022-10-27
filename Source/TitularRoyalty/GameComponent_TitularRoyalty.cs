@@ -67,7 +67,6 @@ namespace TitularRoyalty
 			// Custom Titles
 			if (titleIndex >= 0)
             {
-
 				// Female Title
 				if (labelsf[titleIndex] != "none")
                 {
@@ -90,10 +89,9 @@ namespace TitularRoyalty
 				if (labelsm[titleIndex] != "none")
 				{
 					title.label = labelsm[titleIndex];
-					return;
+					
 				}
-				
-			}
+            }
 			else
             {
 				Log.Error("Titular Royalty: Failed DoTitleChange()");
@@ -124,6 +122,9 @@ namespace TitularRoyalty
                     }
                 }
             }
+
+			//Clear the cached label
+            title.ClearCachedData();
 
         }
 
