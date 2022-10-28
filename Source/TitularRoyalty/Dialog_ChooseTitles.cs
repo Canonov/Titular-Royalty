@@ -43,7 +43,7 @@ namespace TitularRoyalty
             }
             else
             {
-                Log.Message("Titular Royalty: Dialog titles filled");
+                //Log.Message("Titular Royalty: Dialog titles filled");
             }
 
         }

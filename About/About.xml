@@ -5,17 +5,21 @@
   <author>Canon</author>
   <supportedVersions>
     <li>1.3</li>
-	<li>1.4</li>
+    <li>1.4</li>
   </supportedVersions>
   <modDependencies>
-	<li>
-		<packageId>Ludeon.RimWorld.Royalty</packageId>
-		<displayName>Royalty</displayName>
+    <li>
+      <packageId>Ludeon.RimWorld.Royalty</packageId>
+      <displayName>Royalty</displayName>
+    </li>
+    <li>
+      <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+      <displayName>Vanilla Expanded Framework</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/workshop/filedetails/?id=2023507013</steamWorkshopUrl>
+      <downloadUrl>https://github.com/Vanilla-Expanded/VanillaExpandedFramework</downloadUrl>
     </li>
   </modDependencies>
-  <loadAfter>
-    <!--<li>brrainz.harmony</li>-->
-  </loadAfter>
+  <loadAfter></loadAfter>
   <description>Adds titles to the player faction you can grant to your pawns with the Staff of Royalty \n(VERSION 1.1): Custom Titlelists\n(VERSION 1.2): Custom Titles Support\n(VERSION 1.2.1): Extra Debug Logging\n(VERSION 1.2.2): Patched the Antinium Mod\n(VERSION 1.3): Added Support for 1.4 and alternate Roman Titles
 </description>
 </ModMetaData>

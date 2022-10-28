@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-	<!-- Verb Name -->
-	<Verb_TitleGranter>Grant Title</Verb_TitleGranter>
+	<!-- Hi Proxyer! -->
 
-	<!-- Title Renamer and Selector -->
-	<TR_CurrentTitle>Current Title</TR_CurrentTitle>
-	<TR_choosetitle>Title Selector</TR_choosetitle>
+	<!-- Title Chooser and Renamer -->
+	<TR_choosetitle>Select a Title</TR_choosetitle>
 
 	<TR_namemessage>Male Title (Put None in both boxes to reset to default)</TR_namemessage>
 	<TR_namemessage2>Female Title (Remove to disable and use male title for both)</TR_namemessage2>
@@ -19,5 +17,9 @@
 	<TR_baserealmtype>Chosen Realm Type</TR_baserealmtype>
 	<TR_selectorexplanation>The Default is Kingdom, all Empire does is change the King title to Emperor\nRoman is based on Late Roman Empire, Roman Alt is contributed by Alexey Stukov#2163\nRussian, Byzantine and Nordic Titles coming soon</TR_selectorexplanation>
 	<TR_reloadsavefix>Make sure to save and reload if you're in the game to apply the changes.</TR_reloadsavefix>
+
+
+	<!-- LEFT IN FOR 1.3 -->
+	<Verb_TitleGranter>Grant Title</Verb_TitleGranter> <!-- Verb Name -->
 
 </LanguageData>

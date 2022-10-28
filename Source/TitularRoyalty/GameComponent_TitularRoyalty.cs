@@ -89,7 +89,7 @@ namespace TitularRoyalty
 				if (labelsm[titleIndex] != "none")
 				{
 					title.label = labelsm[titleIndex];
-					
+					return;
 				}
             }
 			else
@@ -140,7 +140,7 @@ namespace TitularRoyalty
             {
 				if (realmType != null)
 				{
-					Log.Message(realmType);
+					//Log.Message(realmType);
 
 					switch (realmType)
 					{

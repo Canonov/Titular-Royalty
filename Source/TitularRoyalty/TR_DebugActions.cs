@@ -32,6 +32,12 @@ namespace TitularRoyalty {
 		{
 			Current.Game.GetComponent<GameComponent_TitularRoyalty>().ResetTitles();
 		}
+
+        [DebugAction("Mods", "TR: Update Titles", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void UpdateTitles()
+		{
+			Current.Game.GetComponent<GameComponent_TitularRoyalty>().ManageTitleLoc();
+		}
 	}
 
 }
