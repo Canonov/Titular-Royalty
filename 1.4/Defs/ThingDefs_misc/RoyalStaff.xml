@@ -52,8 +52,8 @@
       </li>
     </tools>
     <verbs>
-      <li>
-        <label>granttitles</label>
+      <li> <!-- GRANT TITLES -->
+        <label>granttitles</label> <!-- Don't Translate -->
         <verbClass>TitularRoyalty.Verb_TitleGranter</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <commandIcon>UI/Gizmos/givetitleicon</commandIcon>
@@ -76,13 +76,13 @@
       </li>
     </verbs>
     <comps>
-      <li Class="MVCF.Comps.CompProperties_VerbProps">
+      <li Class="MVCF.Comps.CompProperties_VerbProps"> <!-- GRANT TITLES -->
         <compClass>MVCF.Comps.Comp_VerbProps</compClass>
         <ConsiderMelee>true</ConsiderMelee> <!-- If true, it will act like a melee weapon -->
         <verbProps>
           <li>
-            <label>granttitles</label>
-            <visualLabel>Grant Titles</visualLabel> <!-- this doesn't have translate, definjected will be required for translations -->
+            <label>granttitles</label> <!-- Don't Translate, grabs the verb with the same label -->
+            <visualLabel>Grant Titles</visualLabel> <!-- these don't have translate, definjected will probably be required for translations -->
             <description>Use the Scepter of Royalty to grant your pawn a title</description>
             <canBeToggled>false</canBeToggled>
             <graphic>
