@@ -58,12 +58,13 @@
         <hasStandardCommand>true</hasStandardCommand>
         <commandIcon>UI/Gizmos/givetitleicon</commandIcon>
         <warmupTime>0.5</warmupTime>
-        <range>5</range>
+        <range>10 </range>
         <!--<burstShotCount>1</burstShotCount>-->
         <!--<soundAiming>OrbitalTargeter_Aiming</soundAiming>-->
         <!--<soundCast>OrbitalTargeter_Fire</soundCast>-->
         <targetable>true</targetable>
         <violent>false</violent>
+        <isPrimary>false</isPrimary>
         <targetParams>
           <canTargetLocations>false</canTargetLocations>
           <canTargetAnimals>false</canTargetAnimals>

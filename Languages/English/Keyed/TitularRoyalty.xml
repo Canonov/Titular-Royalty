@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-	<!-- Hi Proxyer! -->
+	<!-- Hi Proxyer -->
+
+	<!-- Building Comp Gizmos -->
+	<TR_Command_managetitles_label>Manage Titles</TR_Command_managetitles_label>
+	<TR_Command_managetitles_desc>TBD</TR_Command_managetitles_desc>
 
 	<!-- Title Chooser and Renamer -->
 	<TR_choosetitle>Select a Title</TR_choosetitle>
@@ -11,6 +15,9 @@
 	<TR_invalidmessage>Male Title is Invalid</TR_invalidmessage>
 	<TR_invalidmessage2>Female Title is Invalid</TR_invalidmessage2>
 	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
+
+	<!-- Manage Titles GUI -->
+	<TR_managetitles_title>TBD Title</TR_managetitles_title>
 
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>

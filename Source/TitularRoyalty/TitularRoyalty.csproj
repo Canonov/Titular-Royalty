@@ -74,6 +74,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompProperties_ManageTitles.cs" />
+    <Compile Include="Comp_ManageTitles.cs" />
+    <Compile Include="Dialog_ManageTitles.cs" />
     <Compile Include="Dialog_TitleRenamer.cs" />
     <Compile Include="TR_DebugActions.cs" />
     <Compile Include="TR_DefModExtensions.cs" />
