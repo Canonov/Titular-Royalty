@@ -6,6 +6,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.Noise;
+using static UnityEngine.GraphicsBuffer;
 
 namespace TitularRoyalty
 {
@@ -55,16 +56,17 @@ namespace TitularRoyalty
         private Rect ButtonsRect;
         private Rect LeftButtonRect;
         private Rect RightButtonRect;
+        private Color borderColor = new Color(97, 108, 122);
 
         // CONSTRUCTOR
         public Dialog_ManageTitles()
         {
             doCloseX = true;
             forcePause = true;
-
+            draggable = true;
         }
 
-        private static void DoRow(Rect rect, RoyalTitleDef def)
+        private void DoRow(Rect rect, RoyalTitleDef def)
         {
             // Copied from the Area manager lol
             if (Mouse.IsOver(rect))
@@ -76,8 +78,9 @@ namespace TitularRoyalty
 
             Widgets.BeginGroup(rect);
             WidgetRow widgetRow = new WidgetRow(0f, 0f);
-            widgetRow.Icon(ContentFinder<Texture2D>.Get("UI/Gizmos/givetitleicon"));
             widgetRow.Gap(4f);
+            widgetRow.Icon(Resources.CrownIcon);
+            //widgetRow.Gap(4f);
 
             float width = rect.width - widgetRow.FinalX - 4f - Text.CalcSize("TR_managetitles_rename".Translate()).x - 16f - 4f - Text.CalcSize("TR_managetitles_grant".Translate()).x - 16f - 4f;
             widgetRow.Label(def.GetLabelCapForBothGenders(), width);
@@ -88,7 +91,19 @@ namespace TitularRoyalty
             }
             if (widgetRow.ButtonText("TR_managetitles_grant".Translate()))
             {
-                
+                Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
+                {
+                    if (targetinfo.Pawn.royalty != null)
+                    {
+                        targetinfo.Pawn.royalty.SetTitle(Faction.OfPlayer, def, grantRewards: true, sendLetter: true);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                };
+                Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), action);
+                Close();
             }
            
             Widgets.EndGroup();
@@ -116,13 +131,16 @@ namespace TitularRoyalty
 
             //Title
             TitleRect = new Rect(4, 17, inRect.width - 8, 40);
+            Widgets.DrawBox(TitleRect, -2, BaseContent.GreyTex);
             GenUI.SetLabelAlign(TextAnchor.MiddleCenter);
-            Widgets.LabelFit(TitleRect, "TR_managetitles_title".Translate());
+            Widgets.Label(TitleRect, "TR_managetitles_title".Translate());
+            Widgets.DrawTitleBG(TitleRect);
             GenUI.ResetLabelAlign();
 
             //Box for the Content
             ContentRect = new Rect(4, 57 + 7, inRect.width - 8, (30 * Titles.Count) + 12 + 30 + 6); //old height inRect.height - (57 + 7) - 40
             Widgets.DrawTitleBG(ContentRect);
+            Widgets.DrawBox(ContentRect, -2, BaseContent.GreyTex);
 
             //List of Titles
             TitleList = new Listing_Standard();
@@ -152,7 +170,6 @@ namespace TitularRoyalty
             {
                 Current.Game.GetComponent<GameComponent_TitularRoyalty>().ResetTitles();
                 Messages.Message("TR_managetitles_resetcustom_notif".Translate(), MessageTypeDefOf.NeutralEvent);
-                DoTitleList();
             }
             TooltipHandler.TipRegion(LeftButtonRect, "TR_managetitles_update_tooltip".Translate());
             TooltipHandler.TipRegion(RightButtonRect, "TR_managetitles_resetcustom_tooltip".Translate());
