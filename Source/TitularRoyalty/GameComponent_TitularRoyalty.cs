@@ -270,7 +270,7 @@ namespace TitularRoyalty
 				Log.Message($"Titular Royalty: Loaded TR 1.1 save");
 				this.labelsm = new List<string>();
 				this.labelsf = new List<string>();
-				this.playerTitles =		new List<RoyalTitleDef>();
+				this.playerTitles =	new List<RoyalTitleDef>();
 				ExposeData();
 			}
 		}
@@ -280,62 +280,44 @@ namespace TitularRoyalty
         #region GameComponent Methods
         public void OnGameStart()
         {
+            PopulatePlayerTitles();
+            if (labelsf.Count == 0)
+            {
+                foreach (RoyalTitleDef title in playerTitles)
+                {
+                    if (title.tags.Contains("PlayerTitle"))
+                    {
+                        labelsf.Add("none");
+                    }
+                }
+            }
+            if (labelsm.Count == 0)
+            {
+                foreach (RoyalTitleDef title in playerTitles)
+                {
+                    if (title.tags.Contains("PlayerTitle"))
+                    {
+                        labelsm.Add("none");
+                    }
+                }
+            }
+            ManageTitleLoc();
 
+			Faction.OfPlayer.allowGoodwillRewards = false;
+			Faction.OfPlayer.allowRoyalFavorRewards = false;
         }
+
 
         public override void LoadedGame()
         {
-			PopulatePlayerTitles();
-			if (labelsf.Count == 0)
-			{
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					if (title.tags.Contains("PlayerTitle"))
-					{
-						labelsf.Add("none");
-					}
-				}
-			}
-			if (labelsm.Count == 0)
-			{
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					if (title.tags.Contains("PlayerTitle"))
-					{
-						labelsm.Add("none");
-					}
-				}
-			 }
-			ManageTitleLoc();
-		}
+			OnGameStart();
+        }
 
         public override void StartedNewGame()
         {
-			//ChangeFactionForPermits(Faction.OfPlayer);
-			PopulatePlayerTitles();
-			if (labelsf.Count == 0)
-			{
-				
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					if (title.tags.Contains("PlayerTitle"))
-					{
-						labelsf.Add("none");
-					}
-				}
-			}
-			if (labelsm.Count == 0)
-			{
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					if (title.tags.Contains("PlayerTitle"))
-					{
-						labelsm.Add("none");
-					}
-				}
-			}
-			ManageTitleLoc();
-		}
+			OnGameStart();
+
+        }
         #endregion
     }
 }
