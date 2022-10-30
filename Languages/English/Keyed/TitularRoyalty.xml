@@ -17,7 +17,9 @@
 	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
 
 	<!-- Manage Titles GUI -->
-	<TR_managetitles_title>TBD Title</TR_managetitles_title>
+	<TR_managetitles_title>Title Manager</TR_managetitles_title>
+	<TR_managetitles_rename>Rename</TR_managetitles_rename>
+	<TR_managetitles_grant>Grant</TR_managetitles_grant>
 
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>

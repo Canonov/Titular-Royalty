@@ -39,18 +39,11 @@ namespace TitularRoyalty
             }
         }
 
-        public Dictionary<RoyalTitleDef, int> TitlesBySeniority
+        public List<RoyalTitleDef> TitlesBySeniority
         {
             get
             {
-                Dictionary<RoyalTitleDef, int> titledict = new Dictionary<RoyalTitleDef,int>();
-
-                for (int i = 0; i < Titles.Count; i++)
-                {
-                    titledict.Add(Titles[i], Titles[i].seniority);
-                }
-
-                return titledict;
+                return Titles.OrderBy(o => o.seniority).ToList();
             }
         } 
 
@@ -65,56 +58,70 @@ namespace TitularRoyalty
 
         }
 
+        private static void DoRow(Rect rect, RoyalTitleDef def)
+        {
+            // Copied from the Area manager lol
+            if (Mouse.IsOver(rect))
+            {
+                GUI.color = Color.grey;
+                Widgets.DrawHighlight(rect);
+                GUI.color = Color.white;
+            }
+
+            Widgets.BeginGroup(rect);
+            WidgetRow widgetRow = new WidgetRow(0f, 0f);
+            widgetRow.Icon(ContentFinder<Texture2D>.Get("UI/Gizmos/givetitleicon"));
+            widgetRow.Gap(4f);
+
+            float width = rect.width - widgetRow.FinalX - 4f - Text.CalcSize("TR_managetitles_rename".Translate()).x - 16f - 4f - Text.CalcSize("TR_managetitles_grant".Translate()).x - 16f - 4f;
+            widgetRow.Label(def.GetLabelCapForBothGenders(), width);
+
+            if (widgetRow.ButtonText("TR_managetitles_rename".Translate()))
+            {
+                Find.WindowStack.Add(new Dialog_TitleRenamer(def));
+            }
+            if (widgetRow.ButtonText("TR_managetitles_grant".Translate()))
+            {
+                
+            }
+           
+            Widgets.EndGroup();
+        }
+        
+
         public override void DoWindowContents(Rect inRect)
         {
             Text.Font = GameFont.Medium;
             var buttonSize = CloseButSize;
-            int columnCount = 1;
+            //int columnCount = 1;
 
-            Rect rect = new Rect(inRect).ContractedBy(18f);
-            
+            //Widgets.DrawRectFast(inRect, Color.green);
 
-            //Window Title
-            var titleRect = new Rect(0f, 0f, inRect.width, 30f);
+            var titleRect = new Rect(4, 17, inRect.width - 8, 40);
+            //Widgets.DrawRectFast(titleRect, Color.red);
+            //Widgets.DrawBox(titleRect);
             GenUI.SetLabelAlign(TextAnchor.MiddleCenter);
-            Widgets.Label(titleRect, "TR_managetitles_title".Translate());
+            Widgets.LabelFit(titleRect, "TR_managetitles_title".Translate());
             GenUI.ResetLabelAlign();
 
-            var viewRect = new Rect(0f, 46f, rect.width - 16f, (TitlesBySeniority.Count / 4) * 128f);
-            Widgets.BeginScrollView(rect, ref scrollPosition, viewRect);
-            
+            var contentRect = new Rect(4, 57 + 7, inRect.width - 8, (30 * Titles.Count) + 6); //old height inRect.height - (57 + 7) - 40
+            //Widgets.DrawRectFast(contentRect, Color.gray);
+            Widgets.DrawTitleBG(contentRect);
 
+            Listing_Standard listing_Standard = new Listing_Standard();
+            listing_Standard.ColumnWidth = contentRect.width;
+            listing_Standard.Begin(contentRect);
+            listing_Standard.Gap(6f);
 
-            TooltipHandler.TipRegion(viewRect, $"{nameof(viewRect)}:\n" + $"Bounds: {{x:{viewRect.x} y:{viewRect.y} w:{viewRect.width} h:{viewRect.height}}}");
-            TooltipHandler.TipRegion(titleRect, $"{nameof(titleRect)}:\n" + $"Bounds: {{x:{titleRect.x} y:{titleRect.y} w:{titleRect.width} h:{titleRect.height}}}");
-            TooltipHandler.TipRegion(inRect, $"{nameof(inRect)}:\n" + $"Bounds: {{x:{inRect.x} y:{inRect.y} w:{inRect.width} h:{inRect.height}}}");
-            TooltipHandler.TipRegion(rect, $"{nameof(rect)}:\n" + $"Bounds: {{x:{rect.x} y:{rect.y} w:{rect.width} h:{rect.height}}}");
-
-
-
-            //List
-            int foreachI = 0;
-            foreach (var pair in TitlesBySeniority.OrderBy(p => p.Value))
+            int i = 0;
+            for (int j = 0; j < TitlesBySeniority.Count; j++)
             {
-                RoyalTitleDef title = pair.Key;
-                if (title != null)
-                {
-                    Rect rectIcon = new Rect(
-                        (32 * (foreachI % columnCount)) + 32f,
-                        (32 * (foreachI / columnCount)) + 32f,
-                        125f, 32f);
-
-                    if (Widgets.ButtonText(rectIcon, title.label, drawBackground: true))
-                    {
-
-                    }
-                }
-
-                foreachI++;
+                DoRow(listing_Standard.GetRect(24f), TitlesBySeniority[j]);
+                listing_Standard.Gap(6f);
+                i++;
             }
 
-     
-            Widgets.EndScrollView();
+            listing_Standard.End();
 
         }
     }
