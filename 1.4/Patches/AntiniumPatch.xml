@@ -21,7 +21,7 @@
     <li Class="PatchOperationAdd" MayRequire="mlie.antinium">
       <xpath>/Defs/FactionDef[defName="Ant_AntiniumHivePlayer"]</xpath>
       <value>
-        <royalFavorLabel>Prestige</royalFavorLabel>
+        <royalFavorLabel>Influence</royalFavorLabel>
       </value>
     </li>
 
