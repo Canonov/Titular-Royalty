@@ -74,16 +74,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompProperties_ManageTitles.cs" />
-    <Compile Include="Comp_ManageTitles.cs" />
-    <Compile Include="Dialog_ManageTitles.cs" />
-    <Compile Include="Dialog_TitleRenamer.cs" />
+    <Compile Include="Comps\CompProperties_ManageTitles.cs" />
+    <Compile Include="Comps\Comp_ManageTitles.cs" />
+    <Compile Include="Dialogs\Dialog_ManageTitles.cs" />
+    <Compile Include="Dialogs\Dialog_TitleRenamer.cs" />
     <Compile Include="TR_DebugActions.cs" />
     <Compile Include="TR_DefModExtensions.cs" />
-    <Compile Include="Dialog_ChooseTitles.cs" />
+    <Compile Include="Dialogs\Dialog_ChooseTitles.cs" />
     <Compile Include="GameComponent_TitularRoyalty.cs" />
     <Compile Include="TR_ModSettings.cs" />
-    <Compile Include="Verb_TitleGranter.cs" />
+    <Compile Include="Commands\Verb_TitleGranter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

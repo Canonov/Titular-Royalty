@@ -5,16 +5,18 @@ using System.Reflection.Emit;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Noise;
 
 namespace TitularRoyalty
 {
 
     public class Dialog_ManageTitles : Window
     {
-        private Vector2 scrollPosition = new Vector2(0, 0);
+        // WINDOW OPTIONS
+        public Vector2 scrollPosition = new Vector2(0, 0); 
         public override Vector2 InitialSize => new Vector2(400, 700);
 
-
+        // TITLE LISTS
         public List<RoyalTitleDef> Titles
         {
             get
@@ -38,23 +40,27 @@ namespace TitularRoyalty
                 return titles;
             }
         }
-
         public List<RoyalTitleDef> TitlesBySeniority
         {
             get
             {
                 return Titles.OrderBy(o => o.seniority).ToList();
             }
-        } 
+        }
 
+        // Variables for Updating and Setting the Lists
+        private Listing_Standard TitleList;
+        private Rect ContentRect;
+        private Rect TitleRect;
+        private Rect ButtonsRect;
+        private Rect LeftButtonRect;
+        private Rect RightButtonRect;
 
+        // CONSTRUCTOR
         public Dialog_ManageTitles()
         {
-            //optionalTitle = "TR_managetitles_title".Translate();
             doCloseX = true;
             forcePause = true;
-            //doCloseButton = true;
-
 
         }
 
@@ -87,41 +93,70 @@ namespace TitularRoyalty
            
             Widgets.EndGroup();
         }
+
+        public void DoTitleList()
+        {
+            TitleList.Begin(ContentRect);
+            TitleList.Gap(6f);
+
+            for (int j = 0; j < TitlesBySeniority.Count; j++)
+            {
+                DoRow(TitleList.GetRect(24f), TitlesBySeniority[j]);
+                TitleList.Gap(6f);
+            }
+
+            TitleList.Gap(6f);
+            TitleList.End();
+        }
         
 
         public override void DoWindowContents(Rect inRect)
         {
             Text.Font = GameFont.Medium;
-            var buttonSize = CloseButSize;
-            //int columnCount = 1;
 
-            //Widgets.DrawRectFast(inRect, Color.green);
-
-            var titleRect = new Rect(4, 17, inRect.width - 8, 40);
-            //Widgets.DrawRectFast(titleRect, Color.red);
-            //Widgets.DrawBox(titleRect);
+            //Title
+            TitleRect = new Rect(4, 17, inRect.width - 8, 40);
             GenUI.SetLabelAlign(TextAnchor.MiddleCenter);
-            Widgets.LabelFit(titleRect, "TR_managetitles_title".Translate());
+            Widgets.LabelFit(TitleRect, "TR_managetitles_title".Translate());
             GenUI.ResetLabelAlign();
 
-            var contentRect = new Rect(4, 57 + 7, inRect.width - 8, (30 * Titles.Count) + 6); //old height inRect.height - (57 + 7) - 40
-            //Widgets.DrawRectFast(contentRect, Color.gray);
-            Widgets.DrawTitleBG(contentRect);
+            //Box for the Content
+            ContentRect = new Rect(4, 57 + 7, inRect.width - 8, (30 * Titles.Count) + 12 + 30 + 6); //old height inRect.height - (57 + 7) - 40
+            Widgets.DrawTitleBG(ContentRect);
 
-            Listing_Standard listing_Standard = new Listing_Standard();
-            listing_Standard.ColumnWidth = contentRect.width;
-            listing_Standard.Begin(contentRect);
-            listing_Standard.Gap(6f);
+            //List of Titles
+            TitleList = new Listing_Standard();
+            TitleList.ColumnWidth = ContentRect.width;
 
-            int i = 0;
-            for (int j = 0; j < TitlesBySeniority.Count; j++)
+            //Buttom 3 Buttons - Update Titles, 
+            ButtonsRect = new Rect(ContentRect.xMin, ContentRect.yMax - 36, ContentRect.width, 30);
+            //Widgets.DrawBoxSolid(buttonsRect, Color.red);
+            //Widgets.BeginGroup(buttonsRect);
+
+            LeftButtonRect = ButtonsRect.LeftHalf();
+            LeftButtonRect.width -= 18;
+            LeftButtonRect.x += 6;
+            RightButtonRect = ButtonsRect.RightHalf();
+            RightButtonRect.width -= 18;
+            RightButtonRect.x += 12 - 6;
+
+            DoTitleList();
+
+            if (Widgets.ButtonText(LeftButtonRect, "TR_managetitles_update".Translate()))
             {
-                DoRow(listing_Standard.GetRect(24f), TitlesBySeniority[j]);
-                listing_Standard.Gap(6f);
-                i++;
+                Current.Game.GetComponent<GameComponent_TitularRoyalty>().ManageTitleLoc();
+                Messages.Message("TR_managetitles_update_notif".Translate(), MessageTypeDefOf.NeutralEvent);
+                DoTitleList();
             }
-
-            listing_Standard.End();
+            if (Widgets.ButtonText(RightButtonRect, "TR_managetitles_resetcustom".Translate()))
+            {
+                Current.Game.GetComponent<GameComponent_TitularRoyalty>().ResetTitles();
+                Messages.Message("TR_managetitles_resetcustom_notif".Translate(), MessageTypeDefOf.NeutralEvent);
+                DoTitleList();
+            }
+            TooltipHandler.TipRegion(LeftButtonRect, "TR_managetitles_update_tooltip".Translate());
+            TooltipHandler.TipRegion(RightButtonRect, "TR_managetitles_resetcustom_tooltip".Translate());
+            //Widgets.EndGroup();
 
         }
     }

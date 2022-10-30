@@ -89,7 +89,8 @@ namespace TitularRoyalty
 				if (labelsm[titleIndex] != "none")
 				{
 					title.label = labelsm[titleIndex];
-					return;
+                    title.ClearCachedData(); //Clear the cached label
+                    return;
 				}
             }
 			else
@@ -122,10 +123,7 @@ namespace TitularRoyalty
                     }
                 }
             }
-
-			//Clear the cached label
-            title.ClearCachedData();
-
+            title.ClearCachedData(); //Clear the cached label
         }
 
 		/// <summary>
@@ -152,10 +150,6 @@ namespace TitularRoyalty
 							break;
                         case "Roman (Alt)":
                             break;
-                        case "Caliphate":
-							break;
-						case "Sultanate":
-							break;
 						default:
 							Log.Message("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
 							LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType = "Kingdom";

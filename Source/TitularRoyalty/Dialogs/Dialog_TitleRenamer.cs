@@ -30,7 +30,7 @@ namespace TitularRoyalty
             invalidNameMessageKey = "TR_invalidmessage";
             secondNameMessageKey = "TR_namemessage2";
             invalidSecondNameMessageKey = "TR_invalidmessage2";
-            gainedNameMessageKey = "TR_changedtitle";
+            gainedNameMessageKey = "TR_changedtitle2";
 
             useSecondName = true;
 

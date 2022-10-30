@@ -26,7 +26,6 @@ namespace TitularRoyalty
 
                 manage_titles.action = delegate
                 {
-                    Log.Message("Test");
                     Dialog_ManageTitles window = new Dialog_ManageTitles();
                     Find.WindowStack.Add(window);
                 };

@@ -14,12 +14,20 @@
 	<TR_namemessage2>Female Title (Remove to disable and use male title for both)</TR_namemessage2>
 	<TR_invalidmessage>Male Title is Invalid</TR_invalidmessage>
 	<TR_invalidmessage2>Female Title is Invalid</TR_invalidmessage2>
-	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
+	<TR_changedtitle2>Title has been changed.</TR_changedtitle2>
 
 	<!-- Manage Titles GUI -->
 	<TR_managetitles_title>Title Manager</TR_managetitles_title>
 	<TR_managetitles_rename>Rename</TR_managetitles_rename>
 	<TR_managetitles_grant>Grant</TR_managetitles_grant>
+
+	<TR_managetitles_update>Update Titles</TR_managetitles_update>
+	<TR_managetitles_update_notif>Titles have been updated</TR_managetitles_update_notif>
+	<TR_managetitles_update_tooltip>Refreshes the title cache and applies your changes, also applies realmtype if you've changed the settings.</TR_managetitles_update_tooltip>
+
+	<TR_managetitles_resetcustom>Reset Titles</TR_managetitles_resetcustom>
+	<TR_managetitles_resetcustom_notif>Custom Titles have been reset, click Update Titles to refresh the list.</TR_managetitles_resetcustom_notif>
+	<TR_managetitles_resetcustom_tooltip>Resets all custom titles back to their normal names</TR_managetitles_resetcustom_tooltip>
 
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>
@@ -30,5 +38,6 @@
 
 	<!-- LEFT IN FOR 1.3 -->
 	<Verb_TitleGranter>Grant Title</Verb_TitleGranter> <!-- Verb Name -->
+	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
 
 </LanguageData>
