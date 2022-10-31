@@ -297,7 +297,7 @@ namespace TitularRoyalty
             }
             ManageTitleLoc();
 
-			//Faction.OfPlayer.allowGoodwillRewards = false;
+			Faction.OfPlayer.allowGoodwillRewards = false;
 			Faction.OfPlayer.allowRoyalFavorRewards = false;
         }
 

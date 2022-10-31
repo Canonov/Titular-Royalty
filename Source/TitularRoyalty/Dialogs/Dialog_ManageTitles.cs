@@ -18,30 +18,23 @@ namespace TitularRoyalty
         public override Vector2 InitialSize => new Vector2(400, 700);
 
         // TITLE LISTS
-        public List<RoyalTitleDef> Titles
+        public List<PlayerTitleDef> Titles
         {
             get
             {
-                List<RoyalTitleDef> titles = new List<RoyalTitleDef>();
-                foreach (RoyalTitleDef v in DefDatabase<RoyalTitleDef>.AllDefsListForReading)
+                List<PlayerTitleDef> titles = new List<PlayerTitleDef>();
+                foreach (PlayerTitleDef v in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
                 {
-                    //Log.Message($"Defname: {v.ToString()} Label: {v.label}");
-                    /*foreach (var li in v.tags)
-                    {
-                        if (li.Contains("PlayerTitle"))
-                        {
-                            seniorityTitles.Add(v, v.seniority);
-                        }
-                    }*/
-                    if (v.HasModExtension<AlternateTitlesExtension>() && v.tags.Contains("PlayerTitle"))
+                    titles.Add(v);
+                    /*if (v.HasModExtension<AlternateTitlesExtension>() && v.tags.Contains("PlayerTitle"))
                     {
                         titles.Add(v);
-                    }
+                    }*/
                 }
                 return titles;
             }
         }
-        public List<RoyalTitleDef> TitlesBySeniority
+        public List<PlayerTitleDef> TitlesBySeniority
         {
             get
             {
@@ -66,7 +59,12 @@ namespace TitularRoyalty
             draggable = true;
         }
 
-        private void DoRow(Rect rect, RoyalTitleDef def)
+        /// <summary>
+        /// Creates a new row for a title
+        /// </summary>
+        /// <param name="rect">Rect to draw on</param>
+        /// <param name="def">Def to display information for</param>
+        private void DoRow(Rect rect, PlayerTitleDef def)
         {
             // Copied from the Area manager lol
             if (Mouse.IsOver(rect))
@@ -79,17 +77,17 @@ namespace TitularRoyalty
             Widgets.BeginGroup(rect);
             WidgetRow widgetRow = new WidgetRow(0f, 0f);
             widgetRow.Gap(4f);
-            widgetRow.Icon(Resources.CrownIcon);
+            widgetRow.Icon(Resources.TitleTierIcons[(int)def.titleTier]);
             //widgetRow.Gap(4f);
 
             float width = rect.width - widgetRow.FinalX - 4f - Text.CalcSize("TR_managetitles_rename".Translate()).x - 16f - 4f - Text.CalcSize("TR_managetitles_grant".Translate()).x - 16f - 4f;
-            widgetRow.Label(def.GetLabelCapForBothGenders(), width);
+            widgetRow.Label(def.GetLabelCapForBothGenders(), width, def.GetLabelCapForBothGenders());
 
-            if (widgetRow.ButtonText("TR_managetitles_rename".Translate()))
+            if (widgetRow.ButtonText("TR_managetitles_rename".Translate())) // Rename Button, opens the title renamer
             {
                 Find.WindowStack.Add(new Dialog_TitleRenamer(def));
             }
-            if (widgetRow.ButtonText("TR_managetitles_grant".Translate()))
+            if (widgetRow.ButtonText("TR_managetitles_grant".Translate())) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
             {
                 Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
                 {
@@ -109,6 +107,9 @@ namespace TitularRoyalty
             Widgets.EndGroup();
         }
 
+        /// <summary>
+        /// (Re)loads the title list
+        /// </summary>
         public void DoTitleList()
         {
             TitleList.Begin(ContentRect);
@@ -124,7 +125,9 @@ namespace TitularRoyalty
             TitleList.End();
         }
         
-
+        /// <summary>
+        /// Draw the UI
+        /// </summary>
         public override void DoWindowContents(Rect inRect)
         {
             Text.Font = GameFont.Medium;

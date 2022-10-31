@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-//using System.Reflection;
-//using System.Reflection.Emit;
+using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
 using SettingsHelper;
-//using HarmonyLib;
+using HarmonyLib;
 
 namespace TitularRoyalty
 {
@@ -33,7 +33,7 @@ namespace TitularRoyalty
 
             // Harmony Stuff
             //var harmony = new Harmony("com.TitularRoyalty.patches");
-
+            //harmony.PatchAll();
         }
 
         public static string[] realmTypes = { "Kingdom", "Empire", "Roman", "Roman (Alt)" };

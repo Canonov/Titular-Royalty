@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-    <RoyalTitleDef Abstract="True" Name="BasePlayerTitle">
+    <TitularRoyalty.PlayerTitleDef Abstract="True" Name="BasePlayerTitle">
         <tags>
             <li>PlayerTitle</li>
         </tags>
         <awardThought>GainedTitle</awardThought>
         <lostThought>LostTitle</lostThought>
-    </RoyalTitleDef>
+    </TitularRoyalty.PlayerTitleDef>
 
     <!-- Lowest Level -->
-    <RoyalTitleDef Name="TitularRoyalty_BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
         <favorCost>100</favorCost>
         <canBeInherited>False</canBeInherited>
         <changeHeirQuestPoints>1000</changeHeirQuestPoints>
         <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
         <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
-    </RoyalTitleDef>
+
+        <titleTier>Lowborn</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
 
     <!-- The Gentry -->
-    <RoyalTitleDef Name="TitularRoyalty_BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
         <favorCost>100</favorCost>
         <canBeInherited>False</canBeInherited>
         <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -26,10 +28,12 @@
         <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
         <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
         <minExpectation>Moderate</minExpectation>
-    </RoyalTitleDef>
+
+        <titleTier>Gentry</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
 
     <!-- Baronet Plus -->
-    <RoyalTitleDef Name="TitularRoyalty_BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
         <favorCost>100</favorCost>
         <canBeInherited>False</canBeInherited>
         <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -37,11 +41,13 @@
         <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
         <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
         <minExpectation>High</minExpectation>
-    </RoyalTitleDef>
+
+        <titleTier>LowNoble</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
 
 
     <!-- Count Level -->
-    <RoyalTitleDef Name="TitularRoyalty_BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
         <favorCost>100</favorCost>
         <canBeInherited>False</canBeInherited>
         <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -69,11 +75,13 @@
                 <li>RawBerries</li>
             </allowedDefs>
         </foodRequirement>
-    </RoyalTitleDef>
+
+        <titleTier>LowNoble</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
 
 
     <!-- Duke Level -->
-    <RoyalTitleDef Name="TitularRoyalty_BaseTitleDukePlus" ParentName="BasePlayerTitle" Abstract="True">
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleDukePlus" ParentName="BasePlayerTitle" Abstract="True">
         <favorCost>100</favorCost>
         <canBeInherited>False</canBeInherited>
         <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -119,10 +127,12 @@
                 <impressiveness>45</impressiveness>
             </li>
         </throneRoomRequirements>
-    </RoyalTitleDef>
+
+        <titleTier>HighNoble</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
 
     <!-- Family of the King / Emperor -->
-    <RoyalTitleDef Name="TitularRoyalty_BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
         <favorCost>100</favorCost>
         <canBeInherited>False</canBeInherited>
         <changeHeirQuestPoints>1000</changeHeirQuestPoints>
@@ -144,5 +154,7 @@
                 <li>RawBerries</li>
             </allowedDefs>
         </foodRequirement>
-    </RoyalTitleDef>
+
+        <titleTier>Royalty</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
 </Defs>

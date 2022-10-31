@@ -3,7 +3,7 @@
   <!-- ================= The Peasantry ============================= -->
 
   <!-- Freeman -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Freeman</defName>
     <label>Freeholder</label>
     <description>No Description.</description>
@@ -43,10 +43,10 @@
       </li>
 
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Yeoman -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Yeoman</defName>
     <label>Yeoman</label>
     <description>No Description.</description>
@@ -85,11 +85,11 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- ================= The Gentry  ============================= -->
   <!-- Gentleman -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Gentleman</defName>
     <label>Gentleman</label>
     <labelFemale>Lady</labelFemale>
@@ -129,10 +129,10 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Squire -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleLow">
     <defName>TitularRoyalty_T_LR_Squire</defName>
     <label>Squire</label>
     <description>No Description.</description>
@@ -171,10 +171,10 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Esquire -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Esquire</defName>
     <label>Esquire</label>
     <description>No Description.</description>
@@ -213,10 +213,10 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Knight -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Knight</defName>
     <label>Knight</label>
     <labelFemale>Dame</labelFemale>
@@ -256,10 +256,10 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Knight-Bannerete -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Bannerete</defName>
     <label>Knight-banneret</label>
     <labelFemale>none</labelFemale>
@@ -299,10 +299,10 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Knight-Commander -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Knight_Commander</defName>
     <label>Lord Commander</label>
     <labelFemale>Lady Commander</labelFemale>
@@ -342,11 +342,11 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
 
   <!-- Baronet -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
     <defName>TitularRoyalty_T_MR_Baronet</defName>
     <label>Baronet</label>
     <labelFemale>Baronetess</labelFemale>
@@ -387,12 +387,12 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- ================= Low Nobility ============================ -->
 
   <!-- Baron -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
     <defName>TitularRoyalty_T_HR_Baron</defName>
     <label>Baron</label>
     <labelFemale>Baroness</labelFemale>
@@ -432,10 +432,10 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Viscount -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
     <defName>TitularRoyalty_T_HR_Viscount</defName>
     <label>Viscount</label>
     <labelFemale>Viscountess</labelFemale>
@@ -475,12 +475,12 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- ================= High Nobility ============================ -->
 
   <!-- Count -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
     <defName>TitularRoyalty_T_HR_Count</defName>
     <label>Count</label>
     <labelFemale>Countess</labelFemale>
@@ -521,10 +521,10 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Duke -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_HR_Duke</defName>
     <label>Duke</label>
     <labelFemale>Duchess</labelFemale>
@@ -564,10 +564,10 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Arch Duke -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_HR_Archduke</defName>
     <label>Archduke</label>
     <labelFemale>Archduchess</labelFemale>
@@ -613,12 +613,12 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- ================= Royalty ============================ -->
 
   <!-- Prince -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
     <defName>TitularRoyalty_T_RY_Prince</defName>
     <label>Prince</label>
     <labelFemale>Princess</labelFemale>
@@ -658,10 +658,10 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Crown Prince -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
     <defName>TitularRoyalty_T_RY_CrownPrince</defName>
     <label>Crown Prince</label>
     <labelFemale>Crown Princess</labelFemale>
@@ -701,10 +701,12 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+
+    <titleTier>Royalty</titleTier>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- Consort -->
-  <RoyalTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
     <defName>TitularRoyalty_T_RY_Consort</defName>
     <label>Prince Consort</label>
     <labelFemale>Queen</labelFemale>
@@ -744,11 +746,11 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
   <!-- King -->
 
-  <RoyalTitleDef ParentName="BasePlayerTitle">
+  <TitularRoyalty.PlayerTitleDef ParentName="BasePlayerTitle">
     <defName>TitularRoyalty_T_RY_King</defName>
     <label>King</label>
     <labelFemale>Queen</labelFemale>
@@ -800,6 +802,8 @@
       </li>
     </throneRoomRequirements>
 
+    <titleTier>Sovereign</titleTier>
+
     <modExtensions>
       <!-- Alternate Titles -->
       <li Class="TitularRoyalty.AlternateTitlesExtension">
@@ -835,6 +839,6 @@
         <labelf>Emperor</labelf>
       </li>
     </modExtensions>
-  </RoyalTitleDef>
+  </TitularRoyalty.PlayerTitleDef>
 
 </Defs>

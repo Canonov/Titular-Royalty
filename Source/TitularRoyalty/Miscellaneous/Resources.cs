@@ -18,22 +18,18 @@ namespace TitularRoyalty
     }
 
     [StaticConstructorOnStartup]
-    public static class Resources
+    public class Resources
     {
-        public static readonly Texture2D CrownIcon;
-        public static readonly List<Texture2D> TitleTierIcons;
-
-        static Resources()
+        public static readonly Texture2D CrownIcon = ContentFinder<Texture2D>.Get("UI/Gizmos/givetitleicon");
+        public static readonly Texture2D[] TitleTierIcons =
         {
-            CrownIcon = ContentFinder<Texture2D>.Get("UI/Gizmos/givetitleicon");
+            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon0"),
+            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon1"),
+            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon2"),
+            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon3"),
+            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon4"),
+            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon5")
+        };
 
-            //Todo add custom tier icons
-            var titletierplaceholder = ContentFinder<Texture2D>.Get("UI/Gizmos/givetitleicon");
-            TitleTierIcons = new List<Texture2D>();
-            for (int i = 0; i <= 5; i++)
-            {
-                TitleTierIcons.Add(titletierplaceholder);
-            }
-        }
     }
 }

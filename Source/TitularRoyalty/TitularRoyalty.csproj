@@ -81,6 +81,7 @@
     <Compile Include="Dialogs\Dialog_TitleRenamer.cs" />
     <Compile Include="Miscellaneous\Resources.cs" />
     <Compile Include="Defs\PlayerTitleDef.cs" />
+    <Compile Include="Patches\FactionDef_HasRoyalTitles_FalseIfPlayer_Patch.cs" />
     <Compile Include="TR_DebugActions.cs" />
     <Compile Include="TR_DefModExtensions.cs" />
     <Compile Include="Dialogs\Dialog_ChooseTitles.cs" />
