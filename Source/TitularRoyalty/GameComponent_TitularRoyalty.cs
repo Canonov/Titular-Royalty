@@ -67,7 +67,6 @@ namespace TitularRoyalty
 			// Custom Titles
 			if (titleIndex >= 0)
             {
-
 				// Female Title
 				if (labelsf[titleIndex] != "none")
                 {
@@ -90,10 +89,10 @@ namespace TitularRoyalty
 				if (labelsm[titleIndex] != "none")
 				{
 					title.label = labelsm[titleIndex];
-					return;
+                    title.ClearCachedData(); //Clear the cached label
+                    return;
 				}
-				
-			}
+            }
 			else
             {
 				Log.Error("Titular Royalty: Failed DoTitleChange()");
@@ -124,7 +123,7 @@ namespace TitularRoyalty
                     }
                 }
             }
-
+            title.ClearCachedData(); //Clear the cached label
         }
 
 		/// <summary>
@@ -139,7 +138,7 @@ namespace TitularRoyalty
             {
 				if (realmType != null)
 				{
-					Log.Message(realmType);
+					//Log.Message(realmType);
 
 					switch (realmType)
 					{
@@ -151,10 +150,6 @@ namespace TitularRoyalty
 							break;
                         case "Roman (Alt)":
                             break;
-                        case "Caliphate":
-							break;
-						case "Sultanate":
-							break;
 						default:
 							Log.Message("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
 							LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType = "Kingdom";
@@ -269,7 +264,7 @@ namespace TitularRoyalty
 				Log.Message($"Titular Royalty: Loaded TR 1.1 save");
 				this.labelsm = new List<string>();
 				this.labelsf = new List<string>();
-				this.playerTitles =		new List<RoyalTitleDef>();
+				this.playerTitles =	new List<RoyalTitleDef>();
 				ExposeData();
 			}
 		}
@@ -279,62 +274,44 @@ namespace TitularRoyalty
         #region GameComponent Methods
         public void OnGameStart()
         {
+            PopulatePlayerTitles();
+            if (labelsf.Count == 0)
+            {
+                foreach (RoyalTitleDef title in playerTitles)
+                {
+                    if (title.tags.Contains("PlayerTitle"))
+                    {
+                        labelsf.Add("none");
+                    }
+                }
+            }
+            if (labelsm.Count == 0)
+            {
+                foreach (RoyalTitleDef title in playerTitles)
+                {
+                    if (title.tags.Contains("PlayerTitle"))
+                    {
+                        labelsm.Add("none");
+                    }
+                }
+            }
+            ManageTitleLoc();
 
+			Faction.OfPlayer.allowGoodwillRewards = false;
+			Faction.OfPlayer.allowRoyalFavorRewards = false;
         }
+
 
         public override void LoadedGame()
         {
-			PopulatePlayerTitles();
-			if (labelsf.Count == 0)
-			{
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					if (title.tags.Contains("PlayerTitle"))
-					{
-						labelsf.Add("none");
-					}
-				}
-			}
-			if (labelsm.Count == 0)
-			{
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					if (title.tags.Contains("PlayerTitle"))
-					{
-						labelsm.Add("none");
-					}
-				}
-			 }
-			ManageTitleLoc();
-		}
+			OnGameStart();
+        }
 
         public override void StartedNewGame()
         {
-			//ChangeFactionForPermits(Faction.OfPlayer);
-			PopulatePlayerTitles();
-			if (labelsf.Count == 0)
-			{
-				
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					if (title.tags.Contains("PlayerTitle"))
-					{
-						labelsf.Add("none");
-					}
-				}
-			}
-			if (labelsm.Count == 0)
-			{
-				foreach (RoyalTitleDef title in playerTitles)
-				{
-					if (title.tags.Contains("PlayerTitle"))
-					{
-						labelsm.Add("none");
-					}
-				}
-			}
-			ManageTitleLoc();
-		}
+			OnGameStart();
+
+        }
         #endregion
     }
 }

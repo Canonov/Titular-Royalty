@@ -10,7 +10,7 @@ namespace TitularRoyalty {
 	public static class DebugActionsTitularRoyalty
 	{
 
-		[DebugAction("Mods", "TR: Try to change title", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+		[DebugAction("Mods", "TR: Rename Title", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
 		private static void TryChangeCustomTitle()
 		{
 			List<DebugMenuOption> list = new List<DebugMenuOption>();
@@ -31,6 +31,12 @@ namespace TitularRoyalty {
 		private static void TryResetCustomTitles()
 		{
 			Current.Game.GetComponent<GameComponent_TitularRoyalty>().ResetTitles();
+		}
+
+        [DebugAction("Mods", "TR: Refresh Titles", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        private static void UpdateTitles()
+		{
+			Current.Game.GetComponent<GameComponent_TitularRoyalty>().ManageTitleLoc();
 		}
 	}
 
