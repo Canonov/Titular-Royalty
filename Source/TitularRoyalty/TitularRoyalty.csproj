@@ -76,10 +76,11 @@
   <ItemGroup>
     <Compile Include="Comps\CompProperties_ManageTitles.cs" />
     <Compile Include="Comps\Comp_ManageTitles.cs" />
+    <Compile Include="Defs\TitleParams.cs" />
     <Compile Include="Dialogs\Dialog_ManageTitles.cs" />
     <Compile Include="Dialogs\Dialog_TitleRenamer.cs" />
     <Compile Include="Miscellaneous\Resources.cs" />
-    <Compile Include="PlayerTitleDef.cs" />
+    <Compile Include="Defs\PlayerTitleDef.cs" />
     <Compile Include="TR_DebugActions.cs" />
     <Compile Include="TR_DefModExtensions.cs" />
     <Compile Include="Dialogs\Dialog_ChooseTitles.cs" />
