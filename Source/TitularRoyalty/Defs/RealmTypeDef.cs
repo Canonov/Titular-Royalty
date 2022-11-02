@@ -10,6 +10,13 @@ namespace TitularRoyalty
     public class RealmTypeDef : Def
     {
         public RealmTypeDef inheritsFrom;
+        public bool HasParent
+        {
+            get
+            {
+                return inheritsFrom != null;
+            }
+        }
 
         [NoTranslate]
         public string SaveID;
