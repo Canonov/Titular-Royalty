@@ -15,6 +15,6 @@ namespace TitularRoyalty
             get { return Resources.TitleTierIcons[(int)titleTier]; }
         }
 
-        public List<AlternateTitleParams> AlternateTitles = new List<AlternateTitleParams>();
+        public List<RealmType> AlternateTitles = new List<RealmType>();
     }
 }
