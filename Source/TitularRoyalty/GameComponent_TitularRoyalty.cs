@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace TitularRoyalty
 {
+	/// This really needs a rewrite it's kinda a mess
     public class GameComponent_TitularRoyalty : GameComponent
     {	
 		// Labels and PlayerTitles lists
