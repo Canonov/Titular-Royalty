@@ -13,5 +13,7 @@ namespace TitularRoyalty
 
         public string label;
         public string labelFemale = "none";
+
+        public TitleTiers tierOverride;
     }
 }
