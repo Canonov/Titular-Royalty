@@ -6,12 +6,13 @@ using System.Linq;
 
 namespace TitularRoyalty
 {
+	/// This really needs a rewrite it's kinda a mess
     public class GameComponent_TitularRoyalty : GameComponent
     {	
 		// Labels and PlayerTitles lists
 		public List<string> labelsm = new List<string>();
 		public List<string> labelsf = new List<string>();
-		public List<RoyalTitleDef> playerTitles = new List<RoyalTitleDef>();
+        public List<RoyalTitleDef> playerTitles = new List<RoyalTitleDef>();
 
 		public GameComponent_TitularRoyalty(Game game) // Needs this or else Rimworld throws a fit and errors.
         {
@@ -21,22 +22,17 @@ namespace TitularRoyalty
 		/// <summary>
 		/// Adds all the TitleDefs that are meant for the player to a list
 		/// </summary>
-		public void PopulatePlayerTitles()
+		public void PopulateTitleList()
         {
-			Log.Message("Titular Royalty: Populating Titlelist");
+			//Log.Message("Titular Royalty: Populating Titlelist");
 			if (playerTitles.Count > 0)
             {
 				playerTitles.Clear();
             }
 
-			foreach (RoyalTitleDef title in DefDatabase<RoyalTitleDef>.AllDefsListForReading.OrderBy(x => x.seniority) )
+			foreach (PlayerTitleDef title in DefDatabase<PlayerTitleDef>.AllDefsListForReading.OrderBy(x => x.seniority) )
             {
-				//Log.Message($"Populate Player Titles: {title.defName}, {title.seniority}");
-				if (title.tags.Contains("PlayerTitle"))
-                {
-					playerTitles.Add(title);
-                }
-
+				playerTitles.Add(title);
 			}
 
 		}
@@ -178,7 +174,6 @@ namespace TitularRoyalty
 
 		}
 
-        #region SaveData
         /// <summary>
         /// Changes a title name of the given seniority and gender
         /// </summary>
@@ -235,22 +230,16 @@ namespace TitularRoyalty
 
 				if (labelsf.Count == 0)
 				{
-					foreach (RoyalTitleDef title in playerTitles)
+					foreach (PlayerTitleDef title in playerTitles)
 					{
-						if (title.tags.Contains("PlayerTitle"))
-						{
-							labelsf.Add("none");
-						}
+                        labelsf.Add("none");
 					}
 				}
 				if (labelsm.Count == 0)
 				{
-					foreach (RoyalTitleDef title in playerTitles)
+					foreach (PlayerTitleDef title in playerTitles)
 					{
-						if (title.tags.Contains("PlayerTitle"))
-						{
-							labelsm.Add("none");
-						}
+                        labelsm.Add("none");
 					}
 				}
 				base.ExposeData();
@@ -268,13 +257,11 @@ namespace TitularRoyalty
 				ExposeData();
 			}
 		}
-        #endregion
-
 
         #region GameComponent Methods
         public void OnGameStart()
         {
-            PopulatePlayerTitles();
+            PopulateTitleList();
             if (labelsf.Count == 0)
             {
                 foreach (RoyalTitleDef title in playerTitles)

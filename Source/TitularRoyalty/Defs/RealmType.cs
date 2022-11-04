@@ -7,12 +7,13 @@ using UnityEngine;
 
 namespace TitularRoyalty
 {
-    public class AlternateTitleParams
+    public class RealmType
     {
-        [NoTranslate]
-        public string realmType;
+        public RealmTypeDef realmTypeDef;
 
         public string label;
         public string labelFemale = "none";
+
+        public TitleTiers tierOverride;
     }
 }

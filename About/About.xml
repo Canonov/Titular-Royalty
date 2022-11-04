@@ -16,6 +16,15 @@
   <loadAfter>
     <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
   </loadAfter>
-  <description>Adds titles to the player faction you can grant to your pawns with the Staff of Royalty \n(VERSION 1.1): Custom Titlelists\n(VERSION 1.2): Custom Titles Support\n(VERSION 1.2.1): Extra Debug Logging\n(VERSION 1.2.2): Patched the Antinium Mod\n(VERSION 1.3): Added Support for 1.4 and alternate Roman Titles\n(VERSION 1.4): Added the Title Manager GUI available on any Vanilla Throne to rename your titles and containing an alternative way to grant them\nAlso allows you to change realm types and custom titles without reloading your colony by pressing the update button in the title manager.\n(VERSION 1.4.1) Vanilla Expanded Framework is no longer Required.
+  <description>Adds titles to the player faction you can grant to your pawns with the Staff of Royalty
+
+    (VERSION 1.1)\n- Custom Titlelists
+    (VERSION 1.2)\n- Custom Titles Support
+    (VERSION 1.2.1)\n- Extra Debug Logging
+    (VERSION 1.2.2)\n- Patched the Antinium Mod
+    (VERSION 1.3)\n- Added Support for 1.4 and alternate Roman Titles
+    (VERSION 1.4)\n- Added the Title Manager GUI available on any Vanilla Throne to rename your titles and containing an alternative way to grant them \n- Also allows you to change realm types and custom titles without reloading your colony by pressing the update button in the title manager.
+    (VERSION 1.4.1)\n- Vanilla Expanded Framework is no longer Required.
+    (VERSION 1.4.2)\n- Fixed not being able to attack with melee weapons\n- Better Consort display for the grant titles with staff GUI
 </description>
 </ModMetaData>

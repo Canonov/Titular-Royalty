@@ -72,7 +72,9 @@
   <ItemGroup>
     <Compile Include="Comps\CompProperties_ManageTitles.cs" />
     <Compile Include="Comps\Comp_ManageTitles.cs" />
-    <Compile Include="Defs\AlternateTitleParams.cs" />
+    <Compile Include="Defs\PlayerTitleDefOf.cs" />
+    <Compile Include="Defs\RealmType.cs" />
+    <Compile Include="Defs\RealmTypeDef.cs" />
     <Compile Include="Dialogs\Dialog_ManageTitles.cs" />
     <Compile Include="Dialogs\Dialog_TitleRenamer.cs" />
     <Compile Include="Miscellaneous\Resources.cs" />
