@@ -68,22 +68,6 @@
       </li>
     </verbs>
     <comps>
-      <li Class="MVCF.Comps.CompProperties_VerbProps" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core"> <!-- GRANT TITLES -->
-        <compClass>MVCF.Comps.Comp_VerbProps</compClass>
-        <ConsiderMelee>true</ConsiderMelee> <!-- If true, it will act like a melee weapon -->
-        <verbProps>
-          <li>
-            <label>granttitles</label> <!-- Don't Translate, grabs the verb with the same label -->
-            <visualLabel>Grant Titles</visualLabel> <!-- these don't have translate, definjected will probably be required for translations -->
-            <description>Use the Scepter of Royalty to grant your pawn a title</description>
-            <canBeToggled>false</canBeToggled>
-            <graphic>
-              <texPath>UI/Gizmos/givetitleicon</texPath>
-              <graphicClass>Graphic_Single</graphicClass>
-            </graphic>
-          </li>
-        </verbProps>
-      </li>
     </comps>
   </ThingDef>
 
