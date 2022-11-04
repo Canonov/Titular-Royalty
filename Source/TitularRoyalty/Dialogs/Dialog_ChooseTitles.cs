@@ -51,7 +51,7 @@ namespace TitularRoyalty
             {
                 if (title.GetLabelFor(gender) == PlayerTitleDefOf.TitularRoyalty_T_RY_King.GetLabelFor(gender))
                 {
-                    return title.GetLabelFor(gender) + "(" + "TR_consort".Translate() + ")";
+                    return title.GetLabelFor(gender) + "TR_consort".Translate();
                 }
             }
             // Only women use different titles

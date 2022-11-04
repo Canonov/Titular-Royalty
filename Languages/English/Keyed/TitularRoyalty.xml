@@ -34,7 +34,7 @@
 	<TR_reloadsavefix>Make sure to save and reload if you're in the game to apply the changes.</TR_reloadsavefix>
 
 	<!-- Miscellaneous -->
-	<TR_consort>Consort</TR_consort>
+	<TR_consort>-Consort</TR_consort> <!-- If Consort (Spouse of King) title has the same name as what the king would have (ie queen and queen), apply this at end, for example Queen-Consort -->
 
 	<!-- LEFT IN FOR 1.3 -->
 	<Verb_TitleGranter>Grant Title</Verb_TitleGranter> <!-- Verb Name -->
