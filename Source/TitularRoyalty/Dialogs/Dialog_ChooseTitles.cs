@@ -13,7 +13,7 @@ namespace TitularRoyalty
         public Pawn chosenPawn;
         private Vector2 scrollPosition = new Vector2(0, 0);
         public int columnCount = 1;
-        Dictionary<RoyalTitleDef, int> seniorityTitles = new Dictionary<RoyalTitleDef, int>();
+        Dictionary<PlayerTitleDef, int> seniorityTitles = new Dictionary<PlayerTitleDef, int>();
 
         public Dialog_ChooseTitles(Pawn targPawn)
         {
@@ -21,7 +21,7 @@ namespace TitularRoyalty
             doCloseX = true;
             doCloseButton = true;
             closeOnClickedOutside = true;
-            foreach (RoyalTitleDef v in DefDatabase<RoyalTitleDef>.AllDefsListForReading)
+            foreach (PlayerTitleDef v in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
             {
                 //Log.Message($"Defname: {v.ToString()} Label: {v.label}");
                 /*foreach (var li in v.tags)
@@ -31,10 +31,7 @@ namespace TitularRoyalty
                         seniorityTitles.Add(v, v.seniority);
                     }
                 }*/
-                if (v.HasModExtension<AlternateTitlesExtension>() && v.tags.Contains("PlayerTitle"))
-                {
-                    seniorityTitles.Add(v, v.seniority);
-                }
+                seniorityTitles.Add(v, v.seniority);
             }
             
             if(seniorityTitles.Count == 0)
@@ -47,12 +44,15 @@ namespace TitularRoyalty
             }
 
         }
-        private string GetDisplayTitle(RoyalTitleDef title, Gender gender)
+        private string GetDisplayTitle(PlayerTitleDef title, Gender gender)
         {
             // Prince-Consort doesn't fit in the GUI and Queen would show up twice
-            if (title.defName == "TitularRoyalty_T_RY_Consort")
+            if (title == PlayerTitleDefOf.TitularRoyalty_T_RY_Consort)
             {
-                return "Consort";
+                if (title.GetLabelFor(gender) == PlayerTitleDefOf.TitularRoyalty_T_RY_King.GetLabelFor(gender))
+                {
+                    return title.GetLabelFor(gender) + "(" + "TR_consort".Translate() + ")";
+                }
             }
             // Only women use different titles
             if (gender == Gender.Female && title.labelFemale != null)
@@ -87,7 +87,7 @@ namespace TitularRoyalty
                 foreach (var pair in seniorityTitles.OrderBy(p => p.Value))
                 {
                     // work with pair.Key and pair.Value
-                    RoyalTitleDef title = pair.Key;
+                    PlayerTitleDef title = pair.Key;
                     if (title != null)
                     {
                         Rect rectIcon = new Rect(
