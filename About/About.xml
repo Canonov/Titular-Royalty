@@ -32,5 +32,6 @@
     (VERSION 1.4) - Added the Title Manager GUI available on any Vanilla Throne to rename your titles and containing an alternative way to grant them \n- Also allows you to change realm types and custom titles without reloading your colony by pressing the update button in the title manager.
     (VERSION 1.4.1) - Vanilla Expanded Framework is no longer Required.
     (VERSION 1.4.2) - Fixed not being able to attack with melee weapons\n- Better Consort display for the grant titles with staff GUI
+    (VERSION 1.4.3) - Fixed bug where you would get quests from your own pawns or faction.
 </description>
 </ModMetaData>
