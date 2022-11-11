@@ -32,8 +32,8 @@ namespace TitularRoyalty
             this.settings = GetSettings<TRSettings>();
 
             // Harmony Stuff
-            //var harmony = new Harmony("com.TitularRoyalty.patches");
-            //harmony.PatchAll();
+            var harmony = new Harmony("com.TitularRoyalty.patches");
+            harmony.PatchAll();
         }
 
         public static string[] realmTypes = { "Kingdom", "Empire", "Roman", "Roman (Alt)" };
