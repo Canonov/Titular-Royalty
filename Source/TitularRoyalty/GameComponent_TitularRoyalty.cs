@@ -8,15 +8,18 @@ namespace TitularRoyalty
 {
 	/// This really needs a rewrite it's kinda a mess
     public class GameComponent_TitularRoyalty : GameComponent
-    {	
+    {
 		// Labels and PlayerTitles lists
-		public List<string> labelsm = new List<string>();
-		public List<string> labelsf = new List<string>();
-        public List<RoyalTitleDef> playerTitles = new List<RoyalTitleDef>();
+		public List<string> labelsm;
+		public List<string> labelsf;
+		public List<RoyalTitleDef> playerTitles;
 
-		public GameComponent_TitularRoyalty(Game game) // Needs this or else Rimworld throws a fit and errors.
+
+        public GameComponent_TitularRoyalty(Game game) // Needs this or else Rimworld throws a fit and errors.
         {
-
+            labelsm = new List<string>();
+            labelsf = new List<string>();
+            playerTitles = new List<RoyalTitleDef>();
         }
 
 		/// <summary>
@@ -224,39 +227,28 @@ namespace TitularRoyalty
 		/// </summary>
 		public override void ExposeData()
 		{
-			try
-			{
-				//List<RoyalTitleDef> playerTitles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
+            //List<RoyalTitleDef> playerTitles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
 
-				if (labelsf.Count == 0)
-				{
-					foreach (PlayerTitleDef title in playerTitles)
-					{
-                        labelsf.Add("none");
-					}
-				}
-				if (labelsm.Count == 0)
-				{
-					foreach (PlayerTitleDef title in playerTitles)
-					{
-                        labelsm.Add("none");
-					}
-				}
-				base.ExposeData();
+            if (labelsf.Count == 0)
+            {
+                foreach (PlayerTitleDef title in playerTitles)
+                {
+                    labelsf.Add("none");
+                }
+            }
+            if (labelsm.Count == 0)
+            {
+                foreach (PlayerTitleDef title in playerTitles)
+                {
+                    labelsm.Add("none");
+                }
+            }
+            base.ExposeData();
 
-				// This saves the lists
-				Scribe_Collections.Look(ref labelsm, "CustomTitlesM", LookMode.Value);
-				Scribe_Collections.Look(ref labelsf, "CustomTitlesF", LookMode.Value);
-			}
-			catch (System.NullReferenceException)
-			{
-				Log.Message($"Titular Royalty: Loaded TR 1.1 save");
-				this.labelsm = new List<string>();
-				this.labelsf = new List<string>();
-				this.playerTitles =	new List<RoyalTitleDef>();
-				ExposeData();
-			}
-		}
+            // This saves the lists
+            Scribe_Collections.Look(ref labelsm, "CustomTitlesM", LookMode.Value);
+            Scribe_Collections.Look(ref labelsf, "CustomTitlesF", LookMode.Value);
+        }
 
         #region GameComponent Methods
         public void OnGameStart()
