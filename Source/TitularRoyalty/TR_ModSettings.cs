@@ -24,12 +24,16 @@ namespace TitularRoyalty
     {
         // BEGIN SETTINGS
 
-        TRSettings settings;
+        public TRSettings settings;
+        public static TitularRoyaltyMod Instance { get; private set; }
 
         // A mandatory constructor which resolves the reference to our settings.
         public TitularRoyaltyMod(ModContentPack content) : base(content)
         {
             this.settings = GetSettings<TRSettings>();
+            
+            // Singleton
+            Instance = this;
 
             // Harmony Stuff
             var harmony = new Harmony("com.TitularRoyalty.patches");
