@@ -22,15 +22,14 @@ namespace TitularRoyalty
 
     public class TitularRoyaltyMod : Mod
     {
-        // BEGIN SETTINGS
 
-        public TRSettings settings;
+        public TRSettings Settings { get; private set; }
         public static TitularRoyaltyMod Instance { get; private set; }
 
         // A mandatory constructor which resolves the reference to our settings.
         public TitularRoyaltyMod(ModContentPack content) : base(content)
         {
-            this.settings = GetSettings<TRSettings>();
+            this.Settings = GetSettings<TRSettings>();
             
             // Singleton
             Instance = this;
@@ -53,7 +52,7 @@ namespace TitularRoyalty
 
             //Radio list to choose titles
             listingStandard.AddLabeledRadioList("TR_baserealmtype".Translate(),
-                                                 realmTypes, ref settings.realmType);
+                                                 realmTypes, ref Settings.realmType);
             listingStandard.Gap(24);
             listingStandard.AddHorizontalLine();
 
