@@ -128,9 +128,9 @@ namespace TitularRoyalty
 		public void ManageTitleLoc()
         {
 			bool hasRealm = false;
-			string realmType = LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType;
+			string realmType = TitularRoyaltyMod.Instance.GetSettings<TRSettings>().realmType;
 
-			while(!hasRealm)
+            while (!hasRealm)
             {
 				if (realmType != null)
 				{
