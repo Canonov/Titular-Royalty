@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace TitularRoyalty
 {
-    public class RealmType
+    public class RealmTypeTitle
     {
         public RealmTypeDef realmTypeDef;
 
