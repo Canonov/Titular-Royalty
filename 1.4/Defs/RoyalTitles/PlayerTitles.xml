@@ -351,6 +351,7 @@
     <label>Baronet</label>
     <labelFemale>Baronetess</labelFemale>
     <canBeInherited>False</canBeInherited>
+    <TRInheritable>True</TRInheritable>
     <description>No Description.</description>
     <seniority>700</seniority>
 
@@ -761,7 +762,6 @@
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
-    <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
     <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
     <minExpectation>Royal</minExpectation>
     <grantedAbilities>

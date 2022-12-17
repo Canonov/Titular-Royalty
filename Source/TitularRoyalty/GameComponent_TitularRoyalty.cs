@@ -151,8 +151,8 @@ namespace TitularRoyalty
                             break;
 						default:
 							Log.Message("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
-							LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType = "Kingdom";
-							LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().ExposeData();
+							TitularRoyaltyMod.Instance.Settings.realmType = "Kingdom";
+                            TitularRoyaltyMod.Instance.Settings.ExposeData();
 							realmType = "Kingdom";
 							break;
 					}
@@ -166,8 +166,8 @@ namespace TitularRoyalty
 				else
 				{
 					Log.Message("Titular Royalty: no RealmType Found : Defaulting to Kingdom");
-					LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().realmType = "Kingdom";
-					LoadedModManager.GetMod<TitularRoyaltyMod>().GetSettings<TRSettings>().ExposeData();
+                    TitularRoyaltyMod.Instance.Settings.realmType = "Kingdom";
+                    TitularRoyaltyMod.Instance.Settings.ExposeData();
 					realmType = "Kingdom";
 					continue;
 				}
@@ -275,8 +275,9 @@ namespace TitularRoyalty
                 }
             }
             ManageTitleLoc();
+			ModSettingsApplier.ApplySettings();
 
-			Faction.OfPlayer.allowGoodwillRewards = false;
+            Faction.OfPlayer.allowGoodwillRewards = false;
 			Faction.OfPlayer.allowRoyalFavorRewards = false;
         }
 

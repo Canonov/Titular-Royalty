@@ -14,8 +14,8 @@ namespace TitularRoyalty
         public string realmType;
         public bool inheritanceEnabled;
         public bool clothingQualityRequirements;
-        public bool mealQualityRequirements;
-        public bool disableWorkforRoyals;
+        //public bool mealQualityRequirements;
+        //public bool disableWorkforRoyals;
 
 
         public override void ExposeData()
@@ -23,8 +23,8 @@ namespace TitularRoyalty
             Scribe_Values.Look(ref realmType, "realmType", "Kingdom");
             Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", false);
             Scribe_Values.Look(ref clothingQualityRequirements, "clothingQualityRequirements", true);
-            Scribe_Values.Look(ref mealQualityRequirements, "mealQualityRequirements", true);
-            Scribe_Values.Look(ref disableWorkforRoyals, "disableWorkforRoyals", true);
+            //Scribe_Values.Look(ref mealQualityRequirements, "mealQualityRequirements", true);
+            //Scribe_Values.Look(ref disableWorkforRoyals, "disableWorkforRoyals", true);
             base.ExposeData();
         }
     }
@@ -40,9 +40,7 @@ namespace TitularRoyalty
         // A mandatory constructor which resolves the reference to our settings.
         public TitularRoyaltyMod(ModContentPack content) : base(content)
         {
-            this.Settings = GetSettings<TRSettings>();
-            
-            // Singleton
+            Settings = GetSettings<TRSettings>();
             Instance = this;
 
             // Harmony Stuff
@@ -86,11 +84,11 @@ namespace TitularRoyalty
             listingStandard.Gap(12);
 
             //First row of checkbox options
-            Listing_Standard Checkboxes = listingStandard.GetRect(24).BeginListingStandard(4);
+            Listing_Standard Checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
             Checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref Settings.inheritanceEnabled);
             Checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
-            Checkboxes.CheckboxLabeled("TR_checkbox_needsmealquality".Translate(), ref Settings.mealQualityRequirements);
-            Checkboxes.CheckboxLabeled("TR_checkbox_disableworkroyals".Translate(), ref Settings.disableWorkforRoyals);
+            //Checkboxes.CheckboxLabeled("TR_checkbox_needsmealquality".Translate(), ref Settings.mealQualityRequirements);
+            //Checkboxes.CheckboxLabeled("TR_checkbox_disableworkroyals".Translate(), ref Settings.disableWorkforRoyals);
             Checkboxes.End();
 
             listingStandard.End();
