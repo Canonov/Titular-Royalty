@@ -4,6 +4,9 @@
 	<!-- Building Comp Gizmos -->
 	<TR_Command_managetitles_label>Manage Titles</TR_Command_managetitles_label>
 	<TR_Command_managetitles_desc>TBD</TR_Command_managetitles_desc>
+	<TR_Command_setheir_label>Set heir for {0}</TR_Command_setheir_label> <!-- {0}: Pawns name -->
+	<TR_setheir_failed_sameorhighertitle>Set heir failed: {0}s title is equivalent or higher</TR_setheir_failed_sameorhighertitle> <!-- {0}: Target Pawn's name -->
+	<TR_setheir_success>Success, {0}s Heir is now {1}</TR_setheir_success> <!-- {0}: From Pawn's Name {1}: Target Pawn's name -->
 
 	<!-- Title Chooser and Renamer -->
 	<TR_choosetitle>Select a Title</TR_choosetitle>

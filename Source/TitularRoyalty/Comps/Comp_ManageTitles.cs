@@ -3,6 +3,7 @@ using RimWorld;
 using Verse;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace TitularRoyalty
 {
@@ -33,6 +34,50 @@ namespace TitularRoyalty
                 yield return manage_titles;
             }
 
+        }
+
+        public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
+        {
+            foreach (FloatMenuOption option in base.CompFloatMenuOptions(selPawn))
+            {
+                yield return option;
+            }
+
+            if (TitularRoyaltyMod.Instance.Settings.inheritanceEnabled)
+            {
+                RoyalTitleDef selPawnTitle = selPawn.royalty.GetCurrentTitleInFaction(Faction.OfPlayer).def;
+                if (selPawnTitle.canBeInherited)
+                {
+                    //Define action to run when selected
+                    Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
+                    {
+                        RoyalTitleDef targetPawnTitle = targetinfo.Pawn.royalty.GetCurrentTitle(Faction.OfPlayer);
+                        
+                        if (targetPawnTitle == null || targetPawnTitle.seniority < selPawnTitle.seniority)
+                        {
+                            selPawn.royalty.SetHeir(targetinfo.Pawn, Faction.OfPlayer);
+                            Messages.Message("TR_setheir_success".Translate(selPawn.Name.ToStringShort, targetinfo.Pawn.Name.ToStringShort), MessageTypeDefOf.NeutralEvent);
+                        }
+                        else
+                        {
+                            Messages.Message("TR_setheir_failed_sameorhighertitle".Translate(targetinfo.Pawn.Name.ToStringShort), MessageTypeDefOf.RejectInput);
+                        }
+                    };
+
+                    //Target pawn for selection
+                    FloatMenuOption SetHeir = new FloatMenuOption("TR_Command_setheir_label".Translate(selPawn.Name.ToStringShort), delegate
+                    {
+                        Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), action);
+                    });
+
+                    //Return the float option
+                    yield return SetHeir;
+                }
+
+            }
+
+
+            
         }
     }
 }

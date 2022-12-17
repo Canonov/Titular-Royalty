@@ -25,7 +25,6 @@
         <canBeInherited>False</canBeInherited>
         <changeHeirQuestPoints>1000</changeHeirQuestPoints>
         <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
-        <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
         <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
         <minExpectation>Moderate</minExpectation>
 
@@ -38,10 +37,10 @@
         <canBeInherited>False</canBeInherited>
         <changeHeirQuestPoints>1000</changeHeirQuestPoints>
         <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
-        <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
         <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
         <minExpectation>High</minExpectation>
 
+        <TRInheritable>True</TRInheritable>
         <titleTier>LowNoble</titleTier>
     </TitularRoyalty.PlayerTitleDef>
 
@@ -76,6 +75,7 @@
             </allowedDefs>
         </foodRequirement>
 
+        <TRInheritable>True</TRInheritable>
         <titleTier>LowNoble</titleTier>
     </TitularRoyalty.PlayerTitleDef>
 
@@ -128,6 +128,7 @@
             </li>
         </throneRoomRequirements>
 
+        <TRInheritable>True</TRInheritable>
         <titleTier>HighNoble</titleTier>
     </TitularRoyalty.PlayerTitleDef>
 
@@ -155,6 +156,7 @@
             </allowedDefs>
         </foodRequirement>
 
+        <TRInheritable>True</TRInheritable>
         <titleTier>Royalty</titleTier>
     </TitularRoyalty.PlayerTitleDef>
 </Defs>
