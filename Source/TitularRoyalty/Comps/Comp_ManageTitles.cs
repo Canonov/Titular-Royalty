@@ -18,21 +18,18 @@ namespace TitularRoyalty
                 yield return item;
             }
 
-            if (!Props.dontManageTitles)
+            Command_Action manage_titles = new Command_Action();
+            manage_titles.icon = ContentFinder<Texture2D>.Get(Props.managetitlesIconPath);
+            manage_titles.defaultLabel = "TR_Command_managetitles_label".Translate();
+            manage_titles.defaultDesc = "TR_Command_managetitles_desc".Translate();
+
+            manage_titles.action = delegate
             {
-                Command_Action manage_titles = new Command_Action();
-                manage_titles.icon = ContentFinder<Texture2D>.Get(Props.managetitlesIconPath);
-                manage_titles.defaultLabel = "TR_Command_managetitles_label".Translate();
-                manage_titles.defaultDesc = "TR_Command_managetitles_desc".Translate();
+                Dialog_ManageTitles window = new Dialog_ManageTitles();
+                Find.WindowStack.Add(window);
+            };
 
-                manage_titles.action = delegate
-                {
-                    Dialog_ManageTitles window = new Dialog_ManageTitles();
-                    Find.WindowStack.Add(window);
-                };
-
-                yield return manage_titles;
-            }
+            yield return manage_titles;
 
         }
 
@@ -75,9 +72,6 @@ namespace TitularRoyalty
                 }
 
             }
-
-
-            
         }
     }
 }

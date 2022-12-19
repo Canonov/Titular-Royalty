@@ -12,8 +12,6 @@ namespace TitularRoyalty
         [NoTranslate]
         public string managetitlesIconPath;
 
-        public bool dontManageTitles = false;
-
         public CompProperties_ManageTitles()
         {
             compClass = typeof(Comp_ManageTitles);
