@@ -11,7 +11,7 @@ namespace TitularRoyalty {
 	{
 
 		[DebugAction("Mods", "TR: Rename Title", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
-		private static void TryChangeCustomTitle()
+        public static void TryChangeCustomTitle()
 		{
 			List<DebugMenuOption> list = new List<DebugMenuOption>();
 			foreach (RoyalTitleDef title in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
@@ -28,16 +28,23 @@ namespace TitularRoyalty {
 		}
 
 		[DebugAction("Mods", "TR: Reset Custom Titles", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
-		private static void TryResetCustomTitles()
+        public static void TryResetCustomTitles()
 		{
 			Current.Game.GetComponent<GameComponent_TitularRoyalty>().ResetTitles();
 		}
 
         [DebugAction("Mods", "TR: Refresh Titles", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        private static void UpdateTitles()
+        public static void UpdateTitles()
 		{
 			Current.Game.GetComponent<GameComponent_TitularRoyalty>().ManageTitleLoc();
 		}
-	}
+
+        [DebugAction("Mods", "TR: Try Apply ModSettings", false, false, allowedGameStates = AllowedGameStates.Playing)]
+        public static void ReloadSettings()
+        {
+			ModSettingsApplier.ApplySettings();
+        }
+		
+    }
 
 }
