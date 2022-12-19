@@ -4,6 +4,7 @@ using Verse;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 namespace TitularRoyalty
 {
@@ -35,15 +36,17 @@ namespace TitularRoyalty
 
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
         {
-            foreach (FloatMenuOption option in base.CompFloatMenuOptions(selPawn))
+            yield return new FloatMenuOption("TR_Command_managetitles_label".Translate(), delegate
             {
-                yield return option;
-            }
+                Dialog_ManageTitles window = new Dialog_ManageTitles();
+                Find.WindowStack.Add(window);
+            }, itemIcon: Resources.CrownIcon, iconColor: Color.white);
 
             if (TitularRoyaltyMod.Instance.Settings.inheritanceEnabled)
             {
-                RoyalTitleDef selPawnTitle = selPawn.royalty.GetCurrentTitleInFaction(Faction.OfPlayer).def;
-                if (selPawnTitle.canBeInherited)
+                RoyalTitleDef selPawnTitle = selPawn.royalty?.GetCurrentTitleInFaction(Faction.OfPlayer)?.def;
+                
+                if (selPawnTitle != null && selPawnTitle.canBeInherited)
                 {
                     //Define action to run when selected
                     Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
@@ -70,7 +73,6 @@ namespace TitularRoyalty
                     //Return the float option
                     yield return SetHeir;
                 }
-
             }
         }
     }
