@@ -22,21 +22,15 @@ namespace TitularRoyalty
         public QualityCategory GetApparelQualityfromTier()
         {
             //TODO: Move these into xml or something
-            switch (titleTier)
+            return titleTier switch 
             {
-                case TitleTiers.Gentry:
-                    return QualityCategory.Poor;
-                case TitleTiers.LowNoble:
-                    return QualityCategory.Normal;
-                case TitleTiers.HighNoble:
-                    return QualityCategory.Good;
-                case TitleTiers.Royalty:
-                    return QualityCategory.Excellent;
-                case TitleTiers.Sovereign:
-                    return QualityCategory.Excellent;
-                default:
-                    return QualityCategory.Awful;
-            }
+                TitleTiers.Gentry => QualityCategory.Poor,
+                TitleTiers.LowNoble => QualityCategory.Normal,
+                TitleTiers.HighNoble => QualityCategory.Good,
+                TitleTiers.Royalty => QualityCategory.Excellent,
+                TitleTiers.Sovereign => QualityCategory.Excellent,
+                _ => QualityCategory.Awful,
+            };
         }
     }
 }

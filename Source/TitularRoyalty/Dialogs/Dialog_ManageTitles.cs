@@ -49,7 +49,6 @@ namespace TitularRoyalty
         private Rect ButtonsRect;
         private Rect LeftButtonRect;
         private Rect RightButtonRect;
-        private Color borderColor = new Color(97, 108, 122);
 
         // CONSTRUCTOR
         public Dialog_ManageTitles()
@@ -151,8 +150,6 @@ namespace TitularRoyalty
 
             //Buttom 3 Buttons - Update Titles, 
             ButtonsRect = new Rect(ContentRect.xMin, ContentRect.yMax - 36, ContentRect.width, 30);
-            //Widgets.DrawBoxSolid(buttonsRect, Color.red);
-            //Widgets.BeginGroup(buttonsRect);
 
             LeftButtonRect = ButtonsRect.LeftHalf();
             LeftButtonRect.width -= 18;
