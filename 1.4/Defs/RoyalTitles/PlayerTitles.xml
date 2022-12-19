@@ -803,6 +803,7 @@
     </throneRoomRequirements>
 
     <titleTier>Sovereign</titleTier>
+    <TRInheritable>True</TRInheritable>
 
     <modExtensions>
       <!-- Alternate Titles -->

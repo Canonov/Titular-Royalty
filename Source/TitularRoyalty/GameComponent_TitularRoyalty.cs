@@ -250,7 +250,6 @@ namespace TitularRoyalty
             Scribe_Collections.Look(ref labelsf, "CustomTitlesF", LookMode.Value);
         }
 
-        #region GameComponent Methods
         public void OnGameStart()
         {
             PopulateTitleList();
@@ -274,6 +273,7 @@ namespace TitularRoyalty
                     }
                 }
             }
+			
             ManageTitleLoc();
 			ModSettingsApplier.ApplySettings();
 
@@ -290,8 +290,7 @@ namespace TitularRoyalty
         public override void StartedNewGame()
         {
 			OnGameStart();
-
         }
-        #endregion
+
     }
 }
