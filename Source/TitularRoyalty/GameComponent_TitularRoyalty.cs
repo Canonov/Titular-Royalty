@@ -69,7 +69,7 @@ namespace TitularRoyalty
 				// Female Title
 				if (labelsf[titleIndex] != "none")
                 {
-					if (labelsf[titleIndex] == "remove")
+					if (labelsf[titleIndex].ToLower() == "remove")
                     {
 						title.labelFemale = null;
                     }
