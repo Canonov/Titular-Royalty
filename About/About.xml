@@ -34,6 +34,7 @@
 (VERSION 1.4.2) - Fixed not being able to attack with melee weapons\n- Better Consort display for the grant titles with staff GUI
 (VERSION 1.4.3) - Fixed bug where you would get quests from your own pawns or faction.
 (VERSION 1.5) - Added two more mod settings, a checkbox to enable or disable the apparel quality requirements and a checkbox reenabling vanilla title inheritance, you can also set a pawns title heir at the throne now.
+(VERSION 1.5.1) - Added float menu option when you right click the throne with a pawn to open the title manager, also minor bugfixes
 </description>
 
 </ModMetaData>
