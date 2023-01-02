@@ -758,6 +758,8 @@
     <description>Ruler of your colony.</description>
     <seniority>1500</seniority>
 
+    <permitPointsAwarded>1</permitPointsAwarded>
+
     <favorCost>100</favorCost>
     <canBeInherited>False</canBeInherited>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
