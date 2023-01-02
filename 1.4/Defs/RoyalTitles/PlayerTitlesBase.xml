@@ -40,6 +40,8 @@
         <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
         <minExpectation>High</minExpectation>
 
+        <permitPointsAwarded>1</permitPointsAwarded>
+
         <TRInheritable>True</TRInheritable>
         <titleTier>LowNoble</titleTier>
     </TitularRoyalty.PlayerTitleDef>
@@ -74,6 +76,8 @@
                 <li>RawBerries</li>
             </allowedDefs>
         </foodRequirement>
+
+        <permitPointsAwarded>1</permitPointsAwarded>
 
         <TRInheritable>True</TRInheritable>
         <titleTier>LowNoble</titleTier>
@@ -127,6 +131,8 @@
                 <impressiveness>45</impressiveness>
             </li>
         </throneRoomRequirements>
+
+        <permitPointsAwarded>1</permitPointsAwarded>
 
         <TRInheritable>True</TRInheritable>
         <titleTier>HighNoble</titleTier>

@@ -40,7 +40,8 @@
 	<TR_checkbox_vanillainheritance>Vanilla Inheritance</TR_checkbox_vanillainheritance>
 	<TR_checkbox_needsclothesquality>Clothing Quality</TR_checkbox_needsclothesquality>
 	<TR_checkbox_needsmealquality>Meal Requirements</TR_checkbox_needsmealquality>
-	<TR_checkbox_disableworkroyals>Disable Worktypes</TR_checkbox_disableworkroyals>
+	<TR_checkbox_disableworkroyals>Disable Worktypes</TR_checkbox_disableworkroyals> <!-- Unused, For Now-->
+	<TR_checkbox_titlegivespermitpoints>Title Permit Points</TR_checkbox_titlegivespermitpoints>
 
 	<!-- Miscellaneous -->
 	<TR_consort>-Consort</TR_consort> <!-- If Consort (Spouse of King) title has the same name as what the king would have (ie queen and queen), apply this at end, for example Queen-Consort -->

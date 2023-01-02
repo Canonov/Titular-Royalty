@@ -177,6 +177,7 @@ namespace TitularRoyalty
 
 		}
 
+
         /// <summary>
         /// Changes a title name of the given seniority and gender
         /// </summary>
@@ -275,10 +276,8 @@ namespace TitularRoyalty
             }
 			
             ManageTitleLoc();
-			ModSettingsApplier.ApplySettings();
-
-            Faction.OfPlayer.allowGoodwillRewards = false;
-			Faction.OfPlayer.allowRoyalFavorRewards = false;
+			Faction.OfPlayer.SetupPlayerForTR(); // Set Permit factions and other options
+			ModSettingsApplier.ApplySettings(); // Apply ModSettings Changes
         }
 
 

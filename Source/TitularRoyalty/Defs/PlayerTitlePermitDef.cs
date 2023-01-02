@@ -9,6 +9,6 @@ namespace TitularRoyalty
 {
     public class PlayerTitlePermitDef : RoyalTitlePermitDef
     {
-        
+        public int maxUsers = -1;
     }
 }

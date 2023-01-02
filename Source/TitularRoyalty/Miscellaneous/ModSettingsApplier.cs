@@ -34,6 +34,12 @@ namespace TitularRoyalty
                     title.requiredMinimumApparelQuality = QualityCategory.Awful;
                 }
 
+                //Apply Title Permit Points
+                if (!Settings.titlesGivePermitPoints)
+                {
+                    title.permitPointsAwarded = 0;
+                }
+
             }
         } 
     }
