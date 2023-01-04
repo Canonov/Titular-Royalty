@@ -131,7 +131,7 @@ namespace TitularRoyalty
 		public void ManageTitleLoc()
         {
 			bool hasRealm = false;
-			string realmType = TitularRoyaltyMod.Instance.GetSettings<TRSettings>().realmType;
+			string realmType = TitularRoyaltyMod.Settings.realmType;
 
             while (!hasRealm)
             {
@@ -151,8 +151,8 @@ namespace TitularRoyalty
                             break;
 						default:
 							Log.Message("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
-							TitularRoyaltyMod.Instance.Settings.realmType = "Kingdom";
-                            TitularRoyaltyMod.Instance.Settings.ExposeData();
+							TitularRoyaltyMod.Settings.realmType = "Kingdom";
+                            TitularRoyaltyMod.Settings.ExposeData();
 							realmType = "Kingdom";
 							break;
 					}
@@ -166,8 +166,8 @@ namespace TitularRoyalty
 				else
 				{
 					Log.Message("Titular Royalty: no RealmType Found : Defaulting to Kingdom");
-                    TitularRoyaltyMod.Instance.Settings.realmType = "Kingdom";
-                    TitularRoyaltyMod.Instance.Settings.ExposeData();
+                    TitularRoyaltyMod.Settings.realmType = "Kingdom";
+                    TitularRoyaltyMod.Settings.ExposeData();
 					realmType = "Kingdom";
 					continue;
 				}

@@ -10,7 +10,7 @@ namespace TitularRoyalty
     {
         public static void ApplySettings()
         {
-            var Settings = TitularRoyaltyMod.Instance.Settings;
+            var Settings = TitularRoyaltyMod.Settings;
 
             foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
             {

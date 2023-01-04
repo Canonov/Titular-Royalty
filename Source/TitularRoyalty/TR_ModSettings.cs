@@ -36,14 +36,12 @@ namespace TitularRoyalty
     public class TitularRoyaltyMod : Mod
     {
 
-        public TRSettings Settings { get; private set; }
-        public static TitularRoyaltyMod Instance { get; private set; }
+        public static TRSettings Settings { get; private set; }
 
         // A mandatory constructor which resolves the reference to our settings.
         public TitularRoyaltyMod(ModContentPack content) : base(content)
         {
             Settings = GetSettings<TRSettings>();
-            Instance = this;
 
             // Harmony Stuff
             var harmony = new Harmony("com.TitularRoyalty.patches");
@@ -51,6 +49,10 @@ namespace TitularRoyalty
         }
 
         public static string[] realmTypes = { "Kingdom", "Empire", "Roman", "Roman (Alt)" };
+
+
+        //Name that shows at the top
+        public override string SettingsCategory() => "TR_modname".Translate();
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
@@ -97,12 +99,6 @@ namespace TitularRoyalty
             listingStandard.End();
             base.DoSettingsWindowContents(inRect);
         }
-
-        public override string SettingsCategory()
-        {
-            return "TR_modname".Translate();
-        }
-
 
         // END SETTINGS
         //===================================

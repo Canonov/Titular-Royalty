@@ -42,7 +42,7 @@ namespace TitularRoyalty
                 Find.WindowStack.Add(window);
             }, itemIcon: Resources.CrownIcon, iconColor: Color.white);
 
-            if (TitularRoyaltyMod.Instance.Settings.inheritanceEnabled)
+            if (TitularRoyaltyMod.Settings.inheritanceEnabled)
             {
                 RoyalTitleDef selPawnTitle = selPawn.royalty?.GetCurrentTitleInFaction(Faction.OfPlayer)?.def;
                 
