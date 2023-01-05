@@ -5,6 +5,8 @@
     <defName>RealmType_Template</defName>
     <label>template</label>
 
+    <!-- "None" on the female title disables it so only the male title is used -->
+
     <titleOverrides>
       <!-- ## Lowborn ## -->
       <li> <!-- Freeman -->
