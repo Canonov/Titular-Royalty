@@ -10,6 +10,11 @@ namespace TitularRoyalty
     [DefOf]
     public class RealmTypeDefOf
     {
+        public static RealmTypeDef RealmType_Empire;
+        public static RealmTypeDef RealmType_Kingdom;
+        public static RealmTypeDef RealmType_Roman;
+        public static RealmTypeDef RealmType_LateRoman;
+
         static RealmTypeDefOf()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(RealmTypeDefOf));
@@ -19,21 +24,21 @@ namespace TitularRoyalty
     [StaticConstructorOnStartup]
     public static class BaseRealmType
     {
-        public static RealmTypeDef Def;
+        //public static RealmTypeDef Def;
         
         static BaseRealmType()
         {
-            Def = new RealmTypeDef()
+            /*Def = new RealmTypeDef()
             {
                 defName = "RealmTypeBase",
                 label = "Base Realm Type",
-            };
+            };*/
 
-            Def.titleOverrides = new List<RealmTypeTitle>();
+            //f.titleOverrides = new List<RealmTypeTitle>();
             
             foreach(PlayerTitleDef title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
             {
-                Def.titleOverrides.Add(new RealmTypeTitle()
+                /*f.titleOverrides.Add(new RealmTypeTitle()
                 {
                     titleDef = title,
 
@@ -41,7 +46,8 @@ namespace TitularRoyalty
                     labelFemale = title.labelFemale,
                     tierOverride = title.titleTier
                     
-                });
+                });*/
+                title.originalLabels = new TitleLabelPair(title.label, title.labelFemale);
             }
         }
     }

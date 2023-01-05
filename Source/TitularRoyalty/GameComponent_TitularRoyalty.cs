@@ -106,7 +106,11 @@ namespace TitularRoyalty
                     {
                         title.titleTier = overrides.tierOverride;
                     }
-
+                }
+                else
+                {
+                    title.label = title.originalLabels.label;
+                    title.labelFemale = title.originalLabels.labelFemale;
                 }
 
                 Finalize:
@@ -124,11 +128,11 @@ namespace TitularRoyalty
             customTitles_List1 = null;
             customTitles_List2 = null;
 
-            foreach (RealmTypeTitle title in BaseRealmType.Def.titleOverrides)
+            foreach (PlayerTitleDef title in TitlesBySeniority)
             {
-                title.titleDef.label = title.label;
-                title.titleDef.labelFemale = title.labelFemale;
-                title.titleDef.ClearCachedData();
+                title.label = title.originalLabels.label;
+                title.labelFemale = title.originalLabels.labelFemale;
+                title.ClearCachedData();
             }
         }
 

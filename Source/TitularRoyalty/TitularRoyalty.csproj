@@ -94,7 +94,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="TR_DebugActions.cs" />
-    <Compile Include="TR_DefModExtensions.cs" />
     <Compile Include="Dialogs\Dialog_ChooseTitles.cs" />
     <Compile Include="GameComponent_TitularRoyalty.cs" />
     <Compile Include="TR_ModSettings.cs" />
