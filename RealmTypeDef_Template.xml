@@ -1,6 +1,7 @@
-
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
   <!-- TEMPLATE -->
-  <TitularRoyalty.RealmTypeDef Name="RealmTypeBase">
+  <TitularRoyalty.RealmTypeDef>
     <defName>RealmType_Template</defName>
     <label>template</label>
 
@@ -125,3 +126,4 @@
     </titleOverrides>
 
   </TitularRoyalty.RealmTypeDef>
+</Defs>
