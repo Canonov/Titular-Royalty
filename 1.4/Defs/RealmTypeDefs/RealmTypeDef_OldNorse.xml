@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TitularRoyalty.RealmTypeDef>
+    <defName>RealmType_Norse</defName>
+    <label>Old Norse</label>
+
+    <titleOverrides>
+      <li> <!--Karl-->
+        <titleDef>TitularRoyalty_T_LR_Freeman</titleDef>
+        
+        <label>Karl</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Bond-->
+        <titleDef>TitularRoyalty_T_LR_Yeoman</titleDef>
+        
+        <label>Bond</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Odalsbond-->
+        <titleDef>TitularRoyalty_T_LR_Gentleman</titleDef>
+        
+        <label>Odalsbond</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Jorufægir-->
+        <titleDef>TitularRoyalty_T_LR_Squire</titleDef>
+        
+        <label>Jorufægir</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Drengr-->
+        <titleDef>TitularRoyalty_T_MR_Esquire</titleDef>
+        
+        <label>Drengr</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Hirdmann-->
+        <titleDef>TitularRoyalty_T_MR_Knight</titleDef>
+        
+        <label>Hirdmann</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Víkingr-->
+        <titleDef>TitularRoyalty_T_MR_Bannerete</titleDef>
+        
+        <label>Víkingr</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Varangian-->
+        <titleDef>TitularRoyalty_T_MR_Knight_Commander</titleDef>
+        
+        <label>Varangian</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Huskarl-->
+        <titleDef>TitularRoyalty_T_MR_Baronet</titleDef>
+        
+        <label>Huskarl</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Thane-->
+        <titleDef>TitularRoyalty_T_HR_Baron</titleDef>
+        
+        <label>Thane</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Merkismenn-->
+        <titleDef>TitularRoyalty_T_HR_Viscount</titleDef>
+        
+        <label>Merkismenn</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Hersir-->
+        <titleDef>TitularRoyalty_T_HR_Count</titleDef>
+        
+        <label>Hersir</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Jarl-->
+        <titleDef>TitularRoyalty_T_HR_Duke</titleDef>
+        
+        <label>Jarl</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Rig-Jarl-->
+        <titleDef>TitularRoyalty_T_HR_Archduke</titleDef>
+        
+        <label>Rig-Jarl</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Oðlingr-->
+        <titleDef>TitularRoyalty_T_RY_Prince</titleDef>
+        
+        <label>Oðlingr</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Kronoðlingr-->
+        <titleDef>TitularRoyalty_T_RY_CrownPrince</titleDef>
+        
+        <label>Kronoðlingr</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Konungr-->
+        <titleDef>TitularRoyalty_T_RY_Consort</titleDef>
+        
+        <label>Konungr</label>
+        <labelFemale>Dróttning</labelFemale>
+      </li>
+    
+      <li> <!--Konungr-->
+        <titleDef>TitularRoyalty_T_RY_King</titleDef>
+        
+        <label>Konungr</label>
+        <labelFemale>Hofuðdróttning</labelFemale>
+      </li>    
+    </titleOverrides>
+  </TitularRoyalty.RealmTypeDef>
+</Defs>
