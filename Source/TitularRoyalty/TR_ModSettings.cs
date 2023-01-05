@@ -6,32 +6,25 @@ using Verse;
 using SettingsHelper;
 using HarmonyLib;
 using UnityEngine.UIElements;
+using System.Linq;
+using System;
 
 namespace TitularRoyalty
 {
     public class TRSettings : ModSettings
     {
-        public string realmType;
         public bool inheritanceEnabled;
         public bool clothingQualityRequirements;
         public bool titlesGivePermitPoints;
-        //public bool mealQualityRequirements;
-        //public bool disableWorkforRoyals;
-
 
         public override void ExposeData()
         {
-            Scribe_Values.Look(ref realmType, "realmType", "Kingdom");
             Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", false);
             Scribe_Values.Look(ref clothingQualityRequirements, "clothingQualityRequirements", true);
             Scribe_Values.Look(ref titlesGivePermitPoints, "titlesGivePermitPoints", true);
-            //Scribe_Values.Look(ref mealQualityRequirements, "mealQualityRequirements", true);
-            //Scribe_Values.Look(ref disableWorkforRoyals, "disableWorkforRoyals", true);
             base.ExposeData();
         }
     }
-
-
 
     public class TitularRoyaltyMod : Mod
     {
@@ -48,32 +41,32 @@ namespace TitularRoyalty
             harmony.PatchAll();
         }
 
-        public static string[] realmTypes = { "Kingdom", "Empire", "Roman", "Roman (Alt)" };
-
+        // Realm Types
+        private static RealmTypeDef[] _realmTypes;
+        public static RealmTypeDef[] RealmTypes
+        {
+            get
+            {
+                return _realmTypes ??= DefDatabase<RealmTypeDef>.AllDefsListForReading.ToArray();
+            }
+        }
+        private static Dictionary<string, string> realmTypeLabels;
+        public static Dictionary<string, string> RealmTypeLabels
+        {
+            get
+            {
+                return realmTypeLabels ??= RealmTypes.ToDictionary(x => x.label, x => x.defName);
+            }
+        }
 
         //Name that shows at the top
         public override string SettingsCategory() => "TR_modname".Translate();
 
+        //Main Rendering
         public override void DoSettingsWindowContents(Rect inRect)
         {
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(inRect);
-
-            //Explains more about the titlesets
-            listingStandard.Label("TR_selectorexplanation".Translate());
-            listingStandard.AddHorizontalLine();
-
-            //Radio list to choose titles
-            listingStandard.Gap(12);
-            Rect realmtypesTitleRect = listingStandard.GetRect(32);
-            Text.Font = GameFont.Medium;
-            Text.Anchor = TextAnchor.MiddleCenter;
-            Widgets.Label(realmtypesTitleRect, "TR_realmtypeslist_title".Translate());
-            Text.Font = GameFont.Small;
-            Text.Anchor = TextAnchor.UpperLeft;
-
-            listingStandard.AddLabeledRadioList("TR_realmtypeslist_header".Translate(), realmTypes, ref Settings.realmType);
-            listingStandard.Gap(24);
             listingStandard.AddHorizontalLine();
 
             //Miscellanous Toggles
@@ -92,8 +85,6 @@ namespace TitularRoyalty
             Checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref Settings.inheritanceEnabled);
             Checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
             Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
-            //Checkboxes.CheckboxLabeled("TR_checkbox_needsmealquality".Translate(), ref Settings.mealQualityRequirements);
-            //Checkboxes.CheckboxLabeled("TR_checkbox_disableworkroyals".Translate(), ref Settings.disableWorkforRoyals);
             Checkboxes.End();
 
             listingStandard.End();

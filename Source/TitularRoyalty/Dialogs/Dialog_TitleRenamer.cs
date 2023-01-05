@@ -9,16 +9,16 @@ namespace TitularRoyalty
 {
     class Dialog_TitleRenamer : Dialog_GiveName
     {
-        private RoyalTitleDef title;
+        private PlayerTitleDef title;
 
-        public Dialog_TitleRenamer(RoyalTitleDef title)
+        public Dialog_TitleRenamer(PlayerTitleDef title)
         {
             this.title = title;
             curName = title.label;
 
             if (title.labelFemale == null)
             {
-                curSecondName = "remove";
+                curSecondName = "None";
             }
             else
             {
@@ -45,14 +45,17 @@ namespace TitularRoyalty
         {
             return NamePlayerSettlementDialogUtility.IsValidName(s);
         }
-
+        
+        // Male
         protected override void Named(string s)
         {
-            Current.Game.GetComponent<GameComponent_TitularRoyalty>().SaveTitleChange(Gender.Male, title.seniority, s);
+            Current.Game.GetComponent<GameComponent_TitularRoyalty>().SaveTitleChange(title, s, Gender.Male);
         }
+
+        // Female
         protected override void NamedSecond(string s)
         {
-            Current.Game.GetComponent<GameComponent_TitularRoyalty>().SaveTitleChange(Gender.Female, title.seniority, s);
+            Current.Game.GetComponent<GameComponent_TitularRoyalty>().SaveTitleChange(title, s, Gender.Female);
         }
 
     }
