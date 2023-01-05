@@ -18,7 +18,7 @@ namespace TitularRoyalty
         {
             get
             {
-                return realmTypeDefName;
+                return realmTypeDefName ??= "RealmType_Kingdom";
             }
             set
             {
@@ -34,16 +34,7 @@ namespace TitularRoyalty
             {
                 if (realmTypeDef == null)
                 {
-                    RealmTypeDef temp_realmtype;
-                    temp_realmtype = DefDatabase<RealmTypeDef>.GetNamed(RealmType, false);
-                    if (temp_realmtype == null)
-                    {
-                        Log.Error($"Titular Royalty: Realm Type '{RealmType}' not found. Defaulting to 'Kingdom'.");
-                        realmTypeDefName = "RealmType_Kingdom";
-                        temp_realmtype = DefDatabase<RealmTypeDef>.GetNamed(RealmType, false);
-                    }
-
-                    realmTypeDef = temp_realmtype;
+                    realmTypeDef = DefDatabase<RealmTypeDef>.GetNamed(RealmType, false);
                 }
                 return realmTypeDef;
             }
@@ -95,7 +86,6 @@ namespace TitularRoyalty
                     title.labelFemale = titleLabels.HasFemaleTitle() ? titleLabels.labelFemale : null;
                     goto Finalize;
                 }
-
                 // Realm Type, if No Custom
                 if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RealmTypeTitle overrides))
                 {

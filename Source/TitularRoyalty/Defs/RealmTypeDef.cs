@@ -16,7 +16,11 @@ namespace TitularRoyalty
         {
             get
             {
-                return titleOverrides.ToDictionary(x => x.titleDef, x => x);
+                if (!titleOverrides.NullOrEmpty())
+                {
+                    return titleOverrides.ToDictionary(x => x.titleDef, x => x);
+                }
+                return new Dictionary<PlayerTitleDef, RealmTypeTitle>();
             }
         }
         
