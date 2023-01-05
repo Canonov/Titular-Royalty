@@ -1,0 +1,127 @@
+
+  <!-- TEMPLATE -->
+  <TitularRoyalty.RealmTypeDef Name="RealmTypeBase">
+    <defName>RealmType_Template</defName>
+    <label>template</label>
+
+    <titleOverrides>
+      <!-- ## Lowborn ## -->
+      <li> <!-- Freeman -->
+        <titleDef>TitularRoyalty_T_LR_Freeman</titleDef>
+
+        <label>Freeholder</label>
+        <labelFemale>None</labelFemale>
+      </li>
+      <li> <!-- Yeoman -->
+        <titleDef>TitularRoyalty_T_LR_Yeoman</titleDef>
+
+        <label>Yeoman</label>
+        <labelFemale>None</labelFemale>
+      </li>
+
+      <!-- ## Gentry ## -->
+      <li> <!-- Gentleman -->
+        <titleDef>TitularRoyalty_T_LR_Gentleman</titleDef>
+
+        <label>Gentleman</label>
+        <labelFemale>Lady</labelFemale>
+      </li>
+      <li> <!-- Squire -->
+        <titleDef>TitularRoyalty_T_LR_Squire</titleDef>
+
+        <label>Squire</label>
+        <labelFemale>None</labelFemale>
+      </li>
+      <li> <!-- Esquire -->
+        <titleDef>TitularRoyalty_T_MR_Esquire</titleDef>
+
+        <label>Esquire</label>
+        <labelFemale>None</labelFemale>
+      </li>
+      <li> <!-- Knight -->
+        <titleDef>TitularRoyalty_T_MR_Knight</titleDef>
+
+        <label>Knight</label>
+        <labelFemale>Dame</labelFemale>
+      </li>
+      <li> <!-- Knight-Bannerete -->
+        <titleDef>TitularRoyalty_T_MR_Bannerete</titleDef>
+
+        <label>Knight-Banneret</label>
+        <labelFemale>None</labelFemale>
+      </li>
+      <li> <!-- Knight Commander -->
+        <titleDef>TitularRoyalty_T_MR_Knight_Commander</titleDef>
+
+        <label>Lord Commander</label>
+        <labelFemale>Lady Commander</labelFemale>
+      </li>
+
+      <!-- ## Low Nobility ## -->
+      <li> <!-- Baronet -->
+        <titleDef>TitularRoyalty_T_MR_Baronet</titleDef>
+
+        <label>Baronet</label>
+        <labelFemale>Baronetess</labelFemale>
+      </li>
+      <li> <!-- Baron -->
+        <titleDef>TitularRoyalty_T_HR_Baron</titleDef>
+
+        <label>Baron</label>
+        <labelFemale>Baroness</labelFemale>
+      </li>
+      <li> <!-- Viscount -->
+        <titleDef>TitularRoyalty_T_HR_Viscount</titleDef>
+
+        <label>Viscount</label>
+        <labelFemale>Viscountess</labelFemale>
+      </li>
+
+      <!-- ## High Nobility ## -->
+      <li> <!-- Count -->
+        <titleDef>TitularRoyalty_T_HR_Count</titleDef>
+
+        <label>Count</label>
+        <labelFemale>Countess</labelFemale>
+      </li>
+      <li> <!-- Duke -->
+        <titleDef>TitularRoyalty_T_HR_Duke</titleDef>
+
+        <label>Duke</label>
+        <labelFemale>Duchess</labelFemale>
+      </li>
+      <li> <!-- Archduke -->
+        <titleDef>TitularRoyalty_T_HR_Archduke</titleDef>
+
+        <label>Archduke</label>
+        <labelFemale>Archduchess</labelFemale>
+      </li>
+
+      <!-- ## Royalty ## -->
+      <li> <!-- Prince -->
+        <titleDef>TitularRoyalty_T_RY_Prince</titleDef>
+
+        <label>Prince</label>
+        <labelFemale>Princess</labelFemale>
+      </li>
+      <li> <!-- Crown Prince -->
+        <titleDef>TitularRoyalty_T_RY_CrownPrince</titleDef>
+
+        <label>Crown Prince</label>
+        <labelFemale>Crown Princess</labelFemale>
+      </li>
+      <li> <!-- Queen (Consort) -->
+        <titleDef>TitularRoyalty_T_RY_Consort</titleDef>
+
+        <label>Prince Consort</label>
+        <labelFemale>Queen</labelFemale>
+      </li>
+      <li> <!-- King -->
+        <titleDef>TitularRoyalty_T_RY_King</titleDef>
+
+        <label>King</label>
+        <labelFemale>Queen</labelFemale>
+      </li>
+    </titleOverrides>
+
+  </TitularRoyalty.RealmTypeDef>
