@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-  <TitularRoyalty.PlayerTitlePermitDef Name="TR_DropResourcesBase" Abstract="True">
+  <!--<TitularRoyalty.PlayerTitlePermitDef Name="TR_DropResourcesBase" Abstract="True">
     <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
     <faction>PlayerColony</faction>
     <permitPointCost>1</permitPointCost>
@@ -44,6 +44,6 @@
     <usableOnWorldMap>false</usableOnWorldMap>
     <cooldownDays>60</cooldownDays>
     <workerClass>TitularRoyalty.PlayerTitlePermitWorker_BestowPsycast</workerClass>
-  </TitularRoyalty.PlayerTitlePermitDef>
+  </TitularRoyalty.PlayerTitlePermitDef>-->
 
 </Defs>

@@ -14,7 +14,7 @@ using Mono.Cecil.Cil;
 
 namespace TitularRoyalty
 {
-
+    /*
     [HarmonyPatch(typeof(PermitsCardUtility), "ShowSwitchFactionButton", MethodType.Getter)]
     public static class PermitsCardUtility_ShowSwitchFactionButton_Get_Prefix
     {
@@ -53,4 +53,5 @@ namespace TitularRoyalty
             return moddedCodes.AsEnumerable();
         }
     }
+    */
 }

@@ -72,8 +72,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comps\CompProperties_ManageTitles.cs" />
-    <Compile Include="Comps\Comp_ManageTitles.cs" />
+    <Compile Include="Components\CompProperties_ManageTitles.cs" />
+    <Compile Include="Components\Comp_ManageTitles.cs" />
     <Compile Include="Defs\PlayerTitleDefOf.cs" />
     <Compile Include="Permits\PlayerTitlePermitWorker_BestowPsycast.cs" />
     <Compile Include="Permits\PlayerTitlePermitDef.cs" />
@@ -94,10 +94,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="TR_DebugActions.cs" />
+    <Compile Include="Miscellaneous\TR_DebugActions.cs" />
     <Compile Include="Dialogs\Dialog_ChooseTitles.cs" />
-    <Compile Include="GameComponent_TitularRoyalty.cs" />
-    <Compile Include="TR_ModSettings.cs" />
+    <Compile Include="Components\GameComponent_TitularRoyalty.cs" />
+    <Compile Include="Miscellaneous\TR_ModSettings.cs" />
     <Compile Include="Commands\Verb_TitleGranter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

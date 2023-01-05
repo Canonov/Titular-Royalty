@@ -40,7 +40,7 @@
         <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
         <minExpectation>High</minExpectation>
 
-        <permitPointsAwarded>1</permitPointsAwarded>
+
 
         <TRInheritable>True</TRInheritable>
         <titleTier>LowNoble</titleTier>
@@ -77,7 +77,7 @@
             </allowedDefs>
         </foodRequirement>
 
-        <permitPointsAwarded>1</permitPointsAwarded>
+
 
         <TRInheritable>True</TRInheritable>
         <titleTier>LowNoble</titleTier>
@@ -132,7 +132,7 @@
             </li>
         </throneRoomRequirements>
 
-        <permitPointsAwarded>1</permitPointsAwarded>
+
 
         <TRInheritable>True</TRInheritable>
         <titleTier>HighNoble</titleTier>
