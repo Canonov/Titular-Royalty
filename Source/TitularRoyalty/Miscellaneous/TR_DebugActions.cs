@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 
@@ -44,6 +48,30 @@ namespace TitularRoyalty {
         {
 			ModSettingsApplier.ApplySettings();
         }
+
+        [DebugAction("Mods", "TR: Export Titlelist to Doc", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ExportTitlesToDoc()
+		{
+			string doc = "";
+			
+			foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
+			{
+				doc += $"  <li> <!--{title.originalLabels.label.CapitalizeFirst()}-->\n";
+				doc += $"    <titleDef>{title.defName}</titleDef>\n";
+				doc += $"    \n";
+                doc += $"    <label>{title.label}</label>\n";
+                doc += $"    <labelFemale>{title.labelFemale ?? "None"}</labelFemale>\n";
+                doc += $"  </li>\n\n";
+			}
+
+			using (FileStream fs = File.Create($"RealmTypeList{Rand.Int}.xml"))
+			{
+				byte[] info = new UTF8Encoding(true).GetBytes(doc);
+				fs.Write(info, 0, info.Length);
+            }
+
+			Log.Message($"Saved to your rimworld folder.");
+		}
 		
     }
 
