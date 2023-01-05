@@ -15,30 +15,23 @@ namespace TitularRoyalty
     {
         // WINDOW OPTIONS
         public Vector2 scrollPosition = new Vector2(0, 0); 
-        public override Vector2 InitialSize => new Vector2(400, 700);
+        public override Vector2 InitialSize => new Vector2(400, 747);
 
         // TITLE LISTS
         public List<PlayerTitleDef> Titles
         {
             get
             {
-                List<PlayerTitleDef> titles = new List<PlayerTitleDef>();
-                foreach (PlayerTitleDef v in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
-                {
-                    titles.Add(v);
-                    /*if (v.HasModExtension<AlternateTitlesExtension>() && v.tags.Contains("PlayerTitle"))
-                    {
-                        titles.Add(v);
-                    }*/
-                }
-                return titles;
+                return DefDatabase<PlayerTitleDef>.AllDefsListForReading;
             }
         }
+
+        private List<PlayerTitleDef> titlesBySeniority;
         public List<PlayerTitleDef> TitlesBySeniority
         {
             get
             {
-                return Titles.OrderBy(o => o.seniority).ToList();
+                return titlesBySeniority ??= Titles.OrderBy(x => x.seniority).ToList();
             }
         }
 
@@ -46,16 +39,22 @@ namespace TitularRoyalty
         private Listing_Standard TitleList;
         private Rect ContentRect;
         private Rect TitleRect;
+        private Rect RealmTypeRect;
+        private Rect RealmTypeButtonRect;
         private Rect ButtonsRect;
         private Rect LeftButtonRect;
         private Rect RightButtonRect;
+        private GameComponent_TitularRoyalty TRComponent;
+        private bool isWorldView = false;
 
         // CONSTRUCTOR
-        public Dialog_ManageTitles()
+        public Dialog_ManageTitles(bool Worldview = false)
         {
             doCloseX = true;
             forcePause = true;
             draggable = true;
+            isWorldView = Worldview;
+            TRComponent = Current.Game.GetComponent<GameComponent_TitularRoyalty>();
         }
 
         /// <summary>
@@ -86,7 +85,7 @@ namespace TitularRoyalty
             {
                 Find.WindowStack.Add(new Dialog_TitleRenamer(def));
             }
-            if (widgetRow.ButtonText("TR_managetitles_grant".Translate())) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
+            if (widgetRow.ButtonText("TR_managetitles_grant".Translate(), active: !isWorldView)) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
             {
                 Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
                 {
@@ -129,18 +128,47 @@ namespace TitularRoyalty
         /// </summary>
         public override void DoWindowContents(Rect inRect)
         {
+            
             Text.Font = GameFont.Medium;
 
             //Title
             TitleRect = new Rect(4, 17, inRect.width - 8, 40);
-            Widgets.DrawBox(TitleRect, -2, BaseContent.GreyTex);
+            //Widgets.DrawBox(TitleRect, -2, BaseContent.GreyTex);
             GenUI.SetLabelAlign(TextAnchor.MiddleCenter);
             Widgets.Label(TitleRect, "TR_managetitles_title".Translate());
-            Widgets.DrawTitleBG(TitleRect);
+            //Widgets.DrawTitleBG(TitleRect);
+
+            //RealmType
+            RealmTypeRect = new Rect(4, TitleRect.y + TitleRect.height + 7, inRect.width - 8, 40);
+            Widgets.DrawBox(RealmTypeRect, -2, BaseContent.GreyTex);
+            Widgets.DrawTitleBG(RealmTypeRect);
+
+            //Titleset: 
+            Text.Font = GameFont.Medium;
+            Rect RealmTypeLabelRect = RealmTypeRect.LeftHalf().ContractedBy(4);
+            Widgets.Label(RealmTypeLabelRect, "TR_realmtype".Translate() + ":");
             GenUI.ResetLabelAlign();
 
+            //Button with Dropdown to select titleset
+            RealmTypeButtonRect = RealmTypeRect.RightHalf().ContractedBy(4);
+            List<FloatMenuOption> realmtypeoptions = new List<FloatMenuOption>();
+            if (Widgets.ButtonText(RealmTypeButtonRect, TRComponent.RealmTypeDef.label)) 
+            {
+                foreach (RealmTypeDef rtdef in DefDatabase<RealmTypeDef>.AllDefsListForReading)
+                {
+                    realmtypeoptions.Add(new FloatMenuOption(rtdef.label, delegate ()
+                    {
+                        TRComponent.RealmType = rtdef.defName;
+                        Messages.Message("TR_realmtypechanged_notify".Translate(), MessageTypeDefOf.NeutralEvent);
+                    }));   
+                }
+                realmtypeoptions = realmtypeoptions.OrderBy(x => x.Label).ToList(); //Sort Alphabetically
+                Find.WindowStack.Add(new FloatMenu(realmtypeoptions));
+            }
+            
+
             //Box for the Content
-            ContentRect = new Rect(4, 57 + 7, inRect.width - 8, (30 * Titles.Count) + 12 + 30 + 6); //old height inRect.height - (57 + 7) - 40
+            ContentRect = new Rect(4, RealmTypeRect.y + RealmTypeRect.height + 7, inRect.width - 8, (30 * Titles.Count) + 12 + 30 + 6);
             Widgets.DrawTitleBG(ContentRect);
             Widgets.DrawBox(ContentRect, -2, BaseContent.GreyTex);
 
@@ -162,13 +190,14 @@ namespace TitularRoyalty
 
             if (Widgets.ButtonText(LeftButtonRect, "TR_managetitles_update".Translate()))
             {
-                Current.Game.GetComponent<GameComponent_TitularRoyalty>().ManageTitleLoc();
+                TRComponent.SetupTitles();
+                titlesBySeniority = null;
                 Messages.Message("TR_managetitles_update_notif".Translate(), MessageTypeDefOf.NeutralEvent);
                 DoTitleList();
             }
             if (Widgets.ButtonText(RightButtonRect, "TR_managetitles_resetcustom".Translate()))
             {
-                Current.Game.GetComponent<GameComponent_TitularRoyalty>().ResetTitles();
+                TRComponent.ResetTitles();
                 Messages.Message("TR_managetitles_resetcustom_notif".Translate(), MessageTypeDefOf.NeutralEvent);
             }
             TooltipHandler.TipRegion(LeftButtonRect, "TR_managetitles_update_tooltip".Translate());

@@ -12,7 +12,7 @@
 	<TR_choosetitle>Select a Title</TR_choosetitle>
 
 	<TR_namemessage>Male Title (Put None in both boxes to reset to default)</TR_namemessage>
-	<TR_namemessage2>Female Title (Remove to disable and use male title for both)</TR_namemessage2>
+	<TR_namemessage2>Female Title (Change it to "None" to disable and use male title for both)</TR_namemessage2>
 	<TR_invalidmessage>Male Title is Invalid</TR_invalidmessage>
 	<TR_invalidmessage2>Female Title is Invalid</TR_invalidmessage2>
 	<TR_changedtitle2>Title has been changed.</TR_changedtitle2>
@@ -24,25 +24,25 @@
 
 	<TR_managetitles_update>Update Titles</TR_managetitles_update>
 	<TR_managetitles_update_notif>Titles have been updated</TR_managetitles_update_notif>
-	<TR_managetitles_update_tooltip>Refreshes the title cache and applies your changes, also applies realmtype if you've changed the settings.</TR_managetitles_update_tooltip>
+	<TR_managetitles_update_tooltip>Refreshes the title cache and applies your changes, also applies titleset if you've changed the settings.</TR_managetitles_update_tooltip> <!-- CHANGED 1.6: Changed "realmtype" to "titleset" -->
 
 	<TR_managetitles_resetcustom>Reset Titles</TR_managetitles_resetcustom>
 	<TR_managetitles_resetcustom_notif>Custom Titles have been reset, click Update Titles to refresh the list.</TR_managetitles_resetcustom_notif>
 	<TR_managetitles_resetcustom_tooltip>Resets all custom titles back to their normal names</TR_managetitles_resetcustom_tooltip>
 
+	<TR_realmtypechanged_notify>Titleset has been changed, press update titles to apply the changes.</TR_realmtypechanged_notify> <!-- ADDED 1.6 -->
+
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>
-	
-	<TR_realmtypeslist_title>Choose Titleset</TR_realmtypeslist_title>
-	<TR_realmtypeslist_header>Default: Kingdom</TR_realmtypeslist_header>
-	<TR_selectorexplanation>All Empire changes is the King title to Emperor\nRoman is based on Late Roman Empire, Roman Alt is contributed by Alexey Stukov#2163\nRussian, Byzantine and Nordic Titles coming soon</TR_selectorexplanation>
 	<TR_miscoptionstitle>Miscellaneous Options</TR_miscoptionstitle>
 	<TR_checkbox_vanillainheritance>Vanilla Inheritance</TR_checkbox_vanillainheritance>
 	<TR_checkbox_needsclothesquality>Clothing Quality</TR_checkbox_needsclothesquality>
 	<TR_checkbox_needsmealquality>Meal Requirements</TR_checkbox_needsmealquality>
-	<TR_checkbox_disableworkroyals>Disable Worktypes</TR_checkbox_disableworkroyals>
+	<TR_checkbox_disableworkroyals>Disable Worktypes</TR_checkbox_disableworkroyals> <!-- Unused, For Now-->
+	<TR_checkbox_titlegivespermitpoints>Title Permit Points</TR_checkbox_titlegivespermitpoints>
 
 	<!-- Miscellaneous -->
+	<TR_realmtype>Titleset</TR_realmtype> <!-- ADDED 1.6 -->
 	<TR_consort>-Consort</TR_consort> <!-- If Consort (Spouse of King) title has the same name as what the king would have (ie queen and queen), apply this at end, for example Queen-Consort -->
 
 	<!-- UNUSED, LEFT IN FOR 1.3 SUPPORT -->
@@ -50,5 +50,8 @@
 	<TR_baserealmtype>Chosen Realm Type</TR_baserealmtype>
 	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
 	<TR_reloadsavefix>Make sure to save and reload if you're in the game to apply the changes.</TR_reloadsavefix>
+	<TR_realmtypeslist_title>Choose Titleset</TR_realmtypeslist_title>
+	<TR_realmtypeslist_header>Default: Kingdom</TR_realmtypeslist_header>
+	<TR_selectorexplanation>All Empire changes is the King title to Emperor\nRoman is based on Late Roman Empire, Roman Alt is contributed by Alexey Stukov#2163\nRussian, Byzantine and Nordic Titles coming soon</TR_selectorexplanation>
 
 </LanguageData>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <RoyalTitlePermitDef Name="TR_DropResourcesBase" Abstract="True">
+    <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
+    <faction>PlayerColony</faction>
+    <permitPointCost>1</permitPointCost>
+    <cooldownDays>45</cooldownDays>
+    <usableOnWorldMap>true</usableOnWorldMap>
+    <royalAid>
+      <targetingRange>39.9</targetingRange>
+    </royalAid>
+  </RoyalTitlePermitDef>
+
+  <RoyalTitlePermitDef ParentName="TR_DropResourcesBase">
+    <defName>TR_SteelDrop</defName>
+    <label>steel drop</label>
+    <description>Call for a drop of 250 steel.</description>
+    <minTitle>TitularRoyalty_T_RY_King</minTitle>
+    <faction>PlayerColony</faction>
+    <permitPointCost>1</permitPointCost>
+    <uiPosition>(0,0)</uiPosition>
+    <royalAid>
+      <itemsToDrop>
+        <Steel>250</Steel>
+      </itemsToDrop>
+      <favorCost>4</favorCost>
+    </royalAid>
+  </RoyalTitlePermitDef>
+
+</Defs>

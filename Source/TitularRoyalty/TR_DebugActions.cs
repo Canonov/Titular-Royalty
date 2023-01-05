@@ -14,7 +14,7 @@ namespace TitularRoyalty {
         public static void TryChangeCustomTitle()
 		{
 			List<DebugMenuOption> list = new List<DebugMenuOption>();
-			foreach (RoyalTitleDef title in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
+			foreach (PlayerTitleDef title in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
 			{
 				list.Add(new DebugMenuOption($"{title.GetLabelForBothGenders()}", DebugMenuOptionMode.Action, delegate
 				{
@@ -36,7 +36,7 @@ namespace TitularRoyalty {
         [DebugAction("Mods", "TR: Refresh Titles", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void UpdateTitles()
 		{
-			Current.Game.GetComponent<GameComponent_TitularRoyalty>().ManageTitleLoc();
+			Current.Game.GetComponent<GameComponent_TitularRoyalty>().SetupTitles();
 		}
 
         [DebugAction("Mods", "TR: Try Apply ModSettings", false, false, allowedGameStates = AllowedGameStates.Playing)]

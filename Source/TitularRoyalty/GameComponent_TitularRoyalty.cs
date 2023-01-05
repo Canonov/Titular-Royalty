@@ -9,287 +9,172 @@ namespace TitularRoyalty
 	/// This really needs a rewrite it's kinda a mess
     public class GameComponent_TitularRoyalty : GameComponent
     {
-		// Labels and PlayerTitles lists
-		public List<string> labelsm;
-		public List<string> labelsf;
-		public List<RoyalTitleDef> playerTitles;
-
-
         public GameComponent_TitularRoyalty(Game game) // Needs this or else Rimworld throws a fit and errors.
         {
-            labelsm = new List<string>();
-            labelsf = new List<string>();
-            playerTitles = new List<RoyalTitleDef>();
         }
 
-		/// <summary>
-		/// Adds all the TitleDefs that are meant for the player to a list
-		/// </summary>
-		public void PopulateTitleList()
+        private string realmTypeDefName;
+        public string RealmType
         {
-			//Log.Message("Titular Royalty: Populating Titlelist");
-			if (playerTitles.Count > 0)
+            get
             {
-				playerTitles.Clear();
+                return realmTypeDefName;
             }
-
-			foreach (PlayerTitleDef title in DefDatabase<PlayerTitleDef>.AllDefsListForReading.OrderBy(x => x.seniority) )
+            set
             {
-				playerTitles.Add(title);
-			}
-
-		}
-
-		/// <summary>
-		/// Resets all changed titles to their default realmType or Base Value
-		/// </summary>
-		public void ResetTitles()
+                realmTypeDefName = value;
+                realmTypeDef = null;
+            }
+        }
+        
+        private RealmTypeDef realmTypeDef;
+        public RealmTypeDef RealmTypeDef
         {
-			// change every item to none so they're ignored
-			for (int i = 0; i < labelsm.Count; i++)
+            get
             {
-				labelsm[i] = "none";
-            }
-			for (int i = 0; i < labelsf.Count; i++)
-			{
-				labelsf[i] = "none";
-			}
-
-			// Save the changes, hopefully.
-			this.ExposeData();
-		}
-
-        public void DoTitleChange(RoyalTitleDef title, string basert)
-        {
-			int titleIndex = playerTitles.IndexOf(title);
-
-			// Custom Titles
-			if (titleIndex >= 0)
-            {
-				// Female Title
-				if (labelsf[titleIndex] != "none")
+                if (realmTypeDef == null)
                 {
-					if (labelsf[titleIndex].ToLower() == "remove")
+                    RealmTypeDef temp_realmtype;
+                    temp_realmtype = DefDatabase<RealmTypeDef>.GetNamed(RealmType, false);
+                    if (temp_realmtype == null)
                     {
-						title.labelFemale = null;
+                        Log.Error($"Titular Royalty: Realm Type '{RealmType}' not found. Defaulting to 'Kingdom'.");
+                        realmTypeDefName = "RealmType_Kingdom";
+                        temp_realmtype = DefDatabase<RealmTypeDef>.GetNamed(RealmType, false);
                     }
-					else
-                    {
-						title.labelFemale = labelsf[titleIndex];
-                    }
+
+                    realmTypeDef = temp_realmtype;
                 }
-				else if (labelsf[titleIndex] == "none" && labelsm[titleIndex] != "none") // Just incase
-                {
-                    labelsf[titleIndex] = "remove";
-					title.labelFemale = null;
-                }
-
-				// Male Title
-				if (labelsm[titleIndex] != "none")
-				{
-					title.label = labelsm[titleIndex];
-                    title.ClearCachedData(); //Clear the cached label
-                    return;
-				}
+                return realmTypeDef;
             }
-			else
-            {
-				Log.Error("Titular Royalty: Failed DoTitleChange()");
-				return;
-            }
-
-			// TitleLists
-			if (title.modExtensions != null)
-            {
-				foreach (AlternateTitlesExtension ext in title.modExtensions)
-                {
-					if (ext.realmType == basert)
-                    {
-						// Male / Neutral Label
-						title.label = ext.label;
-
-						// Female Labels
-						if (ext.labelf == null || ext.labelf == "none")
-                        {
-							title.labelFemale = null;
-                        }
-						else
-                        {
-							title.labelFemale = ext.labelf;
-                        }
-
-						break;
-                    }
-                }
-            }
-            title.ClearCachedData(); //Clear the cached label
         }
 
-		/// <summary>
-		/// Passes on the Realmtype 
-		/// </summary>
-		public void ManageTitleLoc()
+        // Get the Titles List in Order and Cache it
+        private static List<PlayerTitleDef> titlesBySeniority;
+        public static List<PlayerTitleDef> TitlesBySeniority
         {
-			bool hasRealm = false;
-			string realmType = TitularRoyaltyMod.Instance.GetSettings<TRSettings>().realmType;
-
-            while (!hasRealm)
+            get
             {
-				if (realmType != null)
-				{
-					//Log.Message(realmType);
+                return titlesBySeniority ??= DefDatabase<PlayerTitleDef>.AllDefsListForReading.OrderBy(x => x.seniority).ToList();
+            }
+        }
 
-					switch (realmType)
-					{
-						case "Empire":
-							break;
-						case "Kingdom":
-							break;
-						case "Roman":
-							break;
-                        case "Roman (Alt)":
-                            break;
-						default:
-							Log.Message("Titular Royalty: Invalid RealmType, make sure one is selected in settings");
-							TitularRoyaltyMod.Instance.Settings.realmType = "Kingdom";
-                            TitularRoyaltyMod.Instance.Settings.ExposeData();
-							realmType = "Kingdom";
-							break;
-					}
+        // Custom Titles
+        private Dictionary<PlayerTitleDef, TitleLabelPair> customTitles;
+        public Dictionary<PlayerTitleDef, TitleLabelPair> CustomTitles
+        {
+            get
+            {
+                if (customTitles == null)
+                {
+                    customTitles = TitlesBySeniority.ToDictionary(x => x, x => new TitleLabelPair());
+                }
+                return customTitles;
+            }
+            private set
+            {
+                customTitles = value;
+            }
+        }
 
-					foreach (RoyalTitleDef title in playerTitles)
-					{
-						DoTitleChange(title, realmType);
-					}
-					hasRealm = true;
-				}
-				else
-				{
-					Log.Message("Titular Royalty: no RealmType Found : Defaulting to Kingdom");
-                    TitularRoyaltyMod.Instance.Settings.realmType = "Kingdom";
-                    TitularRoyaltyMod.Instance.Settings.ExposeData();
-					realmType = "Kingdom";
-					continue;
-				}
-				break;
-			}
-
-
-		}
+        // Required for ExposeData
+        private List<PlayerTitleDef> customTitles_List1;
+        private List<TitleLabelPair> customTitles_List2;
 
         /// <summary>
-        /// Changes a title name of the given seniority and gender
+        /// Passes on the Realmtype 
         /// </summary>
-        /// <param name="gender">Gender you want to change Gender.Male or None, or Gender.Female</param>
-        /// <param name="Seniority">Seniority of your Title</param>
-        public void SaveTitleChange(Gender gender, int Seniority, string s)
+        public void SetupTitles()
         {
-			var titlesSeniorityOrder = Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading;
-
-			if (labelsf.Count == 0 || labelsm.Count == 0)
+            foreach (PlayerTitleDef title in TitlesBySeniority)
             {
-				Log.Error("Titular Royalty: Invalid save data count"); // Should never happen but who knows
-				return;
-            }
-
-			int i = 0;
-
-			// Female Titles
-			if (gender == Gender.Female)
-            {
-                foreach (RoyalTitleDef item in titlesSeniorityOrder)
+                // Custom Title
+                if (CustomTitles.TryGetValue(title, out TitleLabelPair titleLabels) && titleLabels.label != null && titleLabels.label != "None" )
                 {
-					if (item.seniority == Seniority)
-					{
-						labelsf[i] = s;
-                    }
-					i++;
-				}
-            }
-			// Male or Neutral Titles
-			else
-            {
-				foreach (RoyalTitleDef item in titlesSeniorityOrder)
-				{
-					if (item.seniority == Seniority)
-                    {
-						labelsm[i] = s;
-					}
-					i++;
-				}
-			}
+                    title.label = titleLabels.label;
+                    title.labelFemale = titleLabels.HasFemaleTitle() ? titleLabels.labelFemale : null;
+                    goto Finalize;
+                }
 
-			ExposeData();
+                // Realm Type, if No Custom
+                if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RealmTypeTitle overrides))
+                {
+                    title.label = overrides.label ?? title.label;
+                    title.labelFemale = overrides.HasFemaleTitle() ? overrides.labelFemale : null;
+
+                    if (overrides.useTierOverride)
+                    {
+                        title.titleTier = overrides.tierOverride;
+                    }
+
+                }
+
+                Finalize:
+                title.ClearCachedData();
+            }
         }
 
-		/// <summary>
-		/// Saves & Loads the title data, if updating from a TR 1.1 save or the values are otherwise not found, generate new ones
-		/// </summary>
-		public override void ExposeData()
-		{
-            //List<RoyalTitleDef> playerTitles = DefDatabase<RoyalTitleDef>.AllDefsListForReading;
+        /// <summary>
+        /// Resets all changed titles to their default realmType or Base Value
+        /// </summary>
+        public void ResetTitles()
+        {
+            customTitles = null;
+            titlesBySeniority = null;
+            customTitles_List1 = null;
+            customTitles_List2 = null;
 
-            if (labelsf.Count == 0)
+            foreach (RealmTypeTitle title in BaseRealmType.Def.titleOverrides)
             {
-                foreach (PlayerTitleDef title in playerTitles)
+                title.titleDef.label = title.label;
+                title.titleDef.labelFemale = title.labelFemale;
+                title.titleDef.ClearCachedData();
+            }
+        }
+
+        /// <summary>
+        /// Changes a title name of the given seniority and gender, needs to be manually refreshed with all the others with setup titles or a restart
+        /// </summary>
+        /// <param name="gender">Gender you want to change Gender.Male or None, or Gender.Female</param>
+        /// <param name="newlabel">New Title Name</param>
+        public void SaveTitleChange(PlayerTitleDef title, string newlabel, Gender gender)
+        {
+            if (CustomTitles.TryGetValue(title, out TitleLabelPair labels))
+            {
+                if (gender == Gender.Female)
                 {
-                    labelsf.Add("none");
+                    labels.labelFemale = newlabel;
+                }
+                else
+                {
+                    labels.label = newlabel;
                 }
             }
-            if (labelsm.Count == 0)
+            else
             {
-                foreach (PlayerTitleDef title in playerTitles)
-                {
-                    labelsm.Add("none");
-                }
+                Log.Error($"TR: Couldn't find Def {title} in CustomTitles");
             }
-            base.ExposeData();
-
-            // This saves the lists
-            Scribe_Collections.Look(ref labelsm, "CustomTitlesM", LookMode.Value);
-            Scribe_Collections.Look(ref labelsf, "CustomTitlesF", LookMode.Value);
         }
 
         public void OnGameStart()
         {
-            PopulateTitleList();
-            if (labelsf.Count == 0)
-            {
-                foreach (RoyalTitleDef title in playerTitles)
-                {
-                    if (title.tags.Contains("PlayerTitle"))
-                    {
-                        labelsf.Add("none");
-                    }
-                }
-            }
-            if (labelsm.Count == 0)
-            {
-                foreach (RoyalTitleDef title in playerTitles)
-                {
-                    if (title.tags.Contains("PlayerTitle"))
-                    {
-                        labelsm.Add("none");
-                    }
-                }
-            }
-			
-            ManageTitleLoc();
-			ModSettingsApplier.ApplySettings();
-
-            Faction.OfPlayer.allowGoodwillRewards = false;
-			Faction.OfPlayer.allowRoyalFavorRewards = false;
+            SetupTitles();
+			Faction.OfPlayer.SetupPlayerForTR(); // Set Permit factions and other options
+			ModSettingsApplier.ApplySettings(); // Apply ModSettings Changes
         }
 
 
-        public override void LoadedGame()
-        {
-			OnGameStart();
-        }
+        public override void LoadedGame() => OnGameStart();
+        public override void StartedNewGame() => OnGameStart();
 
-        public override void StartedNewGame()
+        /// <summary>
+        /// Saves & Loads the title data, if updating from a TR 1.1 save or the values are otherwise not found, generate new ones
+        /// </summary>
+        public override void ExposeData()
         {
-			OnGameStart();
+            base.ExposeData();
+            Scribe_Values.Look(ref realmTypeDefName, "realmTypeDefName", "RealmType_Kingdom");
+            Scribe_Collections.Look(ref customTitles, "TRCustomTitles", LookMode.Def, LookMode.Deep, ref customTitles_List1, ref customTitles_List2);
         }
 
     }

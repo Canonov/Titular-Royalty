@@ -16,8 +16,7 @@ namespace TitularRoyalty
         }
 
         public bool TRInheritable = false;
-
-        public List<RealmTypeTitle> AlternateTitles = new List<RealmTypeTitle>();
+        public TitleLabelPair originalLabels;
 
         public QualityCategory GetApparelQualityfromTier()
         {
