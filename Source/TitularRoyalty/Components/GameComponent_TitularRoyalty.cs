@@ -80,9 +80,9 @@ namespace TitularRoyalty
             foreach (PlayerTitleDef title in TitlesBySeniority)
             {
                 // Custom Title
-                if (CustomTitles.TryGetValue(title, out TitleLabelPair titleLabels) && titleLabels.label != null && titleLabels.label != "None" )
+                if (CustomTitles.TryGetValue(title, out TitleLabelPair titleLabels) && (titleLabels.label != "None" || titleLabels.HasFemaleTitle()) )
                 {
-                    title.label = titleLabels.label;
+                    title.label = titleLabels.label ?? title.label;
                     title.labelFemale = titleLabels.HasFemaleTitle() ? titleLabels.labelFemale : null;
                     goto Finalize;
                 }

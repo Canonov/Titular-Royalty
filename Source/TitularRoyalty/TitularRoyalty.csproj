@@ -75,6 +75,7 @@
     <Compile Include="Comps\CompProperties_ManageTitles.cs" />
     <Compile Include="Comps\Comp_ManageTitles.cs" />
     <Compile Include="Defs\PlayerTitleDefOf.cs" />
+    <Compile Include="Permits\PlayerTitlePermitWorker_BestowPsycast.cs" />
     <Compile Include="Permits\PlayerTitlePermitDef.cs" />
     <Compile Include="Defs\RealmTypeDefOf.cs" />
     <Compile Include="Defs\RealmTypeTitle.cs" />
