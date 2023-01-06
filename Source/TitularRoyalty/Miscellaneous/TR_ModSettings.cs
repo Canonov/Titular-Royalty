@@ -19,7 +19,7 @@ namespace TitularRoyalty
 
         public override void ExposeData()
         {
-            Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", false);
+            Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", true);
             Scribe_Values.Look(ref clothingQualityRequirements, "clothingQualityRequirements", true);
             Scribe_Values.Look(ref titlesGivePermitPoints, "titlesGivePermitPoints", true);
             base.ExposeData();
