@@ -26,7 +26,12 @@
 
 (VERSION 1.5) - Added two more mod settings, a checkbox to enable or disable the apparel quality requirements and a checkbox reenabling vanilla title inheritance, you can also set a pawns title heir at the throne now.
 (VERSION 1.5.1) - Added float menu option when you right click the throne with a pawn to open the title manager, also minor bugfixes
-(VERSION 1.6) (NEW!) - 
+(VERSION 1.6) (NEW!)
+ - Complete rewrite of the GameComponent
+ - Manage Titles is now available on the world map at your player settlement for if you don't have a throne.
+ - Titlesets have been completely recoded, your selection is now specific to your save at the managetitles menu, they're also easier for me to add (could probably even be added with submods easier now as they use Defs)
+ - Debug Option to export a list I can use to add your custom titleset to the game easily, it takes the titles currently in use in your game and saves a list of their names in your Rimworld Directory.
+ - New Old Russian, Norse and Shattered Empire (Sophiamundan) Titlesets
 </description>
 
 </ModMetaData>

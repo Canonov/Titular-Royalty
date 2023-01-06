@@ -32,11 +32,7 @@ namespace TitularRoyalty
         {
             get
             {
-                if (realmTypeDef == null)
-                {
-                    realmTypeDef = DefDatabase<RealmTypeDef>.GetNamed(RealmType, false);
-                }
-                return realmTypeDef;
+                return realmTypeDef ??= DefDatabase<RealmTypeDef>.GetNamed(RealmType, false);
             }
         }
 
@@ -56,11 +52,7 @@ namespace TitularRoyalty
         {
             get
             {
-                if (customTitles == null)
-                {
-                    customTitles = TitlesBySeniority.ToDictionary(x => x, x => new TitleLabelPair());
-                }
-                return customTitles;
+                return customTitles ??= TitlesBySeniority.ToDictionary(x => x, x => new TitleLabelPair());
             }
             private set
             {

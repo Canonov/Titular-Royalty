@@ -22,18 +22,24 @@ namespace TitularRoyalty
         {
             if (__instance.Faction == Faction.OfPlayer)
             {
-                Command_Action manage_titles = new Command_Action();
-                manage_titles.icon = Resources.CrownIcon;
-                manage_titles.defaultLabel = "TR_Command_managetitles_label".Translate();
-                manage_titles.defaultDesc = "TR_Command_managetitles_desc".Translate();
-
-                manage_titles.action = delegate
+                Command_Action manage_titles = new Command_Action
                 {
-                    Dialog_ManageTitles window = new Dialog_ManageTitles(true);
-                    Find.WindowStack.Add(window);
-                };
+                    icon = Resources.CrownIcon,
+                    defaultLabel = "TR_Command_managetitles_label".Translate(),
+                    defaultDesc = "TR_Command_managetitles_desc".Translate(),
 
+                    action = delegate
+                    {
+                        Dialog_ManageTitles window = new Dialog_ManageTitles(true);
+                        Find.WindowStack.Add(window);
+                    }
+                };
                 yield return manage_titles;
+            }
+
+            foreach (Gizmo gizmo in gizmos)
+            {
+                yield return gizmo;
             }
         }
         
