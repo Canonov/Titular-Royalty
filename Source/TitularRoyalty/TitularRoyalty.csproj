@@ -72,27 +72,32 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comps\CompProperties_ManageTitles.cs" />
-    <Compile Include="Comps\Comp_ManageTitles.cs" />
+    <Compile Include="Components\CompProperties_ManageTitles.cs" />
+    <Compile Include="Components\Comp_ManageTitles.cs" />
     <Compile Include="Defs\PlayerTitleDefOf.cs" />
-    <Compile Include="Defs\RealmType.cs" />
+    <Compile Include="Permits\PlayerTitlePermitWorker_BestowPsycast.cs" />
+    <Compile Include="Permits\PlayerTitlePermitDef.cs" />
+    <Compile Include="Defs\RealmTypeDefOf.cs" />
+    <Compile Include="Defs\RealmTypeTitle.cs" />
     <Compile Include="Defs\RealmTypeDef.cs" />
     <Compile Include="Dialogs\Dialog_ManageTitles.cs" />
     <Compile Include="Dialogs\Dialog_TitleRenamer.cs" />
+    <Compile Include="Miscellaneous\Utilities.cs" />
     <Compile Include="Miscellaneous\ModSettingsApplier.cs" />
     <Compile Include="Miscellaneous\Resources.cs" />
     <Compile Include="Defs\PlayerTitleDef.cs" />
+    <Compile Include="Patches\PermitsCardUtility_Patches.cs" />
     <Compile Include="Patches\QuestGen_Patches.cs" />
+    <Compile Include="Patches\Settlement_GetGizmos_ManageTitles_Patch.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="TR_DebugActions.cs" />
-    <Compile Include="TR_DefModExtensions.cs" />
+    <Compile Include="Miscellaneous\TR_DebugActions.cs" />
     <Compile Include="Dialogs\Dialog_ChooseTitles.cs" />
-    <Compile Include="GameComponent_TitularRoyalty.cs" />
-    <Compile Include="TR_ModSettings.cs" />
+    <Compile Include="Components\GameComponent_TitularRoyalty.cs" />
+    <Compile Include="Miscellaneous\TR_ModSettings.cs" />
     <Compile Include="Commands\Verb_TitleGranter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

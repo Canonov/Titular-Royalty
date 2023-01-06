@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--<TitularRoyalty.PlayerTitlePermitDef Name="TR_DropResourcesBase" Abstract="True">
+    <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
+    <faction>PlayerColony</faction>
+    <permitPointCost>1</permitPointCost>
+    <cooldownDays>45</cooldownDays>
+    <usableOnWorldMap>true</usableOnWorldMap>
+    <royalAid>
+      <targetingRange>39.9</targetingRange>
+    </royalAid>
+  </TitularRoyalty.PlayerTitlePermitDef>
+
+  <TitularRoyalty.PlayerTitlePermitDef ParentName="TR_DropResourcesBase">
+    <defName>TR_SteelDrop</defName>
+    <label>steel drop</label>
+    <description>Call for a drop of 250 steel.</description>
+    <minTitle>TitularRoyalty_T_HR_Archduke</minTitle>
+    <faction>PlayerColony</faction>
+    <permitPointCost>1</permitPointCost>
+    <uiPosition>(0,0)</uiPosition>
+    <royalAid>
+      <itemsToDrop>
+        <Steel>250</Steel>
+      </itemsToDrop>
+      <favorCost>4</favorCost>
+    </royalAid>
+  </TitularRoyalty.PlayerTitlePermitDef>
+
+  <TitularRoyalty.PlayerTitlePermitDef>
+    <defName>TR_GivePsycast</defName>
+    <label>Grant Psycast</label>
+    <description>Grants the targeted pawn a level of psylink</description>
+    <minTitle>TitularRoyalty_T_HR_Archduke</minTitle>
+    <faction>PlayerColony</faction>
+    <permitPointCost>2</permitPointCost>
+    <royalAid>
+      <favorCost>1</favorCost>
+      <targetingRequireLOS>true</targetingRequireLOS>
+      <targetingRange>30</targetingRange>
+    </royalAid>
+    <uiPosition>(1,0)</uiPosition>
+    <usableOnWorldMap>false</usableOnWorldMap>
+    <cooldownDays>60</cooldownDays>
+    <workerClass>TitularRoyalty.PlayerTitlePermitWorker_BestowPsycast</workerClass>
+  </TitularRoyalty.PlayerTitlePermitDef>-->
+
+</Defs>

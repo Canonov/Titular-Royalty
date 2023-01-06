@@ -9,26 +9,34 @@ namespace TitularRoyalty
 {
     public class RealmTypeDef : Def
     {
-        public RealmTypeDef inheritsFrom;
-        public bool HasParent
+        public enum GovernmentType
+        {
+            Monarchy,
+            Military,
+            Communist
+        }
+
+        public GovernmentType governmentType = GovernmentType.Monarchy;
+        
+        public List<RealmTypeTitle> titleOverrides;
+        public Dictionary<PlayerTitleDef, RealmTypeTitle> TitlesWithOverrides
         {
             get
             {
-                return inheritsFrom != null;
+                if (!titleOverrides.NullOrEmpty())
+                {
+                    return titleOverrides.ToDictionary(x => x.titleDef, x => x);
+                }
+                return new Dictionary<PlayerTitleDef, RealmTypeTitle>();
             }
         }
-
-        [NoTranslate]
-        public string SaveID;
-
+        
         public override IEnumerable<string> ConfigErrors()
         {
             foreach (string item in base.ConfigErrors())
             {
                 yield return item;
             }
-
-            if (SaveID == null) { yield return $"def {defName} must have a SaveID"; }
         }
     }
 }

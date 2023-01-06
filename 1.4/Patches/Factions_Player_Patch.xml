@@ -5,28 +5,28 @@
 <Operation Class="PatchOperationSequence">
   <operations>
     <li Class="PatchOperationAdd">
-      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <xpath>/Defs/FactionDef[isPlayer="true"]</xpath>
       <value>
         <royalTitleTags></royalTitleTags>
       </value>
     </li>
 
     <li Class="PatchOperationAdd">
-      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]/royalTitleTags</xpath>
+      <xpath>/Defs/FactionDef[isPlayer="true"]/royalTitleTags</xpath>
       <value>
         <li>PlayerTitle</li>
       </value>
     </li>
 
     <li Class="PatchOperationAdd">
-      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <xpath>/Defs/FactionDef[isPlayer="true"]</xpath>
       <value>
         <royalFavorLabel>Influence</royalFavorLabel>
       </value>
     </li>
 
     <li Class="PatchOperationAdd">
-      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <xpath>/Defs/FactionDef[isPlayer="true"]</xpath>
       <value>
         <royalFavorIconPath>UI/Icons/CrownIcon</royalFavorIconPath>
       </value>
@@ -39,13 +39,13 @@
 <Operation Class="PatchOperationSequence">
   <operations>
     <li Class="PatchOperationAdd">
-      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <xpath>/Defs/FactionDef[isPlayer="true"]</xpath>
       <value>
         <royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
       </value>
     </li>
     <li Class="PatchOperationAdd">
-      <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]</xpath>
+      <xpath>/Defs/FactionDef[isPlayer="true"]</xpath>
       <value>
         <royalTitleInheritanceRelations>
             <li>Child</li>
@@ -67,14 +67,14 @@
 
 <!-- Colony Fluff -->
 <!--<Operation Class="PatchOperationReplace">
-    <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]/label</xpath>
+    <xpath>/Defs/FactionDef[isPlayer="true"]/label</xpath>
     <value>
         <label>New Realm</label>
     </value>
 </Operation>
 
 <Operation Class="PatchOperationReplace">
-    <xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]/description</xpath>
+    <xpath>/Defs/FactionDef[isPlayer="true"]/description</xpath>
     <value>
         <description>A recently established faction, lead by your Monarch</description>
     </value>

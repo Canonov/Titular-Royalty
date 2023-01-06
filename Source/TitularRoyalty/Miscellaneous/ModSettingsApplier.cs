@@ -10,7 +10,7 @@ namespace TitularRoyalty
     {
         public static void ApplySettings()
         {
-            var Settings = TitularRoyaltyMod.Instance.Settings;
+            var Settings = TitularRoyaltyMod.Settings;
 
             foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
             {
@@ -32,6 +32,12 @@ namespace TitularRoyalty
                 else
                 {
                     title.requiredMinimumApparelQuality = QualityCategory.Awful;
+                }
+
+                //Apply Title Permit Points
+                if (!Settings.titlesGivePermitPoints)
+                {
+                    title.permitPointsAwarded = 0;
                 }
 
             }
