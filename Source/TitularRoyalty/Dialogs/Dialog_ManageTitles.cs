@@ -75,7 +75,7 @@ namespace TitularRoyalty
             Widgets.BeginGroup(rect);
             WidgetRow widgetRow = new WidgetRow(0f, 0f);
             widgetRow.Gap(4f);
-            widgetRow.Icon(Resources.TitleTierIcons[(int)def.titleTier]);
+            widgetRow.Icon(Resources.TierIconsForGovernment(TRComponent.RealmTypeDef.governmentType)[(int)def.titleTier]);
             //widgetRow.Gap(4f);
 
             float width = rect.width - widgetRow.FinalX - 4f - Text.CalcSize("TR_managetitles_rename".Translate()).x - 16f - 4f - Text.CalcSize("TR_managetitles_grant".Translate()).x - 16f - 4f;

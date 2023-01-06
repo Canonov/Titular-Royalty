@@ -9,9 +9,16 @@ namespace TitularRoyalty
 {
     public class RealmTypeDef : Def
     {
+        public enum GovernmentType
+        {
+            Monarchy,
+            Military,
+            Communist
+        }
 
-        public List<RealmTypeTitle> titleOverrides;
+        public GovernmentType governmentType = GovernmentType.Monarchy;
         
+        public List<RealmTypeTitle> titleOverrides;
         public Dictionary<PlayerTitleDef, RealmTypeTitle> TitlesWithOverrides
         {
             get

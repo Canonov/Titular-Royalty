@@ -31,5 +31,11 @@ namespace TitularRoyalty
             ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon5")
         };
 
+        public static Texture2D[] TierIconsForGovernment(RealmTypeDef.GovernmentType govType)
+        {
+            return TitleTierIcons;
+        }
+        
+
     }
 }
