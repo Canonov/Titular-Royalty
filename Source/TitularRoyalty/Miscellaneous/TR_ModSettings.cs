@@ -17,6 +17,8 @@ namespace TitularRoyalty
         public bool clothingQualityRequirements;
         public bool titlesGivePermitPoints;
 
+        public bool SovietModEnabled => ModLister.HasActiveModWithName("Titular Royalty - Soviet Revolution");
+
         public override void ExposeData()
         {
             Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", true);
@@ -81,10 +83,10 @@ namespace TitularRoyalty
             listingStandard.Gap(12);
 
             //First row of checkbox options
-            Listing_Standard Checkboxes = listingStandard.GetRect(24).BeginListingStandard(3);
+            Listing_Standard Checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
             Checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref Settings.inheritanceEnabled);
             Checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
-            Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
+            //Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
             Checkboxes.End();
 
             listingStandard.End();

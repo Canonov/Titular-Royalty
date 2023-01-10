@@ -3,6 +3,7 @@
   <TitularRoyalty.RealmTypeDef>
     <defName>RealmType_Norse</defName>
     <label>Old Norse</label>
+    <iconPath>UI/Icons/NorseIcon</iconPath>
 
     <titleOverrides>
       <li> <!--Karl-->

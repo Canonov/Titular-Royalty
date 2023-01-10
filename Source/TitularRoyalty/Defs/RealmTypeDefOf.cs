@@ -7,6 +7,7 @@ using UnityEngine;
 namespace TitularRoyalty
 {
 
+    /*
     [DefOf]
     public class RealmTypeDefOf
     {
@@ -19,7 +20,7 @@ namespace TitularRoyalty
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(RealmTypeDefOf));
         }
-    }
+    }*/
 
     [StaticConstructorOnStartup]
     public static class BaseRealmType

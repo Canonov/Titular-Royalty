@@ -12,7 +12,6 @@ namespace TitularRoyalty
         public enum GovernmentType
         {
             Monarchy,
-            Military,
             Communist
         }
 
@@ -30,6 +29,28 @@ namespace TitularRoyalty
                 return new Dictionary<PlayerTitleDef, RealmTypeTitle>();
             }
         }
+
+        public string iconPath;
+        private Texture2D icon;
+        public Texture2D Icon
+        {
+            get
+            {
+                if (icon == null)
+                {
+                    if (iconPath != null)
+                    {
+                        icon = ContentFinder<Texture2D>.Get(iconPath);
+                    }
+                    else
+                    {
+                        icon = Resources.CrownIcon;
+                    }
+                }
+                return icon;
+            }
+        }
+
         
         public override IEnumerable<string> ConfigErrors()
         {
