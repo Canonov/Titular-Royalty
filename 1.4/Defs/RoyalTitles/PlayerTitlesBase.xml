@@ -162,7 +162,7 @@
             </allowedDefs>
         </foodRequirement>
 
-        <TRInheritable>True</TRInheritable>
+        <TRInheritable>False</TRInheritable>
         <titleTier>Royalty</titleTier>
     </TitularRoyalty.PlayerTitleDef>
 </Defs>
