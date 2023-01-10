@@ -3,7 +3,7 @@
   <TitularRoyalty.RealmTypeDef>
     <defName>RealmType_ShatteredEmpire</defName>
     <label>Sophiamundian</label>
-    <iconPath>UI/Icons/RoyalFavor</iconPath>
+    <iconPath>World/WorldObjects/Expanding/Empire</iconPath>
 
     <titleOverrides>
       <li> <!--Freeholder-->
