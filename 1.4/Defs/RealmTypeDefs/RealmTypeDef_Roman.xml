@@ -3,6 +3,7 @@
   <TitularRoyalty.RealmTypeDef>
     <defName>RealmType_Roman</defName>
     <label>Roman</label>
+    <iconPath>UI/Icons/RomanIcon</iconPath>
 
     <titleOverrides>
       <!-- ## Lowborn ## -->
