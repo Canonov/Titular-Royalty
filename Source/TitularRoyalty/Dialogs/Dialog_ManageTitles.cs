@@ -160,7 +160,7 @@ namespace TitularRoyalty
                     {
                         TRComponent.RealmType = rtdef.defName;
                         Messages.Message("TR_realmtypechanged_notify".Translate(), MessageTypeDefOf.NeutralEvent);
-                    }));   
+                    }, rtdef.Icon, Color.white));   
                 }
                 realmtypeoptions = realmtypeoptions.OrderBy(x => x.Label).ToList(); //Sort Alphabetically
                 Find.WindowStack.Add(new FloatMenu(realmtypeoptions));
