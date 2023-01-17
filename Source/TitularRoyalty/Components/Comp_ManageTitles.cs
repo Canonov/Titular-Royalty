@@ -36,43 +36,42 @@ namespace TitularRoyalty
 
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
         {
+            RoyalTitleDef selPawnTitle;
+
+            //Manage Titles Dialog
             yield return new FloatMenuOption("TR_Command_managetitles_label".Translate(), delegate
             {
                 Dialog_ManageTitles window = new Dialog_ManageTitles();
                 Find.WindowStack.Add(window);
             }, itemIcon: Resources.CrownIcon, iconColor: Color.white);
 
-            if (TitularRoyaltyMod.Settings.inheritanceEnabled)
+            //Set Heir Option
+            if (TitularRoyaltyMod.Settings.inheritanceEnabled && (selPawnTitle = selPawn.royalty?.GetCurrentTitleInFaction(Faction.OfPlayer)?.def) != null && selPawnTitle.canBeInherited )
             {
-                RoyalTitleDef selPawnTitle = selPawn.royalty?.GetCurrentTitleInFaction(Faction.OfPlayer)?.def;
-                
-                if (selPawnTitle != null && selPawnTitle.canBeInherited)
+                //Define action to run when selected
+                Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
                 {
-                    //Define action to run when selected
-                    Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
-                    {
-                        RoyalTitleDef targetPawnTitle = targetinfo.Pawn.royalty.GetCurrentTitle(Faction.OfPlayer);
-                        
-                        if (targetPawnTitle == null || targetPawnTitle.seniority < selPawnTitle.seniority)
-                        {
-                            selPawn.royalty.SetHeir(targetinfo.Pawn, Faction.OfPlayer);
-                            Messages.Message("TR_setheir_success".Translate(selPawn.Name.ToStringShort, targetinfo.Pawn.Name.ToStringShort), MessageTypeDefOf.NeutralEvent);
-                        }
-                        else
-                        {
-                            Messages.Message("TR_setheir_failed_sameorhighertitle".Translate(targetinfo.Pawn.Name.ToStringShort), MessageTypeDefOf.RejectInput);
-                        }
-                    };
+                    RoyalTitleDef targetPawnTitle = targetinfo.Pawn.royalty.GetCurrentTitle(Faction.OfPlayer);
 
-                    //Target pawn for selection
-                    FloatMenuOption SetHeir = new FloatMenuOption("TR_Command_setheir_label".Translate(selPawn.Name.ToStringShort), delegate
+                    if (targetPawnTitle == null || targetPawnTitle.seniority < selPawnTitle.seniority)
                     {
-                        Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), action);
-                    });
+                        selPawn.royalty.SetHeir(targetinfo.Pawn, Faction.OfPlayer);
+                        Messages.Message("TR_setheir_success".Translate(selPawn.Name.ToStringShort, targetinfo.Pawn.Name.ToStringShort), MessageTypeDefOf.NeutralEvent);
+                    }
+                    else
+                    {
+                        Messages.Message("TR_setheir_failed_sameorhighertitle".Translate(targetinfo.Pawn.Name.ToStringShort), MessageTypeDefOf.RejectInput);
+                    }
+                };
 
-                    //Return the float option
-                    yield return SetHeir;
-                }
+                //Target pawn for selection
+                FloatMenuOption SetHeir = new FloatMenuOption("TR_Command_setheir_label".Translate(selPawn.Name.ToStringShort), delegate
+                {
+                    Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), action);
+                });
+
+                //Return the float option
+                yield return SetHeir;
             }
         }
     }
