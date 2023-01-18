@@ -6,15 +6,12 @@ using System.Linq;
 
 namespace TitularRoyalty
 {
-	/// This really needs a rewrite it's kinda a mess
     public class GameComponent_TitularRoyalty : GameComponent
     {
-        public GameComponent_TitularRoyalty(Game game) // Needs this or else Rimworld throws a fit and errors.
-        {
-        }
+        public GameComponent_TitularRoyalty(Game game) { } // Needs this or else Rimworld throws a fit and errors.
 
         private string realmTypeDefName;
-        public string RealmType
+        public string RealmTypeDefName
         {
             get
             {
@@ -32,7 +29,7 @@ namespace TitularRoyalty
         {
             get
             {
-                return realmTypeDef ??= DefDatabase<RealmTypeDef>.GetNamed(RealmType, false);
+                return realmTypeDef ??= DefDatabase<RealmTypeDef>.GetNamed(RealmTypeDefName, false);
             }
         }
 
@@ -142,13 +139,15 @@ namespace TitularRoyalty
             }
         }
 
+        /// <summary>
+        /// Code to be run on both loading or starting a new game
+        /// </summary>
         public void OnGameStart()
         {
             SetupTitles();
 			Faction.OfPlayer.SetupPlayerForTR(); // Set Permit factions and other options
 			ModSettingsApplier.ApplySettings(); // Apply ModSettings Changes
         }
-
 
         public override void LoadedGame() => OnGameStart();
         public override void StartedNewGame() => OnGameStart();

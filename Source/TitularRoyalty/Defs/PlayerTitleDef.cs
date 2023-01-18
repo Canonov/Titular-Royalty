@@ -16,7 +16,7 @@ namespace TitularRoyalty
         }
 
         public bool TRInheritable = false;
-        public TitleLabelPair originalLabels;
+        public TitleLabelPair originalLabels; //Assigned via StartupSetup
 
         public QualityCategory GetApparelQualityfromTier()
         {

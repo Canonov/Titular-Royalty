@@ -158,7 +158,7 @@ namespace TitularRoyalty
                 {
                     realmtypeoptions.Add(new FloatMenuOption(rtdef.label, delegate ()
                     {
-                        TRComponent.RealmType = rtdef.defName;
+                        TRComponent.RealmTypeDefName = rtdef.defName;
                         Messages.Message("TR_realmtypechanged_notify".Translate(), MessageTypeDefOf.NeutralEvent);
                     }, rtdef.Icon, Color.white));   
                 }

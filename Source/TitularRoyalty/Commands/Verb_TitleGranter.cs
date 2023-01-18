@@ -3,14 +3,16 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 using System.Collections.Generic;
-
+using UnityEngine;
 
 namespace TitularRoyalty
 {
 
 	public class Verb_TitleGranter : Verb_CastBase
 	{
-		protected override bool TryCastShot()
+        public override Texture2D UIIcon => Resources.CrownIcon;
+
+        protected override bool TryCastShot()
 		{
 			if (currentTarget.HasThing)
             {
@@ -30,12 +32,6 @@ namespace TitularRoyalty
 
 			return false;
 		}
-
-		/*public override float HighlightFieldRadiusAroundTarget(out bool needLOSToCenter)
-		{
-			needLOSToCenter = false;
-			return 23f;
-		}*/
-	}
+    }
 
 }

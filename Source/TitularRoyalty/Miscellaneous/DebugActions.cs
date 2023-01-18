@@ -9,9 +9,9 @@ using UnityEngine;
 using Verse;
 
 
-namespace TitularRoyalty { 
-
-	public static class DebugActionsTitularRoyalty
+namespace TitularRoyalty
+{ 
+	public static class DebugActions
 	{
 
 		[DebugAction("Mods", "TR: Rename Title", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
