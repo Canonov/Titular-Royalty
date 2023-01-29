@@ -31,7 +31,7 @@ namespace TitularRoyalty
             ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon5")
         };
 
-        public static readonly Texture2D[] TitleTierIcons_Sov =
+        /*public static readonly Texture2D[] TitleTierIcons_Sov =
         {
             ContentFinder<Texture2D>.Get("UI/TieredIcons/Sov_RankIcon0"),
             ContentFinder<Texture2D>.Get("UI/TieredIcons/Sov_RankIcon1"),
@@ -39,7 +39,7 @@ namespace TitularRoyalty
             ContentFinder<Texture2D>.Get("UI/TieredIcons/Sov_RankIcon3"),
             ContentFinder<Texture2D>.Get("UI/TieredIcons/Sov_RankIcon5"),
             ContentFinder<Texture2D>.Get("UI/TieredIcons/Sov_RankIcon5")
-        };
+        };*/
 
         public static Color TRMessageColor = new Color(204, 0, 204);
 
@@ -47,8 +47,8 @@ namespace TitularRoyalty
         {
             switch (govType)
             {
-                case RealmTypeDef.GovernmentType.Communist:
-                    return TitleTierIcons_Sov;
+                //case RealmTypeDef.GovernmentType.Communist:
+                    //return TitleTierIcons_Sov;
                 default:
                     return TitleTierIcons;
             }

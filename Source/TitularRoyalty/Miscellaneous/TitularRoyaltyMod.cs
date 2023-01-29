@@ -17,7 +17,7 @@ namespace TitularRoyalty
         public bool clothingQualityRequirements;
         public bool titlesGivePermitPoints;
 
-        public bool SovietModEnabled => ModLister.HasActiveModWithName("Titular Royalty - Soviet Revolution");
+        //public bool SovietModEnabled => ModLister.HasActiveModWithName("Titular Royalty - Soviet Revolution");
 
         public override void ExposeData()
         {
