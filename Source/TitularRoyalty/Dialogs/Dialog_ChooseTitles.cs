@@ -61,10 +61,9 @@ namespace TitularRoyalty
             }
             return title.label;
         }
-        public override Vector2 InitialSize => new Vector2(700f / 4f, 500f);
+        public override Vector2 InitialSize => new Vector2(800f / 4f, 500f);
         public override void DoWindowContents(Rect inRect)
         {
-            Text.Font = GameFont.Small;
             var outRect = new Rect(inRect);
             outRect.yMin += 30f;
             outRect.yMax -= 40f;
@@ -72,7 +71,10 @@ namespace TitularRoyalty
             if (seniorityTitles.Count > 0)
             {
 
-                Widgets.Label(new Rect(15, 10, 300f, 30f), "TR_choosetitle".Translate());
+                Text.Font = GameFont.Medium;
+                Text.Anchor = TextAnchor.MiddleCenter;
+                Widgets.Label(new Rect(15, 10, 300f, 30f), "TR_choosetitle".Translate()); 
+                Text.Font = GameFont.Small;
                 var viewRect = new Rect(0f, 30f, outRect.width - 16f, (seniorityTitles.Count / 4) * 128f + 256f);
                 Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
 
@@ -134,7 +136,7 @@ namespace TitularRoyalty
             else
             {
                 Widgets.Label(new Rect(0, 10, 300f, 30f), "TR_NoTitles".Translate());
-                Log.Error($"Titular Royalty: Couldn't fill title dialog, relevant variable for author: {seniorityTitles.Count}");
+                Log.Error($"Titular Royalty: Couldn't fill title dialog, relevant variables for author: {seniorityTitles.Count}");
             }
 
 
