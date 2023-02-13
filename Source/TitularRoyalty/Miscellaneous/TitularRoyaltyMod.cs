@@ -8,6 +8,7 @@ using HarmonyLib;
 using UnityEngine.UIElements;
 using System.Linq;
 using System;
+using RimWorld.QuestGen;
 
 namespace TitularRoyalty
 {
@@ -40,7 +41,10 @@ namespace TitularRoyalty
 
             // Harmony Stuff
             var harmony = new Harmony("com.TitularRoyalty.patches");
-            harmony.PatchAll();
+
+            harmony.Patch(original: AccessTools.Method(typeof(QuestNode_GetPawn), "IsGoodPawn"),
+                postfix: new HarmonyMethod(typeof(QuestGen_Patches), nameof(QuestGen_Patches.IsGoodPawn_Postfix)));
+
         }
 
         // Realm Types
@@ -52,12 +56,12 @@ namespace TitularRoyalty
                 return _realmTypes ??= DefDatabase<RealmTypeDef>.AllDefsListForReading.ToArray();
             }
         }
-        private static Dictionary<string, string> realmTypeLabels;
+        private static Dictionary<string, string> _realmTypeLabels;
         public static Dictionary<string, string> RealmTypeLabels
         {
             get
             {
-                return realmTypeLabels ??= RealmTypes.ToDictionary(x => x.label, x => x.defName);
+                return _realmTypeLabels ??= RealmTypes.ToDictionary(x => x.label, x => x.defName);
             }
         }
 

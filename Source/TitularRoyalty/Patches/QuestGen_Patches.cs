@@ -14,10 +14,9 @@ using System.Reflection;
 namespace TitularRoyalty
 {
 
-    [HarmonyPatch(typeof(QuestNode_GetPawn), "IsGoodPawn")]
-    public static class QuestNode_GetPawn_IsGoodPawn_NoPlayerPatch
+    public static class QuestGen_Patches
     {
-        public static void Postfix(ref bool __result, QuestNode_GetPawn __instance, Pawn pawn, Slate slate)
+        public static void IsGoodPawn_Postfix(ref bool __result, QuestNode_GetPawn __instance, Pawn pawn, Slate slate)
         {
             // May have to change this if it pops up in events with other conditions but it seems hospitality_joiners is the only one with problems and this is what that uses
             if (__instance.mustHaveRoyalTitleInCurrentFaction.GetValue(slate)) 
