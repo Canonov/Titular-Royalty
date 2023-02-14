@@ -40,6 +40,7 @@ namespace TitularRoyalty
             Settings = GetSettings<TRSettings>();
 
             // Harmony Stuff
+            // Use Patch Categories next harmony update?
             var harmony = new Harmony("com.TitularRoyalty.patches");
 
             harmony.Patch(original: AccessTools.Method(typeof(QuestNode_GetPawn), "IsGoodPawn"),
