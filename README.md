@@ -14,14 +14,13 @@
 
 
 ## Notes
-- Known Incompatibilities right now are mods with scenarios that have the player faction not inheriting from "PlayerFactionBase" and these would need a manual patch made by me or them because they would not have any titles added to them.
-- Currently only Antinium has been patched this way
+- N/A
 
 ## Plans
-- Shattered Empire, Caliphate, Russian and Nordic titles
+- Caliphate and Russian titles
 - Permits System
-- Improved Codebase
-- Advanced Inheritance System that works similarly to real inheritance with choose-able succession laws
+- Improved and cleaner code
+- Advanced Inheritance System that works similarly to real inheritance with chooseable succession laws
 
 
 ## Acknowledgements
