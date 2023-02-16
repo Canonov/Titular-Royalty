@@ -30,7 +30,7 @@
 	<TR_managetitles_resetcustom_notif>Custom Titles have been reset, click Update Titles to refresh the list.</TR_managetitles_resetcustom_notif>
 	<TR_managetitles_resetcustom_tooltip>Resets all custom titles back to their normal names</TR_managetitles_resetcustom_tooltip>
 
-	<TR_realmtypechanged_notify>Titleset has been changed, press update titles to apply the changes.</TR_realmtypechanged_notify> <!-- ADDED 1.6 -->
+	<TR_realmtypechanged_notify>Titleset has been changed, press update titles to apply the changes.</TR_realmtypechanged_notify> 
 
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>
@@ -42,11 +42,12 @@
 	<TR_checkbox_titlegivespermitpoints>Title Permit Points</TR_checkbox_titlegivespermitpoints>
 
 	<!-- Miscellaneous -->
-	<TR_realmtype>Titleset</TR_realmtype> <!-- ADDED 1.6 -->
+	<TR_realmtype>Titleset</TR_realmtype> 
 	<TR_consort>-Consort</TR_consort> <!-- If Consort (Spouse of King) title has the same name as what the king would have (ie queen and queen), apply this at end, for example Queen-Consort -->
 
 	<!-- UNUSED, LEFT IN FOR 1.3 SUPPORT -->
 	<Verb_TitleGranter>Grant Title</Verb_TitleGranter> <!-- Verb Name -->
+	<Verb_TitleGranterReportLabel>Granting Titles</Verb_TitleGranterReportLabel> <!-- ADDED 1.7  -->
 	<TR_baserealmtype>Chosen Realm Type</TR_baserealmtype>
 	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
 	<TR_reloadsavefix>Make sure to save and reload if you're in the game to apply the changes.</TR_reloadsavefix>
