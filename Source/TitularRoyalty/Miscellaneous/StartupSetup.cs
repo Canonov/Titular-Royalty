@@ -16,7 +16,7 @@ namespace TitularRoyalty
         {
             foreach (PlayerTitleDef title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
             {
-                title.originalLabels = new TitleLabelPair(title.label, title.labelFemale);
+                title.originalTitleFields = new RoyalTitleOverride(title);
             }
         }
     }

@@ -56,7 +56,7 @@ namespace TitularRoyalty
 			
 			foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
 			{
-				doc += $"  <li> <!--{title.originalLabels.label.CapitalizeFirst()}-->\n";
+				doc += $"  <li> <!--{title.originalTitleFields.label.CapitalizeFirst()}-->\n";
 				doc += $"    <titleDef>{title.defName}</titleDef>\n";
 				doc += $"    \n";
                 doc += $"    <label>{title.label}</label>\n";
