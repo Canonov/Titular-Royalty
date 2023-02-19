@@ -110,9 +110,7 @@ namespace TitularRoyalty
 
             foreach (PlayerTitleDef title in TitlesBySeniority)
             {
-                title.label = title.originalTitleFields.label;
-                title.labelFemale = title.originalTitleFields.labelFemale;
-                title.ClearCachedData();
+                title.ResetToDefaultValues();
             }
         }
 

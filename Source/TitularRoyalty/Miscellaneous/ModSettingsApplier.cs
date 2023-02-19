@@ -15,14 +15,7 @@ namespace TitularRoyalty
             foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
             {
                 //Apply Vanilla Inheritance
-                if (Settings.inheritanceEnabled && title.TRInheritable)
-                {
-                    title.canBeInherited = true;
-                }
-                else
-                {
-                    title.canBeInherited = false;
-                }
+                title.UpdateInheritance();
 
                 //Apply Quality Requirements
                 if (Settings.clothingQualityRequirements)

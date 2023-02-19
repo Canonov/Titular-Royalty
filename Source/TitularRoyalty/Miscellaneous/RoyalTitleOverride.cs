@@ -13,7 +13,7 @@ namespace TitularRoyalty
         public string label = "None";
         public string labelFemale = "None";
 
-        public bool inheritable = false;
+        public bool TRInheritable = false;
         public bool useTierOverride = false; // Realmtype only
         public TitleTiers titleTier = TitleTiers.Lowborn;
 
@@ -27,7 +27,7 @@ namespace TitularRoyalty
 
             this.label = playerTitle.label;
             this.labelFemale = playerTitle.labelFemale;
-            this.inheritable = playerTitle.canBeInherited;
+            this.TRInheritable = playerTitle.TRInheritable;
             this.titleTier = playerTitle.titleTier;
             this.minExpectation = playerTitle.minExpectation ?? ExpectationDefOf.ExtremelyLow;
         }
@@ -51,7 +51,7 @@ namespace TitularRoyalty
             Scribe_Values.Look(ref label, nameof(label), "None");
             Scribe_Values.Look(ref labelFemale, nameof(labelFemale), "None");
 
-            Scribe_Values.Look(ref inheritable, nameof(inheritable), false);
+            Scribe_Values.Look(ref TRInheritable, nameof(TRInheritable), false);
             Scribe_Values.Look(ref titleTier, nameof(titleTier), TitleTiers.Lowborn);
             Scribe_Defs.Look(ref minExpectation, nameof(minExpectation));
         }

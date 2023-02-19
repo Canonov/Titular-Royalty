@@ -31,5 +31,29 @@ namespace TitularRoyalty
                 _ => QualityCategory.Awful,
             };
         }
+
+        public void ResetToDefaultValues()
+        {
+            label = originalTitleFields.label;
+            labelFemale = originalTitleFields.labelFemale;
+
+            titleTier = originalTitleFields.titleTier;
+            TRInheritable = originalTitleFields.TRInheritable;
+            minExpectation = originalTitleFields.minExpectation;
+
+            ClearCachedData();
+        }
+
+        public void UpdateInheritance()
+        {
+            if (TitularRoyaltyMod.Settings.inheritanceEnabled) 
+            {
+                canBeInherited = TRInheritable;
+            }
+            else
+            {
+                canBeInherited = false;
+            }
+        }
     }
 }
