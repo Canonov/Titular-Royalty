@@ -75,6 +75,7 @@
     <Compile Include="Components\Comp_ManageTitles.cs" />
     <Compile Include="Defs\PlayerTitleDefOf.cs" />
     <Compile Include="Miscellaneous\StartupSetup.cs" />
+    <Compile Include="Miscellaneous\RoyalTitleOverride.cs" />
     <Compile Include="Permits\PlayerTitlePermitWorker_BestowPsycast.cs" />
     <Compile Include="Permits\PlayerTitlePermitDef.cs" />
     <Compile Include="Defs\RealmTypeTitle.cs" />

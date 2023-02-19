@@ -22,36 +22,4 @@ namespace TitularRoyalty
             }
         }
     }
-
-    //Custom Data Structures
-    public class TitleLabelPair : IExposable
-    {
-        public string label = "None";
-        public string labelFemale = "None";
-
-        public TitleLabelPair() { }
-
-        public TitleLabelPair(string m = "None", string f = "None")
-        {
-            label = m;
-            labelFemale = f;
-        }
-        public bool HasFemaleTitle()
-        {
-            if (labelFemale != "None" && labelFemale != null && labelFemale != string.Empty)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public void ExposeData()
-        {
-            Scribe_Values.Look(ref label, nameof(label), "None");
-            Scribe_Values.Look(ref labelFemale, nameof(labelFemale), "None");
-        }
-    }
 }

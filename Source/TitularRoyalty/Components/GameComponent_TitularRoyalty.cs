@@ -44,12 +44,12 @@ namespace TitularRoyalty
         }
 
         // Custom Titles
-        private Dictionary<PlayerTitleDef, TitleLabelPair> customTitles;
-        public Dictionary<PlayerTitleDef, TitleLabelPair> CustomTitles
+        private Dictionary<PlayerTitleDef, RoyalTitleOverride> customTitles;
+        public Dictionary<PlayerTitleDef, RoyalTitleOverride> CustomTitles
         {
             get
             {
-                return customTitles ??= TitlesBySeniority.ToDictionary(x => x, x => new TitleLabelPair());
+                return customTitles ??= TitlesBySeniority.ToDictionary(x => x, x => new RoyalTitleOverride());
             }
             private set
             {
@@ -59,7 +59,7 @@ namespace TitularRoyalty
 
         // Required for ExposeData
         private List<PlayerTitleDef> customTitles_List1;
-        private List<TitleLabelPair> customTitles_List2;
+        private List<RoyalTitleOverride> customTitles_List2;
 
         /// <summary>
         /// Passes on the Realmtype 
@@ -69,7 +69,7 @@ namespace TitularRoyalty
             foreach (PlayerTitleDef title in TitlesBySeniority)
             {
                 // Custom Title
-                if (CustomTitles.TryGetValue(title, out TitleLabelPair titleLabels) && (titleLabels.label != "None" || titleLabels.HasFemaleTitle()) )
+                if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleLabels) && (titleLabels.label != "None" || titleLabels.HasFemaleTitle()) )
                 {
                     title.label = titleLabels.label ?? title.label;
                     title.labelFemale = titleLabels.HasFemaleTitle() ? titleLabels.labelFemale : null;
@@ -88,8 +88,8 @@ namespace TitularRoyalty
                 }
                 else
                 {
-                    title.label = title.originalLabels.label;
-                    title.labelFemale = title.originalLabels.labelFemale;
+                    title.label = title.originalTitleFields.label;
+                    title.labelFemale = title.originalTitleFields.labelFemale;
                 }
 
                 Finalize:
@@ -109,8 +109,8 @@ namespace TitularRoyalty
 
             foreach (PlayerTitleDef title in TitlesBySeniority)
             {
-                title.label = title.originalLabels.label;
-                title.labelFemale = title.originalLabels.labelFemale;
+                title.label = title.originalTitleFields.label;
+                title.labelFemale = title.originalTitleFields.labelFemale;
                 title.ClearCachedData();
             }
         }
@@ -122,7 +122,7 @@ namespace TitularRoyalty
         /// <param name="newlabel">New Title Name</param>
         public void SaveTitleChange(PlayerTitleDef title, string newlabel, Gender gender)
         {
-            if (CustomTitles.TryGetValue(title, out TitleLabelPair labels))
+            if (CustomTitles.TryGetValue(title, out RoyalTitleOverride labels))
             {
                 if (gender == Gender.Female)
                 {
