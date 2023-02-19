@@ -17,8 +17,8 @@ namespace TitularRoyalty
 
         public GovernmentType governmentType = GovernmentType.Monarchy;
         
-        public List<RealmTypeTitle> titleOverrides;
-        public Dictionary<PlayerTitleDef, RealmTypeTitle> TitlesWithOverrides
+        public List<RoyalTitleOverride> titleOverrides;
+        public Dictionary<PlayerTitleDef, RoyalTitleOverride> TitlesWithOverrides
         {
             get
             {
@@ -26,7 +26,7 @@ namespace TitularRoyalty
                 {
                     return titleOverrides.ToDictionary(x => x.titleDef, x => x);
                 }
-                return new Dictionary<PlayerTitleDef, RealmTypeTitle>();
+                return new Dictionary<PlayerTitleDef, RoyalTitleOverride>();
             }
         }
 

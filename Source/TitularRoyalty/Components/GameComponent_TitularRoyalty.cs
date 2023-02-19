@@ -69,21 +69,21 @@ namespace TitularRoyalty
             foreach (PlayerTitleDef title in TitlesBySeniority)
             {
                 // Custom Title
-                if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleLabels) && (titleLabels.label != "None" || titleLabels.HasFemaleTitle()) )
+                if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleOverrides) && (titleOverrides.label != "None" || titleOverrides.HasFemaleTitle()) )
                 {
-                    title.label = titleLabels.label ?? title.label;
-                    title.labelFemale = titleLabels.HasFemaleTitle() ? titleLabels.labelFemale : null;
+                    title.label = titleOverrides.label ?? title.label;
+                    title.labelFemale = titleOverrides.HasFemaleTitle() ? titleOverrides.labelFemale : null;
                     goto Finalize;
                 }
                 // Realm Type, if No Custom
-                if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RealmTypeTitle overrides))
+                if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RoyalTitleOverride overrides))
                 {
                     title.label = overrides.label ?? title.label;
                     title.labelFemale = overrides.HasFemaleTitle() ? overrides.labelFemale : null;
 
                     if (overrides.useTierOverride)
                     {
-                        title.titleTier = overrides.tierOverride;
+                        title.titleTier = overrides.titleTier;
                     }
                 }
                 else

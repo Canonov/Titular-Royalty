@@ -8,11 +8,13 @@ namespace TitularRoyalty
     //Custom Data Structures
     public class RoyalTitleOverride : IExposable
     {
+        public PlayerTitleDef titleDef;
+
         public string label = "None";
         public string labelFemale = "None";
 
         public bool inheritable = false;
-
+        public bool useTierOverride = false;
         public TitleTiers titleTier = TitleTiers.Lowborn;
         public ExpectationDef minExpectation;
 
@@ -20,6 +22,8 @@ namespace TitularRoyalty
 
         public RoyalTitleOverride(PlayerTitleDef playerTitle) 
         {
+            this.titleDef = playerTitle;
+
             this.label = playerTitle.label;
             this.labelFemale = playerTitle.labelFemale;
             this.inheritable = playerTitle.canBeInherited;
@@ -27,11 +31,6 @@ namespace TitularRoyalty
             this.minExpectation = playerTitle.minExpectation ?? ExpectationDefOf.ExtremelyLow;
         }
 
-        public RoyalTitleOverride(string male = "None", string female = "None")
-        {
-            label = male;
-            labelFemale = female;
-        }
         public bool HasFemaleTitle()
         {
             if (labelFemale != "None" && labelFemale != null && labelFemale != string.Empty)
