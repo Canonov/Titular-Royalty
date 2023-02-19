@@ -73,7 +73,9 @@ namespace TitularRoyalty
                 {
                     title.label = titleOverrides.label ?? title.label;
                     title.labelFemale = titleOverrides.HasFemaleTitle() ? titleOverrides.labelFemale : null;
-                    goto Finalize;
+
+                    title.ClearCachedData();
+                    continue;
                 }
                 // Realm Type, if No Custom
                 if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RoyalTitleOverride overrides))
@@ -92,7 +94,6 @@ namespace TitularRoyalty
                     title.labelFemale = title.originalTitleFields.labelFemale;
                 }
 
-                Finalize:
                 title.ClearCachedData();
             }
         }
