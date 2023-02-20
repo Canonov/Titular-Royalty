@@ -19,7 +19,8 @@
 
 	<!-- Manage Titles GUI -->
 	<TR_managetitles_title>Title Manager</TR_managetitles_title>
-	<TR_managetitles_rename>Rename</TR_managetitles_rename>
+	<TR_managetitles_rename>Rename</TR_managetitles_rename> <!-- Unused -->
+	<TR_managetitles_edit>Edit</TR_managetitles_edit> <!-- ADDED 1.7 -->
 	<TR_managetitles_grant>Grant</TR_managetitles_grant>
 
 	<TR_managetitles_update>Update Titles</TR_managetitles_update>
@@ -47,7 +48,7 @@
 
 	<!-- UNUSED, LEFT IN FOR 1.3 SUPPORT -->
 	<Verb_TitleGranter>Grant Title</Verb_TitleGranter> <!-- Verb Name -->
-	<Verb_TitleGranterReportLabel>Granting Titles</Verb_TitleGranterReportLabel> <!-- ADDED 1.7  -->
+	<Verb_TitleGranterReportLabel>Granting Titles</Verb_TitleGranterReportLabel> <!-- ADDED 1.7 -->
 	<TR_baserealmtype>Chosen Realm Type</TR_baserealmtype>
 	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
 	<TR_reloadsavefix>Make sure to save and reload if you're in the game to apply the changes.</TR_reloadsavefix>

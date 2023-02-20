@@ -87,7 +87,6 @@
     <Compile Include="Defs\PlayerTitleDef.cs" />
     <Compile Include="Patches\PermitsCardUtility_Patches.cs" />
     <Compile Include="Patches\QuestGen_Patches.cs" />
-    <Compile Include="Patches\Settlement_GetGizmos_ManageTitles_Patch.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

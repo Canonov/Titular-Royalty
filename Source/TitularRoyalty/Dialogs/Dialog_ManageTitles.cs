@@ -15,7 +15,7 @@ namespace TitularRoyalty
     {
         // WINDOW OPTIONS
         public Vector2 scrollPosition = new Vector2(0, 0); 
-        public override Vector2 InitialSize => new Vector2(400, 747);
+        public override Vector2 InitialSize => new Vector2(475, 720);
 
         // TITLE LISTS
         public List<PlayerTitleDef> Titles
@@ -38,6 +38,7 @@ namespace TitularRoyalty
         // Variables for Updating and Setting the Lists
         private Listing_Standard TitleList;
         private Rect ContentRect;
+        private Rect ContentViewRect;
         private Rect TitleRect;
         private Rect RealmTypeRect;
         private Rect RealmTypeButtonRect;
@@ -45,15 +46,14 @@ namespace TitularRoyalty
         private Rect LeftButtonRect;
         private Rect RightButtonRect;
         private GameComponent_TitularRoyalty TRComponent;
-        private bool isWorldView = false;
+        private Vector2 titleListScrollPos = new Vector2(0, 0);
 
         // CONSTRUCTOR
-        public Dialog_ManageTitles(bool Worldview = false)
+        public Dialog_ManageTitles()
         {
             doCloseX = true;
             forcePause = true;
             draggable = true;
-            isWorldView = Worldview;
             TRComponent = Current.Game.GetComponent<GameComponent_TitularRoyalty>();
         }
 
@@ -73,19 +73,20 @@ namespace TitularRoyalty
             }
 
             Widgets.BeginGroup(rect);
-            WidgetRow widgetRow = new WidgetRow(0f, 0f);
+
+            WidgetRow widgetRow = new WidgetRow(0f, (rect.height - 24f) / 2);
             widgetRow.Gap(4f);
             widgetRow.Icon(Resources.TierIconsForGovernment(TRComponent.RealmTypeDef.governmentType)[(int)def.titleTier]);
             //widgetRow.Gap(4f);
 
-            float width = rect.width - widgetRow.FinalX - 4f - Text.CalcSize("TR_managetitles_rename".Translate()).x - 16f - 4f - Text.CalcSize("TR_managetitles_grant".Translate()).x - 16f - 4f;
+            float width = rect.width - widgetRow.FinalX - 28f - (Text.CalcSize("TR_managetitles_edit".Translate()).x + 6) - (Text.CalcSize("TR_managetitles_grant".Translate()).x + 6);
             widgetRow.Label(def.GetLabelCapForBothGenders(), width, def.GetLabelCapForBothGenders());
 
-            if (widgetRow.ButtonText("TR_managetitles_rename".Translate())) // Rename Button, opens the title renamer
+            if (widgetRow.ButtonText("TR_managetitles_edit".Translate())) // Rename Button, opens the title renamer
             {
                 Find.WindowStack.Add(new Dialog_TitleRenamer(def));
             }
-            if (widgetRow.ButtonText("TR_managetitles_grant".Translate(), active: !isWorldView)) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
+            if (widgetRow.ButtonText("TR_managetitles_grant".Translate())) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
             {
                 Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
                 {
@@ -110,17 +111,27 @@ namespace TitularRoyalty
         /// </summary>
         public void DoTitleList()
         {
-            TitleList.Begin(ContentRect);
+            TitleList.Begin(ContentViewRect);
+            TitleList.ColumnWidth = ContentViewRect.width;
+
             TitleList.Gap(6f);
 
             for (int j = 0; j < TitlesBySeniority.Count; j++)
             {
-                DoRow(TitleList.GetRect(24f), TitlesBySeniority[j]);
-                TitleList.Gap(6f);
+                DoRow(TitleList.GetRect(28f), TitlesBySeniority[j]);
+                //TitleList.Gap(6f);
             }
 
             TitleList.Gap(6f);
             TitleList.End();
+        }
+
+        public float GetContentHeight(int rowCount)
+        {
+            float result = 6 * 2; // Gaps
+            result += 28 * rowCount; // Row
+
+            return result;
         }
         
         /// <summary>
@@ -168,26 +179,45 @@ namespace TitularRoyalty
             
 
             //Box for the Content
-            ContentRect = new Rect(4, RealmTypeRect.y + RealmTypeRect.height + 7, inRect.width - 8, (30 * Titles.Count) + 12 + 30 + 6);
+            ContentRect = new Rect(4, RealmTypeRect.y + RealmTypeRect.height + 7, inRect.width - 8, 516);
             Widgets.DrawTitleBG(ContentRect);
             Widgets.DrawBox(ContentRect, -2, BaseContent.GreyTex);
 
             //List of Titles
             TitleList = new Listing_Standard();
-            TitleList.ColumnWidth = ContentRect.width;
 
-            //Buttom 3 Buttons - Update Titles, 
-            ButtonsRect = new Rect(ContentRect.xMin, ContentRect.yMax - 36, ContentRect.width, 30);
+            //Titles List
+            ContentViewRect = new Rect(ContentRect);
+            ContentViewRect.width -= 20f;
+            ContentViewRect.height = GetContentHeight(TitlesBySeniority.Count);
+
+            Widgets.BeginScrollView(ContentRect, ref titleListScrollPos, ContentViewRect);
+            DoTitleList();
+            Widgets.EndScrollView();
+
+            //Buttons - Update Titles, 
+            ButtonsRect = new Rect(ContentRect.xMin, ContentRect.yMax + 7, ContentRect.width, 40);
+
+            Widgets.DrawTitleBG(ButtonsRect);
+            Widgets.DrawBox(ButtonsRect, -2, BaseContent.GreyTex);
 
             LeftButtonRect = ButtonsRect.LeftHalf();
+
+            LeftButtonRect.height -= 10;
+            LeftButtonRect.y += 5;
             LeftButtonRect.width -= 18;
-            LeftButtonRect.x += 6;
+            LeftButtonRect.x += 8;
+
             RightButtonRect = ButtonsRect.RightHalf();
+
+            RightButtonRect.height -= 10;
+            RightButtonRect.y += 5;
             RightButtonRect.width -= 18;
-            RightButtonRect.x += 12 - 6;
+            RightButtonRect.x += 4;
 
-            DoTitleList();
+            //Log.Message((ButtonsRect.yMax + GenUI.Gap).ToString());
 
+            // Buttons
             if (Widgets.ButtonText(LeftButtonRect, "TR_managetitles_update".Translate()))
             {
                 TRComponent.SetupTitles();
