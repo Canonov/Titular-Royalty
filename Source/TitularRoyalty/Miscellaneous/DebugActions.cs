@@ -14,16 +14,16 @@ namespace TitularRoyalty
 	public static class DebugActions
 	{
 
-		[DebugAction("Mods", "TR: Rename Title", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        public static void TryChangeCustomTitle()
+		[DebugAction("Mods", "TR: Edit Title", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void EditTitle()
 		{
 			List<DebugMenuOption> list = new List<DebugMenuOption>();
 			foreach (PlayerTitleDef title in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
 			{
 				list.Add(new DebugMenuOption($"{title.GetLabelForBothGenders()}", DebugMenuOptionMode.Action, delegate
 				{
-					//Current.Game.GetComponent<GameComponent_TitularRoyalty>();
-					Find.WindowStack.Add(new Dialog_TitleRenamer(title));
+					var comp = Current.Game.GetComponent<GameComponent_TitularRoyalty>();
+					Find.WindowStack.Add(new Dialog_RoyalTitleEditor(comp, title));
 				}
 				));
 

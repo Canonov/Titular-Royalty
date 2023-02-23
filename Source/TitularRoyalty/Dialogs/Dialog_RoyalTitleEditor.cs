@@ -13,7 +13,7 @@ namespace TitularRoyalty
 {
 	public class Dialog_RoyalTitleEditor : Window
 	{
-		public override Vector2 InitialSize => new Vector2(550, 375);
+		public override Vector2 InitialSize => new Vector2(550, 410);
 
 		private int MaxNameLength => 28;
 
@@ -23,10 +23,11 @@ namespace TitularRoyalty
 		private string newNameFemale;
 
 		private bool isInheritable;
-		private bool canGiveSpeeches;
+		private bool allowDignifiedMeditation;
 
 		private GameComponent_TitularRoyalty TRComponent;
 		private PlayerTitleDef titleDef;
+		private RoyalTitleOverride customTitleOverride;
 
 		public Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty trComponent, PlayerTitleDef titleDef)
 		{
@@ -36,10 +37,16 @@ namespace TitularRoyalty
 			TRComponent = trComponent;
 
 			this.titleDef = titleDef;
+			SetDefaultVariables();
+			customTitleOverride = TRComponent.GetCustomTitleOverrideFor(this.titleDef);
+		}
+
+		public void SetDefaultVariables()
+		{
 			curName = titleDef.label;
 			curNameFemale = titleDef.labelFemale;
 		}
- 
+  
 		public override void DoWindowContents(Rect inRect)
 		{
 			/* TITLE */
@@ -52,7 +59,7 @@ namespace TitularRoyalty
 			Text.Anchor = TextAnchor.UpperLeft;
 
 			/* CONTENT */
-			Rect contentRect = new Rect(8, titleRect.yMax + GenUI.GapSmall / 2, inRect.width - 16, inRect.height - (titleRect.yMax + GenUI.GapSmall));
+			Rect contentRect = new Rect(8, titleRect.yMax + GenUI.GapSmall / 2, inRect.width - 16, inRect.height - (titleRect.yMax + GenUI.GapSmall) - 35);
 			Rect contentRectVisual = new Rect(contentRect);
 			contentRectVisual.height -= 2;
 			contentRect = contentRect.ContractedBy(2);
@@ -66,8 +73,35 @@ namespace TitularRoyalty
 
 			DrawListing(contentRect, listingStandard);
 
-		}
+			/* FINALIZE BUTTONS */
+			float iconWidth = 35;
+			var bottomRect = new Rect(contentRectVisual.xMin, contentRectVisual.yMax, contentRectVisual.width, iconWidth);
+			bottomRect.SplitVertically(iconWidth, out Rect iconRect, out Rect bottomRowRect);
 
+			Widgets.DrawTitleBG(bottomRect);
+			Widgets.DrawBox(bottomRect, -1, BaseContent.WhiteTex);
+			Widgets.DrawBox(iconRect, -1, BaseContent.WhiteTex);
+
+			//var buttonsRect = bottomRowRect.RightPart(0.4f);
+			var leftButtonRect = bottomRowRect.LeftHalf();
+			var rightButtonRect = bottomRowRect.RightHalf();
+
+			// Icon
+			if (Widgets.ButtonImage(iconRect, titleDef.tierIcon))
+			{
+				Log.Message("buttonimage");
+			}
+
+			// Reset and Submit Buttons
+			if (Widgets.ButtonText(leftButtonRect, "TR_titleeditor_reset".Translate(), false, overrideTextAnchor: TextAnchor.MiddleCenter))
+			{
+			}
+			if (Widgets.ButtonText(rightButtonRect, "TR_titleeditor_submit".Translate(), false, overrideTextAnchor: TextAnchor.MiddleCenter))
+			{
+
+			}
+		}
+			
 		public void DrawListing(Rect contentRect, Listing_Standard listingStandard)
 		{
 			listingStandard.Begin(contentRect);
@@ -92,7 +126,8 @@ namespace TitularRoyalty
 			listingStandard.Gap(GenUI.GapSmall / 2);
 
 			var checkboxRect = listingStandard.GetRect(28);
-			DoDoubleCheckboxRow(checkboxRect, "TR_checkbox_inheritable".Translate(), ref isInheritable, "TR_checkbox_cangivespeeches".Translate(), ref canGiveSpeeches);
+			DoDoubleCheckboxRow(checkboxRect, "TR_titleeditor_checkbox_inheritable".Translate(), ref isInheritable, 
+									          "TR_titleeditor_checkbox_allowmeditationfocus".Translate(), ref allowDignifiedMeditation);
 
 			// End the List
 			listingStandard.End();
@@ -107,7 +142,7 @@ namespace TitularRoyalty
 			minExpectationsRect.width -= 8;
 			minExpectationsRect.x += 4;
 
-			if (Widgets.ButtonText(titleTiersRect, $"".Translate(titleDef.titleTier.ToString())))
+			if (Widgets.ButtonText(titleTiersRect, "TR_titleeditor_titletier".Translate(titleDef.titleTier.ToString())))
 			{
 				List<FloatMenuOption> options = new List<FloatMenuOption>();
 				for (int i = 0; i < Enum.GetNames(typeof(TitleTiers)).Length; i++)
@@ -119,7 +154,7 @@ namespace TitularRoyalty
 				}
 				Find.WindowStack.Add(new FloatMenu(options));
 			}
-			if (Widgets.ButtonText(minExpectationsRect, titleDef.minExpectation.ToString()))
+			if (Widgets.ButtonText(minExpectationsRect, "TR_titleeditor_expectations".Translate(titleDef.minExpectation.ToString())))
 			{
 				List<FloatMenuOption> options = new List<FloatMenuOption>();
 				foreach (var expectation in DefDatabase<ExpectationDef>.AllDefsListForReading)
@@ -182,6 +217,15 @@ namespace TitularRoyalty
 				return false;
 			}
 			return true;
+		}
+
+
+		/* APPLY METHODS */
+		private void ResetTitleOverride()
+		{
+			customTitleOverride = new RoyalTitleOverride();
+			TRComponent.SaveTitleChange(titleDef, customTitleOverride);
+			SetDefaultVariables();
 		}
 
 	}

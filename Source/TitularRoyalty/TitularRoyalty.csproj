@@ -81,7 +81,6 @@
     <Compile Include="Permits\PlayerTitlePermitDef.cs" />
     <Compile Include="Defs\RealmTypeDef.cs" />
     <Compile Include="Dialogs\Dialog_ManageTitles.cs" />
-    <Compile Include="Dialogs\Dialog_TitleRenamer.cs" />
     <Compile Include="Miscellaneous\Utilities.cs" />
     <Compile Include="Miscellaneous\ModSettingsApplier.cs" />
     <Compile Include="Miscellaneous\Resources.cs" />

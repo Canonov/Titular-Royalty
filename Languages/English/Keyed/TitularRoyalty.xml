@@ -37,12 +37,16 @@
 	<TR_titleeditor_label>Title Editor</TR_titleeditor_label>
 	<TR_titleeditor_title>Male Title</TR_titleeditor_title>
 	<TR_titleeditor_titlefemale>Female Title</TR_titleeditor_titlefemale>
-	<TR_titleeditor_checkboxes_label>Other Options</TR_titleeditor_checkboxes_label>
 
-	<TR_checkbox_inheritable>Inheritable</TR_checkbox_inheritable>
-	<TR_checkbox_cangivespeeches>Can give speeches</TR_checkbox_cangivespeeches>
+	<TR_titleeditor_reset>Reset Title</TR_titleeditor_reset>
+	<TR_titleeditor_submit>Submit Changes</TR_titleeditor_submit>
+
+	<TR_titleeditor_checkboxes_label>Other Options</TR_titleeditor_checkboxes_label>
+	<TR_titleeditor_checkbox_inheritable>Inheritable</TR_titleeditor_checkbox_inheritable>
+	<TR_titleeditor_checkbox_allowmeditationfocus>Can use dignified meditation</TR_titleeditor_checkbox_allowmeditationfocus>
 
 	<TR_titleeditor_titletier>Tier: {0}</TR_titleeditor_titletier>
+	<TR_titleeditor_expectations>Expectations: {0}</TR_titleeditor_expectations>
 
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>
