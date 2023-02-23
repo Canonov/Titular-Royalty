@@ -13,8 +13,12 @@
 2. If you subscribed before the update make sure steam has updated the mod, you can tell because the preview image has changed in the modlist
 
 
-## Notes
-- N/A
+## 1.7 Update
+- Title Editor UI available in the Manage Titles menu.
+- You can use this to override the title labels, whether it can be inherited, can give speeches, what icon it uses and what expectations it has.
+
+## 1.8 Update Plans
+- Adding/Removing Titles, might have to be in 1.9 depending on how complex it turns out
 
 ## Plans
 - Caliphate and Russian titles
