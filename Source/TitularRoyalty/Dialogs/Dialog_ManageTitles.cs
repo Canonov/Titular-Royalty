@@ -84,7 +84,8 @@ namespace TitularRoyalty
 
             if (widgetRow.ButtonText("TR_managetitles_edit".Translate())) // Rename Button, opens the title renamer
             {
-                Find.WindowStack.Add(new Dialog_TitleRenamer(def));
+                //Find.WindowStack.Add(new Dialog_TitleRenamer(def));
+                Find.WindowStack.Add(new Dialog_RoyalTitleEditor(TRComponent, def));
             }
             if (widgetRow.ButtonText("TR_managetitles_grant".Translate())) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
             {

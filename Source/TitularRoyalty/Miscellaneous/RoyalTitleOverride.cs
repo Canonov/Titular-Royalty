@@ -32,17 +32,7 @@ namespace TitularRoyalty
             this.minExpectation = playerTitle.minExpectation ?? ExpectationDefOf.ExtremelyLow;
         }
 
-        public bool HasFemaleTitle()
-        {
-            if (labelFemale != "None" && labelFemale != null && labelFemale != string.Empty)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        public bool HasFemaleTitle() => (labelFemale != "None" && labelFemale != null && labelFemale != string.Empty);
 
         public void ExposeData()
         {
@@ -52,7 +42,7 @@ namespace TitularRoyalty
             Scribe_Values.Look(ref labelFemale, nameof(labelFemale), "None");
 
             Scribe_Values.Look(ref TRInheritable, nameof(TRInheritable), false);
-            Scribe_Values.Look(ref titleTier, nameof(titleTier), TitleTiers.Lowborn);
+            Scribe_Values.Look(ref titleTier, nameof(titleTier));
             Scribe_Defs.Look(ref minExpectation, nameof(minExpectation));
         }
     }

@@ -33,6 +33,17 @@
 
 	<TR_realmtypechanged_notify>Titleset has been changed, press update titles to apply the changes.</TR_realmtypechanged_notify> 
 
+	<!-- Title Editor GUI --> <!-- ALL ADDED 1.7 -->
+	<TR_titleeditor_label>Title Editor</TR_titleeditor_label>
+	<TR_titleeditor_title>Male Title</TR_titleeditor_title>
+	<TR_titleeditor_titlefemale>Female Title</TR_titleeditor_titlefemale>
+	<TR_titleeditor_checkboxes_label>Other Options</TR_titleeditor_checkboxes_label>
+
+	<TR_checkbox_inheritable>Inheritable</TR_checkbox_inheritable>
+	<TR_checkbox_cangivespeeches>Can give speeches</TR_checkbox_cangivespeeches>
+
+	<TR_titleeditor_titletier>Tier: {0}</TR_titleeditor_titletier>
+
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>
 	<TR_miscoptionstitle>Miscellaneous Options</TR_miscoptionstitle>
@@ -45,10 +56,10 @@
 	<!-- Miscellaneous -->
 	<TR_realmtype>Titleset</TR_realmtype> 
 	<TR_consort>-Consort</TR_consort> <!-- If Consort (Spouse of King) title has the same name as what the king would have (ie queen and queen), apply this at end, for example Queen-Consort -->
+	<Verb_TitleGranterReportLabel>Granting Titles</Verb_TitleGranterReportLabel> <!-- ADDED 1.7 -->
 
 	<!-- UNUSED, LEFT IN FOR 1.3 SUPPORT -->
 	<Verb_TitleGranter>Grant Title</Verb_TitleGranter> <!-- Verb Name -->
-	<Verb_TitleGranterReportLabel>Granting Titles</Verb_TitleGranterReportLabel> <!-- ADDED 1.7 -->
 	<TR_baserealmtype>Chosen Realm Type</TR_baserealmtype>
 	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
 	<TR_reloadsavefix>Make sure to save and reload if you're in the game to apply the changes.</TR_reloadsavefix>
