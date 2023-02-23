@@ -25,9 +25,12 @@ namespace TitularRoyalty
 		private bool isInheritable;
 		private bool allowDignifiedMeditation;
 
+		private ExpectationDef minExpectation;
+		private TitleTiers titleTier;
+
 		private GameComponent_TitularRoyalty TRComponent;
 		private PlayerTitleDef titleDef;
-		private RoyalTitleOverride customTitleOverride;
+		private RoyalTitleOverride originalOverrides;
 
 		public Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty trComponent, PlayerTitleDef titleDef)
 		{
@@ -37,16 +40,39 @@ namespace TitularRoyalty
 			TRComponent = trComponent;
 
 			this.titleDef = titleDef;
+			originalOverrides = TRComponent.GetCustomTitleOverrideFor(this.titleDef);
+
 			SetDefaultVariables();
-			customTitleOverride = TRComponent.GetCustomTitleOverrideFor(this.titleDef);
 		}
 
 		public void SetDefaultVariables()
 		{
-			curName = titleDef.label;
-			curNameFemale = titleDef.labelFemale;
+
+			if (originalOverrides.label == "None" || originalOverrides.label == null)
+			{
+				curName = titleDef.label;
+				curNameFemale = titleDef.labelFemale;
+			}
+			else
+			{
+				curName = originalOverrides.label;
+
+				if (originalOverrides.labelFemale == "None")
+				{
+					curNameFemale = null;
+				}
+				else
+				{
+					curNameFemale = originalOverrides.labelFemale ?? null;
+				}
+			}
+
+			isInheritable = originalOverrides.TRInheritable ?? titleDef.TRInheritable;
+			allowDignifiedMeditation = originalOverrides.allowDignifiedMeditationFocus ?? titleDef.allowDignifiedMeditationFocus;
+			minExpectation = originalOverrides.minExpectation ?? titleDef.minExpectation ?? ExpectationDefOf.ExtremelyLow;
+			titleTier = originalOverrides.titleTier;
 		}
-  
+
 		public override void DoWindowContents(Rect inRect)
 		{
 			/* TITLE */
@@ -75,7 +101,7 @@ namespace TitularRoyalty
 
 			/* FINALIZE BUTTONS */
 			float iconWidth = 35;
-			var bottomRect = new Rect(contentRectVisual.xMin, contentRectVisual.yMax, contentRectVisual.width, iconWidth);
+			var bottomRect = new Rect(contentRectVisual.xMin, contentRectVisual.yMax + 1, contentRectVisual.width, iconWidth);
 			bottomRect.SplitVertically(iconWidth, out Rect iconRect, out Rect bottomRowRect);
 
 			Widgets.DrawTitleBG(bottomRect);
@@ -95,10 +121,13 @@ namespace TitularRoyalty
 			// Reset and Submit Buttons
 			if (Widgets.ButtonText(leftButtonRect, "TR_titleeditor_reset".Translate(), false, overrideTextAnchor: TextAnchor.MiddleCenter))
 			{
+				ResetTitleOverride();
+				Messages.Message("Resetting Title", MessageTypeDefOf.NeutralEvent, false);
 			}
 			if (Widgets.ButtonText(rightButtonRect, "TR_titleeditor_submit".Translate(), false, overrideTextAnchor: TextAnchor.MiddleCenter))
 			{
-
+				TrySubmitTitleChanges();
+				Close(true);
 			}
 		}
 			
@@ -142,26 +171,29 @@ namespace TitularRoyalty
 			minExpectationsRect.width -= 8;
 			minExpectationsRect.x += 4;
 
-			if (Widgets.ButtonText(titleTiersRect, "TR_titleeditor_titletier".Translate(titleDef.titleTier.ToString())))
+			TooltipHandler.TipRegion(titleTiersRect, new TipSignal("TR_titleeditor_titletier_tooltip".Translate()));
+			TooltipHandler.TipRegion(minExpectationsRect, new TipSignal("TR_titleeditor_expectations_tooltip".Translate()));
+
+			if (Widgets.ButtonText(titleTiersRect, "TR_titleeditor_titletier".Translate(titleDef.titleTier.ToString() ?? "None")))
 			{
 				List<FloatMenuOption> options = new List<FloatMenuOption>();
 				for (int i = 0; i < Enum.GetNames(typeof(TitleTiers)).Length; i++)
 				{
 					options.Add(new FloatMenuOption(Enum.GetName(typeof(TitleTiers), i), delegate
 					{
-						// todo
+						titleTier = (TitleTiers)i;
 					}));
 				}
 				Find.WindowStack.Add(new FloatMenu(options));
 			}
-			if (Widgets.ButtonText(minExpectationsRect, "TR_titleeditor_expectations".Translate(titleDef.minExpectation.ToString())))
+			if (Widgets.ButtonText(minExpectationsRect, "TR_titleeditor_expectations".Translate(titleDef.minExpectation.ToStringSafe())))
 			{
 				List<FloatMenuOption> options = new List<FloatMenuOption>();
 				foreach (var expectation in DefDatabase<ExpectationDef>.AllDefsListForReading)
 				{
 					options.Add(new FloatMenuOption(expectation.LabelCap, delegate
 					{
-						// todo
+						minExpectation = expectation;
 					}));
 				}
 				Find.WindowStack.Add(new FloatMenu(options));
@@ -223,9 +255,47 @@ namespace TitularRoyalty
 		/* APPLY METHODS */
 		private void ResetTitleOverride()
 		{
-			customTitleOverride = new RoyalTitleOverride();
-			TRComponent.SaveTitleChange(titleDef, customTitleOverride);
+			originalOverrides = new RoyalTitleOverride();
+			TRComponent.SaveTitleChange(titleDef, originalOverrides);
 			SetDefaultVariables();
+		}
+
+		private bool TrySubmitTitleChanges()
+		{
+			/* LABELS */
+			if (!NameIsValid(newName))
+			{
+				Messages.Message("Titular Royalty: Male Title is Invalid, is it nothing?, is it over 64 characters or contains special characters?", MessageTypeDefOf.RejectInput, false);
+				return false;
+			}
+			if (!NameIsValid(newNameFemale, true))
+			{
+				Messages.Message("Titular Royalty: Female Title is Invalid, is it over 64 characters or contains special characters?", MessageTypeDefOf.RejectInput, false);
+				return false;
+			}
+
+			originalOverrides.label = newName;
+
+			if (newNameFemale == string.Empty)
+			{
+				originalOverrides.labelFemale = "None";
+			}
+			else
+			{
+				originalOverrides.labelFemale = newNameFemale;
+			}
+			
+
+			/* OTHER */
+			originalOverrides.TRInheritable = isInheritable;
+			originalOverrides.titleTier = titleTier;
+			originalOverrides.allowDignifiedMeditationFocus = allowDignifiedMeditation;
+			originalOverrides.minExpectation = minExpectation ?? ExpectationDefOf.Low;
+
+			TRComponent.SetupTitle(titleDef);
+			Messages.Message("Titular Royalty: Change Title Success", MessageTypeDefOf.NeutralEvent, false);
+
+			return true;
 		}
 
 	}

@@ -46,7 +46,9 @@
 	<TR_titleeditor_checkbox_allowmeditationfocus>Can use dignified meditation</TR_titleeditor_checkbox_allowmeditationfocus>
 
 	<TR_titleeditor_titletier>Tier: {0}</TR_titleeditor_titletier>
+	<TR_titleeditor_titletier_tooltip>The Tier of the title, this doesnt affect much with custom titles, but it does the default icon</TR_titleeditor_titletier_tooltip>
 	<TR_titleeditor_expectations>Expectations: {0}</TR_titleeditor_expectations>
+	<TR_titleeditor_expectations_tooltip>The minimum expectations a colonist with this title will have.</TR_titleeditor_expectations_tooltip>
 
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>
