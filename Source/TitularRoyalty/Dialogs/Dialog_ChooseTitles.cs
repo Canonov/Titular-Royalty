@@ -75,6 +75,7 @@ namespace TitularRoyalty
                 Text.Anchor = TextAnchor.MiddleCenter;
                 Widgets.Label(new Rect(15, 10, 300f, 30f), "TR_choosetitle".Translate()); 
                 Text.Font = GameFont.Small;
+                Text.Anchor = TextAnchor.UpperLeft;
                 var viewRect = new Rect(0f, 30f, outRect.width - 16f, (seniorityTitles.Count / 4) * 128f + 256f);
                 Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
 
