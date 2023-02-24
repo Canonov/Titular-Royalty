@@ -74,8 +74,6 @@ namespace TitularRoyalty
 
 		public void SetupTitle(PlayerTitleDef title)
         {
-            ApplyTitleOverrides(title, title.originalTitleFields);
-
 			// Custom Title
 			if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleOverrides))
 			{
@@ -88,23 +86,32 @@ namespace TitularRoyalty
 			{
                 ApplyTitleOverrides(title, realmTypeOverrides);
 			}
+            else
+            {
+				ApplyTitleOverrides(title, title.originalTitleFields);
+			}
 		}
 
 		private static void ApplyTitleOverrides(PlayerTitleDef title, RoyalTitleOverride titleOverrides, bool isRealmType = false)
 		{
-			if (titleOverrides.label != "None" || titleOverrides.HasFemaleTitle())
-			{
-				title.label = titleOverrides.label ?? title.label;
-				title.labelFemale = titleOverrides.HasFemaleTitle() ? titleOverrides.labelFemale : null;
+            if (titleOverrides.HasTitle())
+            {
+                title.label = titleOverrides.label;
+                title.labelFemale = titleOverrides.HasFemaleTitle() ? titleOverrides.labelFemale : null;
+            }
+            else
+            {
+                title.label = title.originalTitleFields.label;
+				title.labelFemale = title.originalTitleFields.labelFemale;
 			}
 
-			title.titleTier = titleOverrides.titleTier ?? title.titleTier;
-			title.allowDignifiedMeditationFocus = titleOverrides.allowDignifiedMeditationFocus ?? title.allowDignifiedMeditationFocus;
+			title.titleTier = titleOverrides.titleTier ?? title.originalTitleFields.titleTier ?? TitleTiers.Lowborn;
+			title.allowDignifiedMeditationFocus = titleOverrides.allowDignifiedMeditationFocus ?? title.originalTitleFields.allowDignifiedMeditationFocus ?? false;
 
-			title.TRInheritable = titleOverrides.TRInheritable ?? title.TRInheritable;
+			title.TRInheritable = titleOverrides.TRInheritable ?? title.originalTitleFields.TRInheritable ?? false;
 			title.canBeInherited = TitularRoyaltyMod.Settings.inheritanceEnabled ? title.TRInheritable : false;
 
-			title.minExpectation = titleOverrides.minExpectation ?? title.minExpectation ?? ExpectationDefOf.ExtremelyLow;
+			title.minExpectation = titleOverrides.minExpectation ?? title.originalTitleFields.minExpectation ?? ExpectationDefOf.ExtremelyLow;
 
 			title.ClearCachedData();
 		}

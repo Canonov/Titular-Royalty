@@ -22,7 +22,7 @@ namespace TitularRoyalty
 
         public RoyalTitleOverride() { }
 
-        public RoyalTitleOverride(PlayerTitleDef playerTitle) 
+        public RoyalTitleOverride(PlayerTitleDef playerTitle)
         {
             this.titleDef = playerTitle;
 
@@ -36,6 +36,7 @@ namespace TitularRoyalty
         }
 
         public bool HasFemaleTitle() => (labelFemale != "None" && labelFemale != null && labelFemale != string.Empty);
+        public bool HasTitle() => !(label == "None" || label == null || label == string.Empty);
 
         public void ExposeData()
         {

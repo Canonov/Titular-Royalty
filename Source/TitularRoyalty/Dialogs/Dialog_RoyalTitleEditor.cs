@@ -142,6 +142,7 @@ namespace TitularRoyalty
 				ResetTitleOverride();
 				Messages.Message("Resetting Title", MessageTypeDefOf.NeutralEvent, false);
 			}
+
 			if (Widgets.ButtonText(rightButtonRect, "TR_titleeditor_submit".Translate(), false, overrideTextAnchor: TextAnchor.MiddleCenter))
 			{
 				TrySubmitTitleChanges();
@@ -239,6 +240,10 @@ namespace TitularRoyalty
 			maleNameRect.width -= 8;
 			femaleNameRect.width -= 8;
 			femaleNameRect.x += 4;
+
+			// Tooltips
+			TooltipHandler.TipRegion(maleNameRect, new TipSignal("TR_titleeditor_title_tooltip".Translate()));
+			TooltipHandler.TipRegion(femaleNameRect, new TipSignal("TR_titleeditor_titlefemale_tooltip".Translate()));
 
 			// User Input
 			curName = Widgets.TextField(maleNameRect, curName, MaxNameLength);

@@ -36,7 +36,9 @@
 	<!-- Title Editor GUI --> <!-- ALL ADDED 1.7 -->
 	<TR_titleeditor_label>Title Editor</TR_titleeditor_label>
 	<TR_titleeditor_title>Male Title</TR_titleeditor_title>
+	<TR_titleeditor_title_tooltip>Change the title to what's in this text field</TR_titleeditor_title_tooltip>
 	<TR_titleeditor_titlefemale>Female Title (Blank to Disable)</TR_titleeditor_titlefemale>
+	<TR_titleeditor_titlefemale_tooltip>Change the female title to what's in this text field, leave it empty to disable it</TR_titleeditor_titlefemale_tooltip>
 
 	<TR_titleeditor_reset>Reset Title</TR_titleeditor_reset>
 	<TR_titleeditor_submit>Submit Changes</TR_titleeditor_submit>
