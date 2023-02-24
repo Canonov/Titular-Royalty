@@ -75,14 +75,13 @@
     <Compile Include="Components\Comp_ManageTitles.cs" />
     <Compile Include="Defs\PlayerTitleDefOf.cs" />
     <Compile Include="Dialogs\Dialog_RoyalTitleEditor.cs" />
-    <Compile Include="Miscellaneous\StartupSetup.cs" />
+    <Compile Include="Miscellaneous\OnStartup.cs" />
     <Compile Include="Miscellaneous\RoyalTitleOverride.cs" />
     <Compile Include="Permits\PlayerTitlePermitWorker_BestowPsycast.cs" />
     <Compile Include="Permits\PlayerTitlePermitDef.cs" />
     <Compile Include="Defs\RealmTypeDef.cs" />
     <Compile Include="Dialogs\Dialog_ManageTitles.cs" />
     <Compile Include="Miscellaneous\Utilities.cs" />
-    <Compile Include="Miscellaneous\ModSettingsApplier.cs" />
     <Compile Include="Miscellaneous\Resources.cs" />
     <Compile Include="Defs\PlayerTitleDef.cs" />
     <Compile Include="Patches\PermitsCardUtility_Patches.cs" />
