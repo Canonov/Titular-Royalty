@@ -77,8 +77,11 @@ namespace TitularRoyalty
 			// Custom Title
 			if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleOverrides))
 			{
-				ApplyTitleOverrides(title, titleOverrides);
-				return;
+                if (titleOverrides.HasTitle())
+                {
+					ApplyTitleOverrides(title, titleOverrides);
+					return;
+				}
 			}
 
 			// Realm Type, if No Custom
@@ -129,6 +132,7 @@ namespace TitularRoyalty
             foreach (PlayerTitleDef title in TitlesBySeniority)
             {
                 title.ResetToDefaultValues();
+                SetupTitle(title);
             }
         }
 
