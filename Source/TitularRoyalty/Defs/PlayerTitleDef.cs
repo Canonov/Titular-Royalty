@@ -37,7 +37,7 @@ namespace TitularRoyalty
             label = originalTitleFields.label;
             labelFemale = originalTitleFields.labelFemale;
 
-            titleTier = originalTitleFields.titleTier;
+            titleTier = originalTitleFields.titleTier ?? TitleTiers.Lowborn;
             TRInheritable = originalTitleFields.TRInheritable ?? false;
             minExpectation = originalTitleFields.minExpectation;
             allowDignifiedMeditationFocus = originalTitleFields.allowDignifiedMeditationFocus ?? false;

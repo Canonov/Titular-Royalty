@@ -13,10 +13,10 @@ namespace TitularRoyalty
         public string label = "None";
         public string labelFemale = "None";
 
-        public bool? TRInheritable = false;
-        public bool? allowDignifiedMeditationFocus = false;
+        public bool? TRInheritable = null;
+        public bool? allowDignifiedMeditationFocus = null;
         public bool useTierOverride = false; // Realmtype only
-        public TitleTiers titleTier = TitleTiers.Lowborn;
+        public TitleTiers? titleTier = null;
 
         public ExpectationDef minExpectation;
 

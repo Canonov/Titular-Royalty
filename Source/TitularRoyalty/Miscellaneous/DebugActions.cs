@@ -23,7 +23,7 @@ namespace TitularRoyalty
 				list.Add(new DebugMenuOption($"{title.GetLabelForBothGenders()}", DebugMenuOptionMode.Action, delegate
 				{
 					var comp = Current.Game.GetComponent<GameComponent_TitularRoyalty>();
-					Find.WindowStack.Add(new Dialog_RoyalTitleEditor(comp, title));
+					Find.WindowStack.Add(new Dialog_RoyalTitleEditor(comp, title, null));
 				}
 				));
 

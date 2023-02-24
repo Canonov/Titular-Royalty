@@ -74,39 +74,45 @@ namespace TitularRoyalty
 
 		public void SetupTitle(PlayerTitleDef title)
         {
+            ApplyTitleOverrides(title, title.originalTitleFields);
+
 			// Custom Title
-			if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleOverrides) && (titleOverrides.label != "None" || titleOverrides.HasFemaleTitle()))
+			if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleOverrides))
+			{
+				ApplyTitleOverrides(title, titleOverrides);
+				return;
+			}
+
+			// Realm Type, if No Custom
+			if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RoyalTitleOverride realmTypeOverrides))
+			{
+                ApplyTitleOverrides(title, realmTypeOverrides);
+			}
+		}
+
+		private static void ApplyTitleOverrides(PlayerTitleDef title, RoyalTitleOverride titleOverrides, bool isRealmType = false)
+		{
+			if (titleOverrides.label != "None" || titleOverrides.HasFemaleTitle())
 			{
 				title.label = titleOverrides.label ?? title.label;
 				title.labelFemale = titleOverrides.HasFemaleTitle() ? titleOverrides.labelFemale : null;
+			}
 
-				title.ClearCachedData();
-				return;
-			}
-			// Realm Type, if No Custom
-			if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RoyalTitleOverride overrides))
-			{
-				title.label = overrides.label ?? title.label;
-				title.labelFemale = overrides.HasFemaleTitle() ? overrides.labelFemale : null;
+			title.titleTier = titleOverrides.titleTier ?? title.titleTier;
+			title.allowDignifiedMeditationFocus = titleOverrides.allowDignifiedMeditationFocus ?? title.allowDignifiedMeditationFocus;
 
-				if (overrides.useTierOverride)
-				{
-					title.titleTier = overrides.titleTier;
-				}
-			}
-			else
-			{
-				title.label = title.originalTitleFields.label;
-				title.labelFemale = title.originalTitleFields.labelFemale;
-			}
+			title.TRInheritable = titleOverrides.TRInheritable ?? title.TRInheritable;
+			title.canBeInherited = TitularRoyaltyMod.Settings.inheritanceEnabled ? title.TRInheritable : false;
+
+			title.minExpectation = titleOverrides.minExpectation ?? title.minExpectation ?? ExpectationDefOf.ExtremelyLow;
 
 			title.ClearCachedData();
 		}
 
-        /// <summary>
-        /// Resets all changed titles to their default realmType or Base Value
-        /// </summary>
-        public void ResetTitles()
+		/// <summary>
+		/// Resets all changed titles to their default realmType or Base Value
+		/// </summary>
+		public void ResetTitles()
         {
             customTitles = null;
             titlesBySeniority = null;

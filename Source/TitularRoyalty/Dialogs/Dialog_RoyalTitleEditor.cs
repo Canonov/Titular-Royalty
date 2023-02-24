@@ -31,18 +31,36 @@ namespace TitularRoyalty
 		private GameComponent_TitularRoyalty TRComponent;
 		private PlayerTitleDef titleDef;
 		private RoyalTitleOverride originalOverrides;
+		private Dialog_ManageTitles manageTitles;
 
-		public Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty trComponent, PlayerTitleDef titleDef)
+		public Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty trComponent, PlayerTitleDef titleDef, Dialog_ManageTitles manageTitles)
 		{
 			doCloseX = true;
 			forcePause = true;
 			draggable = true;
+			closeOnClickedOutside = true;
 			TRComponent = trComponent;
 
 			this.titleDef = titleDef;
+
+			if (manageTitles != null ) 
+			{
+				this.manageTitles = manageTitles;
+				this.manageTitles.titleEditorOpen = true;
+			}
+
 			originalOverrides = TRComponent.GetCustomTitleOverrideFor(this.titleDef);
 
 			SetDefaultVariables();
+		}
+
+		public override void PreClose()
+		{
+			base.PreClose();
+			if (manageTitles != null)
+			{
+				manageTitles.titleEditorOpen = false;
+			}
 		}
 
 		public void SetDefaultVariables()
@@ -70,7 +88,7 @@ namespace TitularRoyalty
 			isInheritable = originalOverrides.TRInheritable ?? titleDef.TRInheritable;
 			allowDignifiedMeditation = originalOverrides.allowDignifiedMeditationFocus ?? titleDef.allowDignifiedMeditationFocus;
 			minExpectation = originalOverrides.minExpectation ?? titleDef.minExpectation ?? ExpectationDefOf.ExtremelyLow;
-			titleTier = originalOverrides.titleTier;
+			titleTier = originalOverrides.titleTier ?? titleDef.titleTier;
 		}
 
 		public override void DoWindowContents(Rect inRect)
@@ -174,19 +192,19 @@ namespace TitularRoyalty
 			TooltipHandler.TipRegion(titleTiersRect, new TipSignal("TR_titleeditor_titletier_tooltip".Translate()));
 			TooltipHandler.TipRegion(minExpectationsRect, new TipSignal("TR_titleeditor_expectations_tooltip".Translate()));
 
-			if (Widgets.ButtonText(titleTiersRect, "TR_titleeditor_titletier".Translate(titleDef.titleTier.ToString() ?? "None")))
+			if (Widgets.ButtonText(titleTiersRect, "TR_titleeditor_titletier".Translate(this.titleTier.ToString() ?? "None")))
 			{
 				List<FloatMenuOption> options = new List<FloatMenuOption>();
-				for (int i = 0; i < Enum.GetNames(typeof(TitleTiers)).Length; i++)
+				foreach(var tier in Utilities.TitleTiers)
 				{
-					options.Add(new FloatMenuOption(Enum.GetName(typeof(TitleTiers), i), delegate
+					options.Add(new FloatMenuOption(tier.ToString(), delegate
 					{
-						titleTier = (TitleTiers)i;
-					}, itemIcon: Resources.TitleTierIcons[i], iconColor: Color.white));
+						titleTier = tier;
+					}));
 				}
 				Find.WindowStack.Add(new FloatMenu(options));
 			}
-			if (Widgets.ButtonText(minExpectationsRect, "TR_titleeditor_expectations".Translate(titleDef.minExpectation.ToStringSafe())))
+			if (Widgets.ButtonText(minExpectationsRect, "TR_titleeditor_expectations".Translate(this.minExpectation.ToStringSafe())))
 			{
 				List<FloatMenuOption> options = new List<FloatMenuOption>();
 				foreach (var expectation in DefDatabase<ExpectationDef>.AllDefsListForReading)

@@ -35,6 +35,8 @@ namespace TitularRoyalty
             }
         }
 
+        public bool titleEditorOpen = false;
+
         // Variables for Updating and Setting the Lists
         private Listing_Standard TitleList;
         private Rect ContentRect;
@@ -76,18 +78,18 @@ namespace TitularRoyalty
 
             WidgetRow widgetRow = new WidgetRow(0f, (rect.height - 24f) / 2);
             widgetRow.Gap(4f);
-            widgetRow.Icon(Resources.TierIconsForGovernment(TRComponent.RealmTypeDef.governmentType)[(int)def.titleTier]);
+            widgetRow.Icon(Resources.TierIconsForGovernment(TRComponent.RealmTypeDef.governmentType)[(int)def.titleTier] ?? Resources.CrownIcon);
             //widgetRow.Gap(4f);
 
             float width = rect.width - widgetRow.FinalX - 28f - (Text.CalcSize("TR_managetitles_edit".Translate()).x + 6) - (Text.CalcSize("TR_managetitles_grant".Translate()).x + 6);
             widgetRow.Label(def.GetLabelCapForBothGenders(), width, def.GetLabelCapForBothGenders());
 
-            if (widgetRow.ButtonText("TR_managetitles_edit".Translate())) // Rename Button, opens the title renamer
+            if (widgetRow.ButtonText("TR_managetitles_edit".Translate(), active: !titleEditorOpen)) // Rename Button, opens the title renamer
             {
                 //Find.WindowStack.Add(new Dialog_TitleRenamer(def));
-                Find.WindowStack.Add(new Dialog_RoyalTitleEditor(TRComponent, def));
+                Find.WindowStack.Add(new Dialog_RoyalTitleEditor(TRComponent, def, this));
             }
-            if (widgetRow.ButtonText("TR_managetitles_grant".Translate())) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
+            if (widgetRow.ButtonText("TR_managetitles_grant".Translate(), active: !titleEditorOpen)) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
             {
                 Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
                 {
@@ -164,7 +166,7 @@ namespace TitularRoyalty
             //Button with Dropdown to select titleset
             RealmTypeButtonRect = RealmTypeRect.RightHalf().ContractedBy(4);
             List<FloatMenuOption> realmtypeoptions = new List<FloatMenuOption>();
-            if (Widgets.ButtonText(RealmTypeButtonRect, TRComponent.RealmTypeDef.label)) 
+            if (Widgets.ButtonText(RealmTypeButtonRect, TRComponent.RealmTypeDef.label, active: !titleEditorOpen)) 
             {
                 foreach (RealmTypeDef rtdef in DefDatabase<RealmTypeDef>.AllDefsListForReading)
                 {
@@ -219,14 +221,14 @@ namespace TitularRoyalty
             //Log.Message((ButtonsRect.yMax + GenUI.Gap).ToString());
 
             // Buttons
-            if (Widgets.ButtonText(LeftButtonRect, "TR_managetitles_update".Translate()))
+            if (Widgets.ButtonText(LeftButtonRect, "TR_managetitles_update".Translate(), active: !titleEditorOpen))
             {
                 TRComponent.SetupTitles();
                 titlesBySeniority = null;
                 Messages.Message("TR_managetitles_update_notif".Translate(), MessageTypeDefOf.NeutralEvent);
                 DoTitleList();
             }
-            if (Widgets.ButtonText(RightButtonRect, "TR_managetitles_resetcustom".Translate()))
+            if (Widgets.ButtonText(RightButtonRect, "TR_managetitles_resetcustom".Translate(), active: !titleEditorOpen))
             {
                 TRComponent.ResetTitles();
                 Messages.Message("TR_managetitles_resetcustom_notif".Translate(), MessageTypeDefOf.NeutralEvent);

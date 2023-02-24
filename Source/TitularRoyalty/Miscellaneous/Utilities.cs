@@ -21,5 +21,14 @@ namespace TitularRoyalty
                 permit.faction = faction.def;
             }
         }
+
+        public static List<TitleTiers> TitleTiers = new List<TitleTiers>() { 
+            TitularRoyalty.TitleTiers.Lowborn,
+            TitularRoyalty.TitleTiers.Gentry,
+            TitularRoyalty.TitleTiers.LowNoble,
+            TitularRoyalty.TitleTiers.HighNoble,
+            TitularRoyalty.TitleTiers.Royalty,
+            TitularRoyalty.TitleTiers.Sovereign
+        };
     }
 }

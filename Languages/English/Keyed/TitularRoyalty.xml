@@ -36,7 +36,7 @@
 	<!-- Title Editor GUI --> <!-- ALL ADDED 1.7 -->
 	<TR_titleeditor_label>Title Editor</TR_titleeditor_label>
 	<TR_titleeditor_title>Male Title</TR_titleeditor_title>
-	<TR_titleeditor_titlefemale>Female Title</TR_titleeditor_titlefemale>
+	<TR_titleeditor_titlefemale>Female Title (Blank to Disable)</TR_titleeditor_titlefemale>
 
 	<TR_titleeditor_reset>Reset Title</TR_titleeditor_reset>
 	<TR_titleeditor_submit>Submit Changes</TR_titleeditor_submit>
@@ -46,9 +46,9 @@
 	<TR_titleeditor_checkbox_allowmeditationfocus>Can use dignified meditation</TR_titleeditor_checkbox_allowmeditationfocus>
 
 	<TR_titleeditor_titletier>Tier: {0}</TR_titleeditor_titletier>
-	<TR_titleeditor_titletier_tooltip>The Tier of the title, this doesnt affect much with custom titles, but it does the default icon</TR_titleeditor_titletier_tooltip>
+	<TR_titleeditor_titletier_tooltip>The Tier of the title, this doesnt affect much with custom titles, but it does the default icon.</TR_titleeditor_titletier_tooltip>
 	<TR_titleeditor_expectations>Expectations: {0}</TR_titleeditor_expectations>
-	<TR_titleeditor_expectations_tooltip>The minimum expectations a colonist with this title will have.</TR_titleeditor_expectations_tooltip>
+	<TR_titleeditor_expectations_tooltip>The minimum expectations a colonist with this title will have, this only applies if they're conceited for now, though I plan to change this later, might take awhile to apply to existing holders.</TR_titleeditor_expectations_tooltip>
 
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>
