@@ -15,15 +15,17 @@
 
 ## 1.7 Update
 - Title Editor UI available in the Manage Titles menu.
-- You can use this to override the title labels, whether it can be inherited, can give speeches, what icon it uses and what expectations it has.
+- You can use this to override the title labels, whether it can be inherited, can use meditation focus, what icon it uses and what expectations it has.
 
 ## 1.8 Update Plans
-- Adding/Removing Titles, might have to be in 1.9 depending on how complex it turns out
+- Ability to change order of titles, with a GUI for it.
 
-## Plans
-- Caliphate and Russian titles
+## 1.9 Update Plans
+- Adding/Removing Titles, might have to be in 2.0 depending on how complex it turns out
+
+## Misc Plans
+- Caliphate titles
 - Permits System
-- Improved and cleaner code
 - Advanced Inheritance System that works similarly to real inheritance with chooseable succession laws
 
 
