@@ -68,40 +68,51 @@ namespace TitularRoyalty
         {
             foreach (PlayerTitleDef title in TitlesBySeniority)
             {
-                // Custom Title
-                if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleOverrides) && (titleOverrides.label != "None" || titleOverrides.HasFemaleTitle()) )
-                {
-                    title.label = titleOverrides.label ?? title.label;
-                    title.labelFemale = titleOverrides.HasFemaleTitle() ? titleOverrides.labelFemale : null;
-
-                    title.ClearCachedData();
-                    continue;
-                }
-                // Realm Type, if No Custom
-                if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RoyalTitleOverride overrides))
-                {
-                    title.label = overrides.label ?? title.label;
-                    title.labelFemale = overrides.HasFemaleTitle() ? overrides.labelFemale : null;
-
-                    if (overrides.useTierOverride)
-                    {
-                        title.titleTier = overrides.titleTier;
-                    }
-                }
-                else
-                {
-                    title.label = title.originalTitleFields.label;
-                    title.labelFemale = title.originalTitleFields.labelFemale;
-                }
-
-                title.ClearCachedData();
-            }
+                SetupTitle(title);
+			}
         }
 
-        /// <summary>
-        /// Resets all changed titles to their default realmType or Base Value
-        /// </summary>
-        public void ResetTitles()
+		public void SetupTitle(PlayerTitleDef title)
+        {
+            ApplyTitleOverrides(title, title.originalTitleFields);
+
+			// Custom Title
+			if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleOverrides))
+			{
+				ApplyTitleOverrides(title, titleOverrides);
+				return;
+			}
+
+			// Realm Type, if No Custom
+			if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RoyalTitleOverride realmTypeOverrides))
+			{
+                ApplyTitleOverrides(title, realmTypeOverrides);
+			}
+		}
+
+		private static void ApplyTitleOverrides(PlayerTitleDef title, RoyalTitleOverride titleOverrides, bool isRealmType = false)
+		{
+			if (titleOverrides.label != "None" || titleOverrides.HasFemaleTitle())
+			{
+				title.label = titleOverrides.label ?? title.label;
+				title.labelFemale = titleOverrides.HasFemaleTitle() ? titleOverrides.labelFemale : null;
+			}
+
+			title.titleTier = titleOverrides.titleTier ?? title.titleTier;
+			title.allowDignifiedMeditationFocus = titleOverrides.allowDignifiedMeditationFocus ?? title.allowDignifiedMeditationFocus;
+
+			title.TRInheritable = titleOverrides.TRInheritable ?? title.TRInheritable;
+			title.canBeInherited = TitularRoyaltyMod.Settings.inheritanceEnabled ? title.TRInheritable : false;
+
+			title.minExpectation = titleOverrides.minExpectation ?? title.minExpectation ?? ExpectationDefOf.ExtremelyLow;
+
+			title.ClearCachedData();
+		}
+
+		/// <summary>
+		/// Resets all changed titles to their default realmType or Base Value
+		/// </summary>
+		public void ResetTitles()
         {
             customTitles = null;
             titlesBySeniority = null;
@@ -114,28 +125,21 @@ namespace TitularRoyalty
             }
         }
 
-        /// <summary>
-        /// Changes a title name of the given seniority and gender, needs to be manually refreshed with all the others with setup titles or a restart
-        /// </summary>
-        /// <param name="gender">Gender you want to change Gender.Male or None, or Gender.Female</param>
-        /// <param name="newlabel">New Title Name</param>
-        public void SaveTitleChange(PlayerTitleDef title, string newlabel, Gender gender)
+		public RoyalTitleOverride GetCustomTitleOverrideFor(PlayerTitleDef titleDef)
         {
-            if (CustomTitles.TryGetValue(title, out RoyalTitleOverride labels))
+            if (CustomTitles.TryGetValue(titleDef, out RoyalTitleOverride result))
             {
-                if (gender == Gender.Female)
-                {
-                    labels.labelFemale = newlabel;
-                }
-                else
-                {
-                    labels.label = newlabel;
-                }
+                return result;
             }
-            else
-            {
-                Log.Error($"TR: Couldn't find Def {title} in CustomTitles");
-            }
+            Log.Error($"Titular Royalty: Could not find custom title override for {titleDef.defName} {titleDef.label}");
+            return null;
+        }
+
+
+		public void SaveTitleChange(PlayerTitleDef title, RoyalTitleOverride newOverride)
+        {
+            customTitles[title] = newOverride;
+            SetupTitle(title);
         }
 
         /// <summary>
