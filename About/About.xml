@@ -39,8 +39,9 @@
  (VERSION 1.7) 
  - Title Editor UI available in the Manage Titles menu.
  - You can use this to override the title labels, whether it can be inherited, can use meditation focus, what icon it uses and what expectations it has.
+ - Can now open the manage titles UI using the crown button on the bottom right buttons
  - You can also change the Icons the title uses, it takes any icon in Textures/TRIcons or the default for the Title Tier
- - Vanilla Factions Expanded - Empire Integrations 
+ - Vanilla Factions Expanded - Empire Integrations (Sophiamundan Titleset with their Icons, All titles show icons on infocard, these require it to be active and dont include any files themselves)
 </description>
 
 </ModMetaData>

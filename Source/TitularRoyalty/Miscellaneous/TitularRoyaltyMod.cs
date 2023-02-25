@@ -52,6 +52,13 @@ namespace TitularRoyalty
             harmony.Patch(original: AccessTools.Method(typeof(PlaySettings), "DoPlaySettingsGlobalControls", (Type[])null, (Type[])null),
                 postfix: new HarmonyMethod(typeof(ManageTitlesWidget), nameof(ManageTitlesWidget.AddWidget)));
 
+            // Add icons to the Royal Titles
+            if (ModLister.HasActiveModWithName("oskarpotocki.vfe.empire"))
+            {
+				harmony.Patch(original: AccessTools.Method(typeof(Widgets), nameof(Widgets.DefIcon)),
+	                prefix: new HarmonyMethod(typeof(DefIcon_RoyalIconsPrefix), "Patch"));
+			}
+
         }
 
         // Realm Types

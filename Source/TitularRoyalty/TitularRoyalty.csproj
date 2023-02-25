@@ -75,6 +75,7 @@
     <Compile Include="Components\Comp_ManageTitles.cs" />
     <Compile Include="Defs\PlayerTitleDefOf.cs" />
     <Compile Include="Dialogs\Dialog_RoyalTitleEditor.cs" />
+    <Compile Include="Patches\DefIcon_RoyalIconsPrefix.cs" />
     <Compile Include="Patches\ManageTitlesWidget.cs" />
     <Compile Include="Miscellaneous\OnStartup.cs" />
     <Compile Include="Miscellaneous\RoyalTitleOverride.cs" />

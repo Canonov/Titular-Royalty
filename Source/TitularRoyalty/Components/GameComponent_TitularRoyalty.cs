@@ -8,7 +8,10 @@ namespace TitularRoyalty
 {
     public class GameComponent_TitularRoyalty : GameComponent
     {
-        public GameComponent_TitularRoyalty(Game game) { } // Needs this or else Rimworld throws a fit and errors.
+
+        public static GameComponent_TitularRoyalty Current { get; private set; }
+
+        public GameComponent_TitularRoyalty(Game game) { Current = this; } // Needs this or else Rimworld throws a fit and errors.
 
         private string realmTypeDefName;
         public string RealmTypeDefName
@@ -160,6 +163,8 @@ namespace TitularRoyalty
         /// </summary>
         public void OnGameStart()
         {
+            Current = this;
+
             SetupTitles();
 			Faction.OfPlayer.SetupPlayerForTR(); // Set Permit factions and other options
 			OnStartup.ApplyModSettings(); // Apply ModSettings Changes
