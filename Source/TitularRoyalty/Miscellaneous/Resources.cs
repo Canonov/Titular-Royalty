@@ -21,6 +21,8 @@ namespace TitularRoyalty
     public class Resources
     {
         public static readonly Texture2D CrownIcon = ContentFinder<Texture2D>.Get("UI/Gizmos/givetitleicon");
+        public static readonly Texture2D TRWidget = ContentFinder<Texture2D>.Get("UI/TRwidget");
+
         public static readonly Texture2D[] TitleTierIcons =
         {
             ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon0"),

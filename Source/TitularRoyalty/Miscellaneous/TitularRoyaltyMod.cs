@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 using System.Linq;
 using System;
 using RimWorld.QuestGen;
+using RimWorld;
 
 namespace TitularRoyalty
 {
@@ -43,8 +44,13 @@ namespace TitularRoyalty
             // Use Patch Categories next harmony update?
             var harmony = new Harmony("com.TitularRoyalty.patches");
 
+            // Prevent Player pawns from giving you royalty quests
             harmony.Patch(original: AccessTools.Method(typeof(QuestNode_GetPawn), "IsGoodPawn"),
                 postfix: new HarmonyMethod(typeof(QuestGen_Patches), nameof(QuestGen_Patches.IsGoodPawn_Postfix)));
+
+            // Add a widget to the playsettings to open the Dialog_ManageTitles
+            harmony.Patch(original: AccessTools.Method(typeof(PlaySettings), "DoPlaySettingsGlobalControls", (Type[])null, (Type[])null),
+                postfix: new HarmonyMethod(typeof(ManageTitlesWidget), nameof(ManageTitlesWidget.AddWidget)));
 
         }
 
