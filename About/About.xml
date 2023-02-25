@@ -21,6 +21,7 @@
   </modDependencies>
   <loadAfter>
     <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
+    <li>oskarpotocki.vfe.empire</li>
   </loadAfter>
   <description>Adds titles to the player faction you can grant to your pawns with the Staff of Royalty or at Any Throne
 (VERSION 1.6)
@@ -39,6 +40,7 @@
  - Title Editor UI available in the Manage Titles menu.
  - You can use this to override the title labels, whether it can be inherited, can use meditation focus, what icon it uses and what expectations it has.
  - You can also change the Icons the title uses, it takes any icon in Textures/TRIcons or the default for the Title Tier
+ - Vanilla Factions Expanded - Empire Integrations 
 </description>
 
 </ModMetaData>

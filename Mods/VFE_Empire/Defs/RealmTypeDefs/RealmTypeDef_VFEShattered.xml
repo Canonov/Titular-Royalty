@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TitularRoyalty.RealmTypeDef>
+    <defName>RealmType_ShatteredEmpire_VFEE</defName>
+    <label>Sophiamundian (VFE)</label>
+    <iconPath>UI/NewFamilyBase</iconPath>
+
+    <titleOverrides>
+      <li> <!--Freeholder-->
+        <titleDef>TitularRoyalty_T_LR_Freeman</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Freeholder</rtIconOverridePath>
+        <titleTier>Lowborn</titleTier>
+        
+        <label>Freeholder</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Yeoman-->
+        <titleDef>TitularRoyalty_T_LR_Yeoman</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Yeoman</rtIconOverridePath>
+        <titleTier>Lowborn</titleTier>
+        
+        <label>Yeoman</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Gentleman-->
+        <titleDef>TitularRoyalty_T_LR_Gentleman</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Acolyte</rtIconOverridePath>
+        <titleTier>Lowborn</titleTier>
+        
+        <label>Acolyte</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Squire-->
+        <titleDef>TitularRoyalty_T_LR_Squire</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Acolyte</rtIconOverridePath>
+        <titleTier>Lowborn</titleTier>
+        
+        <label>Squire</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Esquire-->
+        <titleDef>TitularRoyalty_T_MR_Esquire</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Knight</rtIconOverridePath>
+        <titleTier>Gentry</titleTier>
+
+        <TRInheritable>false</TRInheritable>
+        
+        <label>Knight</label>
+        <labelFemale>Dame</labelFemale>
+      </li>
+    
+      <li> <!--Knight-->
+        <titleDef>TitularRoyalty_T_MR_Knight</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Praetor</rtIconOverridePath>
+        <titleTier>Gentry</titleTier>
+
+        <TRInheritable>false</TRInheritable>
+        
+        <label>Praetor</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Knight-banneret-->
+        <titleDef>TitularRoyalty_T_MR_Bannerete</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Baron</rtIconOverridePath>
+        <titleTier>LowNoble</titleTier>
+
+        <TRInheritable>true</TRInheritable>
+        
+        <label>Baron</label>
+        <labelFemale>Baroness</labelFemale>
+      </li>
+    
+      <li> <!--Lord Commander-->
+        <titleDef>TitularRoyalty_T_MR_Knight_Commander</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Count</rtIconOverridePath>
+        <titleTier>LowNoble</titleTier>
+
+        <TRInheritable>true</TRInheritable>
+        
+        <label>Count</label>
+        <labelFemale>Countess</labelFemale>
+      </li>
+    
+      <li> <!--Baronet-->
+        <titleDef>TitularRoyalty_T_MR_Baronet</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Archcount</rtIconOverridePath>
+        <titleTier>LowNoble</titleTier>
+
+        <TRInheritable>true</TRInheritable>
+        
+        <label>Archcount</label>
+        <labelFemale>Archcountess</labelFemale>
+      </li>
+    
+      <li> <!--Baron-->
+        <titleDef>TitularRoyalty_T_HR_Baron</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Marquess</rtIconOverridePath>
+        <titleTier>LowNoble</titleTier>
+        
+        <label>Marquess</label>
+        <labelFemale>Marionchess</labelFemale>
+      </li>
+    
+      <li> <!--Viscount-->
+        <titleDef>TitularRoyalty_T_HR_Viscount</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Duke</rtIconOverridePath>
+        <titleTier>HighNoble</titleTier>
+        
+        <label>Duke</label>
+        <labelFemale>Duchess</labelFemale>
+      </li>
+    
+      <li> <!--Count-->
+        <titleDef>TitularRoyalty_T_HR_Count</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Archduke</rtIconOverridePath>
+        <titleTier>HighNoble</titleTier>
+        
+        <label>Archduke</label>
+        <labelFemale>Archduchess</labelFemale>
+      </li>
+    
+      <li> <!--Duke-->
+        <titleDef>TitularRoyalty_T_HR_Duke</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Proconsul</rtIconOverridePath>
+        
+        <label>Consul</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Archduke-->
+        <titleDef>TitularRoyalty_T_HR_Archduke</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Magister</rtIconOverridePath>
+        
+        <label>Magister</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Prince-->
+        <titleDef>TitularRoyalty_T_RY_Prince</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Despot</rtIconOverridePath>
+        
+        <label>Despot</label>
+        <labelFemale>Despotess</labelFemale>
+      </li>
+    
+      <li> <!--Crown Prince-->
+        <titleDef>TitularRoyalty_T_RY_CrownPrince</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Stellarch</rtIconOverridePath>
+        
+        <label>Stellarch</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--Prince Consort-->
+        <titleDef>TitularRoyalty_T_RY_Consort</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_HighStellarch</rtIconOverridePath>
+        
+        <label>High Stellarch</label>
+        <labelFemale>None</labelFemale>
+      </li>
+    
+      <li> <!--King-->
+        <titleDef>TitularRoyalty_T_RY_King</titleDef>
+        <rtIconOverridePath>UI/NobleRanks/RoyalTitleIcon_Emperor</rtIconOverridePath>
+        
+        <label>Emperor</label>
+        <labelFemale>Empress</labelFemale>
+      </li>
+    </titleOverrides>
+
+  </TitularRoyalty.RealmTypeDef>
+</Defs>

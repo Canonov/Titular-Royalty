@@ -17,6 +17,7 @@
 - Title Editor UI available in the Manage Titles menu.
 - You can use this to override the title labels, whether it can be inherited, can use meditation focus, what icon it uses and what expectations it has.
 - You can also change the Icons the title uses, it takes any icon in Textures/TRIcons or the default for the Title Tier
+- Vanilla Factions Expanded - Empire Integrations 
 
 ## 1.8 Update Plans
 - Ability to change order of titles, with a GUI for it, mostly just a preliminary for 1.9/2.0

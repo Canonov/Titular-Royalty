@@ -107,7 +107,7 @@ namespace TitularRoyalty
 
             WidgetRow widgetRow = new WidgetRow(0f, (rect.height - 24f) / 2);
             widgetRow.Gap(4f);
-            widgetRow.Icon(def.Icon ?? BaseContent.BadTex);
+            widgetRow.Icon(Resources.GetIcon(def, TRComponent) ?? BaseContent.BadTex);
             //widgetRow.Gap(4f);
 
             float width = rect.width - widgetRow.FinalX - 28f - (Text.CalcSize("TR_managetitles_edit".Translate()).x + 6) - (Text.CalcSize("TR_managetitles_grant".Translate()).x + 6);
@@ -195,7 +195,7 @@ namespace TitularRoyalty
                     {
                         TRComponent.RealmTypeDefName = rtdef.defName;
                         Messages.Message("TR_realmtypechanged_notify".Translate(), MessageTypeDefOf.NeutralEvent);
-                    }, rtdef.Icon, Color.white));   
+                    }, rtdef.Icon ?? BaseContent.BadTex, Color.white));   
                 }
                 realmtypeoptions = realmtypeoptions.OrderBy(x => x.Label).ToList(); //Sort Alphabetically
                 Find.WindowStack.Add(new FloatMenu(realmtypeoptions));

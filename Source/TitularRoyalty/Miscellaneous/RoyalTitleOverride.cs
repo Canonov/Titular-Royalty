@@ -16,6 +16,20 @@ namespace TitularRoyalty
 
         public string iconName;
 
+        public string rtIconOverridePath;
+        private Texture2D RTIconOverrideTex;
+		public Texture2D RTIconOverride
+        {
+            get
+            {   
+                if (rtIconOverridePath != null)
+                {
+					return RTIconOverrideTex ??= ContentFinder<Texture2D>.Get(rtIconOverridePath);
+				}
+                return null;
+            }
+        }
+
         public bool? TRInheritable = null;
         public bool? allowDignifiedMeditationFocus = null;
         public bool useTierOverride = false; // Realmtype only

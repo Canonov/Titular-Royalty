@@ -33,6 +33,15 @@ namespace TitularRoyalty
                 if (customIcons.NullOrEmpty())
                 {
                     customIcons = ContentFinder<Texture2D>.GetAllInFolder("TRIcons").ToDictionary(x => x.name, x => x);
+
+                    if (ModLister.HasActiveModWithName("Vanilla Factions Expanded - Empire"))
+                    {
+						foreach (var icon in ContentFinder<Texture2D>.GetAllInFolder("UI/NobleRanks"))
+						{
+							customIcons.Add(icon.name, icon);
+						}
+					}
+
                 }
 
                 return customIcons;
@@ -51,12 +60,25 @@ namespace TitularRoyalty
 
         public static Color TRMessageColor = new Color(204, 0, 204);
 
-        public static Texture2D GetIcon(TitleTiers titleTiers)
+        public static Texture2D GetIcon(TitleTiers titleTiers, RealmTypeDef realmTypeDef)
         {
-            return CustomIcons.TryGetValue($"RankIcon{((int)titleTiers)}", BaseContent.BadTex);
-        }
-		public static Texture2D GetIcon(PlayerTitleDef playerTitleDef)
+            if (!realmTypeDef.tierIconOverrides.NullOrEmpty())
+            {
+                if (realmTypeDef.tierIconOverrides.ElementAtOrDefault((int)titleTiers) != null)
+                {
+                    return realmTypeDef.tierIconOverrides[(int)titleTiers];
+                }
+            }
+
+			return CustomIcons.TryGetValue($"RankIcon{((int)titleTiers)}", BaseContent.BadTex);
+		}
+		public static Texture2D GetIcon(PlayerTitleDef playerTitleDef, GameComponent_TitularRoyalty TRComponent)
 		{
+            if (TRComponent.RealmTypeDef.TitlesWithOverrides.TryGetValue(playerTitleDef, out RoyalTitleOverride rtOverride) && rtOverride.RTIconOverride != null) 
+            {
+                return rtOverride.RTIconOverride;
+            }
+
             if (!playerTitleDef.iconName.NullOrEmpty())
             {
                 if (CustomIcons.TryGetValue(playerTitleDef.iconName, out Texture2D result))
@@ -70,7 +92,7 @@ namespace TitularRoyalty
                 }
             }
 
-            return GetIcon(playerTitleDef.titleTier);
+            return GetIcon(playerTitleDef.titleTier, Current.Game.GetComponent<GameComponent_TitularRoyalty>().RealmTypeDef);
 		}
 
 

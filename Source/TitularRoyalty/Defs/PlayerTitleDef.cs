@@ -9,8 +9,6 @@ namespace TitularRoyalty
 {
     public class PlayerTitleDef : RoyalTitleDef
     {
-        public Texture2D Icon => Resources.GetIcon(this);
-
 		public string iconName;
 		public bool TRInheritable = false;
 		public TitleTiers titleTier = TitleTiers.Lowborn;
