@@ -72,6 +72,35 @@ namespace TitularRoyalty
                 GUI.color = Color.grey;
                 Widgets.DrawHighlight(rect);
                 GUI.color = Color.white;
+
+                if (Event.current.type == EventType.MouseDown && Event.current.button == 1)
+                {
+                    List<FloatMenuOption> options = new List<FloatMenuOption>();
+
+                    // Grant Title
+					options.Add(new FloatMenuOption("TR_managetitles_m2option_granttitle".Translate(), delegate
+					{
+						Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), delegate (LocalTargetInfo targetInfo) {
+							targetInfo.Pawn?.royalty?.SetTitle(Faction.OfPlayer, def, true, false, true);
+						});
+						Close();
+					}, itemIcon: Resources.TRCrownWidget, iconColor: Color.white));
+
+                    // Edit Title
+					options.Add(new FloatMenuOption("TR_managetitles_m2option_edittitle".Translate(), delegate
+					{
+						Find.WindowStack.Add(new Dialog_RoyalTitleEditor(TRComponent, def, this));
+					}, itemIcon: TexButton.Rename, iconColor: Color.white));
+
+                    // Reset Title
+					options.Add(new FloatMenuOption("TR_managetitles_m2option_resettitle".Translate(), delegate
+                    {
+                        TRComponent.SaveTitleChange(def, new RoyalTitleOverride());
+					}, itemIcon: TexButton.RenounceTitle, iconColor: Color.white));
+
+					Find.WindowStack.Add(new FloatMenu(options));
+					Event.current.Use();
+                }
             }
 
             Widgets.BeginGroup(rect);
@@ -91,18 +120,10 @@ namespace TitularRoyalty
             }
             if (widgetRow.ButtonText("TR_managetitles_grant".Translate(), active: !titleEditorOpen)) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
             {
-                Action<LocalTargetInfo> action = delegate (LocalTargetInfo targetinfo)
+                Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), delegate (LocalTargetInfo targetInfo)
                 {
-                    if (targetinfo.Pawn.royalty != null)
-                    {
-                        targetinfo.Pawn.royalty.SetTitle(Faction.OfPlayer, def, grantRewards: true, sendLetter: true);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                };
-                Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), action);
+					targetInfo.Pawn?.royalty?.SetTitle(Faction.OfPlayer, def, true, false, true);
+				});;
                 Close();
             }
            

@@ -23,6 +23,10 @@
 	<TR_managetitles_edit>Edit</TR_managetitles_edit> <!-- ADDED 1.7 -->
 	<TR_managetitles_grant>Grant</TR_managetitles_grant>
 
+	<TR_managetitles_m2option_resettitle>Reset Title</TR_managetitles_m2option_resettitle> <!-- ADDED 1.7 -->
+	<TR_managetitles_m2option_granttitle>Grant Title</TR_managetitles_m2option_granttitle> <!-- ADDED 1.7 -->
+	<TR_managetitles_m2option_edittitle>Edit Title</TR_managetitles_m2option_edittitle> <!-- ADDED 1.7 -->
+
 	<TR_managetitles_update>Update Titles</TR_managetitles_update>
 	<TR_managetitles_update_notif>Titles have been updated</TR_managetitles_update_notif>
 	<TR_managetitles_update_tooltip>Refreshes the title cache and applies your changes, also applies titleset if you've changed the settings.</TR_managetitles_update_tooltip> <!-- CHANGED 1.6: Changed "realmtype" to "titleset" -->
