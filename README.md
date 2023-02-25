@@ -16,12 +16,14 @@
 ## 1.7 Update
 - Title Editor UI available in the Manage Titles menu.
 - You can use this to override the title labels, whether it can be inherited, can use meditation focus, what icon it uses and what expectations it has.
+- You can also change the Icons the title uses, it takes any icon in Textures/TRIcons or the default for the Title Tier
 
 ## 1.8 Update Plans
-- Ability to change order of titles, with a GUI for it.
+- Ability to change order of titles, with a GUI for it, mostly just a preliminary for 1.9/2.0
 
 ## 1.9 Update Plans
-- Adding/Removing Titles, might have to be in 2.0 depending on how complex it turns out
+- New Royal Staff Granting UI
+- Adding/Removing Titles, might have to be called 2.0 depending on how complex it turns out
 
 ## Misc Plans
 - Caliphate titles

@@ -24,15 +24,20 @@ namespace TitularRoyalty
         public static readonly Texture2D TRWidget = ContentFinder<Texture2D>.Get("UI/TRwidget");
 		public static readonly Texture2D TRCrownWidget = ContentFinder<Texture2D>.Get("UI/TRcrownwidget");
 
-		public static readonly Texture2D[] TitleTierIcons =
+
+        private static Dictionary<string, Texture2D> customIcons;
+        public static Dictionary<string, Texture2D> CustomIcons
         {
-            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon0"),
-            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon1"),
-            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon2"),
-            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon3"),
-            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon4"),
-            ContentFinder<Texture2D>.Get("UI/TieredIcons/RankIcon5")
-        };
+            get
+            {
+                if (customIcons.NullOrEmpty())
+                {
+                    customIcons = ContentFinder<Texture2D>.GetAllInFolder("TRIcons").ToDictionary(x => x.name, x => x);
+                }
+
+                return customIcons;
+            }
+        }
 
         /*public static readonly Texture2D[] TitleTierIcons_Sov =
         {
@@ -46,17 +51,32 @@ namespace TitularRoyalty
 
         public static Color TRMessageColor = new Color(204, 0, 204);
 
-        public static Texture2D[] TierIconsForGovernment(RealmTypeDef.GovernmentType govType)
+        public static Texture2D GetIcon(TitleTiers titleTiers)
         {
-            switch (govType)
-            {
-                //case RealmTypeDef.GovernmentType.Communist:
-                    //return TitleTierIcons_Sov;
-                default:
-                    return TitleTierIcons;
-            }
+            return CustomIcons.TryGetValue($"RankIcon{((int)titleTiers)}", BaseContent.BadTex);
         }
-        
+		public static Texture2D GetIcon(PlayerTitleDef playerTitleDef)
+		{
+            if (!playerTitleDef.iconName.NullOrEmpty())
+            {
+                if (CustomIcons.TryGetValue(playerTitleDef.iconName, out Texture2D result))
+                {
+                    return result;
+                }
+                else
+                {
+					Log.Warning($"{playerTitleDef.label} failed to get icon from name {playerTitleDef.iconName}, it may be missing, reassign it in edit titles");
+					playerTitleDef.iconName = null;
+                }
+            }
 
+            return GetIcon(playerTitleDef.titleTier);
+		}
+
+
+		static Resources()
+        {
+            
+        }
     }
 }

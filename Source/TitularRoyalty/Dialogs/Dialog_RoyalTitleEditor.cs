@@ -25,6 +25,8 @@ namespace TitularRoyalty
 		private bool isInheritable;
 		private bool allowDignifiedMeditation;
 
+		private string iconName;
+
 		private ExpectationDef minExpectation;
 		private TitleTiers titleTier;
 
@@ -85,6 +87,7 @@ namespace TitularRoyalty
 				}
 			}
 
+			iconName = originalOverrides.iconName ?? titleDef.iconName;
 			isInheritable = originalOverrides.TRInheritable ?? titleDef.TRInheritable;
 			allowDignifiedMeditation = originalOverrides.allowDignifiedMeditationFocus ?? titleDef.allowDignifiedMeditationFocus;
 			minExpectation = originalOverrides.minExpectation ?? titleDef.minExpectation ?? ExpectationDefOf.ExtremelyLow;
@@ -131,9 +134,21 @@ namespace TitularRoyalty
 			var rightButtonRect = bottomRowRect.RightHalf();
 
 			// Icon
-			if (Widgets.ButtonImage(iconRect, titleDef.tierIcon))
+			if (Widgets.ButtonImage(iconRect, Resources.CustomIcons.TryGetValue(this.iconName ?? "", null) ?? titleDef.Icon ?? BaseContent.BadTex))
 			{
-				Log.Message("buttonimage");
+				List<FloatMenuOption> options = new List<FloatMenuOption>
+				{
+					new FloatMenuOption("Default", delegate { iconName = null; }, itemIcon: Resources.GetIcon(titleTier), iconColor: Color.white)
+				};
+
+				foreach (string key in Resources.CustomIcons.Keys)
+				{
+					options.Add(new FloatMenuOption(key, delegate
+					{
+						iconName = key;
+					}, itemIcon: Resources.CustomIcons.TryGetValue(key, BaseContent.BadTex), iconColor: Color.white));
+				}
+				Find.WindowStack.Add(new FloatMenu(options));
 			}
 
 			// Reset and Submit Buttons
@@ -307,9 +322,10 @@ namespace TitularRoyalty
 			{
 				originalOverrides.labelFemale = newNameFemale;
 			}
-			
+
 
 			/* OTHER */
+			originalOverrides.iconName = iconName.NullOrEmpty() ? originalOverrides.iconName ?? null : iconName;
 			originalOverrides.TRInheritable = isInheritable;
 			originalOverrides.titleTier = titleTier;
 			originalOverrides.allowDignifiedMeditationFocus = allowDignifiedMeditation;

@@ -9,14 +9,13 @@ namespace TitularRoyalty
 {
     public class PlayerTitleDef : RoyalTitleDef
     {
-        public TitleTiers titleTier = TitleTiers.Lowborn;
-        public Texture2D tierIcon
-        {
-            get { return Resources.TitleTierIcons[(int)titleTier]; }
-        }
+        public Texture2D Icon => Resources.GetIcon(this);
 
-        public bool TRInheritable = false;
-        public RoyalTitleOverride originalTitleFields; //Assigned via StartupSetup
+		public string iconName;
+		public bool TRInheritable = false;
+		public TitleTiers titleTier = TitleTiers.Lowborn;
+
+		public RoyalTitleOverride originalTitleFields; // Assigned via StartupSetup
 
         public QualityCategory GetApparelQualityfromTier()
         {

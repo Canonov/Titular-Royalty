@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Verse;
 using RimWorld;
+using UnityEngine;
 
 namespace TitularRoyalty
 {
@@ -12,6 +13,8 @@ namespace TitularRoyalty
 
         public string label = "None";
         public string labelFemale = "None";
+
+        public string iconName;
 
         public bool? TRInheritable = null;
         public bool? allowDignifiedMeditationFocus = null;
@@ -29,6 +32,8 @@ namespace TitularRoyalty
             this.label = playerTitle.label;
             this.labelFemale = playerTitle.labelFemale;
 
+            this.iconName = playerTitle.iconName;
+
             this.TRInheritable = playerTitle.TRInheritable;
             this.allowDignifiedMeditationFocus = playerTitle.allowDignifiedMeditationFocus;
             this.titleTier = playerTitle.titleTier;
@@ -44,6 +49,8 @@ namespace TitularRoyalty
 
             Scribe_Values.Look(ref label, nameof(label), "None");
             Scribe_Values.Look(ref labelFemale, nameof(labelFemale), "None");
+
+            Scribe_Values.Look(ref iconName, nameof(iconName), string.Empty);
 
             Scribe_Values.Look(ref TRInheritable, nameof(TRInheritable));
             Scribe_Values.Look(ref allowDignifiedMeditationFocus, nameof(allowDignifiedMeditationFocus));
