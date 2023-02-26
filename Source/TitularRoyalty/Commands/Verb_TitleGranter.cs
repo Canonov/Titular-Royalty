@@ -12,25 +12,14 @@ namespace TitularRoyalty
 	{
         public override Texture2D UIIcon => Resources.CrownIcon;
 
-        public override string ReportLabel => "Verb_TitleGranterReportLabel".Translate();
-
 		public override bool ValidateTarget(LocalTargetInfo target, bool showMessages = true)
 		{
-			if (!currentTarget.HasThing || currentTarget.Thing.Map != caster.Map)
-			{
-				return false;
-			}
-            if (currentTarget.Pawn == null || !currentTarget.Pawn.IsColonist)
-            {
-                return false;
-            }
-
-            return base.ValidateTarget(target, showMessages);
+            return true;
         }
 
         protected override bool TryCastShot()
 		{
-            if (currentTarget.Thing is Pawn && currentTarget.Pawn.royalty != null)
+			if (currentTarget.Thing is Pawn && currentTarget.Pawn.royalty != null)
             {
                 //Log.Message($"Titular Royalty: Opening title GUI for: {currentTarget.Pawn.Name}");
                 Dialog_ChooseTitles window = new Dialog_ChooseTitles(currentTarget.Pawn);

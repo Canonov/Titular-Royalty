@@ -15,7 +15,9 @@
     <weaponTags>
       <li>TitleGrantingStaff</li>
     </weaponTags>
-    <weaponClasses></weaponClasses>
+    <weaponClasses>
+      <li>Melee</li>
+    </weaponClasses>
     <costList>
       <Gold>8</Gold>
     </costList>
