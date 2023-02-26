@@ -19,8 +19,13 @@
 
 	<!-- Manage Titles GUI -->
 	<TR_managetitles_title>Title Manager</TR_managetitles_title>
-	<TR_managetitles_rename>Rename</TR_managetitles_rename>
+	<TR_managetitles_rename>Rename</TR_managetitles_rename> <!-- Unused -->
+	<TR_managetitles_edit>Edit</TR_managetitles_edit> <!-- ADDED 1.7 -->
 	<TR_managetitles_grant>Grant</TR_managetitles_grant>
+
+	<TR_managetitles_m2option_resettitle>Reset Title</TR_managetitles_m2option_resettitle> <!-- ADDED 1.7 -->
+	<TR_managetitles_m2option_granttitle>Grant Title</TR_managetitles_m2option_granttitle> <!-- ADDED 1.7 -->
+	<TR_managetitles_m2option_edittitle>Edit Title</TR_managetitles_m2option_edittitle> <!-- ADDED 1.7 -->
 
 	<TR_managetitles_update>Update Titles</TR_managetitles_update>
 	<TR_managetitles_update_notif>Titles have been updated</TR_managetitles_update_notif>
@@ -30,7 +35,26 @@
 	<TR_managetitles_resetcustom_notif>Custom Titles have been reset, click Update Titles to refresh the list.</TR_managetitles_resetcustom_notif>
 	<TR_managetitles_resetcustom_tooltip>Resets all custom titles back to their normal names</TR_managetitles_resetcustom_tooltip>
 
-	<TR_realmtypechanged_notify>Titleset has been changed, press update titles to apply the changes.</TR_realmtypechanged_notify> <!-- ADDED 1.6 -->
+	<TR_realmtypechanged_notify>Titleset has been changed, press update titles to apply the changes.</TR_realmtypechanged_notify> 
+
+	<!-- Title Editor GUI --> <!-- ALL ADDED 1.7 -->
+	<TR_titleeditor_label>Title Editor</TR_titleeditor_label>
+	<TR_titleeditor_title>Male Title</TR_titleeditor_title>
+	<TR_titleeditor_title_tooltip>Change the title to what's in this text field</TR_titleeditor_title_tooltip>
+	<TR_titleeditor_titlefemale>Female Title (Blank to Disable)</TR_titleeditor_titlefemale>
+	<TR_titleeditor_titlefemale_tooltip>Change the female title to what's in this text field, leave it empty to disable it</TR_titleeditor_titlefemale_tooltip>
+
+	<TR_titleeditor_reset>Reset Title</TR_titleeditor_reset>
+	<TR_titleeditor_submit>Submit Changes</TR_titleeditor_submit>
+
+	<TR_titleeditor_checkboxes_label>Other Options</TR_titleeditor_checkboxes_label>
+	<TR_titleeditor_checkbox_inheritable>Inheritable</TR_titleeditor_checkbox_inheritable>
+	<TR_titleeditor_checkbox_allowmeditationfocus>Can use dignified meditation</TR_titleeditor_checkbox_allowmeditationfocus>
+
+	<TR_titleeditor_titletier>Tier: {0}</TR_titleeditor_titletier>
+	<TR_titleeditor_titletier_tooltip>The Tier of the title, this doesnt affect much with custom titles, but it does the default icon.</TR_titleeditor_titletier_tooltip>
+	<TR_titleeditor_expectations>Expectations: {0}</TR_titleeditor_expectations>
+	<TR_titleeditor_expectations_tooltip>The minimum expectations a colonist with this title will have, this only applies if they're conceited for now, though I plan to change this later, might take awhile to apply to existing holders.</TR_titleeditor_expectations_tooltip>
 
 	<!-- Settings Menu -->
 	<TR_modname>Titular Royalty</TR_modname>
@@ -42,8 +66,9 @@
 	<TR_checkbox_titlegivespermitpoints>Title Permit Points</TR_checkbox_titlegivespermitpoints>
 
 	<!-- Miscellaneous -->
-	<TR_realmtype>Titleset</TR_realmtype> <!-- ADDED 1.6 -->
+	<TR_realmtype>Titleset</TR_realmtype> 
 	<TR_consort>-Consort</TR_consort> <!-- If Consort (Spouse of King) title has the same name as what the king would have (ie queen and queen), apply this at end, for example Queen-Consort -->
+	<Verb_TitleGranterReportLabel>Granting Titles</Verb_TitleGranterReportLabel> <!-- ADDED 1.7 -->
 
 	<!-- UNUSED, LEFT IN FOR 1.3 SUPPORT -->
 	<Verb_TitleGranter>Grant Title</Verb_TitleGranter> <!-- Verb Name -->

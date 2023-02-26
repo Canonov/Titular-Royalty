@@ -4,7 +4,7 @@
   <TitularRoyalty.RealmTypeDef>
     <defName>RealmType_HRE</defName>
     <label>Holy Roman</label>
-    <iconPath>UI/TieredIcons/RankIcon5</iconPath>
+    <iconPath>UI/Icons/HREIcon</iconPath>
 
     <titleOverrides>
       <!-- ## Royalty ## -->

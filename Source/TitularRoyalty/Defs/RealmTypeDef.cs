@@ -15,10 +15,10 @@ namespace TitularRoyalty
             Communist
         }
 
-        public GovernmentType governmentType = GovernmentType.Monarchy;
+		public GovernmentType governmentType = GovernmentType.Monarchy;
         
-        public List<RealmTypeTitle> titleOverrides;
-        public Dictionary<PlayerTitleDef, RealmTypeTitle> TitlesWithOverrides
+        public List<RoyalTitleOverride> titleOverrides;
+        public Dictionary<PlayerTitleDef, RoyalTitleOverride> TitlesWithOverrides
         {
             get
             {
@@ -26,7 +26,7 @@ namespace TitularRoyalty
                 {
                     return titleOverrides.ToDictionary(x => x.titleDef, x => x);
                 }
-                return new Dictionary<PlayerTitleDef, RealmTypeTitle>();
+                return new Dictionary<PlayerTitleDef, RoyalTitleOverride>();
             }
         }
 
@@ -36,20 +36,11 @@ namespace TitularRoyalty
         {
             get
             {
-                if (icon == null)
-                {
-                    if (iconPath != null)
-                    {
-                        icon = ContentFinder<Texture2D>.Get(iconPath);
-                    }
-                    else
-                    {
-                        icon = Resources.CrownIcon;
-                    }
-                }
-                return icon;
+                return icon ??= ContentFinder<Texture2D>.Get(iconPath ?? string.Empty, false) ?? Resources.CrownIcon;
             }
         }
+
+        public List<Texture2D> tierIconOverrides;
 
         
         public override IEnumerable<string> ConfigErrors()

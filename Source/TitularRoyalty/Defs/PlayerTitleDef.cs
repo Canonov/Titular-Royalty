@@ -9,14 +9,11 @@ namespace TitularRoyalty
 {
     public class PlayerTitleDef : RoyalTitleDef
     {
-        public TitleTiers titleTier = TitleTiers.Lowborn;
-        public Texture2D tierIcon
-        {
-            get { return Resources.TitleTierIcons[(int)titleTier]; }
-        }
+		public string iconName;
+		public bool TRInheritable = false;
+		public TitleTiers titleTier = TitleTiers.Lowborn;
 
-        public bool TRInheritable = false;
-        public TitleLabelPair originalLabels; //Assigned via StartupSetup
+		public RoyalTitleOverride originalTitleFields; // Assigned via StartupSetup
 
         public QualityCategory GetApparelQualityfromTier()
         {
@@ -30,6 +27,31 @@ namespace TitularRoyalty
                 TitleTiers.Sovereign => QualityCategory.Excellent,
                 _ => QualityCategory.Awful,
             };
+        }
+
+        public void ResetToDefaultValues()
+        {
+            label = originalTitleFields.label;
+            labelFemale = originalTitleFields.labelFemale;
+
+            titleTier = originalTitleFields.titleTier ?? TitleTiers.Lowborn;
+            TRInheritable = originalTitleFields.TRInheritable ?? false;
+            minExpectation = originalTitleFields.minExpectation;
+            allowDignifiedMeditationFocus = originalTitleFields.allowDignifiedMeditationFocus ?? false;
+
+            ClearCachedData();
+        }
+
+        public void UpdateInheritance()
+        {
+            if (TitularRoyaltyMod.Settings.inheritanceEnabled) 
+            {
+                canBeInherited = TRInheritable;
+            }
+            else
+            {
+                canBeInherited = false;
+            }
         }
     }
 }

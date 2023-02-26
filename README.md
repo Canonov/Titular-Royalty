@@ -13,13 +13,22 @@
 2. If you subscribed before the update make sure steam has updated the mod, you can tell because the preview image has changed in the modlist
 
 
-## Notes
-- N/A
+## 1.7 Update
+- Title Editor UI available in the Manage Titles menu.
+- You can use this to override the title labels, whether it can be inherited, can use meditation focus, what icon it uses and what expectations it has.
+- You can also change the Icons the title uses, it takes any icon in Textures/TRIcons or the default for the Title Tier
+- Vanilla Factions Expanded - Empire Integrations 
 
-## Plans
-- Caliphate and Russian titles
+## 1.8 Update Plans
+- Ability to change order of titles, with a GUI for it, mostly just a preliminary for 1.9/2.0
+
+## 1.9 Update Plans
+- New Royal Staff Granting UI
+- Adding/Removing Titles, might have to be called 2.0 depending on how complex it turns out
+
+## Misc Plans
+- Caliphate titles
 - Permits System
-- Improved and cleaner code
 - Advanced Inheritance System that works similarly to real inheritance with chooseable succession laws
 
 

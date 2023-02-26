@@ -44,7 +44,7 @@
     </tools>
     <verbs>
       <li> <!-- GRANT TITLES -->
-        <label>granttitles</label> <!-- Don't Translate -->
+        <label>Verb_TitleGranter</label>
         <verbClass>TitularRoyalty.Verb_TitleGranter</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <commandIcon>UI/Gizmos/givetitleicon</commandIcon>

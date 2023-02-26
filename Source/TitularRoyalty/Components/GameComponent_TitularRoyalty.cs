@@ -8,7 +8,10 @@ namespace TitularRoyalty
 {
     public class GameComponent_TitularRoyalty : GameComponent
     {
-        public GameComponent_TitularRoyalty(Game game) { } // Needs this or else Rimworld throws a fit and errors.
+
+        public static GameComponent_TitularRoyalty Current { get; private set; }
+
+        public GameComponent_TitularRoyalty(Game game) { Current = this; } // Needs this or else Rimworld throws a fit and errors.
 
         private string realmTypeDefName;
         public string RealmTypeDefName
@@ -44,12 +47,12 @@ namespace TitularRoyalty
         }
 
         // Custom Titles
-        private Dictionary<PlayerTitleDef, TitleLabelPair> customTitles;
-        public Dictionary<PlayerTitleDef, TitleLabelPair> CustomTitles
+        private Dictionary<PlayerTitleDef, RoyalTitleOverride> customTitles;
+        public Dictionary<PlayerTitleDef, RoyalTitleOverride> CustomTitles
         {
             get
             {
-                return customTitles ??= TitlesBySeniority.ToDictionary(x => x, x => new TitleLabelPair());
+                return customTitles ??= TitlesBySeniority.ToDictionary(x => x, x => new RoyalTitleOverride());
             }
             private set
             {
@@ -59,7 +62,7 @@ namespace TitularRoyalty
 
         // Required for ExposeData
         private List<PlayerTitleDef> customTitles_List1;
-        private List<TitleLabelPair> customTitles_List2;
+        private List<RoyalTitleOverride> customTitles_List2;
 
         /// <summary>
         /// Passes on the Realmtype 
@@ -68,39 +71,63 @@ namespace TitularRoyalty
         {
             foreach (PlayerTitleDef title in TitlesBySeniority)
             {
-                // Custom Title
-                if (CustomTitles.TryGetValue(title, out TitleLabelPair titleLabels) && (titleLabels.label != "None" || titleLabels.HasFemaleTitle()) )
-                {
-                    title.label = titleLabels.label ?? title.label;
-                    title.labelFemale = titleLabels.HasFemaleTitle() ? titleLabels.labelFemale : null;
-                    goto Finalize;
-                }
-                // Realm Type, if No Custom
-                if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RealmTypeTitle overrides))
-                {
-                    title.label = overrides.label ?? title.label;
-                    title.labelFemale = overrides.HasFemaleTitle() ? overrides.labelFemale : null;
-
-                    if (overrides.useTierOverride)
-                    {
-                        title.titleTier = overrides.tierOverride;
-                    }
-                }
-                else
-                {
-                    title.label = title.originalLabels.label;
-                    title.labelFemale = title.originalLabels.labelFemale;
-                }
-
-                Finalize:
-                title.ClearCachedData();
-            }
+                SetupTitle(title);
+			}
         }
 
-        /// <summary>
-        /// Resets all changed titles to their default realmType or Base Value
-        /// </summary>
-        public void ResetTitles()
+		public void SetupTitle(PlayerTitleDef title)
+        {
+			// Custom Title
+			if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleOverrides))
+			{
+                if (titleOverrides.HasTitle())
+                {
+					ApplyTitleOverrides(title, titleOverrides);
+					return;
+				}
+			}
+
+			// Realm Type, if No Custom
+			if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RoyalTitleOverride realmTypeOverrides))
+			{
+                ApplyTitleOverrides(title, realmTypeOverrides);
+			}
+            else
+            {
+				ApplyTitleOverrides(title, title.originalTitleFields);
+			}
+		}
+
+		private static void ApplyTitleOverrides(PlayerTitleDef title, RoyalTitleOverride titleOverrides, bool isRealmType = false)
+		{
+            if (titleOverrides.HasTitle())
+            {
+                title.label = titleOverrides.label;
+                title.labelFemale = titleOverrides.HasFemaleTitle() ? titleOverrides.labelFemale : null;
+            }
+            else
+            {
+                title.label = title.originalTitleFields.label;
+				title.labelFemale = title.originalTitleFields.labelFemale;
+			}
+
+			title.titleTier = titleOverrides.titleTier ?? title.originalTitleFields.titleTier ?? TitleTiers.Lowborn;
+			title.allowDignifiedMeditationFocus = titleOverrides.allowDignifiedMeditationFocus ?? title.originalTitleFields.allowDignifiedMeditationFocus ?? false;
+
+            title.iconName = titleOverrides.iconName.NullOrEmpty() ? null : titleOverrides.iconName;
+
+			title.TRInheritable = titleOverrides.TRInheritable ?? title.originalTitleFields.TRInheritable ?? false;
+			title.canBeInherited = TitularRoyaltyMod.Settings.inheritanceEnabled ? title.TRInheritable : false;
+
+			title.minExpectation = titleOverrides.minExpectation ?? title.originalTitleFields.minExpectation ?? ExpectationDefOf.ExtremelyLow;
+
+			title.ClearCachedData();
+		}
+
+		/// <summary>
+		/// Resets all changed titles to their default realmType or Base Value
+		/// </summary>
+		public void ResetTitles()
         {
             customTitles = null;
             titlesBySeniority = null;
@@ -109,34 +136,26 @@ namespace TitularRoyalty
 
             foreach (PlayerTitleDef title in TitlesBySeniority)
             {
-                title.label = title.originalLabels.label;
-                title.labelFemale = title.originalLabels.labelFemale;
-                title.ClearCachedData();
+                title.ResetToDefaultValues();
+                SetupTitle(title);
             }
         }
 
-        /// <summary>
-        /// Changes a title name of the given seniority and gender, needs to be manually refreshed with all the others with setup titles or a restart
-        /// </summary>
-        /// <param name="gender">Gender you want to change Gender.Male or None, or Gender.Female</param>
-        /// <param name="newlabel">New Title Name</param>
-        public void SaveTitleChange(PlayerTitleDef title, string newlabel, Gender gender)
+		public RoyalTitleOverride GetCustomTitleOverrideFor(PlayerTitleDef titleDef)
         {
-            if (CustomTitles.TryGetValue(title, out TitleLabelPair labels))
+            if (CustomTitles.TryGetValue(titleDef, out RoyalTitleOverride result))
             {
-                if (gender == Gender.Female)
-                {
-                    labels.labelFemale = newlabel;
-                }
-                else
-                {
-                    labels.label = newlabel;
-                }
+                return result;
             }
-            else
-            {
-                Log.Error($"TR: Couldn't find Def {title} in CustomTitles");
-            }
+            Log.Error($"Titular Royalty: Could not find custom title override for {titleDef.defName} {titleDef.label}");
+            return null;
+        }
+
+
+		public void SaveTitleChange(PlayerTitleDef title, RoyalTitleOverride newOverride)
+        {
+            customTitles[title] = newOverride;
+            SetupTitle(title);
         }
 
         /// <summary>
@@ -144,9 +163,11 @@ namespace TitularRoyalty
         /// </summary>
         public void OnGameStart()
         {
+            Current = this;
+
             SetupTitles();
 			Faction.OfPlayer.SetupPlayerForTR(); // Set Permit factions and other options
-			ModSettingsApplier.ApplySettings(); // Apply ModSettings Changes
+			OnStartup.ApplyModSettings(); // Apply ModSettings Changes
         }
 
         public override void LoadedGame() => OnGameStart();

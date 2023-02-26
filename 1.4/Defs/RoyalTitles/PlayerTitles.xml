@@ -148,6 +148,7 @@
     <defName>TitularRoyalty_T_RY_CrownPrince</defName>
     <label>Crown Prince</label>
     <labelFemale>Crown Princess</labelFemale>
+    <canBeInherited>False</canBeInherited>
     <description>The Main heir of the Realm.</description>
     <seniority>1350</seniority>
     <titleTier>Royalty</titleTier>

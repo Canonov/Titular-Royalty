@@ -14,16 +14,16 @@ namespace TitularRoyalty
 	public static class DebugActions
 	{
 
-		[DebugAction("Mods", "TR: Rename Title", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        public static void TryChangeCustomTitle()
+		[DebugAction("Mods", "TR: Edit Title", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void EditTitle()
 		{
 			List<DebugMenuOption> list = new List<DebugMenuOption>();
 			foreach (PlayerTitleDef title in Faction.OfPlayer.def.RoyalTitlesAllInSeniorityOrderForReading)
 			{
 				list.Add(new DebugMenuOption($"{title.GetLabelForBothGenders()}", DebugMenuOptionMode.Action, delegate
 				{
-					//Current.Game.GetComponent<GameComponent_TitularRoyalty>();
-					Find.WindowStack.Add(new Dialog_TitleRenamer(title));
+					var comp = Current.Game.GetComponent<GameComponent_TitularRoyalty>();
+					Find.WindowStack.Add(new Dialog_RoyalTitleEditor(comp, title, null));
 				}
 				));
 
@@ -46,7 +46,7 @@ namespace TitularRoyalty
         [DebugAction("Mods", "TR: Try Apply ModSettings", false, false, allowedGameStates = AllowedGameStates.Playing)]
         public static void ReloadSettings()
         {
-			ModSettingsApplier.ApplySettings();
+			OnStartup.ApplyModSettings();
         }
 
         [DebugAction("Mods", "TR: Export Titlelist to Doc", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
@@ -56,7 +56,7 @@ namespace TitularRoyalty
 			
 			foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
 			{
-				doc += $"  <li> <!--{title.originalLabels.label.CapitalizeFirst()}-->\n";
+				doc += $"  <li> <!--{title.originalTitleFields.label.CapitalizeFirst()}-->\n";
 				doc += $"    <titleDef>{title.defName}</titleDef>\n";
 				doc += $"    \n";
                 doc += $"    <label>{title.label}</label>\n";
