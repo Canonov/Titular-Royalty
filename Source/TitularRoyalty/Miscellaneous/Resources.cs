@@ -64,9 +64,9 @@ namespace TitularRoyalty
         {
             if (!realmTypeDef.tierIconOverrides.NullOrEmpty())
             {
-                if (realmTypeDef.tierIconOverrides.ElementAtOrDefault((int)titleTiers) != null)
+				if (realmTypeDef.TierIconOverridesTex[(int)titleTiers] != null)
                 {
-                    return realmTypeDef.tierIconOverrides[(int)titleTiers];
+                    return realmTypeDef.TierIconOverridesTex[(int)titleTiers];
                 }
             }
 

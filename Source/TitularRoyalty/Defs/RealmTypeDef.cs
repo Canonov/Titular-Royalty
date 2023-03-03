@@ -4,6 +4,7 @@ using Verse;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 namespace TitularRoyalty
 {
@@ -40,15 +41,40 @@ namespace TitularRoyalty
             }
         }
 
-        public List<Texture2D> tierIconOverrides;
+        private List<Texture2D> tierIconOverridesTex;
+        public List<Texture2D> TierIconOverridesTex
+        {
+            get
+            {
+                if (tierIconOverridesTex.NullOrEmpty())
+                {
+                    tierIconOverridesTex = new List<Texture2D>();
+                    foreach(string str in tierIconOverrides)
+                    {
+                        Resources.CustomIcons.TryGetValue(str, out Texture2D texture);
+                        if (texture == null)
+                        {
+                            Log.Warning($"tierIconOverrides for {this.defName} are invalid: \n{tierIconOverrides.ToStringSafe()}\n{Resources.CustomIcons.ToStringFullContents()}");
+                            return null;
+                        }
+                        else
+                        {
+                            tierIconOverridesTex.Add(texture);
+                        }
+                    }
+                }
+                return tierIconOverridesTex;
+            }
+        }
+		public List<string> tierIconOverrides;
 
-        
-        public override IEnumerable<string> ConfigErrors()
+		public override IEnumerable<string> ConfigErrors()
         {
             foreach (string item in base.ConfigErrors())
             {
                 yield return item;
             }
+
         }
     }
 }
