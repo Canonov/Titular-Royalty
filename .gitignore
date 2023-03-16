@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudio
 
+# RimPY Auto Gen Textures
+*.dds
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
