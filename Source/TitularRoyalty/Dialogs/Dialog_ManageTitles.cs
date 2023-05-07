@@ -133,24 +133,24 @@ namespace TitularRoyalty
         /// <summary>
         /// (Re)loads the title list
         /// </summary>
-        public void DoTitleList()
+        private void DoTitleList()
         {
             TitleList.Begin(ContentViewRect);
             TitleList.ColumnWidth = ContentViewRect.width;
 
             TitleList.Gap(6f);
 
-            for (int j = 0; j < TitlesBySeniority.Count; j++)
+            foreach (var title in TitlesBySeniority)
             {
-                DoRow(TitleList.GetRect(28f), TitlesBySeniority[j]);
-                //TitleList.Gap(6f);
+	            DoRow(TitleList.GetRect(28f), title);
+	            //TitleList.Gap(6f);
             }
 
             TitleList.Gap(6f);
             TitleList.End();
         }
 
-        public float GetContentHeight(int rowCount)
+        private static float GetContentHeight(int rowCount)
         {
             float result = 6 * 2; // Gaps
             result += 28 * rowCount; // Row
@@ -180,13 +180,13 @@ namespace TitularRoyalty
 
             //Titleset: 
             Text.Font = GameFont.Medium;
-            Rect RealmTypeLabelRect = RealmTypeRect.LeftHalf().ContractedBy(4);
-            Widgets.Label(RealmTypeLabelRect, "TR_realmtype".Translate() + ":");
+            var realmTypeLabelRect = RealmTypeRect.LeftHalf().ContractedBy(4);
+            Widgets.Label(realmTypeLabelRect, "TR_realmtype".Translate() + ":");
             GenUI.ResetLabelAlign();
 
             //Button with Dropdown to select titleset
             RealmTypeButtonRect = RealmTypeRect.RightHalf().ContractedBy(4);
-            List<FloatMenuOption> realmtypeoptions = new List<FloatMenuOption>();
+            var realmtypeoptions = new List<FloatMenuOption>();
             if (Widgets.ButtonText(RealmTypeButtonRect, TRComponent.RealmTypeDef.label, active: !titleEditorOpen)) 
             {
                 foreach (RealmTypeDef rtdef in DefDatabase<RealmTypeDef>.AllDefsListForReading)

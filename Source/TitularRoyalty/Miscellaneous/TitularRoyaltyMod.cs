@@ -8,6 +8,7 @@ using HarmonyLib;
 using UnityEngine.UIElements;
 using System.Linq;
 using System;
+using JetBrains.Annotations;
 using RimWorld.QuestGen;
 using RimWorld;
 
@@ -19,8 +20,8 @@ namespace TitularRoyalty
         public bool clothingQualityRequirements;
         public bool titlesGivePermitPoints;
 
-        public bool sovietSubmod_UseOverrides;
-        public bool SovietModEnabled => ModLister.HasActiveModWithName("Titular Royalty - Soviet Revolution");
+        public bool sovietSubmodUseOverrides;
+        public static bool SovietModEnabled { get; } = ModLister.HasActiveModWithName("Titular Royalty - Soviet Revolution");
 
         public override void ExposeData()
         {
@@ -28,12 +29,13 @@ namespace TitularRoyalty
             Scribe_Values.Look(ref clothingQualityRequirements, "clothingQualityRequirements", true);
             Scribe_Values.Look(ref titlesGivePermitPoints, "titlesGivePermitPoints", true);
 
-            Scribe_Values.Look(ref sovietSubmod_UseOverrides, "sovietSubmod_UseOverrides", false);
+            Scribe_Values.Look(ref sovietSubmodUseOverrides, "sovietSubmod_UseOverrides", false);
 
             base.ExposeData();
         }
     }
 
+    [UsedImplicitly]
     public class TitularRoyaltyMod : Mod
     {
 
@@ -65,38 +67,20 @@ namespace TitularRoyalty
 
         }
 
-        // Realm Types
-        private static RealmTypeDef[] _realmTypes;
-        public static RealmTypeDef[] RealmTypes
-        {
-            get
-            {
-                return _realmTypes ??= DefDatabase<RealmTypeDef>.AllDefsListForReading.ToArray();
-            }
-        }
-        private static Dictionary<string, string> _realmTypeLabels;
-        public static Dictionary<string, string> RealmTypeLabels
-        {
-            get
-            {
-                return _realmTypeLabels ??= RealmTypes.ToDictionary(x => x.label, x => x.defName);
-            }
-        }
-
         //Name that shows at the top
         public override string SettingsCategory() => "TR_modname".Translate();
 
         //Main Rendering
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Listing_Standard listingStandard = new Listing_Standard();
+            var listingStandard = new Listing_Standard();
             listingStandard.Begin(inRect);
             listingStandard.AddHorizontalLine();
 
             //Miscellanous Toggles
             listingStandard.Gap(12);
 
-            Rect miscOptionsTitleRect = listingStandard.GetRect(32);
+            var miscOptionsTitleRect = listingStandard.GetRect(32);
             Text.Font = GameFont.Medium;
             Text.Anchor = TextAnchor.MiddleCenter;
             Widgets.Label(miscOptionsTitleRect, "TR_miscoptionstitle".Translate());
@@ -105,18 +89,18 @@ namespace TitularRoyalty
             listingStandard.Gap(12);
 
             //First row of checkbox options
-            Listing_Standard Checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
-            Checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref Settings.inheritanceEnabled);
-            Checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
+            var checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
+            checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref Settings.inheritanceEnabled);
+            checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
             //Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
-            Checkboxes.End();
+            checkboxes.End();
 
 			//Submods
-            if (Settings.SovietModEnabled)
+            if (TRSettings.SovietModEnabled)
             {
 				listingStandard.Gap(12);
 
-				Rect sovietModOptionsRect = listingStandard.GetRect(32);
+				var sovietModOptionsRect = listingStandard.GetRect(32);
 				Text.Font = GameFont.Medium;
 				Text.Anchor = TextAnchor.MiddleCenter;
 				Widgets.Label(sovietModOptionsRect, "TRR_modoptionstitle".Translate());
@@ -125,8 +109,8 @@ namespace TitularRoyalty
 				listingStandard.Gap(12);
 
 				//First row of checkbox options
-				Listing_Standard sovietModCheckboxes = listingStandard.GetRect(24).BeginListingStandard(2);
-				sovietModCheckboxes.CheckboxLabeled("TRR_checkbox_styleoverrides".Translate(), ref Settings.sovietSubmod_UseOverrides);
+				var sovietModCheckboxes = listingStandard.GetRect(24).BeginListingStandard(2);
+				sovietModCheckboxes.CheckboxLabeled("TRR_checkbox_styleoverrides".Translate(), ref Settings.sovietSubmodUseOverrides);
 				//Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
 				sovietModCheckboxes.End();
 			}

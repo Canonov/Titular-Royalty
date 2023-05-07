@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System;
+using JetBrains.Annotations;
 
 namespace TitularRoyalty
 {
+    [UsedImplicitly]
     public class PlayerTitlePermitDef : RoyalTitlePermitDef
     {
         public int usersPerPopulation = 5;

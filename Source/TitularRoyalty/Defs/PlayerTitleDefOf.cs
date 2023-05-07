@@ -4,6 +4,9 @@ using System.Linq;
 using RimWorld;
 using Verse;
 
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnassignedField.Global
+
 namespace TitularRoyalty
 {
     [DefOf]

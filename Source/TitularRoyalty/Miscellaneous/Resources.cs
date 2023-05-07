@@ -3,6 +3,7 @@ using RimWorld;
 using Verse;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace TitularRoyalty
@@ -17,7 +18,7 @@ namespace TitularRoyalty
         Sovereign = 5,
     }
 
-    [StaticConstructorOnStartup]
+    [StaticConstructorOnStartup, UsedImplicitly]
     public class Resources
     {
         public static readonly Texture2D CrownIcon = ContentFinder<Texture2D>.Get("UI/Gizmos/givetitleicon");
@@ -57,8 +58,6 @@ namespace TitularRoyalty
             ContentFinder<Texture2D>.Get("UI/TieredIcons/Sov_RankIcon5"),
             ContentFinder<Texture2D>.Get("UI/TieredIcons/Sov_RankIcon5")
         };*/
-
-        public static Color TRMessageColor = new Color(204, 0, 204);
 
         public static Texture2D GetIcon(TitleTiers titleTiers, RealmTypeDef realmTypeDef)
         {

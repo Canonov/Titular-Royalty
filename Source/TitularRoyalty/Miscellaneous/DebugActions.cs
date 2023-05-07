@@ -46,7 +46,7 @@ namespace TitularRoyalty
         [DebugAction("Mods", "TR: Try Apply ModSettings", false, false, allowedGameStates = AllowedGameStates.Playing)]
         public static void ReloadSettings()
         {
-			OnStartup.ApplyModSettings();
+			StartupSetup.ApplyModSettings();
         }
 
         [DebugAction("Mods", "TR: Export Titlelist to Doc", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]

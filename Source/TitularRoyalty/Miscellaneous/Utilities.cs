@@ -22,7 +22,7 @@ namespace TitularRoyalty
             }
         }
 
-        public static List<TitleTiers> TitleTiers = new List<TitleTiers>() { 
+        public static readonly List<TitleTiers> TitleTiers = new List<TitleTiers>() { 
             TitularRoyalty.TitleTiers.Lowborn,
             TitularRoyalty.TitleTiers.Gentry,
             TitularRoyalty.TitleTiers.LowNoble,

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using RimWorld;
 using Verse;
 
 namespace TitularRoyalty
 {
-
-    [StaticConstructorOnStartup]
-    public class OnStartup
+	[StaticConstructorOnStartup, UsedImplicitly]
+	public class StartupSetup
     {
 		public static void ApplyModSettings()
 		{
-			var Settings = TitularRoyaltyMod.Settings;
+			var settings = TitularRoyaltyMod.Settings;
 
 			foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
 			{
@@ -22,27 +22,18 @@ namespace TitularRoyalty
 				title.UpdateInheritance();
 
 				//Apply Quality Requirements
-				if (Settings.clothingQualityRequirements)
-				{
-					title.requiredMinimumApparelQuality = title.GetApparelQualityfromTier();
-				}
-				else
-				{
-					title.requiredMinimumApparelQuality = QualityCategory.Awful;
-				}
+				title.requiredMinimumApparelQuality = settings.clothingQualityRequirements ? title.GetApparelQualityfromTier() : QualityCategory.Awful;
 
 				//Apply Title Permit Points
-				if (!Settings.titlesGivePermitPoints)
-				{
+				if (!settings.titlesGivePermitPoints) 
 					title.permitPointsAwarded = 0;
-				}
 
 			}
 		}
 
-		static OnStartup()
+		static StartupSetup()
         {
-            foreach (PlayerTitleDef title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
+            foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
             {
                 title.originalTitleFields = new RoyalTitleOverride(title);
             }

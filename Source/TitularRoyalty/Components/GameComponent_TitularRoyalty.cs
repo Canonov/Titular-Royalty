@@ -3,9 +3,11 @@ using RimWorld;
 using Verse;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 namespace TitularRoyalty
 {
+    [UsedImplicitly]
     public class GameComponent_TitularRoyalty : GameComponent
     {
 
@@ -117,7 +119,7 @@ namespace TitularRoyalty
             title.iconName = titleOverrides.iconName.NullOrEmpty() ? null : titleOverrides.iconName;
 
 			title.TRInheritable = titleOverrides.TRInheritable ?? title.originalTitleFields.TRInheritable ?? false;
-			title.canBeInherited = TitularRoyaltyMod.Settings.inheritanceEnabled ? title.TRInheritable : false;
+			title.canBeInherited = TitularRoyaltyMod.Settings.inheritanceEnabled && title.TRInheritable;
 
 			title.minExpectation = titleOverrides.minExpectation ?? title.originalTitleFields.minExpectation ?? ExpectationDefOf.ExtremelyLow;
 
@@ -134,7 +136,7 @@ namespace TitularRoyalty
             customTitles_List1 = null;
             customTitles_List2 = null;
 
-            foreach (PlayerTitleDef title in TitlesBySeniority)
+            foreach (var title in TitlesBySeniority)
             {
                 title.ResetToDefaultValues();
                 SetupTitle(title);
@@ -143,9 +145,9 @@ namespace TitularRoyalty
 
 		public RoyalTitleOverride GetCustomTitleOverrideFor(PlayerTitleDef titleDef)
         {
-            if (CustomTitles.TryGetValue(titleDef, out RoyalTitleOverride result))
+            if (CustomTitles.TryGetValue(titleDef, out var titleOverride))
             {
-                return result;
+                return titleOverride;
             }
             Log.Error($"Titular Royalty: Could not find custom title override for {titleDef.defName} {titleDef.label}");
             return null;
@@ -161,13 +163,13 @@ namespace TitularRoyalty
         /// <summary>
         /// Code to be run on both loading or starting a new game
         /// </summary>
-        public void OnGameStart()
+        private void OnGameStart()
         {
             Current = this;
 
             SetupTitles();
 			Faction.OfPlayer.SetupPlayerForTR(); // Set Permit factions and other options
-			OnStartup.ApplyModSettings(); // Apply ModSettings Changes
+			StartupSetup.ApplyModSettings(); // Apply ModSettings Changes
         }
 
         public override void LoadedGame() => OnGameStart();
