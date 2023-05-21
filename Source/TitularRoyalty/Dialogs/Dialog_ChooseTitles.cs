@@ -9,11 +9,10 @@ namespace TitularRoyalty
 {
     public class Dialog_ChooseTitles : Window
     {
-
-        public Pawn chosenPawn;
+	    private readonly Pawn chosenPawn;
         private Vector2 scrollPosition = new Vector2(0, 0);
-        public int columnCount = 1;
-        Dictionary<PlayerTitleDef, int> seniorityTitles = new Dictionary<PlayerTitleDef, int>();
+        private const int ColumnCount = 1;
+        private readonly Dictionary<PlayerTitleDef, int> seniorityTitles = new Dictionary<PlayerTitleDef, int>();
 
         public Dialog_ChooseTitles(Pawn targPawn)
         {
@@ -21,30 +20,17 @@ namespace TitularRoyalty
             doCloseX = true;
             doCloseButton = true;
             closeOnClickedOutside = true;
-            foreach (PlayerTitleDef v in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
+            foreach (var titleDef in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
             {
-                //Log.Message($"Defname: {v.ToString()} Label: {v.label}");
-                /*foreach (var li in v.tags)
-                {
-                    if (li.Contains("PlayerTitle"))
-                    {
-                        seniorityTitles.Add(v, v.seniority);
-                    }
-                }*/
-                seniorityTitles.Add(v, v.seniority);
+	            seniorityTitles.Add(titleDef, titleDef.seniority);
             }
             
             if(seniorityTitles.Count == 0)
             {
                 Log.Error("Titular Royalty: Couldn't fill dialog titles");
             }
-            else
-            {
-                //Log.Message("Titular Royalty: Dialog titles filled");
-            }
-
         }
-        private string GetDisplayTitle(PlayerTitleDef title, Gender gender)
+        private static string GetDisplayTitle(RoyalTitleDef title, Gender gender)
         {
             // Prince-Consort doesn't fit in the GUI and Queen would show up twice
             if (title == PlayerTitleDefOf.TitularRoyalty_T_RY_Consort)
@@ -91,15 +77,16 @@ namespace TitularRoyalty
                 {
                     // work with pair.Key and pair.Value
                     PlayerTitleDef title = pair.Key;
+
                     if (title != null)
                     {
-                        Rect rectIcon = new Rect(
-                            (32 * (foreachI % columnCount)) + 10,
-                            (32 * (foreachI / columnCount)) + 32f,
+                        var iconRect = new Rect(
+                            (32 * (foreachI % ColumnCount)) + 10,
+                            (32 * (foreachI / ColumnCount)) + 32f,
                             125f, 32f);
                         //GUI.DrawTexture(rectIcon, style.Graphic.MatSingle.mainTexture, ScaleMode.StretchToFill, alphaBlend: true, 0f, color, 0f, 0f);
                         //Widgets.Label(rectIcon, title.LabelCap);
-                        if (Widgets.ButtonText(rectIcon, GetDisplayTitle(title, chosenPawn.gender), drawBackground: true))
+                        if (Widgets.ButtonText(iconRect, GetDisplayTitle(title, chosenPawn.gender), drawBackground: true))
                         {
                             //Log.Message($"Fired {title.label} for pawn {chosenPawn.Name}");
                             if (chosenPawn != null && chosenPawn.royalty != null && chosenPawn.royalty.GetCurrentTitle(Faction.OfPlayer) != title)
@@ -126,7 +113,7 @@ namespace TitularRoyalty
                             }
                             Close();
                         }*/
-                        TooltipHandler.TipRegion(rectIcon, GetDisplayTitle(title, chosenPawn.gender));
+                        TooltipHandler.TipRegion(iconRect, GetDisplayTitle(title, chosenPawn.gender));
                         foreachI++;
                     }
                 }

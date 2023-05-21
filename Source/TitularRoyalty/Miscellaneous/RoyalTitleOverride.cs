@@ -54,7 +54,7 @@ namespace TitularRoyalty
             this.minExpectation = playerTitle.minExpectation ?? ExpectationDefOf.ExtremelyLow;
         }
 
-        public bool HasFemaleTitle() => (labelFemale != "None" && labelFemale != null && labelFemale != string.Empty);
+        public bool HasFemaleTitle() => (labelFemale != "None" && !string.IsNullOrEmpty(labelFemale));
         public bool HasTitle() => !(label == "None" || label == null || label == string.Empty);
 
         public void ExposeData()

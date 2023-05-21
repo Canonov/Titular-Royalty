@@ -14,9 +14,9 @@ namespace TitularRoyalty
 	{
 		public static bool Patch(Rect rect, Def def, float scale = 1f)
 		{
-			if (def is PlayerTitleDef)
+			if (def is PlayerTitleDef titleDef)
 			{
-				var icon = Resources.GetIcon(def as PlayerTitleDef, GameComponent_TitularRoyalty.Current) ?? null;
+				var icon = Resources.GetIcon(titleDef, GameComponent_TitularRoyalty.Current) ?? null;
 				Log.Message((icon == null).ToString());
 				if (icon != null)
 				{
