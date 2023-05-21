@@ -59,7 +59,7 @@ namespace TitularRoyalty
                 postfix: new HarmonyMethod(typeof(ManageTitlesWidget), nameof(ManageTitlesWidget.AddWidget)));
 
             // Add icons to the Royal Titles
-            if (ModLister.HasActiveModWithName("oskarpotocki.vfe.empire"))
+            if (ModLister.HasActiveModWithName("Vanilla Factions Expanded - Empire"))
             {
 				harmony.Patch(original: AccessTools.Method(typeof(Widgets), nameof(Widgets.DefIcon)),
 	                prefix: new HarmonyMethod(typeof(DefIcon_RoyalIconsPrefix), "Patch"));
