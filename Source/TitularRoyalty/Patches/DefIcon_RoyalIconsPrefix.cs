@@ -16,7 +16,7 @@ namespace TitularRoyalty
 		{
 			if (def is PlayerTitleDef titleDef)
 			{
-				var icon = Resources.GetIcon(titleDef, GameComponent_TitularRoyalty.Current) ?? null;
+				var icon = Resources.GetTitleIcon(titleDef, GameComponent_TitularRoyalty.Current) ?? null;
 				Log.Message((icon == null).ToString());
 				if (icon != null)
 				{
