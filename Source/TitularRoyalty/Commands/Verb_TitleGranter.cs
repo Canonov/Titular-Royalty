@@ -16,7 +16,7 @@ namespace TitularRoyalty
 
         public override bool ValidateTarget(LocalTargetInfo target, bool showMessages = true) => true;
 
-        protected override bool TryCastShot()
+        public override bool TryCastShot()
 		{
 			if (!(currentTarget.Thing is Pawn) || currentTarget.Pawn.royalty == null) return false;
 			
