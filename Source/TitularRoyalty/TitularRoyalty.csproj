@@ -72,15 +72,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\CompProperties_ManageTitles.cs" />
+    <Compile Include="Components\CompProperties_PlayerRoyaltyTracker.cs" />
     <Compile Include="Components\Comp_ManageTitles.cs" />
+    <Compile Include="Components\Comp_PlayerRoyaltyTracker.cs" />
     <Compile Include="Defs\PlayerTitleDefOf.cs" />
     <Compile Include="Dialogs\Dialog_RoyalTitleEditor.cs" />
     <Compile Include="Patches\DefIcon_RoyalIconsPrefix.cs" />
     <Compile Include="Patches\ManageTitlesWidget.cs" />
     <Compile Include="Miscellaneous\StartupSetup.cs" />
     <Compile Include="Miscellaneous\RoyalTitleOverride.cs" />
-    <Compile Include="Permits\PlayerTitlePermitWorker_BestowPsycast.cs" />
-    <Compile Include="Permits\PlayerTitlePermitDef.cs" />
     <Compile Include="Defs\RealmTypeDef.cs" />
     <Compile Include="Dialogs\Dialog_ManageTitles.cs" />
     <Compile Include="Miscellaneous\Utilities.cs" />
