@@ -16,21 +16,8 @@ namespace TitularRoyalty
 {
     public class TRSettings : ModSettings
     {
-        public bool inheritanceEnabled;
-        public bool clothingQualityRequirements;
-        public bool titlesGivePermitPoints;
-
-        public bool sovietSubmodUseOverrides;
-        public static bool SovietModEnabled { get; } = ModLister.HasActiveModWithName("Titular Royalty - Soviet Revolution");
-
         public override void ExposeData()
         {
-            Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", true);
-            Scribe_Values.Look(ref clothingQualityRequirements, "clothingQualityRequirements", true);
-            Scribe_Values.Look(ref titlesGivePermitPoints, "titlesGivePermitPoints", true);
-
-            Scribe_Values.Look(ref sovietSubmodUseOverrides, "sovietSubmod_UseOverrides", false);
-
             base.ExposeData();
         }
     }
@@ -50,21 +37,10 @@ namespace TitularRoyalty
             // Use Patch Categories next harmony update?
             var harmony = new Harmony("com.TitularRoyalty.patches");
 
-            // Prevent Player pawns from giving you royalty quests
-            harmony.Patch(original: AccessTools.Method(typeof(QuestNode_GetPawn), "IsGoodPawn"),
-                postfix: new HarmonyMethod(typeof(QuestGen_Patches), nameof(QuestGen_Patches.IsGoodPawn_Postfix)));
-
             // Add a widget to the playsettings to open the Dialog_ManageTitles
             harmony.Patch(original: AccessTools.Method(typeof(PlaySettings), "DoPlaySettingsGlobalControls", (Type[])null, (Type[])null),
-                postfix: new HarmonyMethod(typeof(ManageTitlesWidget), nameof(ManageTitlesWidget.AddWidget)));
-
-            // Add icons to the Royal Titles
-            if (ModLister.HasActiveModWithName("Vanilla Factions Expanded - Empire"))
-            {
-				harmony.Patch(original: AccessTools.Method(typeof(Widgets), nameof(Widgets.DefIcon)),
-	                prefix: new HarmonyMethod(typeof(DefIcon_RoyalIconsPrefix), "Patch"));
-			}
-
+                postfix: new HarmonyMethod(typeof(PlaySettings_ManageTitlesWidgetPatch), nameof(PlaySettings_ManageTitlesWidgetPatch.AddWidget)));
+            
         }
 
         //Name that shows at the top
@@ -89,33 +65,12 @@ namespace TitularRoyalty
             listingStandard.Gap(12);
 
             //First row of checkbox options
-            var checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
-            checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref Settings.inheritanceEnabled);
-            checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
+            //var checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
+            //checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref Settings.inheritanceEnabled);
+            //checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
             //Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
-            checkboxes.End();
-
-			//Submods
-            if (TRSettings.SovietModEnabled)
-            {
-				listingStandard.Gap(12);
-
-				var sovietModOptionsRect = listingStandard.GetRect(32);
-				Text.Font = GameFont.Medium;
-				Text.Anchor = TextAnchor.MiddleCenter;
-				Widgets.Label(sovietModOptionsRect, "TRR_modoptionstitle".Translate());
-				Text.Font = GameFont.Small;
-				Text.Anchor = TextAnchor.UpperLeft;
-				listingStandard.Gap(12);
-
-				//First row of checkbox options
-				var sovietModCheckboxes = listingStandard.GetRect(24).BeginListingStandard(2);
-				sovietModCheckboxes.CheckboxLabeled("TRR_checkbox_styleoverrides".Translate(), ref Settings.sovietSubmodUseOverrides);
-				//Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
-				sovietModCheckboxes.End();
-			}
-
-
+            //checkboxes.End();
+            
 			listingStandard.End();
             base.DoSettingsWindowContents(inRect);
         }

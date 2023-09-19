@@ -168,8 +168,7 @@ namespace TitularRoyalty
             Current = this;
 
             SetupTitles();
-			Faction.OfPlayer.SetupPlayerForTR(); // Set Permit factions and other options
-			StartupSetup.ApplyModSettings(); // Apply ModSettings Changes
+			OnStartup.ApplyModSettings(); // Apply ModSettings Changes
         }
 
         public override void LoadedGame() => OnGameStart();

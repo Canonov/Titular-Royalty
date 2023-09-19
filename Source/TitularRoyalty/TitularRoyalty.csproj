@@ -75,30 +75,28 @@
     <Compile Include="Components\CompProperties_PlayerRoyaltyTracker.cs" />
     <Compile Include="Components\Comp_ManageTitles.cs" />
     <Compile Include="Components\Comp_PlayerRoyaltyTracker.cs" />
-    <Compile Include="Defs\PlayerTitleDefOf.cs" />
-    <Compile Include="Dialogs\Dialog_RoyalTitleEditor.cs" />
-    <Compile Include="Patches\DefIcon_RoyalIconsPrefix.cs" />
-    <Compile Include="Patches\ManageTitlesWidget.cs" />
-    <Compile Include="Miscellaneous\StartupSetup.cs" />
-    <Compile Include="Miscellaneous\RoyalTitleOverride.cs" />
-    <Compile Include="Defs\RealmTypeDef.cs" />
-    <Compile Include="Dialogs\Dialog_ManageTitles.cs" />
-    <Compile Include="Miscellaneous\Utilities.cs" />
+    <Compile Include="Components\GameComponent_PlayerTitlesManager.cs" />
+    <None Include="DoNotCompile_ForReference\Dialog_RoyalTitleEditor.cs" />
+    <None Include="DoNotCompile_ForReference\Dialog_ManageTitles.cs" />
+    <None Include="DoNotCompile_ForReference\Dialog_ChooseTitles.cs" />
+    <None Include="DoNotCompile_ForReference\PlayerTitleDef.cs" />
+    <None Include="DoNotCompile_ForReference\PlayerTitleDefOf.cs" />
+    <None Include="DoNotCompile_ForReference\RealmTypeDef.cs" />
+    <None Include="DoNotCompile_ForReference\Verb_TitleGranter.cs" />
+    <None Include="DoNotCompile_ForReference\GameComponent_TitularRoyalty.cs" />
+    <None Include="DoNotCompile_ForReference\RoyalTitleOverride.cs" />
+    <Compile Include="Patches\PlaySettings_ManageTitlesWidgetPatch.cs" />
+    <Compile Include="Miscellaneous\OnStartup.cs" />
     <Compile Include="Miscellaneous\Resources.cs" />
-    <Compile Include="Defs\PlayerTitleDef.cs" />
-    <Compile Include="Patches\PermitsCardUtility_Patches.cs" />
-    <Compile Include="Patches\QuestGen_Patches.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Miscellaneous\DebugActions.cs" />
-    <Compile Include="Dialogs\Dialog_ChooseTitles.cs" />
-    <Compile Include="Components\GameComponent_TitularRoyalty.cs" />
     <Compile Include="Miscellaneous\TitularRoyaltyMod.cs" />
-    <Compile Include="Commands\Verb_TitleGranter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Titles\PlayerTitle.cs" />
+    <Compile Include="Titles\PlayerTitleData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">
@@ -116,6 +114,11 @@
     <Content Include="..\..\1.4\Defs\ThingDefs_misc\RoyalStaff.xml">
       <Link>RoyalStaff.xml</Link>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Defs\" />
+    <Folder Include="Dialogs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

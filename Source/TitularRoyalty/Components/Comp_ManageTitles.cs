@@ -26,8 +26,8 @@ namespace TitularRoyalty
 		        defaultDesc = "TR_Command_managetitles_desc".Translate(),
 		        action = delegate
 		        {
-			        var window = new Dialog_ManageTitles();
-			        Find.WindowStack.Add(window);
+			        //var window = new Dialog_ManageTitles();
+			        //Find.WindowStack.Add(window);
 		        }
 	        };
 
@@ -41,40 +41,10 @@ namespace TitularRoyalty
             //Manage Titles Dialog
             yield return new FloatMenuOption("TR_Command_managetitles_label".Translate(), delegate
             {
-                var window = new Dialog_ManageTitles();
-                Find.WindowStack.Add(window);
+                //var window = new Dialog_ManageTitles();
+                //Find.WindowStack.Add(window);
             }, itemIcon: Resources.CrownIcon, iconColor: Color.white);
-
-            //Set Heir Option
-            if (TitularRoyaltyMod.Settings.inheritanceEnabled == false ||
-                (selPawnTitle = selPawn.royalty?.GetCurrentTitleInFaction(Faction.OfPlayer)?.def) == null ||
-                !selPawnTitle.canBeInherited) yield break;
-
-            //Define action to run when selected
-            void SetHeirAction(LocalTargetInfo targetinfo)
-            {
-	            var targetPawnTitle = targetinfo.Pawn.royalty.GetCurrentTitle(Faction.OfPlayer);
-
-	            if (targetPawnTitle == null || targetPawnTitle.seniority < selPawnTitle.seniority)
-	            {
-		            selPawn.royalty.SetHeir(targetinfo.Pawn, Faction.OfPlayer);
-		            Messages.Message(
-			            "TR_setheir_success".Translate(selPawn.Name.ToStringShort, targetinfo.Pawn.Name.ToStringShort),
-			            MessageTypeDefOf.NeutralEvent);
-		            
-	            }
-	            else
-	            {
-		            Messages.Message("TR_setheir_failed_sameorhighertitle".Translate(targetinfo.Pawn.Name.ToStringShort), MessageTypeDefOf.RejectInput);
-	            }
-            }
-
-            //Target pawn for selection
-            var setHeirOption = new FloatMenuOption("TR_Command_setheir_label".Translate(selPawn.Name.ToStringShort),
-	            delegate { Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), SetHeirAction); });
-
-            //Return the float option
-            yield return setHeirOption;
+            
         }
     }
 }
