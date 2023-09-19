@@ -28,7 +28,7 @@ namespace TitularRoyalty.UI
             }
             
             var iconRect = new Rect(holderRect.x + 1f, holderRect.y + 1f, 20f, 20f);
-            GUI.color = new Color(128, 86, 145);
+            GUI.color = new Color(0.5f, 0.33f, 0.56f);
             GUI.DrawTexture(iconRect, Faction.OfPlayer.def.FactionIcon);
             GUI.color = originalColor;
             
