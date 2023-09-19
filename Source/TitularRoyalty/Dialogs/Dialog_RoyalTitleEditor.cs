@@ -134,11 +134,11 @@ namespace TitularRoyalty
 			var rightButtonRect = bottomRowRect.RightHalf();
 
 			// Icon
-			if (Widgets.ButtonImage(iconRect, Resources.CustomIcons.TryGetValue(this.iconName ?? "", null) ?? Resources.GetIcon(titleDef, TRComponent) ?? BaseContent.BadTex))
+			if (Widgets.ButtonImage(iconRect, Resources.CustomIcons.TryGetValue(this.iconName ?? "", null) ?? Resources.GetTitleIcon(titleDef, TRComponent) ?? BaseContent.BadTex))
 			{
 				List<FloatMenuOption> options = new List<FloatMenuOption>
 				{
-					new FloatMenuOption("Default", delegate { iconName = null; }, itemIcon: Resources.GetIcon(titleTier, TRComponent.RealmTypeDef), iconColor: Color.white)
+					new FloatMenuOption("Default", delegate { iconName = null; }, itemIcon: Resources.GetTitleIcon(titleTier, TRComponent.RealmTypeDef), iconColor: Color.white)
 				};
 
 				foreach (string key in Resources.CustomIcons.Keys)

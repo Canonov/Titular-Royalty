@@ -14,23 +14,17 @@ namespace TitularRoyalty
 	{
         public override Texture2D UIIcon => Resources.CrownIcon;
 
-		public override bool ValidateTarget(LocalTargetInfo target, bool showMessages = true)
+        public override bool ValidateTarget(LocalTargetInfo target, bool showMessages = true) => true;
+
+        public override bool TryCastShot()
 		{
-            return true;
-        }
+			if (!(currentTarget.Thing is Pawn) || currentTarget.Pawn.royalty == null) return false;
+			
+			//Log.Message($"Titular Royalty: Opening title GUI for: {currentTarget.Pawn.Name}");
+			var window = new Dialog_ChooseTitles(currentTarget.Pawn);
+			Find.WindowStack.Add(window);
 
-        protected override bool TryCastShot()
-		{
-			if (currentTarget.Thing is Pawn && currentTarget.Pawn.royalty != null)
-            {
-                //Log.Message($"Titular Royalty: Opening title GUI for: {currentTarget.Pawn.Name}");
-                var window = new Dialog_ChooseTitles(currentTarget.Pawn);
-                Find.WindowStack.Add(window);
-
-                return true;
-            }
-
-            return false;
+			return true;
 		}
     }
 

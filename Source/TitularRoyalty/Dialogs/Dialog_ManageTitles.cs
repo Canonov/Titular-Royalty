@@ -72,59 +72,64 @@ namespace TitularRoyalty
                 GUI.color = Color.grey;
                 Widgets.DrawHighlight(rect);
                 GUI.color = Color.white;
-
+                
+                // Right Click Options
                 if (Event.current.type == EventType.MouseDown && Event.current.button == 1)
                 {
-                    List<FloatMenuOption> options = new List<FloatMenuOption>();
-
-                    // Grant Title
-					options.Add(new FloatMenuOption("TR_managetitles_m2option_granttitle".Translate(), delegate
-					{
-						Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), delegate (LocalTargetInfo targetInfo) {
-							targetInfo.Pawn?.royalty?.SetTitle(Faction.OfPlayer, def, true, false, true);
-						});
-						Close();
-					}, itemIcon: Resources.TRCrownWidget, iconColor: Color.white));
-
-                    // Edit Title
-					options.Add(new FloatMenuOption("TR_managetitles_m2option_edittitle".Translate(), delegate
-					{
-						Find.WindowStack.Add(new Dialog_RoyalTitleEditor(TRComponent, def, this));
-					}, itemIcon: TexButton.Rename, iconColor: Color.white));
-
-                    // Reset Title
-					options.Add(new FloatMenuOption("TR_managetitles_m2option_resettitle".Translate(), delegate
+                    var menuOptions = new List<FloatMenuOption>
                     {
-                        TRComponent.SaveTitleChange(def, new RoyalTitleOverride());
-					}, itemIcon: TexButton.RenounceTitle, iconColor: Color.white));
+                        // Grant Title
+                        new FloatMenuOption("TR_managetitles_m2option_granttitle".Translate(), delegate
+                        {
+                            Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(),
+                                delegate(LocalTargetInfo targetInfo)
+                                {
+                                    targetInfo.Pawn?.royalty?.SetTitle(Faction.OfPlayer, def, true, false, true);
+                                });
+                            this.Close();
+                        }, itemIcon: Resources.TRCrownWidget, iconColor: Color.white),
+                        
+                        // Edit Title
+                        new FloatMenuOption("TR_managetitles_m2option_edittitle".Translate(),
+                            delegate { Find.WindowStack.Add(new Dialog_RoyalTitleEditor(TRComponent, def, this)); },
+                            itemIcon: TexButton.Rename, iconColor: Color.white),
+                        
+                        // Reset Title
+                        new FloatMenuOption("TR_managetitles_m2option_resettitle".Translate(),
+                            delegate { TRComponent.SaveTitleChange(def, new RoyalTitleOverride()); },
+                            itemIcon: TexButton.RenounceTitle, iconColor: Color.white)
+                    };
 
-					Find.WindowStack.Add(new FloatMenu(options));
+                    Find.WindowStack.Add(new FloatMenu(menuOptions));
 					Event.current.Use();
                 }
             }
 
             Widgets.BeginGroup(rect);
 
-            WidgetRow widgetRow = new WidgetRow(0f, (rect.height - 24f) / 2);
+            var widgetRow = new WidgetRow(0f, (rect.height - 24f) / 2);
             widgetRow.Gap(4f);
-            widgetRow.Icon(Resources.GetIcon(def, TRComponent) ?? BaseContent.BadTex);
-            //widgetRow.Gap(4f);
+            widgetRow.Icon(Resources.GetTitleIcon(def, TRComponent) ?? BaseContent.BadTex);
 
-            float width = rect.width - widgetRow.FinalX - 28f - (Text.CalcSize("TR_managetitles_edit".Translate()).x + 6) - (Text.CalcSize("TR_managetitles_grant".Translate()).x + 6);
+            float width = rect.width - widgetRow.FinalX - 28f
+                          - (Text.CalcSize("TR_managetitles_edit".Translate()).x + 6)
+                          - (Text.CalcSize("TR_managetitles_grant".Translate()).x + 6);
+            
             widgetRow.Label(def.GetLabelCapForBothGenders(), width, def.GetLabelCapForBothGenders());
 
-            if (widgetRow.ButtonText("TR_managetitles_edit".Translate(), active: !titleEditorOpen)) // Rename Button, opens the title renamer
+            // Edit Button, opens the title editor window
+            if (widgetRow.ButtonText("TR_managetitles_edit".Translate(), active: !titleEditorOpen)) 
             {
-                //Find.WindowStack.Add(new Dialog_TitleRenamer(def));
                 Find.WindowStack.Add(new Dialog_RoyalTitleEditor(TRComponent, def, this));
             }
-            if (widgetRow.ButtonText("TR_managetitles_grant".Translate(), active: !titleEditorOpen)) // Grant Button, starts a new targeter, closes the window and grants the title to who you select
+            // Grant Button, opens a targeter, closes the window and grants the title to who you select
+            if (widgetRow.ButtonText("TR_managetitles_grant".Translate(), active: !titleEditorOpen))
             {
                 Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), delegate (LocalTargetInfo targetInfo)
                 {
-					targetInfo.Pawn?.royalty?.SetTitle(Faction.OfPlayer, def, true, false, true);
-				});;
-                Close();
+					targetInfo.Pawn?.royalty?.SetTitle(Faction.OfPlayer, title: def, grantRewards: true);
+				});
+                this.Close();
             }
            
             Widgets.EndGroup();
@@ -186,19 +191,20 @@ namespace TitularRoyalty
 
             //Button with Dropdown to select titleset
             RealmTypeButtonRect = RealmTypeRect.RightHalf().ContractedBy(4);
-            var realmtypeoptions = new List<FloatMenuOption>();
+            var realmTypeOptions = new List<FloatMenuOption>();
+            
             if (Widgets.ButtonText(RealmTypeButtonRect, TRComponent.RealmTypeDef.label, active: !titleEditorOpen)) 
             {
-                foreach (RealmTypeDef rtdef in DefDatabase<RealmTypeDef>.AllDefsListForReading)
+                foreach (var realmTypeDef in DefDatabase<RealmTypeDef>.AllDefsListForReading)
                 {
-                    realmtypeoptions.Add(new FloatMenuOption(rtdef.label, delegate ()
+                    realmTypeOptions.Add(new FloatMenuOption(realmTypeDef.label, delegate ()
                     {
-                        TRComponent.RealmTypeDefName = rtdef.defName;
+                        TRComponent.RealmTypeDefName = realmTypeDef.defName;
                         Messages.Message("TR_realmtypechanged_notify".Translate(), MessageTypeDefOf.NeutralEvent);
-                    }, rtdef.Icon ?? BaseContent.BadTex, Color.white));   
+                    }, realmTypeDef.Icon ? realmTypeDef.Icon : BaseContent.BadTex, Color.white));   
                 }
-                realmtypeoptions = realmtypeoptions.OrderBy(x => x.Label).ToList(); //Sort Alphabetically
-                Find.WindowStack.Add(new FloatMenu(realmtypeoptions));
+                realmTypeOptions = realmTypeOptions.OrderBy(x => x.Label).ToList(); //Sort Alphabetically
+                Find.WindowStack.Add(new FloatMenu(realmTypeOptions));
             }
             
 
@@ -246,8 +252,8 @@ namespace TitularRoyalty
             {
                 TRComponent.SetupTitles();
                 titlesBySeniority = null;
-                Messages.Message("TR_managetitles_update_notif".Translate(), MessageTypeDefOf.NeutralEvent);
                 DoTitleList();
+                Messages.Message("TR_managetitles_update_notif".Translate(), MessageTypeDefOf.NeutralEvent);
             }
             if (Widgets.ButtonText(RightButtonRect, "TR_managetitles_resetcustom".Translate(), active: !titleEditorOpen))
             {

@@ -204,7 +204,10 @@
     <throneRoomRequirements>
       <li Class="RoomRequirement_HasAssignedThroneAnyOf">
         <things>
+          <li>Throne</li>
           <li>GrandThrone</li>
+          <li MayRequire="vesper.egihologramsandprojectors">ProjectorThrone</li>
+          <li MayRequire="vesper.egihologramsandprojectors">GrandProjectorThrone</li>
         </things>
       </li>
       <li Class="RoomRequirement_Area">
