@@ -14,6 +14,9 @@ namespace TitularRoyalty.Patches
         
         public static void AddTitleInspectString(StringBuilder sb, Pawn pawn)
         {
+            if (pawn.NonHumanlikeOrWildMan())
+                return;
+            
             var pawnRoyalty = pawn.PlayerRoyalty();
             
             if (pawnRoyalty.HasAnyTitle)

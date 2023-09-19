@@ -76,6 +76,9 @@
     <Compile Include="Components\Comp_ManageTitles.cs" />
     <Compile Include="Components\Comp_PlayerRoyaltyTracker.cs" />
     <Compile Include="Components\GameComponent_PlayerTitlesManager.cs" />
+    <Compile Include="Patches\CharacterCardUtility_DoTopStack_Patch.cs" />
+    <Compile Include="Patches\HarmonyFields.cs" />
+    <Compile Include="UI\TitleUIUtility.cs" />
     <None Include="DoNotCompile_ForReference\Dialog_RoyalTitleEditor.cs" />
     <None Include="DoNotCompile_ForReference\Dialog_ManageTitles.cs" />
     <None Include="DoNotCompile_ForReference\Dialog_ChooseTitles.cs" />
@@ -120,7 +123,6 @@
   <ItemGroup>
     <Folder Include="Comps\" />
     <Folder Include="Defs\" />
-    <Folder Include="Dialogs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
