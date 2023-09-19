@@ -69,14 +69,4 @@
 	<TR_realmtype>Titleset</TR_realmtype> 
 	<TR_consort>-Consort</TR_consort> <!-- If Consort (Spouse of King) title has the same name as what the king would have (ie queen and queen), apply this at end, for example Queen-Consort -->
 	<Verb_TitleGranterReportLabel>Granting Titles</Verb_TitleGranterReportLabel> <!-- ADDED 1.7 -->
-
-	<!-- UNUSED, LEFT IN FOR 1.3 SUPPORT -->
-	<Verb_TitleGranter>Grant Title</Verb_TitleGranter> <!-- Verb Name -->
-	<TR_baserealmtype>Chosen Realm Type</TR_baserealmtype>
-	<TR_changedtitle>Changed Title, save and load your colony to apply.</TR_changedtitle>
-	<TR_reloadsavefix>Make sure to save and reload if you're in the game to apply the changes.</TR_reloadsavefix>
-	<TR_realmtypeslist_title>Choose Titleset</TR_realmtypeslist_title>
-	<TR_realmtypeslist_header>Default: Kingdom</TR_realmtypeslist_header>
-	<TR_selectorexplanation>All Empire changes is the King title to Emperor\nRoman is based on Late Roman Empire, Roman Alt is contributed by Alexey Stukov#2163\nRussian, Byzantine and Nordic Titles coming soon</TR_selectorexplanation>
-
 </LanguageData>
