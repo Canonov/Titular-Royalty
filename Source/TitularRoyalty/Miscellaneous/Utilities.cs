@@ -15,11 +15,6 @@ namespace TitularRoyalty
         {
             faction.allowGoodwillRewards = false;
             faction.allowRoyalFavorRewards = false;
-
-            foreach (PlayerTitlePermitDef permit in DefDatabase<PlayerTitlePermitDef>.AllDefsListForReading)
-            {
-                permit.faction = faction.def;
-            }
         }
 
         public static readonly List<TitleTiers> TitleTiers = new List<TitleTiers>() { 
