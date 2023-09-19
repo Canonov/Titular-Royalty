@@ -37,10 +37,9 @@ namespace TitularRoyalty
             // Use Patch Categories next harmony update?
             var harmony = new Harmony("com.TitularRoyalty.patches");
 
-            // Add a widget to the playsettings to open the Dialog_ManageTitles
-            harmony.Patch(original: AccessTools.Method(typeof(PlaySettings), "DoPlaySettingsGlobalControls", (Type[])null, (Type[])null),
-                postfix: new HarmonyMethod(typeof(PlaySettings_ManageTitlesWidgetPatch), nameof(PlaySettings_ManageTitlesWidgetPatch.AddWidget)));
+            Harmony.DEBUG = true;
             
+            harmony.PatchAll();
         }
 
         //Name that shows at the top

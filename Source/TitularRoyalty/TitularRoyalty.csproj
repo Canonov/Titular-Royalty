@@ -87,7 +87,7 @@
     <None Include="DoNotCompile_ForReference\RoyalTitleOverride.cs" />
     <Compile Include="Extensions\PawnExtensions.cs" />
     <Compile Include="Miscellaneous\TitleDebugActions.cs" />
-    <Compile Include="Patches\PlaySettings_ManageTitlesWidgetPatch.cs" />
+    <Compile Include="Patches\Pawn_GetInspectString_Patch.cs" />
     <Compile Include="Miscellaneous\OnStartup.cs" />
     <Compile Include="Miscellaneous\Resources.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

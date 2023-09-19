@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Text;
+using RimWorld;
 using TitularRoyalty.Extensions;
 using Verse;
 
@@ -15,17 +17,23 @@ namespace TitularRoyalty.Titles
         
         public PlayerTitleData titleData;
         public Pawn pawn;
-
+        
         public int receivedTick = -1;
         
-        public string GetLabelForPawn()
+        public string GetLabelForHolder()
         {
             if (pawn.gender == Gender.Female && titleData.labelFemale != null)
             {
                 return titleData.labelFemale;
             }
 
-            return titleData.label;
+            return titleData.label.CapitalizeFirst();
+        }
+
+        public string GetInspectString()
+        {
+            return "TR.PawnTitleDescWrap_In".Translate(
+                GetLabelForHolder(), Faction.OfPlayer.NameColored).Resolve();
         }
         
         public PlayerTitle(Pawn pawn, PlayerTitleData titleData)
