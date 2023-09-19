@@ -36,6 +36,8 @@ namespace TitularRoyalty.Titles
                 GetLabelForHolder(), Faction.OfPlayer.NameColored).Resolve();
         }
         
+        
+        public PlayerTitle() {}
         public PlayerTitle(Pawn pawn, PlayerTitleData titleData)
         {
             this.pawn = pawn;
