@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -71,6 +71,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\TitleDebugActions.cs" />
     <Compile Include="Components\CompProperties_ManageTitles.cs" />
     <Compile Include="Components\CompProperties_PlayerRoyaltyTracker.cs" />
     <Compile Include="Components\Comp_ManageTitles.cs" />
@@ -85,6 +86,7 @@
     <None Include="DoNotCompile_ForReference\Verb_TitleGranter.cs" />
     <None Include="DoNotCompile_ForReference\GameComponent_TitularRoyalty.cs" />
     <None Include="DoNotCompile_ForReference\RoyalTitleOverride.cs" />
+    <Compile Include="Extensions\PawnExtensions.cs" />
     <Compile Include="Patches\PlaySettings_ManageTitlesWidgetPatch.cs" />
     <Compile Include="Miscellaneous\OnStartup.cs" />
     <Compile Include="Miscellaneous\Resources.cs" />
@@ -116,7 +118,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="Defs\" />
     <Folder Include="Dialogs\" />
   </ItemGroup>
