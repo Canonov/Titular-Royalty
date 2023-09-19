@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using TitularRoyalty.Titles;
+using Verse;
 
 namespace TitularRoyalty
 {
@@ -11,8 +12,36 @@ namespace TitularRoyalty
         public CompProperties_PlayerRoyaltyTracker Props => (CompProperties_PlayerRoyaltyTracker)props;
         public Pawn Pawn => (Pawn)parent;
 
+        public PlayerTitle title;
+        public bool HasAnyTitle => title != null;
+
+
+        public void SetTitle(PlayerTitleData titleData, bool sendLetter = true)
+        {
+            var prevTitle = title;
+            
+            title = new PlayerTitle(Pawn, titleData)
+            {
+                receivedTick = GenTicks.TicksGame
+            };
+
+            // Todo Send Letter
+        }
+
+        public bool HasTitle(PlayerTitleData titleData)
+        {
+            return title.titleData == titleData;
+        }
+        
+        public void StripTitles()
+        {
+            title = null;
+            Log.Message($"Stripped Titles from {Pawn.Name}"); // Todo send actual letter
+        }
+
         public override void PostExposeData()
         {
+            Scribe_Deep.Look(ref title, "title");
             base.PostExposeData();
         }
     }

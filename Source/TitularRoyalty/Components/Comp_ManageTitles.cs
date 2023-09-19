@@ -36,7 +36,7 @@ namespace TitularRoyalty
 
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
         {
-            RoyalTitleDef selPawnTitle;
+            //RoyalTitleDef selPawnTitle;
 
             //Manage Titles Dialog
             yield return new FloatMenuOption("TR_Command_managetitles_label".Translate(), delegate

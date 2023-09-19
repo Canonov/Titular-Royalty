@@ -45,16 +45,14 @@
       </li>
     </tools>
     <verbs>
-      <li> <!-- GRANT TITLES -->
+      <!-- 
+      <li> 
         <label>Verb_TitleGranter</label>
         <verbClass>TitularRoyalty.Verb_TitleGranter</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <commandIcon>UI/Gizmos/givetitleicon</commandIcon>
         <warmupTime>0.5</warmupTime>
         <range>10 </range>
-        <!--<burstShotCount>1</burstShotCount>-->
-        <!--<soundAiming>OrbitalTargeter_Aiming</soundAiming>-->
-        <!--<soundCast>OrbitalTargeter_Fire</soundCast>-->
         <targetable>true</targetable>
         <violent>false</violent>
         <isPrimary>false</isPrimary>
@@ -67,7 +65,7 @@
           <onlyTargetColonists>true</onlyTargetColonists>
           <neverTargetIncapacitated>true</neverTargetIncapacitated>
         </targetParams>
-      </li>
+      </li>-->
     </verbs>
     <comps>
     </comps>

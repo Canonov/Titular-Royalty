@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+
+  <!-- Add /comps/li/compClass if there are no comps yet. -->
+  <!-- Add /li/compClass to /comps if exists (i.e. other mod already added the comps field first) -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="Human"]/comps</xpath>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[defName="Human"]</xpath>
+      <value>
+        <comps>
+          <li Class="TitularRoyalty.CompProperties_PlayerRoyaltyTracker" />
+        </comps>
+      </value>
+    </nomatch>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[defName="Human"]/comps</xpath>
+      <value>
+        <li Class="TitularRoyalty.CompProperties_PlayerRoyaltyTracker" />
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

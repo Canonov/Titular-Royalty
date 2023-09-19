@@ -17,16 +17,19 @@ namespace TitularRoyalty
         [DebugAction("Titular Royalty", "Add Title", actionType = DebugActionType.Action)]
         private static void AddTitle()
         {
+            Log.Message(GameComponent_PlayerTitlesManager.Current.ToString());
             GameComponent_PlayerTitlesManager.Current.AddTitle(new PlayerTitleData()
             {
                 label = "title_" + Rand.Range(0, 10000), 
             });
         }
         
-        [DebugAction("Titular Royalty", "Grant Title", actionType = DebugActionType.ToolMapForPawns)]
+        [DebugAction("Titular Royalty", "Grant Title", actionType = DebugActionType.Action)]
         private static void GrantTitle()
         {
             var randomPawnRoyalty = Find.AnyPlayerHomeMap.mapPawns.FreeColonists.RandomElement().PlayerRoyalty();
+            
+            Log.Message($"Granting Title to {randomPawnRoyalty.Pawn.Name}");
             
             var debugOptions = new List<DebugMenuOption>();
             
