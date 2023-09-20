@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection.Emit;
+using System.Text;
 using HarmonyLib;
 using Verse;
 
@@ -45,6 +46,31 @@ namespace TitularRoyalty.Extensions
             {
                 codeInstructions.Add(instruction);
             }
+        }
+        
+        /// <summary>
+        /// Converts the CodeInstruction instance to a debug-ready string format.
+        /// </summary>
+        /// <param name="instruction">This CodeInstruction instance.</param>
+        /// <returns>A string in format of 'opcode : operand' or 'opcode : No Operand' if operand is null.</returns>
+        public static string ToDebugString(this CodeInstruction instruction)
+        {
+            var sb = new StringBuilder();
+            
+            sb.Append(instruction.opcode.ToString());
+            
+            sb.Append(" : ");
+            
+            if (instruction.operand != null)
+            {
+                sb.Append(instruction.operand);
+            }
+            else
+            {
+                sb.Append("No Operand");
+            }
+
+            return sb.ToString();
         }
     }
 }
