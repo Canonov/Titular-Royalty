@@ -17,6 +17,12 @@ namespace TitularRoyalty.Titles
         public Pawn pawn;
         
         public int receivedTick = -1;
+
+
+        public void PlayerTitleTick()
+        {
+            
+        }
         
         public string GetLabelForHolder()
         {

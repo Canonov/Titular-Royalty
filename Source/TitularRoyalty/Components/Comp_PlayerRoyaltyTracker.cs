@@ -14,7 +14,11 @@ namespace TitularRoyalty
 
         public PlayerTitle title;
         public bool HasAnyTitle => title != null;
-
+        
+        public override void CompTick()
+        {
+            title?.PlayerTitleTick();
+        }
 
         public void SetTitle(PlayerTitleData titleData, bool sendLetter = true)
         {
