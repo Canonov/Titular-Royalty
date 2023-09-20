@@ -17,8 +17,6 @@ namespace TitularRoyalty.Patches
     {
         public static void AddTitlePlate(Pawn pawn)
         {
-            Log.Message("Creating Title Plate");
-            
             if (!pawn.PlayerRoyalty().HasAnyTitle)
             {
                 return;
@@ -61,9 +59,6 @@ namespace TitularRoyalty.Patches
                     codeInstructions[i - 2].opcode == OpCodes.Ldloc_0)
                 {
                     insertionIndex = i - 1; // after ldloc.0
-                    Log.Message("Found index " + insertionIndex);
-                    Log.Message(
-                        $"CurI {codeInstructions[i].opcode}\nInsertI {codeInstructions[insertionIndex].opcode}");
                     break;
                 }
             }
@@ -79,10 +74,6 @@ namespace TitularRoyalty.Patches
             // Pop ldloc.0
             instructionsToInsert.Add(new CodeInstruction(OpCodes.Pop)); 
             
-            instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldstr, "Running from Transpiler"));
-            instructionsToInsert.Add(new CodeInstruction(OpCodes.Call,
-                AccessTools.Method(typeof(Log), nameof(Log.Message), new[] { typeof(string) })));
-            
             // load the pawn onto the stack
             instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldarg_0)); 
             // load the tmpStackElements Field onto the stack
@@ -97,9 +88,6 @@ namespace TitularRoyalty.Patches
             
             // Insert the new instructions
             codeInstructions.InsertRange(insertionIndex, instructionsToInsert);
-            
-            Log.Message("Finalizing");
-
             return codeInstructions.AsEnumerable();
         }
     }
