@@ -5,7 +5,6 @@ using HarmonyLib;
 using RimWorld;
 using TitularRoyalty.Extensions;
 using TitularRoyalty.UI;
-using UnityEngine;
 using Verse;
 
 namespace TitularRoyalty.Patches

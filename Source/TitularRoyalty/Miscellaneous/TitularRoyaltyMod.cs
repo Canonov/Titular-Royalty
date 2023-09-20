@@ -1,26 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using System.Reflection.Emit;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 using SettingsHelper;
 using HarmonyLib;
-using UnityEngine.UIElements;
-using System.Linq;
 using System;
 using JetBrains.Annotations;
-using RimWorld.QuestGen;
-using RimWorld;
 
 namespace TitularRoyalty
 {
-    public class TRSettings : ModSettings
-    {
-        public override void ExposeData()
-        {
-            base.ExposeData();
-        }
-    }
+    public class TRSettings : ModSettings { }
 
     [UsedImplicitly]
     public class TitularRoyaltyMod : Mod
@@ -53,7 +40,7 @@ namespace TitularRoyalty
             listingStandard.AddHorizontalLine();
 
             //Miscellanous Toggles
-            listingStandard.Gap(12);
+            listingStandard.Gap();
 
             var miscOptionsTitleRect = listingStandard.GetRect(32);
             Text.Font = GameFont.Medium;
@@ -61,7 +48,7 @@ namespace TitularRoyalty
             Widgets.Label(miscOptionsTitleRect, "TR_miscoptionstitle".Translate());
             Text.Font = GameFont.Small;
             Text.Anchor = TextAnchor.UpperLeft;
-            listingStandard.Gap(12);
+            listingStandard.Gap();
 
             //First row of checkbox options
             //var checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
