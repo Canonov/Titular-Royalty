@@ -76,6 +76,7 @@
     <Compile Include="Components\Comp_ManageTitles.cs" />
     <Compile Include="Components\Comp_PlayerRoyaltyTracker.cs" />
     <Compile Include="Components\GameComponent_PlayerTitlesManager.cs" />
+    <Compile Include="Miscellaneous\ILUtils.cs" />
     <Compile Include="Patches\CharacterCardUtility_DoTopStack_Patch.cs" />
     <Compile Include="Patches\HarmonyFields.cs" />
     <Compile Include="UI\TitleUIUtility.cs" />
