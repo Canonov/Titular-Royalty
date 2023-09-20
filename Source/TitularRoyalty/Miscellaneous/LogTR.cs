@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace TitularRoyalty.Extensions
+namespace TitularRoyalty
 {
     public static class LogTR
     {
