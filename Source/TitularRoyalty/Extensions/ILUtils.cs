@@ -12,23 +12,26 @@ namespace TitularRoyalty.Extensions
         /// Returns a CodeInstruction array that will call Log.Message with the provided text
         /// </summary>
         /// <param name="text">Text to log</param>
+        /// <param name="useLogTR">Use LogTR instead of Verse.Log</param>
         /// <param name="isError">Use the log.error method instead</param>
         /// <returns>Ldstr and Call Instruction with the provided text, so it can call log</returns>
-        public static CodeInstruction[] LogIL(string text, bool isError = false)
+        public static CodeInstruction[] LogIL(string text, bool useLogTR = true, bool isError = false)
         {
             var instructions = new CodeInstruction[2];
 
             instructions[0] = new CodeInstruction(OpCodes.Ldstr, text);
 
+            var logType = useLogTR ? typeof(LogTR) : typeof(Log);
+            
             if (isError)
             {
                 instructions[1] = new CodeInstruction(OpCodes.Call,
-                    AccessTools.Method(typeof(Log), nameof(Log.Error), new[] { typeof(string) }));
+                    AccessTools.Method(logType, "Error", new[] { typeof(string) }));
             }
             else
             {
                 instructions[1] = new CodeInstruction(OpCodes.Call,
-                    AccessTools.Method(typeof(Log), nameof(Log.Message), new[] { typeof(string) }));
+                    AccessTools.Method(logType, "Message", new[] { typeof(string) }));
             }
 
             return instructions;

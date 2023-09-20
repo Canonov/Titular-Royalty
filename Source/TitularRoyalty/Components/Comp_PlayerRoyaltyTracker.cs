@@ -1,4 +1,5 @@
-﻿using TitularRoyalty.Titles;
+﻿using TitularRoyalty.Extensions;
+using TitularRoyalty.Titles;
 using Verse;
 
 namespace TitularRoyalty
@@ -40,7 +41,7 @@ namespace TitularRoyalty
         public void StripTitles()
         {
             title = null;
-            Log.Message($"Stripped Titles from {Pawn.Name}"); // Todo send actual letter
+            LogTR.Message($"Stripped Titles from {Pawn.Name}"); // Todo send actual letter
         }
 
         public override void PostExposeData()

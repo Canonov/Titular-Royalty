@@ -29,7 +29,7 @@ namespace TitularRoyalty.Patches
 
             if (tmpStackElements == null)
             {
-                Log.Error("Couldn't get tmpStackElements from the CharacterCardUtility");
+                LogTR.Error("Couldn't get tmpStackElements from the CharacterCardUtility");
                 return;
             }
             
@@ -64,7 +64,7 @@ namespace TitularRoyalty.Patches
 
             if (insertionIndex == -1)
             {
-                Log.Error("Couldn't find a proper IL location to insert the code in CharacterCardUtility_DoTopStack_Patch");
+                LogTR.Error("Couldn't find a proper IL location to insert the code in CharacterCardUtility_DoTopStack_Patch");
                 return codeInstructions; // original    
             }
             

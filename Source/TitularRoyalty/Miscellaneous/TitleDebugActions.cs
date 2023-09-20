@@ -10,14 +10,14 @@ namespace TitularRoyalty
         [DebugAction("Titular Royalty", "List Titles", actionType = DebugActionType.Action)]
         private static void ListTitles()
         {
-            Log.Message("Listing Titles");
+            LogTR.Message("Listing Titles");
             GameComponent_PlayerTitlesManager.Current.Titles.ForEach(x => Log.Message(x.label));
         }
         
         [DebugAction("Titular Royalty", "Add Title", actionType = DebugActionType.Action)]
         private static void AddTitle()
         {
-            Log.Message(GameComponent_PlayerTitlesManager.Current.ToString());
+            LogTR.Message(GameComponent_PlayerTitlesManager.Current.ToString());
             GameComponent_PlayerTitlesManager.Current.AddTitle(new PlayerTitleData()
             {
                 label = "title_" + Rand.Range(0, 10000), 
@@ -29,7 +29,7 @@ namespace TitularRoyalty
         {
             var randomPawnRoyalty = Find.AnyPlayerHomeMap.mapPawns.FreeColonists.RandomElement().PlayerRoyalty();
             
-            Log.Message($"Granting Title to {randomPawnRoyalty.Pawn.Name}");
+            LogTR.Message($"Granting Title to {randomPawnRoyalty.Pawn.Name}");
             
             var debugOptions = new List<DebugMenuOption>();
             

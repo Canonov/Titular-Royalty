@@ -1,5 +1,6 @@
 ﻿using System;
 using RimWorld;
+using TitularRoyalty.Extensions;
 using TitularRoyalty.Titles;
 using UnityEngine;
 using Verse;
@@ -40,7 +41,7 @@ namespace TitularRoyalty.UI
             // Clicking as a button
             if (Widgets.ButtonInvisible(bgRect))
             {
-                Log.Error("Button Clicked");
+                LogTR.Error("Button Clicked");
                 //Find.WindowStack.Add(new Dialog_InfoCard(localTitle.def, localTitle.faction, pawn));
             }
             if (Mouse.IsOver(bgRect))

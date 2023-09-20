@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using TitularRoyalty.Extensions;
 using Verse;
 
 namespace TitularRoyalty.Titles
@@ -33,12 +34,12 @@ namespace TitularRoyalty.Titles
             
             if (curIndex == -1)
             {
-                Log.Error($"Couldn't find title {this} in the list of titles");
+                LogTR.Error($"Couldn't find title {this} in the list of titles");
                 return null;
             }
             if (curIndex == 0)
             {
-                Log.Error($"There is no title before {this}");
+                LogTR.Error($"There is no title before {this}");
                 return null;
             }
 
@@ -62,7 +63,7 @@ namespace TitularRoyalty.Titles
             
             if (curIndex == -1)
             {
-                Log.Error($"Couldn't find title {this} in the list of titles");
+                LogTR.Error($"Couldn't find title {this} in the list of titles");
                 return null;
             }
 
@@ -72,7 +73,7 @@ namespace TitularRoyalty.Titles
                 return titles[i];
             }
             
-            Log.Error($"Couldn't find a title after {this}");
+            LogTR.Error($"Couldn't find a title after {this}");
             return null;
         }
         

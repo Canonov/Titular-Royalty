@@ -4,6 +4,7 @@ using SettingsHelper;
 using HarmonyLib;
 using System;
 using JetBrains.Annotations;
+using TitularRoyalty.Extensions;
 
 namespace TitularRoyalty
 {
@@ -19,13 +20,16 @@ namespace TitularRoyalty
         public TitularRoyaltyMod(ModContentPack content) : base(content)
         {
             Settings = GetSettings<TRSettings>();
-
-            // Harmony Stuff
-            // Use Patch Categories next harmony update?
-            var harmony = new Harmony("com.TitularRoyalty.patches");
-
-            Harmony.DEBUG = true;
             
+            LogTR.Message("Starting Mod...");
+            
+            DoPatches();
+        }
+
+        // Perform Harmony Patches
+        private static void DoPatches()
+        {
+            var harmony = new Harmony("com.TitularRoyalty.patches");
             harmony.PatchAll();
         }
 
