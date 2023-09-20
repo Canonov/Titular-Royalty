@@ -110,16 +110,5 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\..\..\Data">
-      <Link>Data</Link>
-    </Content>
-    <Content Include="..\..\1.4\Defs">
-      <Link>Defs14</Link>
-    </Content>
-    <Content Include="..\..\1.4\Defs\ThingDefs_misc\RoyalStaff.xml">
-      <Link>RoyalStaff.xml</Link>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
