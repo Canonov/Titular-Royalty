@@ -43,7 +43,7 @@ namespace TitularRoyalty
         }
 
         //Name that shows at the top
-        public override string SettingsCategory() => "TR_modname".Translate();
+        public override string SettingsCategory() => "TR.ModName".Translate();
 
         //Main Rendering
         public override void DoSettingsWindowContents(Rect inRect)
