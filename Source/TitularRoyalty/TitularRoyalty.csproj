@@ -121,9 +121,5 @@
       <Link>RoyalStaff.xml</Link>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Comps\" />
-    <Folder Include="Defs\" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
