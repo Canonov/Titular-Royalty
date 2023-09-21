@@ -11,7 +11,7 @@ namespace TitularRoyalty.Patches
 {
     // Patch to the title to the top stack of the character card, along with the factions and ideos
     
-    [HarmonyPatch(typeof(CharacterCardUtility), nameof(CharacterCardUtility.DoTopStack))]
+    [HarmonyPatch(typeof(CharacterCardUtility), "DoTopStack")]
     public static class CharacterCardUtility_DoTopStack_Patch
     {
         public static void AddTitlePlate(Pawn pawn)
