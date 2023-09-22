@@ -9,6 +9,7 @@ namespace TitularRoyalty
     /// </summary>
     public class Comp_PlayerRoyaltyTracker : ThingComp
     {
+        public GameComponent_PlayerTitlesManager TitlesManager => GameComponent_PlayerTitlesManager.Current;
         public CompProperties_PlayerRoyaltyTracker Props => (CompProperties_PlayerRoyaltyTracker)props;
         public Pawn Pawn => (Pawn)parent;
 
@@ -30,8 +31,9 @@ namespace TitularRoyalty
             };
             
             newTitle.InitializeAllFeatures();
-
             title = newTitle;
+            
+            TitlesManager.AddPawnToCache(Pawn);
             // Todo Send Letter
         }
 
@@ -44,6 +46,8 @@ namespace TitularRoyalty
         {
             title.PreRemove();
             title = null;
+            
+            TitlesManager.RemovePawnFromCache(Pawn);
         }
 
         public override void PostExposeData()

@@ -68,15 +68,16 @@ namespace TitularRoyalty
                 }
             }
         }
-
-        /// <summary>
-        /// Add the pawn to the cache of pawns with titles
-        /// </summary>
-        /// <param name="pawn">Pawn to add</param>
+        
         public void AddPawnToCache(Pawn pawn)
         {
             if (pawn.PlayerRoyalty().HasAnyTitle)
                 pawnsWithTitlesCached.Add(pawn);
+        }
+        public void RemovePawnFromCache(Pawn pawn)
+        {
+            if (pawnsWithTitlesCached != null && pawnsWithTitlesCached.Contains(pawn)) 
+                pawnsWithTitlesCached.Remove(pawn);
         }
         
         /// <summary>
@@ -104,11 +105,28 @@ namespace TitularRoyalty
         /// <summary>
         /// Remove Title from the Manager
         /// </summary>
-        /// <param name="titleData"></param>
         public void RemoveTitle(PlayerTitleData titleData)
         {
+            LogTR.Message($"Removing Title {titleData.label}");
+            
             if (Titles.Contains(titleData))
             {
+                foreach (var pawn in PawnsWithTitles.Where(p => p.PlayerRoyalty().HasTitle(titleData)).ToList())
+                {
+                    LogTR.Message("Handling Removed Titles for " + pawn.Name.ToStringShort);
+                    var lowerTitle = titleData.GetPrevTitle();
+                    if (lowerTitle != null)
+                    {
+                        LogTR.Message($"Setting {pawn.Name.ToStringShort}'s title to {lowerTitle.label}");
+                        pawn.PlayerRoyalty().SetTitle(lowerTitle);
+                    }
+                    else
+                    {
+                        LogTR.Message($"Removing {pawn.Name.ToStringShort}'s title");
+                        pawn.PlayerRoyalty().RemoveTitle();
+                    }
+                }
+                
                 Titles.Remove(titleData);
                 return;
             }

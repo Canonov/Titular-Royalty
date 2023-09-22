@@ -4,8 +4,10 @@ namespace TitularRoyalty
 {
     public class TitleFeature_Test : TitleFeature
     {
-        
+
         public TitleFeature_Test(PlayerTitle title, TitleFeatureDef def) : base(title, def) { }
+        public TitleFeature_Test() { }
+        
         public override void Tick()
         {
             LogTR.Message(LabelCap + " Tick");

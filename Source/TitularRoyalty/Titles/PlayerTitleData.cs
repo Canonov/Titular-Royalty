@@ -41,7 +41,7 @@ namespace TitularRoyalty
             }
             if (curIndex == 0)
             {
-                LogTR.Error($"There is no title before {this}");
+                LogTR.Message($"There is no title before {this}");
                 return null;
             }
 

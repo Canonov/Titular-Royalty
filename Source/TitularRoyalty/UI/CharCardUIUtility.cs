@@ -1,15 +1,12 @@
 ﻿using System;
 using RimWorld;
-using TitularRoyalty.Extensions;
 using UnityEngine;
 using Verse;
 
 namespace TitularRoyalty.UI
 {
-    [StaticConstructorOnStartup]
-    public static class TitleUIUtility
+    public static class CharCardUIUtility
     {
-        
         /// <summary>
         /// Returns an action to draw a title plate for the given pawn and title, used in the character card
         /// </summary>

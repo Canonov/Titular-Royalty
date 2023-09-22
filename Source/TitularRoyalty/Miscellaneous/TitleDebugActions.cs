@@ -8,16 +8,21 @@ namespace TitularRoyalty
 {
     public static class TitleDebugActions
     {
+        private static GameComponent_PlayerTitlesManager TitleManager => GameComponent_PlayerTitlesManager.Current;
+        
         [DebugAction("Titular Royalty", "List Titles", actionType = DebugActionType.Action)]
         private static void ListTitles()
         {
             LogTR.Message("Listing Titles");
-            GameComponent_PlayerTitlesManager.Current.Titles.ForEach(x =>
+            int i = 0;
+            TitleManager.Titles.ForEach(x =>
             {
-                Log.Message(x.label);
+                Log.Message($"{i} - {x.label}");
 
                 var features = string.Join(", ", x.featureDefs.Select(y => y.label ?? y.defName));
                 Log.Message("Features: " + features == string.Empty ? "None" : features);
+
+                i++;
             });
         }
         
@@ -33,8 +38,37 @@ namespace TitularRoyalty
             
             titleData.featureDefs.Add(TitleFeatureDefOf.TitleFeature_Test);
             
-            GameComponent_PlayerTitlesManager.Current.AddTitle(titleData);
+            TitleManager.AddTitle(titleData);
             
+        }
+        
+        [DebugAction("Titular Royalty", "Log Cache", actionType = DebugActionType.Action)]
+        private static void LogCache()
+        {
+            foreach (var pawn in TitleManager.PawnsWithTitles)
+            {
+                LogTR.Message($"Cache - {pawn.Name} - {(pawn.PlayerRoyalty()?.title?.titleData?.label ?? "unknown")}");
+            }
+        }
+        
+        [DebugAction("Titular Royalty", "Remove Title", actionType = DebugActionType.Action)]
+        private static void RemoveTitle()
+        {
+            var debugOptions = new List<DebugMenuOption>();
+            
+            foreach (var title in GameComponent_PlayerTitlesManager.Current.Titles)
+            {
+                debugOptions.Add(new DebugMenuOption(title.label, DebugMenuOptionMode.Action, () =>
+                {
+                    TitleManager.RemoveTitle(title);
+                }));
+            }
+            
+            if (debugOptions.Any())
+            {
+                Find.WindowStack.Add(new Dialog_DebugOptionListLister(debugOptions));
+            }
+
         }
         
         [DebugAction("Titular Royalty", "Grant Title", actionType = DebugActionType.Action)]
@@ -46,7 +80,7 @@ namespace TitularRoyalty
             
             var debugOptions = new List<DebugMenuOption>();
             
-            foreach (var title in GameComponent_PlayerTitlesManager.Current.Titles)
+            foreach (var title in TitleManager.Titles)
             {
                 debugOptions.Add(new DebugMenuOption(title.label, DebugMenuOptionMode.Action, () =>
                 {

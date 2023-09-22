@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <MainButtonDef>
+        <defName>TR_MainButton</defName>
+        <label>Titular Royalty</label>
+        <description>View and organize the colony's royal titles.</description>
+        <workerClass>MainButtonWorker_ToggleTab</workerClass>
+        <tabWindowClass>TitularRoyalty.UI.MainTabWindow_TitularRoyalty</tabWindowClass>
+        <order>81</order>
+        <validWithoutMap>true</validWithoutMap>
+        <minimized>True</minimized>
+        <closesWorldView>false</closesWorldView>
+        <iconPath>UI/Buttons/MainButtons/IconTR</iconPath>
+    </MainButtonDef>
+
+</Defs>

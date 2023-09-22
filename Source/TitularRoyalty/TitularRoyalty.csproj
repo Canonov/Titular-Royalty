@@ -86,7 +86,9 @@
     <Compile Include="Titles\TitleFeatureDef.cs" />
     <Compile Include="Titles\TitleFeatureDefOf.cs" />
     <Compile Include="Titles\TitleFeatureMaker.cs" />
-    <Compile Include="UI\TitleUIUtility.cs" />
+    <Compile Include="UI\CharCardUIUtility.cs" />
+    <Compile Include="UI\MainTabWindow_TitularRoyalty.cs" />
+    <Compile Include="UI\TitleMenuUIUtility.cs" />
     <None Include="DoNotCompile_ForReference\Dialog_RoyalTitleEditor.cs" />
     <None Include="DoNotCompile_ForReference\Dialog_ManageTitles.cs" />
     <None Include="DoNotCompile_ForReference\Dialog_ChooseTitles.cs" />
