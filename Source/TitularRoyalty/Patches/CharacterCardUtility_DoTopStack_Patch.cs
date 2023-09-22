@@ -35,7 +35,7 @@ namespace TitularRoyalty.Patches
             
             tmpStackElements.Add(new GenUI.AnonymousStackElement
             {
-                drawer = TitleUIUtility.CreateTitlePlateDrawer(pawn, title),
+                drawer = TitleUIUtility.GetPlateDrawer(pawn, title),
                 width = Text.CalcSize(title.GetLabelForHolder()).x + 22f + 14f
             });
         }

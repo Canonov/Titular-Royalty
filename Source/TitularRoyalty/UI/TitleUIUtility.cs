@@ -13,7 +13,7 @@ namespace TitularRoyalty.UI
         /// <summary>
         /// Returns an action to draw a title plate for the given pawn and title, used in the character card
         /// </summary>
-        public static Action<Rect> CreateTitlePlateDrawer(Pawn pawn, PlayerTitle title) => delegate(Rect holderRect)
+        public static Action<Rect> GetPlateDrawer(Pawn pawn, PlayerTitle title) => delegate(Rect holderRect)
         {
             string titleLabel = title.GetLabelForHolder();
 
@@ -31,7 +31,7 @@ namespace TitularRoyalty.UI
             
             var iconRect = new Rect(holderRect.x + 1f, holderRect.y + 1f, 20f, 20f);
             GUI.color = Faction.OfPlayer.Color;
-            GUI.DrawTexture(iconRect, Resources.CrownIcon);
+            GUI.DrawTexture(iconRect, Resources.TRWidget);
             GUI.color = originalColor;
             
             var labelRect = new Rect(holderRect.x, holderRect.y, holderRect.width + 22f + 9f, holderRect.height);
