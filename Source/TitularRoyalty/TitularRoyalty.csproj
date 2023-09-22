@@ -80,6 +80,12 @@
     <Compile Include="Miscellaneous\LogTR.cs" />
     <Compile Include="Patches\CharacterCardUtility_DoTopStack_Patch.cs" />
     <Compile Include="Patches\HarmonyFields.cs" />
+    <Compile Include="Titles\Features\TitleFeature_Test.cs" />
+    <Compile Include="Titles\TitleFeature.cs" />
+    <Compile Include="Titles\TitleFeatureCategoryDef.cs" />
+    <Compile Include="Titles\TitleFeatureDef.cs" />
+    <Compile Include="Titles\TitleFeatureDefOf.cs" />
+    <Compile Include="Titles\TitleFeatureMaker.cs" />
     <Compile Include="UI\TitleUIUtility.cs" />
     <None Include="DoNotCompile_ForReference\Dialog_RoyalTitleEditor.cs" />
     <None Include="DoNotCompile_ForReference\Dialog_ManageTitles.cs" />

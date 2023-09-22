@@ -1,8 +1,8 @@
-﻿using JetBrains.Annotations;
-using TitularRoyalty.Extensions;
+﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 using Verse;
 
-namespace TitularRoyalty.Titles
+namespace TitularRoyalty
 {
     
     /// <summary>
@@ -10,12 +10,14 @@ namespace TitularRoyalty.Titles
     /// </summary>
     public class PlayerTitleData : IExposable, ILoadReferenceable
     {
-        protected int id;
+        public int id;
         
         public string label;
         public string labelFemale;
         
         public string description;
+
+        public List<TitleFeatureDef> featureDefs = new List<TitleFeatureDef>();
 
         public PlayerTitleData()
         {
@@ -82,6 +84,8 @@ namespace TitularRoyalty.Titles
             Scribe_Values.Look(ref id, "id");
             Scribe_Values.Look(ref label, "label");
             Scribe_Values.Look(ref labelFemale, "labelFemale");
+            
+            Scribe_Collections.Look(ref featureDefs, "featureDefs", LookMode.Def);
         }
         
         public override string ToString()

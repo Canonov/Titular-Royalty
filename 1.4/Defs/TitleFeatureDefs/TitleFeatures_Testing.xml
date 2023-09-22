@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <TitularRoyalty.TitleFeatureDef>
+        <defName>TitleFeature_Test</defName>
+        <label>test feature</label>
+        <featureClass>TitularRoyalty.TitleFeature_Test</featureClass>
+    </TitularRoyalty.TitleFeatureDef>
+</Defs>

@@ -1,7 +1,6 @@
 ﻿using System;
 using RimWorld;
 using TitularRoyalty.Extensions;
-using TitularRoyalty.Titles;
 using UnityEngine;
 using Verse;
 

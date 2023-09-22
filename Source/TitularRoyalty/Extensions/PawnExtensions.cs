@@ -21,8 +21,12 @@ namespace TitularRoyalty.Extensions
             }
 
             royaltyTracker = pawn.GetComp<Comp_PlayerRoyaltyTracker>();
-            CachedPawnComps.Add(pawn, royaltyTracker);
 
+            if (royaltyTracker != null)
+            {
+                CachedPawnComps.Add(pawn, royaltyTracker);
+            }
+            
             return royaltyTracker;
         }
 

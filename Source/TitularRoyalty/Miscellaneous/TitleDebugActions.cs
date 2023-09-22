@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using TitularRoyalty.Extensions;
-using TitularRoyalty.Titles;
 using Verse;
 
 namespace TitularRoyalty
@@ -11,17 +12,29 @@ namespace TitularRoyalty
         private static void ListTitles()
         {
             LogTR.Message("Listing Titles");
-            GameComponent_PlayerTitlesManager.Current.Titles.ForEach(x => Log.Message(x.label));
+            GameComponent_PlayerTitlesManager.Current.Titles.ForEach(x =>
+            {
+                Log.Message(x.label);
+
+                var features = string.Join(", ", x.featureDefs.Select(y => y.label ?? y.defName));
+                Log.Message("Features: " + features == string.Empty ? "None" : features);
+            });
         }
         
         [DebugAction("Titular Royalty", "Add Title", actionType = DebugActionType.Action)]
         private static void AddTitle()
         {
-            LogTR.Message(GameComponent_PlayerTitlesManager.Current.ToString());
-            GameComponent_PlayerTitlesManager.Current.AddTitle(new PlayerTitleData()
+            var label = "title_" + Rand.Range(0, 10000);
+
+            var titleData = new PlayerTitleData
             {
-                label = "title_" + Rand.Range(0, 10000), 
-            });
+                label = label
+            };
+            
+            titleData.featureDefs.Add(TitleFeatureDefOf.TitleFeature_Test);
+            
+            GameComponent_PlayerTitlesManager.Current.AddTitle(titleData);
+            
         }
         
         [DebugAction("Titular Royalty", "Grant Title", actionType = DebugActionType.Action)]

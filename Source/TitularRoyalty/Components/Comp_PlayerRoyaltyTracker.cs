@@ -1,5 +1,4 @@
 ﻿using TitularRoyalty.Extensions;
-using TitularRoyalty.Titles;
 using Verse;
 
 namespace TitularRoyalty
@@ -18,18 +17,21 @@ namespace TitularRoyalty
         
         public override void CompTick()
         {
-            title?.PlayerTitleTick();
+            title?.Tick();
         }
 
         public void SetTitle(PlayerTitleData titleData, bool sendLetter = true)
         {
-            var prevTitle = title;
+            //var prevTitle = title;
             
-            title = new PlayerTitle(Pawn, titleData)
+            var newTitle = new PlayerTitle(Pawn, titleData)
             {
                 receivedTick = GenTicks.TicksGame
             };
+            
+            newTitle.InitializeAllFeatures();
 
+            title = newTitle;
             // Todo Send Letter
         }
 
@@ -37,11 +39,11 @@ namespace TitularRoyalty
         {
             return title.titleData == titleData;
         }
-        
-        public void StripTitles()
+
+        public void RemoveTitle()
         {
+            title.PreRemove();
             title = null;
-            LogTR.Message($"Stripped Titles from {Pawn.Name}"); // Todo send actual letter
         }
 
         public override void PostExposeData()
