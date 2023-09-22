@@ -5,7 +5,7 @@ using Verse;
 
 namespace TitularRoyalty.UI
 {
-    public static class CharCardUIUtility
+    public static class CharacterCardUtility
     {
         /// <summary>
         /// Returns an action to draw a title plate for the given pawn and title, used in the character card
@@ -17,7 +17,7 @@ namespace TitularRoyalty.UI
             var originalColor = GUI.color;
             var bgRect = new Rect(holderRect.x, holderRect.y, holderRect.width, holderRect.height);
 
-            GUI.color = CharacterCardUtility.StackElementBackground;
+            GUI.color = RimWorld.CharacterCardUtility.StackElementBackground;
             GUI.DrawTexture(bgRect, BaseContent.WhiteTex);
             GUI.color = originalColor;
             

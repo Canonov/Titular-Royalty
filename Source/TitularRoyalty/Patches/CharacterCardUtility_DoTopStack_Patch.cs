@@ -6,12 +6,13 @@ using RimWorld;
 using TitularRoyalty.Extensions;
 using TitularRoyalty.UI;
 using Verse;
+using CharacterCardUtility = TitularRoyalty.UI.CharacterCardUtility;
 
 namespace TitularRoyalty.Patches
 {
     // Patch to the title to the top stack of the character card, along with the factions and ideos
     
-    [HarmonyPatch(typeof(CharacterCardUtility), "DoTopStack")]
+    [HarmonyPatch(typeof(RimWorld.CharacterCardUtility), "DoTopStack")]
     public static class CharacterCardUtility_DoTopStack_Patch
     {
         public static void AddTitlePlate(Pawn pawn)
@@ -35,7 +36,7 @@ namespace TitularRoyalty.Patches
             
             tmpStackElements.Add(new GenUI.AnonymousStackElement
             {
-                drawer = CharCardUIUtility.GetPlateDrawer(pawn, title),
+                drawer = CharacterCardUtility.GetPlateDrawer(pawn, title),
                 width = Text.CalcSize(title.GetLabelForHolder()).x + 22f + 14f
             });
         }
