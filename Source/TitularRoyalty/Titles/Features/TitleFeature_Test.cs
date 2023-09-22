@@ -1,8 +1,11 @@
-﻿namespace TitularRoyalty
+﻿using Verse;
+
+namespace TitularRoyalty
 {
     public class TitleFeature_Test : TitleFeature
     {
         
+        public TitleFeature_Test(PlayerTitle title, TitleFeatureDef def) : base(title, def) { }
         public override void Tick()
         {
             LogTR.Message(LabelCap + " Tick");
