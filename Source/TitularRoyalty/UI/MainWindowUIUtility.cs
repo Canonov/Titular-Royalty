@@ -11,6 +11,8 @@ namespace TitularRoyalty.UI
     {
         private static GameComponent_PlayerTitlesManager TitleManager => GameComponent_PlayerTitlesManager.Current;
 
+        public static Color TitleBGColor => new Color(0.18f, 0.18f, 0.18f);
+
         #region Titles Tab
 
         public static void DrawTitlesTab(Rect inRect, ref Vector2 scrollPosition_titleList)
@@ -55,8 +57,9 @@ namespace TitularRoyalty.UI
             
             foreach (var title in TitleManager.Titles)
             {
-                var row = listingStandard.GetRect(rowSize, 0.90f); // Get the row
-                row.x += (viewRect.width * 0.05f); // Half of the remainder of the width
+                var row = listingStandard.GetRect(rowSize); // Get the row
+                row.width -= 8f;
+                row.x += 4f;
                 
                 DrawTitleRow(row, title, out bool selected); // Draw the row
                 
@@ -74,12 +77,22 @@ namespace TitularRoyalty.UI
             Widgets.DrawBox(titleListRect);
         }
 
-        private static void DrawTitleRow(Rect rect, PlayerTitleData titleData, out bool selected)
+        private static void DrawTitleRow(Rect titleBox, PlayerTitleData titleData, out bool selected, bool forceHighlight = false)
         {
-            selected = false;
+            const float gap = 4f;
             
-            Widgets.DrawBox(rect);
-            Widgets.LabelFit(rect, titleData.label);
+            selected = false;
+            Widgets.DrawRectFast(titleBox, TitleBGColor);
+            
+            GUI.color = new Color(TitleBGColor.r + 0.05f, TitleBGColor.g + 0.05f, TitleBGColor.b + 0.05f);
+            Widgets.DrawBox(titleBox);
+            GUI.color = Color.white;
+            
+            if (Mouse.IsOver(titleBox) || forceHighlight)
+            {
+                Widgets.DrawHighlight(titleBox);
+            }
+
         }
 
         #endregion
