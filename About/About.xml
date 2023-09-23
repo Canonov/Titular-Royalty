@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Titular Royalty</name>
-  <packageId>Canon.TitularRoyalty</packageId>
+  <name>Titular Royalty 2</name>
+  <packageId>Canon.TitularRoyaltyII</packageId>
   <author>Canon</author>
   <supportedVersions>
     <li>1.4</li>
@@ -18,34 +18,7 @@
       <displayName>Royalty</displayName>
     </li>
   </modDependencies>
-  <loadAfter>
-    <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
-    <li>OskarPotocki.VFE.Empire</li>
-  </loadAfter>
-  <description>Adds titles to the player faction you can grant to your pawns with the Staff of Royalty or at Any Throne
-(VERSION 1.6)
- - Complete rewrite of the GameComponent
- - Manage Titles is now available on the world map at your player settlement for if you don't have a throne.
- - Titlesets have been completely recoded, your selection is now specific to your save at the managetitles menu, they're also easier for me to add (could probably even be added with submods easier now as they use Defs)
- - Debug Option to export a list I can use to add your custom titleset to the game easily, it takes the titles currently in use in your game and saves a list of their names in your Rimworld Directory.
- - New Old Russian, Norse and Shattered Empire (Sophiamundan) Titlesets
-(VERSION 1.6.1) 
- - Titleset Icons
- - Royal Family Titles made non-inheritable
-(VERSION 1.6.2) 
- - Holy Roman Empire Titleset
- - Better Norse icon
- (VERSION 1.7) 
- - Title Editor UI available in the Manage Titles menu.
- - You can use this to override the title labels, whether it can be inherited, can use meditation focus, what icon it uses and what expectations it has.
- - Can now open the manage titles UI using the crown button on the bottom right buttons
- - You can also change the Icons the title uses, it takes any icon in Textures/TRIcons or the default for the Title Tier
- - Vanilla Factions Expanded - Empire Integrations (Sophiamundan Titleset with their Icons, All titles show icons on infocard, these require it to be active and dont include any files themselves)
- (VERSION 1.7.1) 
- - Fixed Support with VFEE (def icons)
- - Minor Code Changes
- (VERSION 1.7.2) 
- - Allowed thrones from EGI Holograms and Projectors to be used as Thrones for the highest title
+  <description>TBD
 </description>
 
 </ModMetaData>
