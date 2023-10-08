@@ -13,7 +13,7 @@ namespace TitularRoyalty
     [UsedImplicitly]
     public class TitularRoyaltyMod : Mod
     {
-        public static Version Version => typeof(TitularRoyaltyMod).Assembly.GetName().Version;
+        public static TRVersion Version = new TRVersion(2, 0, 0);
         public static TRSettings Settings { get; private set; }
 
         // A mandatory constructor which resolves the reference to our settings.

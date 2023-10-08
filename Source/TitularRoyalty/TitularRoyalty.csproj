@@ -78,6 +78,7 @@
     <Compile Include="Components\GameComponent_PlayerTitlesManager.cs" />
     <Compile Include="Extensions\ILUtils.cs" />
     <Compile Include="Miscellaneous\LogTR.cs" />
+    <Compile Include="Miscellaneous\TRVersion.cs" />
     <Compile Include="Patches\CharacterCardUtility_DoTopStack_Patch.cs" />
     <Compile Include="Patches\HarmonyFields.cs" />
     <Compile Include="Titles\Features\TitleFeature_Test.cs" />
