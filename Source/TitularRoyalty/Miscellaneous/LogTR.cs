@@ -9,7 +9,7 @@ namespace TitularRoyalty
         public static readonly Color TRColor = new Color(0.64f, 0.27f, 0.65f);
         public static readonly Color TRColorDebug = new Color(0.65f, 0.04f, 0.38f);
         
-        public static string TRPrefixDebug => "[Titular Royalty II (DEBUG)]".Colorize(TRColor);
+        public static string TRPrefixDebug => TRPrefix + " [Debug]".Colorize(TRColorDebug);
         public static string TRPrefix => "[Titular Royalty II]".Colorize(TRColor);
         
         public static void Message(string message)
