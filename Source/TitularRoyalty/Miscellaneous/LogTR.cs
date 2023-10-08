@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 using Verse;
 
 namespace TitularRoyalty
@@ -22,5 +23,10 @@ namespace TitularRoyalty
         {
             Log.Error(TRPrefix + ' ' + message);
         }
+        
+        // Debug exclusive, call is ignored in release builds
+        [Conditional("DEBUG")] public static void DebugMessage(string message) => Message(message);
+        [Conditional("DEBUG")] public static void DebugWarning(string message) => Warning(message);
+
     }
 }
