@@ -22,7 +22,7 @@ namespace TitularRoyalty
             Settings = GetSettings<TRSettings>();
             
             LogTR.Message($"version {Version}");
-            LogTR.DebugMessage("If you see any of these debug messages on the workshop or release version, please report it to the mod page.");
+            LogTR.DebugWarning("If you see any of these debug messages on the workshop or release version, please report it to the mod page.");
             
             DoPatches();
         }
