@@ -21,7 +21,8 @@ namespace TitularRoyalty
         {
             Settings = GetSettings<TRSettings>();
             
-            LogTR.Message("Starting Mod...");
+            LogTR.DebugMessage($"Starting Titular Royalty II, version {Version}");
+            LogTR.DebugMessage("If you see any of these debug messages on the workshop or release version, please report it to the mod page.");
             
             DoPatches();
         }

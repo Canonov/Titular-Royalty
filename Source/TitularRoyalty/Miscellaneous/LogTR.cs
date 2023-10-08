@@ -7,7 +7,10 @@ namespace TitularRoyalty
     public static class LogTR
     {
         public static readonly Color TRColor = new Color(0.64f, 0.27f, 0.65f);
-        public static string TRPrefix => "[Titular Royalty]".Colorize(TRColor);
+        public static readonly Color TRColorDebug = new Color(0.65f, 0.04f, 0.38f);
+        
+        public static string TRPrefixDebug => "[Titular Royalty II (DEBUG)]".Colorize(TRColor);
+        public static string TRPrefix => "[Titular Royalty II]".Colorize(TRColor);
         
         public static void Message(string message)
         {
@@ -25,8 +28,17 @@ namespace TitularRoyalty
         }
         
         // Debug exclusive, call is ignored in release builds
-        [Conditional("DEBUG")] public static void DebugMessage(string message) => Message(message);
-        [Conditional("DEBUG")] public static void DebugWarning(string message) => Warning(message);
+        [Conditional("DEBUG")]
+        public static void DebugMessage(string message)
+        {
+            Log.Message(TRPrefixDebug + ' ' + message);
+        }
+
+        [Conditional("DEBUG")]
+        public static void DebugWarning(string message)
+        {
+            Log.Warning(TRPrefixDebug + ' ' + message);
+        }
 
     }
 }
