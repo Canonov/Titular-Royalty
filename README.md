@@ -5,6 +5,9 @@
 ## Features
 - TBD for 2.0
 
+## Notice
+Portions of the materials used to create this content/mod are trademarks and/or copyrighted works of Ludeon Studios Inc. All rights reserved by Ludeon. This content/mod is not official and is not endorsed by Ludeon.
+
 ## Acknowledgements
 - Rick G. for the staff texture, is an absolute lad
 - Anti4iteR and Sl4vP0weR for being cool dudes
