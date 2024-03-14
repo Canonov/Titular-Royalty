@@ -18,28 +18,56 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\1.4\Assemblies\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>..\..\1.5\Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;RIMWORLD_1_5</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\1.4\Assemblies\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>..\..\1.5\Assemblies\</OutputPath>
+    <DefineConstants>TRACE;RIMWORLD_1_5</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-1.4|AnyCPU' ">
+    <OutputPath>..\..\1.4\Assemblies\</OutputPath>
+    <DefineConstants>RIMWORLD_1_4</DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-1.4|AnyCPU' ">
+    <OutputPath>..\..\1.4\Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;RIMWORLD_1_4</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug (1.4)|AnyCPU' ">
+    <OutputPath>bin\Debug (1.4)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release (1.4)|AnyCPU' ">
+    <OutputPath>bin\Release (1.4)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug (1.4)|AnyCPU' ">
+    <OutputPath>bin\Debug (1.4)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release (1.4)|AnyCPU' ">
+    <OutputPath>bin\Release (1.4)\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
+    
+    <Reference Include="0Harmony" >
       <HintPath>..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="1SettingsHelper">
+    
+    <Reference Include="1SettingsHelper" Condition="$(DefineConstants.Contains('RIMWORLD_1_4'))">
       <HintPath>..\..\1.4\Assemblies\1SettingsHelper.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="1SettingsHelper" Condition="$(DefineConstants.Contains('RIMWORLD_1_5'))">
+      <HintPath>..\..\1.5\Assemblies\1SettingsHelper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -66,9 +94,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.*">
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.*" Condition="$(DefineConstants.Contains('RIMWORLD_1_4'))">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
+    <Reference Include="Assembly-CSharp" Condition="$(DefineConstants.Contains('RIMWORLD_1_5'))">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\CompProperties_ManageTitles.cs" />
