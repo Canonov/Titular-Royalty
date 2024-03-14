@@ -57,13 +57,14 @@ namespace TitularRoyalty
             // Add a widget to the playsettings to open the Dialog_ManageTitles
             harmony.Patch(original: AccessTools.Method(typeof(PlaySettings), "DoPlaySettingsGlobalControls", (Type[])null, (Type[])null),
                 postfix: new HarmonyMethod(typeof(ManageTitlesWidget), nameof(ManageTitlesWidget.AddWidget)));
-
-            // Add icons to the Royal Titles
+            
+	        // Add icons to the Royal Titles
+	        /* Temporarily disabled until compatible with 1.5
             if (ModLister.HasActiveModWithName("Vanilla Factions Expanded - Empire"))
             {
 				harmony.Patch(original: AccessTools.Method(typeof(Widgets), nameof(Widgets.DefIcon)),
 	                prefix: new HarmonyMethod(typeof(DefIcon_RoyalIconsPrefix), "Patch"));
-			}
+			} */
 
         }
 
