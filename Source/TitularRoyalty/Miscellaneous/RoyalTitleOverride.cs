@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Verse;
-using RimWorld;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TitularRoyalty
 {
