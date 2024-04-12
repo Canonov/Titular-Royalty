@@ -12,17 +12,11 @@ namespace TitularRoyalty
         public bool clothingQualityRequirements;
         public bool titlesGivePermitPoints;
 
-        public bool sovietSubmodUseOverrides;
-        public static bool SovietModEnabled { get; } = ModLister.HasActiveModWithName("Titular Royalty - Soviet Revolution");
-
         public override void ExposeData()
         {
             Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", true);
             Scribe_Values.Look(ref clothingQualityRequirements, "clothingQualityRequirements", true);
             Scribe_Values.Look(ref titlesGivePermitPoints, "titlesGivePermitPoints", true);
-
-            Scribe_Values.Look(ref sovietSubmodUseOverrides, "sovietSubmod_UseOverrides", false);
-
             base.ExposeData();
         }
     }
@@ -30,7 +24,6 @@ namespace TitularRoyalty
     [UsedImplicitly]
     public class TitularRoyaltyMod : Mod
     {
-
         public static TRSettings Settings { get; private set; }
 
         // A mandatory constructor which resolves the reference to our settings.
@@ -87,28 +80,7 @@ namespace TitularRoyalty
             checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
             //Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
             checkboxes.End();
-
-			//Submods
-            if (TRSettings.SovietModEnabled)
-            {
-				listingStandard.Gap(12);
-
-				var sovietModOptionsRect = listingStandard.GetRect(32);
-				Text.Font = GameFont.Medium;
-				Text.Anchor = TextAnchor.MiddleCenter;
-				Widgets.Label(sovietModOptionsRect, "TRR_modoptionstitle".Translate());
-				Text.Font = GameFont.Small;
-				Text.Anchor = TextAnchor.UpperLeft;
-				listingStandard.Gap(12);
-
-				//First row of checkbox options
-				var sovietModCheckboxes = listingStandard.GetRect(24).BeginListingStandard(2);
-				sovietModCheckboxes.CheckboxLabeled("TRR_checkbox_styleoverrides".Translate(), ref Settings.sovietSubmodUseOverrides);
-				//Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
-				sovietModCheckboxes.End();
-			}
-
-
+            
 			listingStandard.End();
             base.DoSettingsWindowContents(inRect);
         }
