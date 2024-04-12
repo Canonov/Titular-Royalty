@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using RimWorld;
-using SettingsHelper;
-using UnityEngine;
-using Verse;
+﻿using UnityEngine;
 using Verse.Grammar;
-using Verse.Noise;
 
 namespace TitularRoyalty
 {

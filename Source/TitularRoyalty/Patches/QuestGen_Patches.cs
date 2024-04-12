@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
-using Verse;
-using RimWorld;
-using HarmonyLib;
-using RimWorld.QuestGen;
-using RimWorld.Planet;
-using System.Reflection.Emit;
-using System.Reflection;
+﻿using RimWorld.QuestGen;
 
 namespace TitularRoyalty
 {

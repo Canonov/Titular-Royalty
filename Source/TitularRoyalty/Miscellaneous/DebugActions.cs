@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Xml;
 using LudeonTK;
-using RimWorld;
-using UnityEngine;
-using Verse;
 
 
 namespace TitularRoyalty

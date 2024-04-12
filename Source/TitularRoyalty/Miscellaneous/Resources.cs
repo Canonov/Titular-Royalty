@@ -1,9 +1,4 @@
-﻿using System;
-using RimWorld;
-using Verse;
-using System.Collections.Generic;
-using System.Linq;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using UnityEngine;
 
 namespace TitularRoyalty

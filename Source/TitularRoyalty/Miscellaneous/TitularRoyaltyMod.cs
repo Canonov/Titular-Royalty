@@ -1,16 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using System.Reflection.Emit;
-using UnityEngine;
-using Verse;
+﻿using UnityEngine;
 using SettingsHelper;
 using HarmonyLib;
-using UnityEngine.UIElements;
-using System.Linq;
-using System;
 using JetBrains.Annotations;
 using RimWorld.QuestGen;
-using RimWorld;
 
 namespace TitularRoyalty
 {
