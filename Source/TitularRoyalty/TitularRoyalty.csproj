@@ -23,8 +23,8 @@
     <DefineConstants>TRACE;RIMWORLD_1_5</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4062" />
-    <PackageReference Include="Lib.Harmony" Version="2.3.3.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.*" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.*" ExcludeAssets="runtime" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="1SettingsHelper">
