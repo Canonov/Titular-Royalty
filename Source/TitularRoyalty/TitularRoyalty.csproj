@@ -24,12 +24,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4062" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.3.0" ExcludeAssets="runtime" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="1SettingsHelper">
       <HintPath>..\..\1.5\Assemblies\1SettingsHelper.dll</HintPath>
       <Private>False</Private>
