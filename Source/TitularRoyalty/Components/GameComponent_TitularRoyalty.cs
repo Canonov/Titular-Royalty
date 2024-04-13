@@ -37,26 +37,15 @@ public class GameComponent_TitularRoyalty : GameComponent
 
     // Get the Titles List in Order and Cache it
     private static List<PlayerTitleDef> titlesBySeniority;
-    public static List<PlayerTitleDef> TitlesBySeniority
-    {
-        get
-        {
-            return titlesBySeniority ??= DefDatabase<PlayerTitleDef>.AllDefsListForReading.OrderBy(x => x.seniority).ToList();
-        }
-    }
+    public static List<PlayerTitleDef> TitlesBySeniority => titlesBySeniority ??=
+        DefDatabase<PlayerTitleDef>.AllDefsListForReading.OrderBy(x => x.seniority).ToList();
 
     // Custom Titles
     private Dictionary<PlayerTitleDef, RoyalTitleOverride> customTitles;
     public Dictionary<PlayerTitleDef, RoyalTitleOverride> CustomTitles
     {
-        get
-        {
-            return customTitles ??= TitlesBySeniority.ToDictionary(x => x, x => new RoyalTitleOverride());
-        }
-        private set
-        {
-            customTitles = value;
-        }
+        get => customTitles ??= TitlesBySeniority.ToDictionary(x => x, x => new RoyalTitleOverride());
+        private set => customTitles = value;
     }
 
     // Required for ExposeData
@@ -66,12 +55,10 @@ public class GameComponent_TitularRoyalty : GameComponent
     /// <summary>
     /// Passes on the Realmtype 
     /// </summary>
-    public void SetupTitles()
+    public void SetupAllTitles()
     {
-        foreach (PlayerTitleDef title in TitlesBySeniority)
-        {
+        foreach (var title in TitlesBySeniority) 
             SetupTitle(title);
-        }
     }
 
     public void SetupTitle(PlayerTitleDef title)
@@ -164,9 +151,10 @@ public class GameComponent_TitularRoyalty : GameComponent
     {
         Current = this;
 
-        SetupTitles();
-        Faction.OfPlayer.SetupPlayerForTR(); // Set Permit factions and other options
-        StartupSetup.ApplyModSettings(); // Apply ModSettings Changes
+        SetupAllTitles();
+        Faction.OfPlayer.allowGoodwillRewards = false;
+        Faction.OfPlayer.allowRoyalFavorRewards = false;
+        StartupSetup.ApplyModSettings();
     }
 
     public override void LoadedGame() => OnGameStart();

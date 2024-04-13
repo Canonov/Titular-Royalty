@@ -241,7 +241,7 @@ public class Dialog_ManageTitles : Window
         // Buttons
         if (Widgets.ButtonText(LeftButtonRect, "TR_managetitles_update".Translate(), active: !titleEditorOpen))
         {
-            TRComponent.SetupTitles();
+            TRComponent.SetupAllTitles();
             titlesBySeniority = null;
             DoTitleList();
             Messages.Message("TR_managetitles_update_notif".Translate(), MessageTypeDefOf.NeutralEvent);

@@ -32,7 +32,7 @@ public static class DebugActions
     [DebugAction("Titular Royalty", "TR: Refresh Titles", allowedGameStates = AllowedGameStates.PlayingOnMap)]
     public static void UpdateTitles()
     {
-        Current.Game.GetComponent<GameComponent_TitularRoyalty>().SetupTitles();
+        Current.Game.GetComponent<GameComponent_TitularRoyalty>().SetupAllTitles();
     }
 
     [DebugAction("Titular Royalty", "Try Apply ModSettings", allowedGameStates = AllowedGameStates.Playing)]

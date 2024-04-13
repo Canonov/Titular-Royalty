@@ -5,328 +5,326 @@ namespace TitularRoyalty;
 
 public class Dialog_RoyalTitleEditor : Window
 {
-	public override Vector2 InitialSize => new Vector2(550, 410);
+    public override Vector2 InitialSize => new Vector2(550, 410);
 
-	private int MaxNameLength => 28;
+    private int MaxNameLength => 28;
 
-	private string curName;
-	private string curNameFemale;
-	private string newName;
-	private string newNameFemale;
+    private string curName;
+    private string curNameFemale;
+    private string newName;
+    private string newNameFemale;
 
-	private bool isInheritable;
-	private bool allowDignifiedMeditation;
+    private bool isInheritable;
+    private bool allowDignifiedMeditation;
 
-	private string iconName;
+    private string iconName;
 
-	private ExpectationDef minExpectation;
-	private TitleTiers titleTier;
+    private ExpectationDef minExpectation;
+    private TitleTiers titleTier;
 
-	private GameComponent_TitularRoyalty TRComponent;
-	private PlayerTitleDef titleDef;
-	private RoyalTitleOverride originalOverrides;
-	private Dialog_ManageTitles manageTitles;
+    private GameComponent_TitularRoyalty TRComponent;
+    private PlayerTitleDef titleDef;
+    private RoyalTitleOverride originalOverrides;
+    private Dialog_ManageTitles manageTitles;
 
-	public Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty trComponent, PlayerTitleDef titleDef, Dialog_ManageTitles manageTitles)
-	{
-			doCloseX = true;
-			forcePause = true;
-			draggable = true;
-			closeOnClickedOutside = true;
-			TRComponent = trComponent;
+    public Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty trComponent, PlayerTitleDef titleDef,
+        Dialog_ManageTitles manageTitles)
+    {
+        doCloseX = true;
+        forcePause = true;
+        draggable = true;
+        closeOnClickedOutside = true;
+        TRComponent = trComponent;
 
-			this.titleDef = titleDef;
+        this.titleDef = titleDef;
 
-			if (manageTitles != null ) 
-			{
-				this.manageTitles = manageTitles;
-				this.manageTitles.titleEditorOpen = true;
-			}
+        if (manageTitles != null)
+        {
+            this.manageTitles = manageTitles;
+            this.manageTitles.titleEditorOpen = true;
+        }
 
-			originalOverrides = TRComponent.GetCustomTitleOverrideFor(this.titleDef);
+        originalOverrides = TRComponent.GetCustomTitleOverrideFor(this.titleDef);
 
-			SetDefaultVariables();
-		}
+        SetDefaultVariables();
+    }
 
-	public override void PreClose()
-	{
-			base.PreClose();
-			if (manageTitles != null)
-			{
-				manageTitles.titleEditorOpen = false;
-			}
-		}
+    public override void PreClose()
+    {
+        base.PreClose();
+        if (manageTitles != null)
+        {
+            manageTitles.titleEditorOpen = false;
+        }
+    }
 
-	public void SetDefaultVariables()
-	{
+    public void SetDefaultVariables()
+    {
+        if (originalOverrides.label == "None" || originalOverrides.label == null)
+        {
+            curName = titleDef.label;
+            curNameFemale = titleDef.labelFemale;
+        }
+        else
+        {
+            curName = originalOverrides.label;
 
-			if (originalOverrides.label == "None" || originalOverrides.label == null)
-			{
-				curName = titleDef.label;
-				curNameFemale = titleDef.labelFemale;
-			}
-			else
-			{
-				curName = originalOverrides.label;
+            if (originalOverrides.labelFemale == "None")
+            {
+                curNameFemale = null;
+            }
+            else
+            {
+                curNameFemale = originalOverrides.labelFemale ?? null;
+            }
+        }
 
-				if (originalOverrides.labelFemale == "None")
-				{
-					curNameFemale = null;
-				}
-				else
-				{
-					curNameFemale = originalOverrides.labelFemale ?? null;
-				}
-			}
+        iconName = originalOverrides.iconName ?? titleDef.iconName;
+        isInheritable = originalOverrides.TRInheritable ?? titleDef.TRInheritable;
+        allowDignifiedMeditation =
+            originalOverrides.allowDignifiedMeditationFocus ?? titleDef.allowDignifiedMeditationFocus;
+        minExpectation = originalOverrides.minExpectation ?? titleDef.minExpectation ?? ExpectationDefOf.ExtremelyLow;
+        titleTier = originalOverrides.titleTier ?? titleDef.titleTier;
+    }
 
-			iconName = originalOverrides.iconName ?? titleDef.iconName;
-			isInheritable = originalOverrides.TRInheritable ?? titleDef.TRInheritable;
-			allowDignifiedMeditation = originalOverrides.allowDignifiedMeditationFocus ?? titleDef.allowDignifiedMeditationFocus;
-			minExpectation = originalOverrides.minExpectation ?? titleDef.minExpectation ?? ExpectationDefOf.ExtremelyLow;
-			titleTier = originalOverrides.titleTier ?? titleDef.titleTier;
-		}
+    public override void DoWindowContents(Rect inRect)
+    {
+        /* TITLE */
+        var titleRect = new Rect(4, 0, inRect.width - 8, 40);
 
-	public override void DoWindowContents(Rect inRect)
-	{
-			/* TITLE */
-			Rect titleRect = new Rect(4, 0, inRect.width - 8, 40);
+        Text.Font = GameFont.Medium;
+        Text.Anchor = TextAnchor.MiddleCenter;
+        Widgets.Label(titleRect, "TR_titleeditor_label".Translate());
+        Text.Font = GameFont.Small;
+        Text.Anchor = TextAnchor.UpperLeft;
 
-			Text.Font = GameFont.Medium;
-			Text.Anchor = TextAnchor.MiddleCenter;
-			Widgets.Label(titleRect, "TR_titleeditor_label".Translate());
-			Text.Font = GameFont.Small;
-			Text.Anchor = TextAnchor.UpperLeft;
+        /* CONTENT */
+        var contentRect = new Rect(8, titleRect.yMax + GenUI.GapSmall / 2, inRect.width - 16,
+            inRect.height - (titleRect.yMax + GenUI.GapSmall) - 35);
+        var contentRectVisual = new Rect(contentRect);
+        contentRectVisual.height -= 2;
+        contentRect = contentRect.ContractedBy(2);
+        contentRect.x += 2;
 
-			/* CONTENT */
-			Rect contentRect = new Rect(8, titleRect.yMax + GenUI.GapSmall / 2, inRect.width - 16, inRect.height - (titleRect.yMax + GenUI.GapSmall) - 35);
-			Rect contentRectVisual = new Rect(contentRect);
-			contentRectVisual.height -= 2;
-			contentRect = contentRect.ContractedBy(2);
-			contentRect.x += 2;
+        Widgets.DrawTitleBG(contentRectVisual);
+        Widgets.DrawBox(contentRectVisual, -1, BaseContent.WhiteTex);
 
-			Widgets.DrawTitleBG(contentRectVisual);
-			Widgets.DrawBox(contentRectVisual, -1, BaseContent.WhiteTex);
+        var listingStandard = new Listing_Standard();
+        listingStandard.maxOneColumn = true;
 
-			Listing_Standard listingStandard = new Listing_Standard();
-			listingStandard.maxOneColumn = true;
+        DrawListing(contentRect, listingStandard);
 
-			DrawListing(contentRect, listingStandard);
+        /* FINALIZE BUTTONS */
+        float iconWidth = 35;
+        var bottomRect = new Rect(contentRectVisual.xMin, contentRectVisual.yMax + 1, contentRectVisual.width,
+            iconWidth);
+        bottomRect.SplitVertically(iconWidth, out var iconRect, out var bottomRowRect);
 
-			/* FINALIZE BUTTONS */
-			float iconWidth = 35;
-			var bottomRect = new Rect(contentRectVisual.xMin, contentRectVisual.yMax + 1, contentRectVisual.width, iconWidth);
-			bottomRect.SplitVertically(iconWidth, out Rect iconRect, out Rect bottomRowRect);
+        Widgets.DrawTitleBG(bottomRect);
+        Widgets.DrawBox(bottomRect, -1, BaseContent.WhiteTex);
+        Widgets.DrawBox(iconRect, -1, BaseContent.WhiteTex);
 
-			Widgets.DrawTitleBG(bottomRect);
-			Widgets.DrawBox(bottomRect, -1, BaseContent.WhiteTex);
-			Widgets.DrawBox(iconRect, -1, BaseContent.WhiteTex);
+        //var buttonsRect = bottomRowRect.RightPart(0.4f);
+        var leftButtonRect = bottomRowRect.LeftHalf();
+        var rightButtonRect = bottomRowRect.RightHalf();
 
-			//var buttonsRect = bottomRowRect.RightPart(0.4f);
-			var leftButtonRect = bottomRowRect.LeftHalf();
-			var rightButtonRect = bottomRowRect.RightHalf();
+        // Icon
+        if (Widgets.ButtonImage(iconRect,
+                Resources.CustomIcons.TryGetValue(this.iconName ?? "", null) ??
+                Resources.GetTitleIcon(titleDef, TRComponent) ?? BaseContent.BadTex))
+        {
+            var menuOptions = new List<FloatMenuOption>
+            {
+                new FloatMenuOption("Default", delegate { iconName = null; },
+                    itemIcon: Resources.GetTitleIcon(titleTier, TRComponent.RealmTypeDef), iconColor: Color.white)
+            };
 
-			// Icon
-			if (Widgets.ButtonImage(iconRect, Resources.CustomIcons.TryGetValue(this.iconName ?? "", null) ?? Resources.GetTitleIcon(titleDef, TRComponent) ?? BaseContent.BadTex))
-			{
-				List<FloatMenuOption> options = new List<FloatMenuOption>
-				{
-					new FloatMenuOption("Default", delegate { iconName = null; }, itemIcon: Resources.GetTitleIcon(titleTier, TRComponent.RealmTypeDef), iconColor: Color.white)
-				};
+            foreach (string key in Resources.CustomIcons.Keys)
+            {
+                menuOptions.Add(new FloatMenuOption(key, delegate { iconName = key; },
+                    itemIcon: Resources.CustomIcons.TryGetValue(key, BaseContent.BadTex), iconColor: Color.white));
+            }
 
-				foreach (string key in Resources.CustomIcons.Keys)
-				{
-					options.Add(new FloatMenuOption(key, delegate
-					{
-						iconName = key;
-					}, itemIcon: Resources.CustomIcons.TryGetValue(key, BaseContent.BadTex), iconColor: Color.white));
-				}
-				Find.WindowStack.Add(new FloatMenu(options));
-			}
+            Find.WindowStack.Add(new FloatMenu(menuOptions));
+        }
 
-			// Reset and Submit Buttons
-			if (Widgets.ButtonText(leftButtonRect, "TR_titleeditor_reset".Translate(), false, overrideTextAnchor: TextAnchor.MiddleCenter))
-			{
-				ResetTitleOverride();
-				Messages.Message("Resetting Title", MessageTypeDefOf.NeutralEvent, false);
-			}
+        // Reset and Submit Buttons
+        if (Widgets.ButtonText(leftButtonRect, "TR_titleeditor_reset".Translate(), false,
+                overrideTextAnchor: TextAnchor.MiddleCenter))
+        {
+            ResetTitleOverride();
+            Messages.Message("Resetting Title", MessageTypeDefOf.NeutralEvent, false);
+        }
 
-			if (Widgets.ButtonText(rightButtonRect, "TR_titleeditor_submit".Translate(), false, overrideTextAnchor: TextAnchor.MiddleCenter))
-			{
-				TrySubmitTitleChanges();
-				Close(true);
-			}
-		}
-			
-	public void DrawListing(Rect contentRect, Listing_Standard listingStandard)
-	{
-			listingStandard.Begin(contentRect);
+        if (Widgets.ButtonText(rightButtonRect, "TR_titleeditor_submit".Translate(), false,
+                overrideTextAnchor: TextAnchor.MiddleCenter))
+        {
+            TrySubmitTitleChanges();
+            Close(true);
+        }
+    }
 
-			// Title Labels
-			var namesRect = listingStandard.GetRect(35 + Text.CalcHeight("TR_titleeditor_title".Translate(), contentRect.width) + 10);
-			DoTitleNamesRow(namesRect);
-			listingStandard.Gap(GenUI.GapSmall);
+    public void DrawListing(Rect contentRect, Listing_Standard listingStandard)
+    {
+        listingStandard.Begin(contentRect);
 
-			// Dropdowns
-			var dropdownRect = listingStandard.GetRect(35);
-			DoTiersAndExpectationsDropdowns(dropdownRect);
-			listingStandard.Gap(GenUI.GapSmall);
+        // Title Labels
+        var namesRect = listingStandard.GetRect(35 + Text.CalcHeight("TR_titleeditor_title".Translate(), contentRect.width) + 10);
+        DoTitleNamesRow(namesRect);
+        listingStandard.Gap(GenUI.GapSmall);
 
-			// Checkbox Settings
-			listingStandard.Gap(GenUI.GapSmall / 2);
+        // Dropdowns
+        var dropdownRect = listingStandard.GetRect(35);
+        DoTiersAndExpectationsDropdowns(dropdownRect);
+        listingStandard.Gap(GenUI.GapSmall);
 
-			Text.Anchor = TextAnchor.MiddleCenter;
-			listingStandard.Label("TR_titleeditor_checkboxes_label".Translate());
-			Text.Anchor = TextAnchor.UpperLeft;
+        // Checkbox Settings
+        listingStandard.Gap(GenUI.GapSmall / 2);
 
-			listingStandard.Gap(GenUI.GapSmall / 2);
+        Text.Anchor = TextAnchor.MiddleCenter;
+        listingStandard.Label("TR_titleeditor_checkboxes_label".Translate());
+        Text.Anchor = TextAnchor.UpperLeft;
 
-			var checkboxRect = listingStandard.GetRect(28);
-			DoDoubleCheckboxRow(checkboxRect, "TR_titleeditor_checkbox_inheritable".Translate(), ref isInheritable, 
-									          "TR_titleeditor_checkbox_allowmeditationfocus".Translate(), ref allowDignifiedMeditation);
+        listingStandard.Gap(GenUI.GapSmall / 2);
 
-			// End the List
-			listingStandard.End();
-		}
+        var checkboxRect = listingStandard.GetRect(28);
+        DoDoubleCheckboxRow(checkboxRect, "TR_titleeditor_checkbox_inheritable".Translate(), ref isInheritable,
+            "TR_titleeditor_checkbox_allowmeditationfocus".Translate(), ref allowDignifiedMeditation);
 
-	private void DoTiersAndExpectationsDropdowns(Rect dropdownRect)
-	{
-			var titleTiersRect = dropdownRect.LeftHalf();
-			var minExpectationsRect = dropdownRect.RightHalf();
+        // End the List
+        listingStandard.End();
+    }
 
-			titleTiersRect.width -= 8;
-			minExpectationsRect.width -= 8;
-			minExpectationsRect.x += 4;
+    private void DoTiersAndExpectationsDropdowns(Rect dropdownRect)
+    {
+        var titleTiersRect = dropdownRect.LeftHalf();
+        var minExpectationsRect = dropdownRect.RightHalf();
 
-			TooltipHandler.TipRegion(titleTiersRect, new TipSignal("TR_titleeditor_titletier_tooltip".Translate()));
-			TooltipHandler.TipRegion(minExpectationsRect, new TipSignal("TR_titleeditor_expectations_tooltip".Translate()));
+        titleTiersRect.width -= 8;
+        minExpectationsRect.width -= 8;
+        minExpectationsRect.x += 4;
 
-			if (Widgets.ButtonText(titleTiersRect, "TR_titleeditor_titletier".Translate(this.titleTier.ToString() ?? "None")))
-			{
-				List<FloatMenuOption> options = new List<FloatMenuOption>();
-				foreach(var tier in Utilities.TitleTiers)
-				{
-					options.Add(new FloatMenuOption(tier.ToString(), delegate
-					{
-						titleTier = tier;
-					}));
-				}
-				Find.WindowStack.Add(new FloatMenu(options));
-			}
-			if (Widgets.ButtonText(minExpectationsRect, "TR_titleeditor_expectations".Translate(this.minExpectation.ToStringSafe())))
-			{
-				List<FloatMenuOption> options = new List<FloatMenuOption>();
-				foreach (var expectation in DefDatabase<ExpectationDef>.AllDefsListForReading)
-				{
-					options.Add(new FloatMenuOption(expectation.LabelCap, delegate
-					{
-						minExpectation = expectation;
-					}));
-				}
-				Find.WindowStack.Add(new FloatMenu(options));
-			}
-		}
+        TooltipHandler.TipRegion(titleTiersRect, new TipSignal("TR_titleeditor_titletier_tooltip".Translate()));
+        TooltipHandler.TipRegion(minExpectationsRect, new TipSignal("TR_titleeditor_expectations_tooltip".Translate()));
 
-	private void DoTitleNamesRow(Rect namesRect)
-	{
-			// Labels
-			var labelsRect = namesRect.TopPartPixels(namesRect.height - 35 - (GenUI.GapSmall / 2));
-			labelsRect.y += GenUI.GapSmall / 2;
-			var maleLabelRect = labelsRect.LeftHalf();
-			var femaleLabelRect = labelsRect.RightHalf();
+        if (Widgets.ButtonText(titleTiersRect,
+                "TR_titleeditor_titletier".Translate(this.titleTier.ToString() ?? "None")))
+        {
+            var menuOptions = new List<FloatMenuOption>();
+            foreach (TitleTiers tier in Enum.GetValues(typeof(TitleTiers)))
+            {
+                menuOptions.Add(new FloatMenuOption(tier.ToString(), delegate { titleTier = tier; }));
+            }
 
-			Text.Anchor = TextAnchor.MiddleCenter;
-			Widgets.Label(maleLabelRect, "TR_titleeditor_title".Translate());
-			Widgets.Label(femaleLabelRect, "TR_titleeditor_titlefemale".Translate());
-			Text.Anchor = TextAnchor.UpperLeft;
+            Find.WindowStack.Add(new FloatMenu(menuOptions));
+        }
 
-			// Input Rects
-			var textFieldsRect = namesRect.BottomPartPixels(35);
-			var maleNameRect = textFieldsRect.LeftHalf();
-			var femaleNameRect = textFieldsRect.RightHalf();
+        if (Widgets.ButtonText(minExpectationsRect,
+                "TR_titleeditor_expectations".Translate(this.minExpectation.ToStringSafe())))
+        {
+            List<FloatMenuOption> options = new List<FloatMenuOption>();
+            foreach (var expectation in DefDatabase<ExpectationDef>.AllDefsListForReading)
+            {
+                options.Add(new FloatMenuOption(expectation.LabelCap, delegate { minExpectation = expectation; }));
+            }
 
-			maleNameRect.width -= 8;
-			femaleNameRect.width -= 8;
-			femaleNameRect.x += 4;
+            Find.WindowStack.Add(new FloatMenu(options));
+        }
+    }
 
-			// Tooltips
-			TooltipHandler.TipRegion(maleNameRect, new TipSignal("TR_titleeditor_title_tooltip".Translate()));
-			TooltipHandler.TipRegion(femaleNameRect, new TipSignal("TR_titleeditor_titlefemale_tooltip".Translate()));
+    private void DoTitleNamesRow(Rect namesRect)
+    {
+        // Labels
+        var labelsRect = namesRect.TopPartPixels(namesRect.height - 35 - (GenUI.GapSmall / 2));
+        labelsRect.y += GenUI.GapSmall / 2;
+        var maleLabelRect = labelsRect.LeftHalf();
+        var femaleLabelRect = labelsRect.RightHalf();
 
-			// User Input
-			curName = Widgets.TextField(maleNameRect, curName, MaxNameLength);
-			curNameFemale = Widgets.TextField(femaleNameRect, curNameFemale, MaxNameLength);
-			newName = curName?.Trim();
-			newNameFemale = curNameFemale?.Trim();
-		}
+        Text.Anchor = TextAnchor.MiddleCenter;
+        Widgets.Label(maleLabelRect, "TR_titleeditor_title".Translate());
+        Widgets.Label(femaleLabelRect, "TR_titleeditor_titlefemale".Translate());
+        Text.Anchor = TextAnchor.UpperLeft;
 
-	private void DoDoubleCheckboxRow(Rect checkboxRect, string checkbox1Label, ref bool checkbox1Value, string checkbox2Label, ref bool checkbox2Value)
-	{
-			var leftRect = checkboxRect.LeftHalf();
-			var rightRect = checkboxRect.RightHalf();
+        // Input Rects
+        var textFieldsRect = namesRect.BottomPartPixels(35);
+        var maleNameRect = textFieldsRect.LeftHalf();
+        var femaleNameRect = textFieldsRect.RightHalf();
 
-			leftRect.width -= 8;
-			rightRect.width -= 8;
-			rightRect.x += 4;
+        maleNameRect.width -= 8;
+        femaleNameRect.width -= 8;
+        femaleNameRect.x += 4;
 
-			Widgets.CheckboxLabeled(leftRect, checkbox1Label, ref checkbox1Value, placeCheckboxNearText: false);
-			Widgets.CheckboxLabeled(rightRect, checkbox2Label, ref checkbox2Value, placeCheckboxNearText: false);
-		}
+        // Tooltips
+        TooltipHandler.TipRegion(maleNameRect, new TipSignal("TR_titleeditor_title_tooltip".Translate()));
+        TooltipHandler.TipRegion(femaleNameRect, new TipSignal("TR_titleeditor_titlefemale_tooltip".Translate()));
 
-	private bool NameIsValid(string name, bool female = false)
-	{
-			if ((!female && name.Length == 0) || name.Length > MaxNameLength || GrammarResolver.ContainsSpecialChars(name))
-			{
-				return false;
-			}
-			return true;
-		}
+        // User Input
+        curName = Widgets.TextField(maleNameRect, curName, MaxNameLength);
+        curNameFemale = Widgets.TextField(femaleNameRect, curNameFemale, MaxNameLength);
+        newName = curName?.Trim();
+        newNameFemale = curNameFemale?.Trim();
+    }
 
+    private void DoDoubleCheckboxRow(Rect checkboxRect, string checkbox1Label, ref bool checkbox1Value,
+        string checkbox2Label, ref bool checkbox2Value)
+    {
+        var leftRect = checkboxRect.LeftHalf();
+        var rightRect = checkboxRect.RightHalf();
 
-	/* APPLY METHODS */
-	private void ResetTitleOverride()
-	{
-			originalOverrides = new RoyalTitleOverride();
-			TRComponent.SaveTitleChange(titleDef, originalOverrides);
-			SetDefaultVariables();
-		}
+        leftRect.width -= 8;
+        rightRect.width -= 8;
+        rightRect.x += 4;
 
-	private bool TrySubmitTitleChanges()
-	{
-			/* LABELS */
-			if (!NameIsValid(newName))
-			{
-				Messages.Message("Titular Royalty: Male Title is Invalid, is it nothing?, is it over 64 characters or contains special characters?", MessageTypeDefOf.RejectInput, false);
-				return false;
-			}
-			if (!NameIsValid(newNameFemale, true))
-			{
-				Messages.Message("Titular Royalty: Female Title is Invalid, is it over 64 characters or contains special characters?", MessageTypeDefOf.RejectInput, false);
-				return false;
-			}
+        Widgets.CheckboxLabeled(leftRect, checkbox1Label, ref checkbox1Value, placeCheckboxNearText: false);
+        Widgets.CheckboxLabeled(rightRect, checkbox2Label, ref checkbox2Value, placeCheckboxNearText: false);
+    }
 
-			originalOverrides.label = newName;
-
-			if (newNameFemale == string.Empty)
-			{
-				originalOverrides.labelFemale = "None";
-			}
-			else
-			{
-				originalOverrides.labelFemale = newNameFemale;
-			}
+    private bool NameIsValid(string name, bool femaleTitle = false)
+    {
+        if ((!femaleTitle && name.Length == 0) || name.Length > MaxNameLength || GrammarResolver.ContainsSpecialChars(name))
+            return false;
+        
+        return true;
+    }
 
 
-			/* OTHER */
-			originalOverrides.iconName = iconName.NullOrEmpty() ? originalOverrides.iconName ?? null : iconName;
-			originalOverrides.TRInheritable = isInheritable;
-			originalOverrides.titleTier = titleTier;
-			originalOverrides.allowDignifiedMeditationFocus = allowDignifiedMeditation;
-			originalOverrides.minExpectation = minExpectation ?? ExpectationDefOf.Low;
+    /* APPLY METHODS */
+    private void ResetTitleOverride()
+    {
+        originalOverrides = new RoyalTitleOverride();
+        TRComponent.SaveTitleChange(titleDef, originalOverrides);
+        SetDefaultVariables();
+    }
 
-			TRComponent.SetupTitle(titleDef);
-			Messages.Message("Titular Royalty: Change Title Success", MessageTypeDefOf.NeutralEvent, false);
+    private bool TrySubmitTitleChanges()
+    {
+        /* LABELS */
+        if (!NameIsValid(newName))
+        {
+            Messages.Message("Titular Royalty: Male Title is Invalid, is it nothing?, is it over 64 characters or contains special characters?",
+                MessageTypeDefOf.RejectInput, false);
+            return false;
+        }
+        if (!NameIsValid(newNameFemale, femaleTitle: true))
+        {
+            Messages.Message("Titular Royalty: Female Title is Invalid, is it over 64 characters or contains special characters?",
+                MessageTypeDefOf.RejectInput, false);
+            return false;
+        }
 
-			return true;
-		}
+        originalOverrides.label = newName;
+        originalOverrides.labelFemale = newNameFemale == string.Empty ? "None" : newNameFemale;
 
+        /* OTHER */
+        originalOverrides.iconName = iconName.NullOrEmpty() ? originalOverrides.iconName : iconName;
+        originalOverrides.TRInheritable = isInheritable;
+        originalOverrides.titleTier = titleTier;
+        originalOverrides.allowDignifiedMeditationFocus = allowDignifiedMeditation;
+        originalOverrides.minExpectation = minExpectation ?? ExpectationDefOf.Low;
+
+        TRComponent.SetupTitle(titleDef);
+        Messages.Message("Titular Royalty: Change Title Success", MessageTypeDefOf.NeutralEvent, false);
+
+        return true;
+    }
 }
