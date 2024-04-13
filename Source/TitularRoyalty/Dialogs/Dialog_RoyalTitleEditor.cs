@@ -1,34 +1,34 @@
 ﻿using UnityEngine;
 using Verse.Grammar;
 
-namespace TitularRoyalty
+namespace TitularRoyalty;
+
+public class Dialog_RoyalTitleEditor : Window
 {
-	public class Dialog_RoyalTitleEditor : Window
+	public override Vector2 InitialSize => new Vector2(550, 410);
+
+	private int MaxNameLength => 28;
+
+	private string curName;
+	private string curNameFemale;
+	private string newName;
+	private string newNameFemale;
+
+	private bool isInheritable;
+	private bool allowDignifiedMeditation;
+
+	private string iconName;
+
+	private ExpectationDef minExpectation;
+	private TitleTiers titleTier;
+
+	private GameComponent_TitularRoyalty TRComponent;
+	private PlayerTitleDef titleDef;
+	private RoyalTitleOverride originalOverrides;
+	private Dialog_ManageTitles manageTitles;
+
+	public Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty trComponent, PlayerTitleDef titleDef, Dialog_ManageTitles manageTitles)
 	{
-		public override Vector2 InitialSize => new Vector2(550, 410);
-
-		private int MaxNameLength => 28;
-
-		private string curName;
-		private string curNameFemale;
-		private string newName;
-		private string newNameFemale;
-
-		private bool isInheritable;
-		private bool allowDignifiedMeditation;
-
-		private string iconName;
-
-		private ExpectationDef minExpectation;
-		private TitleTiers titleTier;
-
-		private GameComponent_TitularRoyalty TRComponent;
-		private PlayerTitleDef titleDef;
-		private RoyalTitleOverride originalOverrides;
-		private Dialog_ManageTitles manageTitles;
-
-		public Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty trComponent, PlayerTitleDef titleDef, Dialog_ManageTitles manageTitles)
-		{
 			doCloseX = true;
 			forcePause = true;
 			draggable = true;
@@ -48,8 +48,8 @@ namespace TitularRoyalty
 			SetDefaultVariables();
 		}
 
-		public override void PreClose()
-		{
+	public override void PreClose()
+	{
 			base.PreClose();
 			if (manageTitles != null)
 			{
@@ -57,8 +57,8 @@ namespace TitularRoyalty
 			}
 		}
 
-		public void SetDefaultVariables()
-		{
+	public void SetDefaultVariables()
+	{
 
 			if (originalOverrides.label == "None" || originalOverrides.label == null)
 			{
@@ -86,8 +86,8 @@ namespace TitularRoyalty
 			titleTier = originalOverrides.titleTier ?? titleDef.titleTier;
 		}
 
-		public override void DoWindowContents(Rect inRect)
-		{
+	public override void DoWindowContents(Rect inRect)
+	{
 			/* TITLE */
 			Rect titleRect = new Rect(4, 0, inRect.width - 8, 40);
 
@@ -157,8 +157,8 @@ namespace TitularRoyalty
 			}
 		}
 			
-		public void DrawListing(Rect contentRect, Listing_Standard listingStandard)
-		{
+	public void DrawListing(Rect contentRect, Listing_Standard listingStandard)
+	{
 			listingStandard.Begin(contentRect);
 
 			// Title Labels
@@ -188,8 +188,8 @@ namespace TitularRoyalty
 			listingStandard.End();
 		}
 
-		private void DoTiersAndExpectationsDropdowns(Rect dropdownRect)
-		{
+	private void DoTiersAndExpectationsDropdowns(Rect dropdownRect)
+	{
 			var titleTiersRect = dropdownRect.LeftHalf();
 			var minExpectationsRect = dropdownRect.RightHalf();
 
@@ -226,8 +226,8 @@ namespace TitularRoyalty
 			}
 		}
 
-		private void DoTitleNamesRow(Rect namesRect)
-		{
+	private void DoTitleNamesRow(Rect namesRect)
+	{
 			// Labels
 			var labelsRect = namesRect.TopPartPixels(namesRect.height - 35 - (GenUI.GapSmall / 2));
 			labelsRect.y += GenUI.GapSmall / 2;
@@ -259,8 +259,8 @@ namespace TitularRoyalty
 			newNameFemale = curNameFemale?.Trim();
 		}
 
-		private void DoDoubleCheckboxRow(Rect checkboxRect, string checkbox1Label, ref bool checkbox1Value, string checkbox2Label, ref bool checkbox2Value)
-		{
+	private void DoDoubleCheckboxRow(Rect checkboxRect, string checkbox1Label, ref bool checkbox1Value, string checkbox2Label, ref bool checkbox2Value)
+	{
 			var leftRect = checkboxRect.LeftHalf();
 			var rightRect = checkboxRect.RightHalf();
 
@@ -272,8 +272,8 @@ namespace TitularRoyalty
 			Widgets.CheckboxLabeled(rightRect, checkbox2Label, ref checkbox2Value, placeCheckboxNearText: false);
 		}
 
-		private bool NameIsValid(string name, bool female = false)
-		{
+	private bool NameIsValid(string name, bool female = false)
+	{
 			if ((!female && name.Length == 0) || name.Length > MaxNameLength || GrammarResolver.ContainsSpecialChars(name))
 			{
 				return false;
@@ -282,16 +282,16 @@ namespace TitularRoyalty
 		}
 
 
-		/* APPLY METHODS */
-		private void ResetTitleOverride()
-		{
+	/* APPLY METHODS */
+	private void ResetTitleOverride()
+	{
 			originalOverrides = new RoyalTitleOverride();
 			TRComponent.SaveTitleChange(titleDef, originalOverrides);
 			SetDefaultVariables();
 		}
 
-		private bool TrySubmitTitleChanges()
-		{
+	private bool TrySubmitTitleChanges()
+	{
 			/* LABELS */
 			if (!NameIsValid(newName))
 			{
@@ -329,5 +329,4 @@ namespace TitularRoyalty
 			return true;
 		}
 
-	}
 }

@@ -3,76 +3,75 @@
 using UnityEngine;
 using JetBrains.Annotations;
 
-namespace TitularRoyalty
+namespace TitularRoyalty;
+
+[UsedImplicitly]
+public class RealmTypeDef : Def
 {
-    [UsedImplicitly]
-    public class RealmTypeDef : Def
+    public enum GovernmentType
     {
-        public enum GovernmentType
-        {
-            Monarchy,
-            Communist
-        }
+        Monarchy,
+        Communist
+    }
 
-		public GovernmentType governmentType = GovernmentType.Monarchy;
+    public GovernmentType governmentType = GovernmentType.Monarchy;
         
-        public List<RoyalTitleOverride> titleOverrides;
-        public Dictionary<PlayerTitleDef, RoyalTitleOverride> TitlesWithOverrides
+    public List<RoyalTitleOverride> titleOverrides;
+    public Dictionary<PlayerTitleDef, RoyalTitleOverride> TitlesWithOverrides
+    {
+        get
         {
-            get
+            if (!titleOverrides.NullOrEmpty())
             {
-                if (!titleOverrides.NullOrEmpty())
-                {
-                    return titleOverrides.ToDictionary(x => x.titleDef, x => x);
-                }
-                return new Dictionary<PlayerTitleDef, RoyalTitleOverride>();
+                return titleOverrides.ToDictionary(x => x.titleDef, x => x);
             }
+            return new Dictionary<PlayerTitleDef, RoyalTitleOverride>();
         }
+    }
 
-        public string iconPath;
-        private Texture2D icon;
-        public Texture2D Icon
+    public string iconPath;
+    private Texture2D icon;
+    public Texture2D Icon
+    {
+        get
         {
-            get
-            {
-                return icon ??= ContentFinder<Texture2D>.Get(iconPath ?? string.Empty, false) ?? Resources.CrownIcon;
-            }
+            return icon ??= ContentFinder<Texture2D>.Get(iconPath ?? string.Empty, false) ?? Resources.CrownIcon;
         }
+    }
 
-        private List<Texture2D> tierIconOverridesTex;
-        public List<Texture2D> TierIconOverridesTex
+    private List<Texture2D> tierIconOverridesTex;
+    public List<Texture2D> TierIconOverridesTex
+    {
+        get
         {
-            get
+            if (tierIconOverridesTex.NullOrEmpty())
             {
-                if (tierIconOverridesTex.NullOrEmpty())
+                tierIconOverridesTex = new List<Texture2D>();
+                foreach(string str in tierIconOverrides)
                 {
-                    tierIconOverridesTex = new List<Texture2D>();
-                    foreach(string str in tierIconOverrides)
+                    Resources.CustomIcons.TryGetValue(str, out Texture2D texture);
+                    if (texture == null)
                     {
-                        Resources.CustomIcons.TryGetValue(str, out Texture2D texture);
-                        if (texture == null)
-                        {
-                            Log.Warning($"tierIconOverrides for {this.defName} are invalid: \n{tierIconOverrides.ToStringSafe()}\n{Resources.CustomIcons.ToStringFullContents()}");
-                            return null;
-                        }
-                        else
-                        {
-                            tierIconOverridesTex.Add(texture);
-                        }
+                        Log.Warning($"tierIconOverrides for {this.defName} are invalid: \n{tierIconOverrides.ToStringSafe()}\n{Resources.CustomIcons.ToStringFullContents()}");
+                        return null;
+                    }
+                    else
+                    {
+                        tierIconOverridesTex.Add(texture);
                     }
                 }
-                return tierIconOverridesTex;
             }
+            return tierIconOverridesTex;
         }
-		public List<string> tierIconOverrides;
+    }
+    public List<string> tierIconOverrides;
 
-		public override IEnumerable<string> ConfigErrors()
+    public override IEnumerable<string> ConfigErrors()
+    {
+        foreach (string item in base.ConfigErrors())
         {
-            foreach (string item in base.ConfigErrors())
-            {
-                yield return item;
-            }
-
+            yield return item;
         }
+
     }
 }
