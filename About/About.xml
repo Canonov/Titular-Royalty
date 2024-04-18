@@ -3,6 +3,7 @@
   <name>Titular Royalty</name>
   <packageId>Canon.TitularRoyalty</packageId>
   <author>Canon</author>
+  <modVersion>1.8.0</modVersion>
   <supportedVersions>
     <li>1.4</li>
     <li>1.5</li>
