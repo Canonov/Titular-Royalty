@@ -172,13 +172,13 @@ public class Dialog_ManageTitles : Window
         RealmTypeButtonRect = RealmTypeRect.RightHalf().ContractedBy(4);
         var realmTypeOptions = new List<FloatMenuOption>();
             
-        if (Widgets.ButtonText(RealmTypeButtonRect, TRComponent.RealmTypeDef.label, active: !titleEditorOpen)) 
+        if (Widgets.ButtonText(RealmTypeButtonRect, TRComponent.realmTypeDef.label, active: !titleEditorOpen)) 
         {
             foreach (var realmTypeDef in DefDatabase<RealmTypeDef>.AllDefsListForReading)
             {
                 realmTypeOptions.Add(new FloatMenuOption(realmTypeDef.label, delegate
                 {
-                    TRComponent.RealmTypeDefName = realmTypeDef.defName;
+                    TRComponent.realmTypeDef = realmTypeDef;
                     Messages.Message("TR_realmtypechanged_notify".Translate(), MessageTypeDefOf.NeutralEvent);
                 }, realmTypeDef.Icon ? realmTypeDef.Icon : BaseContent.BadTex, Color.white));   
             }

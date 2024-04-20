@@ -8,14 +8,8 @@ namespace TitularRoyalty;
 [UsedImplicitly]
 public class RealmTypeDef : Def
 {
-    public enum GovernmentType
-    {
-        Monarchy,
-        Communist
-    }
-
-    public GovernmentType governmentType = GovernmentType.Monarchy;
-        
+    
+    [UsedImplicitly] 
     public List<RoyalTitleOverride> titleOverrides;
     public Dictionary<PlayerTitleDef, RoyalTitleOverride> TitlesWithOverrides
     {
@@ -31,47 +25,34 @@ public class RealmTypeDef : Def
 
     public string iconPath;
     private Texture2D icon;
-    public Texture2D Icon
-    {
-        get
-        {
-            return icon ??= ContentFinder<Texture2D>.Get(iconPath ?? string.Empty, false) ?? Resources.CrownIcon;
-        }
-    }
+    public Texture2D Icon => icon ??= ContentFinder<Texture2D>.Get(iconPath ?? string.Empty, false) ?? Resources.CrownIcon;
 
     private List<Texture2D> tierIconOverridesTex;
     public List<Texture2D> TierIconOverridesTex
     {
         get
         {
-            if (tierIconOverridesTex.NullOrEmpty())
+            if (!tierIconOverridesTex.NullOrEmpty()) 
+                return tierIconOverridesTex;
+            
+            tierIconOverridesTex = new List<Texture2D>();
+            foreach(string str in tierIconOverrides)
             {
-                tierIconOverridesTex = new List<Texture2D>();
-                foreach(string str in tierIconOverrides)
+                Resources.CustomIcons.TryGetValue(str, out var texture);
+                if (texture == null)
                 {
-                    Resources.CustomIcons.TryGetValue(str, out Texture2D texture);
-                    if (texture == null)
-                    {
-                        Log.Warning($"tierIconOverrides for {this.defName} are invalid: \n{tierIconOverrides.ToStringSafe()}\n{Resources.CustomIcons.ToStringFullContents()}");
-                        return null;
-                    }
-                    else
-                    {
-                        tierIconOverridesTex.Add(texture);
-                    }
+                    Log.Warning($"tierIconOverrides for {this.defName} are invalid: \n{tierIconOverrides.ToStringSafe()}\n{Resources.CustomIcons.ToStringFullContents()}");
+                    return null;
+                }
+                else
+                {
+                    tierIconOverridesTex.Add(texture);
                 }
             }
             return tierIconOverridesTex;
         }
     }
+    [UsedImplicitly] 
     public List<string> tierIconOverrides;
-
-    public override IEnumerable<string> ConfigErrors()
-    {
-        foreach (string item in base.ConfigErrors())
-        {
-            yield return item;
-        }
-
-    }
+    
 }

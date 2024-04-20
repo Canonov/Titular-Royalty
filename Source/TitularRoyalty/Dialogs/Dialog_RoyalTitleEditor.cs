@@ -135,7 +135,7 @@ public class Dialog_RoyalTitleEditor : Window
             var menuOptions = new List<FloatMenuOption>
             {
                 new FloatMenuOption("Default", delegate { iconName = null; },
-                    itemIcon: Resources.GetTitleIcon(titleTier, TRComponent.RealmTypeDef), iconColor: Color.white)
+                    itemIcon: Resources.GetTitleIcon(titleTier, TRComponent.realmTypeDef), iconColor: Color.white)
             };
             foreach (string key in Resources.CustomIcons.Keys)
             {

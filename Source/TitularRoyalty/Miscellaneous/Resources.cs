@@ -48,7 +48,7 @@ public class Resources
 
 	public static Texture2D GetTitleIcon(PlayerTitleDef playerTitleDef, GameComponent_TitularRoyalty TRComponent)
 	{
-		if (TRComponent.RealmTypeDef.TitlesWithOverrides.TryGetValue(playerTitleDef, out var titleOverride) && titleOverride.RTIconOverride != null)
+		if (TRComponent.realmTypeDef.TitlesWithOverrides.TryGetValue(playerTitleDef, out var titleOverride) && titleOverride.RTIconOverride != null)
 		{
 			return titleOverride.RTIconOverride;
 		}
@@ -67,7 +67,7 @@ public class Resources
 		}
 
 		return GetTitleIcon(playerTitleDef.titleTier,
-			Current.Game.GetComponent<GameComponent_TitularRoyalty>().RealmTypeDef);
+			Current.Game.GetComponent<GameComponent_TitularRoyalty>().realmTypeDef);
 	}
 
 

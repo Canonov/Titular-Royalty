@@ -7,24 +7,10 @@ namespace TitularRoyalty;
 [UsedImplicitly]
 public class GameComponent_TitularRoyalty : GameComponent
 {
-
     public static GameComponent_TitularRoyalty Current { get; private set; }
-
     public GameComponent_TitularRoyalty(Game game) { Current = this; } // Needs this or else Rimworld throws a fit and errors.
-
-    private string realmTypeDefName;
-    public string RealmTypeDefName
-    {
-        get { return realmTypeDefName ??= "RealmType_Kingdom"; }
-        set
-        {
-            realmTypeDefName = value;
-            realmTypeDef = null;
-        }
-    }
-
-    private RealmTypeDef realmTypeDef;
-    public RealmTypeDef RealmTypeDef => realmTypeDef ??= DefDatabase<RealmTypeDef>.GetNamed(RealmTypeDefName, false);
+    
+    public RealmTypeDef realmTypeDef;
 
     // Get the Titles List in Order and Cache it
     private static List<PlayerTitleDef> titlesBySeniority;
@@ -55,7 +41,7 @@ public class GameComponent_TitularRoyalty : GameComponent
         }
 
         // Realm Type, if there is no Custom title.
-        if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out var realmTypeOverrides))
+        if (realmTypeDef.TitlesWithOverrides.TryGetValue(title, out var realmTypeOverrides))
             ApplyTitleOverridesTo(title, realmTypeOverrides); // Found one
         else
             ApplyTitleOverridesTo(title, title.originalTitleFields); // No override found, create a default one.
@@ -122,18 +108,23 @@ public class GameComponent_TitularRoyalty : GameComponent
     /// <summary>
     /// Code to be run on both loading or starting a new game
     /// </summary>
-    private void OnGameStart()
+    private void OnGameStart(bool newGame)
     {
-        Current = this;
-
         SetupAllTitles();
+        Current = this;
         Faction.OfPlayer.allowGoodwillRewards = false;
         Faction.OfPlayer.allowRoyalFavorRewards = false;
         StartupSetup.ApplyModSettings();
+
+        if (realmTypeDef == null)
+        {
+            if (newGame) Log.Warning("Realm Type Def was not found, resetting to kingdom, if you are updating to TR 1.9, ignore this.");
+            realmTypeDef = DefDatabase<RealmTypeDef>.GetNamed("RealmType_Kingdom");
+        }
     }
 
-    public override void LoadedGame() => OnGameStart();
-    public override void StartedNewGame() => OnGameStart();
+    public override void LoadedGame() => OnGameStart(false);
+    public override void StartedNewGame() => OnGameStart(true);
 
     /// <summary>
     /// Saves & Loads the title data, if updating from a TR 1.1 save or the values are otherwise not found, generate new ones
@@ -141,7 +132,7 @@ public class GameComponent_TitularRoyalty : GameComponent
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_Values.Look(ref realmTypeDefName, "realmTypeDefName", "RealmType_Kingdom");
+        Scribe_Defs.Look(ref realmTypeDef, "realmType");
         Scribe_Collections.Look(ref customTitles, "TRCustomTitles", LookMode.Def, LookMode.Deep, ref customTitles_List1, ref customTitles_List2);
     }
 
