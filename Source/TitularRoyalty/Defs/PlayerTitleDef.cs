@@ -5,7 +5,7 @@ namespace TitularRoyalty;
 public class PlayerTitleDef : RoyalTitleDef
 {
     public string iconName;
-    public bool TRInheritable = false;
+    public bool TRInheritable;
     public TitleTiers titleTier = TitleTiers.Lowborn;
 
     public RoyalTitleOverride originalTitleFields; // Assigned via StartupSetup

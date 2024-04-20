@@ -19,39 +19,37 @@ public class RoyalTitleOverride : IExposable
         get
         {   
             if (rtIconOverridePath != null)
-            {
                 return RTIconOverrideTex ??= ContentFinder<Texture2D>.Get(rtIconOverridePath);
-            }
+            
             return null;
         }
     }
 
-    public bool? TRInheritable = null;
-    public bool? allowDignifiedMeditationFocus = null;
-    public bool useTierOverride = false; // Realmtype only
-    public TitleTiers? titleTier = null;
+    public bool? TRInheritable;
+    public bool? allowDignifiedMeditationFocus;
+    public TitleTiers? titleTier;
 
     public ExpectationDef minExpectation;
 
     public RoyalTitleOverride() { }
 
-    public RoyalTitleOverride(PlayerTitleDef playerTitle)
+    public RoyalTitleOverride(PlayerTitleDef cloneTitle)
     {
-        this.titleDef = playerTitle;
+        this.titleDef = cloneTitle;
 
-        this.label = playerTitle.label;
-        this.labelFemale = playerTitle.labelFemale;
+        this.label = cloneTitle.label;
+        this.labelFemale = cloneTitle.labelFemale;
 
-        this.iconName = playerTitle.iconName;
+        this.iconName = cloneTitle.iconName;
 
-        this.TRInheritable = playerTitle.TRInheritable;
-        this.allowDignifiedMeditationFocus = playerTitle.allowDignifiedMeditationFocus;
-        this.titleTier = playerTitle.titleTier;
-        this.minExpectation = playerTitle.minExpectation ?? ExpectationDefOf.ExtremelyLow;
+        this.TRInheritable = cloneTitle.TRInheritable;
+        this.allowDignifiedMeditationFocus = cloneTitle.allowDignifiedMeditationFocus;
+        this.titleTier = cloneTitle.titleTier;
+        this.minExpectation = cloneTitle.minExpectation ?? ExpectationDefOf.ExtremelyLow;
     }
 
-    public bool HasFemaleTitle() => (labelFemale != "None" && !string.IsNullOrEmpty(labelFemale));
-    public bool HasTitle() => !(label == "None" || label == null || label == string.Empty);
+    public bool HasFemaleTitle() => labelFemale != "None" && !string.IsNullOrEmpty(labelFemale);
+    public bool HasTitle() => label is not ("None" or null or "");
 
     public void ExposeData()
     {

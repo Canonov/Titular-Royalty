@@ -129,16 +129,14 @@ public class Dialog_RoyalTitleEditor : Window
         var rightButtonRect = bottomRowRect.RightHalf();
 
         // Icon
-        if (Widgets.ButtonImage(iconRect,
-                Resources.CustomIcons.TryGetValue(this.iconName ?? "", null) ??
-                Resources.GetTitleIcon(titleDef, TRComponent) ?? BaseContent.BadTex))
+        if (Widgets.ButtonImage(iconRect, Resources.CustomIcons.TryGetValue(iconName) ??
+                                          Resources.GetTitleIcon(titleDef, TRComponent) ?? BaseContent.BadTex))
         {
             var menuOptions = new List<FloatMenuOption>
             {
                 new FloatMenuOption("Default", delegate { iconName = null; },
                     itemIcon: Resources.GetTitleIcon(titleTier, TRComponent.RealmTypeDef), iconColor: Color.white)
             };
-
             foreach (string key in Resources.CustomIcons.Keys)
             {
                 menuOptions.Add(new FloatMenuOption(key, delegate { iconName = key; },
@@ -160,22 +158,22 @@ public class Dialog_RoyalTitleEditor : Window
                 overrideTextAnchor: TextAnchor.MiddleCenter))
         {
             TrySubmitTitleChanges();
-            Close(true);
+            this.Close();
         }
     }
 
-    public void DrawListing(Rect contentRect, Listing_Standard listingStandard)
+    private void DrawListing(Rect contentRect, Listing_Standard listingStandard)
     {
         listingStandard.Begin(contentRect);
 
         // Title Labels
         var namesRect = listingStandard.GetRect(35 + Text.CalcHeight("TR_titleeditor_title".Translate(), contentRect.width) + 10);
-        DoTitleNamesRow(namesRect);
+        DrawTitleNamesRow(namesRect);
         listingStandard.Gap(GenUI.GapSmall);
 
         // Dropdowns
         var dropdownRect = listingStandard.GetRect(35);
-        DoTiersAndExpectationsDropdowns(dropdownRect);
+        DrawTiersAndExpectationsDropdowns(dropdownRect);
         listingStandard.Gap(GenUI.GapSmall);
 
         // Checkbox Settings
@@ -188,14 +186,14 @@ public class Dialog_RoyalTitleEditor : Window
         listingStandard.Gap(GenUI.GapSmall / 2);
 
         var checkboxRect = listingStandard.GetRect(28);
-        DoDoubleCheckboxRow(checkboxRect, "TR_titleeditor_checkbox_inheritable".Translate(), ref isInheritable,
+        DrawDoubleCheckboxRow(checkboxRect, "TR_titleeditor_checkbox_inheritable".Translate(), ref isInheritable,
             "TR_titleeditor_checkbox_allowmeditationfocus".Translate(), ref allowDignifiedMeditation);
 
         // End the List
         listingStandard.End();
     }
 
-    private void DoTiersAndExpectationsDropdowns(Rect dropdownRect)
+    private void DrawTiersAndExpectationsDropdowns(Rect dropdownRect)
     {
         var titleTiersRect = dropdownRect.LeftHalf();
         var minExpectationsRect = dropdownRect.RightHalf();
@@ -207,32 +205,27 @@ public class Dialog_RoyalTitleEditor : Window
         TooltipHandler.TipRegion(titleTiersRect, new TipSignal("TR_titleeditor_titletier_tooltip".Translate()));
         TooltipHandler.TipRegion(minExpectationsRect, new TipSignal("TR_titleeditor_expectations_tooltip".Translate()));
 
-        if (Widgets.ButtonText(titleTiersRect,
-                "TR_titleeditor_titletier".Translate(this.titleTier.ToString() ?? "None")))
+        if (Widgets.ButtonText(titleTiersRect, "TR_titleeditor_titletier".Translate(titleTier.ToString())))
         {
-            var menuOptions = new List<FloatMenuOption>();
-            foreach (TitleTiers tier in Enum.GetValues(typeof(TitleTiers)))
-            {
-                menuOptions.Add(new FloatMenuOption(tier.ToString(), delegate { titleTier = tier; }));
-            }
+            var options = new List<FloatMenuOption>();
+            
+            foreach (TitleTiers tier in Enum.GetValues(typeof(TitleTiers))) 
+                options.Add(new FloatMenuOption(tier.ToString(), delegate { titleTier = tier; }));
 
-            Find.WindowStack.Add(new FloatMenu(menuOptions));
+            Find.WindowStack.Add(new FloatMenu(options));
         }
-
-        if (Widgets.ButtonText(minExpectationsRect,
-                "TR_titleeditor_expectations".Translate(this.minExpectation.ToStringSafe())))
+        if (Widgets.ButtonText(minExpectationsRect, "TR_titleeditor_expectations".Translate(minExpectation.ToStringSafe())))
         {
-            List<FloatMenuOption> options = new List<FloatMenuOption>();
-            foreach (var expectation in DefDatabase<ExpectationDef>.AllDefsListForReading)
-            {
+            var options = new List<FloatMenuOption>();
+            
+            foreach (var expectation in DefDatabase<ExpectationDef>.AllDefsListForReading) 
                 options.Add(new FloatMenuOption(expectation.LabelCap, delegate { minExpectation = expectation; }));
-            }
 
             Find.WindowStack.Add(new FloatMenu(options));
         }
     }
 
-    private void DoTitleNamesRow(Rect namesRect)
+    private void DrawTitleNamesRow(Rect namesRect)
     {
         // Labels
         var labelsRect = namesRect.TopPartPixels(namesRect.height - 35 - (GenUI.GapSmall / 2));
@@ -265,7 +258,7 @@ public class Dialog_RoyalTitleEditor : Window
         newNameFemale = curNameFemale?.Trim();
     }
 
-    private void DoDoubleCheckboxRow(Rect checkboxRect, string checkbox1Label, ref bool checkbox1Value,
+    private void DrawDoubleCheckboxRow(Rect checkboxRect, string checkbox1Label, ref bool checkbox1Value,
         string checkbox2Label, ref bool checkbox2Value)
     {
         var leftRect = checkboxRect.LeftHalf();
@@ -279,14 +272,13 @@ public class Dialog_RoyalTitleEditor : Window
         Widgets.CheckboxLabeled(rightRect, checkbox2Label, ref checkbox2Value, placeCheckboxNearText: false);
     }
 
-    private bool NameIsValid(string name, bool femaleTitle = false)
+    private bool IsValidName(string name, bool femaleTitle = false)
     {
         if ((!femaleTitle && name.Length == 0) || name.Length > MaxNameLength || GrammarResolver.ContainsSpecialChars(name))
             return false;
         
         return true;
     }
-
 
     /* APPLY METHODS */
     private void ResetTitleOverride()
@@ -296,20 +288,20 @@ public class Dialog_RoyalTitleEditor : Window
         SetDefaultVariables();
     }
 
-    private bool TrySubmitTitleChanges()
+    private void TrySubmitTitleChanges()
     {
         /* LABELS */
-        if (!NameIsValid(newName))
+        if (!IsValidName(newName))
         {
             Messages.Message("Titular Royalty: Male Title is Invalid, is it nothing?, is it over 64 characters or contains special characters?",
                 MessageTypeDefOf.RejectInput, false);
-            return false;
+            return;
         }
-        if (!NameIsValid(newNameFemale, femaleTitle: true))
+        if (!IsValidName(newNameFemale, femaleTitle: true))
         {
             Messages.Message("Titular Royalty: Female Title is Invalid, is it over 64 characters or contains special characters?",
                 MessageTypeDefOf.RejectInput, false);
-            return false;
+            return;
         }
 
         originalOverrides.label = newName;
@@ -324,7 +316,5 @@ public class Dialog_RoyalTitleEditor : Window
 
         TRComponent.SetupTitle(titleDef);
         Messages.Message("Titular Royalty: Change Title Success", MessageTypeDefOf.NeutralEvent, false);
-
-        return true;
     }
 }

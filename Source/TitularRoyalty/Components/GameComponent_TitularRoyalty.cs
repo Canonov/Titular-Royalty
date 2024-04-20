@@ -15,25 +15,16 @@ public class GameComponent_TitularRoyalty : GameComponent
     private string realmTypeDefName;
     public string RealmTypeDefName
     {
-        get
-        {
-            return realmTypeDefName ??= "RealmType_Kingdom";
-        }
+        get { return realmTypeDefName ??= "RealmType_Kingdom"; }
         set
         {
             realmTypeDefName = value;
             realmTypeDef = null;
         }
     }
-        
+
     private RealmTypeDef realmTypeDef;
-    public RealmTypeDef RealmTypeDef
-    {
-        get
-        {
-            return realmTypeDef ??= DefDatabase<RealmTypeDef>.GetNamed(RealmTypeDefName, false);
-        }
-    }
+    public RealmTypeDef RealmTypeDef => realmTypeDef ??= DefDatabase<RealmTypeDef>.GetNamed(RealmTypeDefName, false);
 
     // Get the Titles List in Order and Cache it
     private static List<PlayerTitleDef> titlesBySeniority;
@@ -42,11 +33,8 @@ public class GameComponent_TitularRoyalty : GameComponent
 
     // Custom Titles
     private Dictionary<PlayerTitleDef, RoyalTitleOverride> customTitles;
-    public Dictionary<PlayerTitleDef, RoyalTitleOverride> CustomTitles
-    {
-        get => customTitles ??= TitlesBySeniority.ToDictionary(x => x, x => new RoyalTitleOverride());
-        private set => customTitles = value;
-    }
+    private Dictionary<PlayerTitleDef, RoyalTitleOverride> CustomTitles 
+        => customTitles ??= TitlesBySeniority.ToDictionary(x => x, _ => new RoyalTitleOverride());
 
     // Required for ExposeData
     private List<PlayerTitleDef> customTitles_List1;
@@ -55,41 +43,30 @@ public class GameComponent_TitularRoyalty : GameComponent
     /// <summary>
     /// Passes on the Realmtype 
     /// </summary>
-    public void SetupAllTitles()
-    {
-        foreach (var title in TitlesBySeniority) 
-            SetupTitle(title);
-    }
+    public void SetupAllTitles() => TitlesBySeniority.ForEach(SetupTitle);
 
     public void SetupTitle(PlayerTitleDef title)
     {
         // Custom Title
-        if (CustomTitles.TryGetValue(title, out RoyalTitleOverride titleOverrides))
+        if (CustomTitles.TryGetValue(title, out var titleOverrides) && titleOverrides.HasTitle())
         {
-            if (titleOverrides.HasTitle())
-            {
-                ApplyTitleOverrides(title, titleOverrides);
-                return;
-            }
+            ApplyTitleOverridesTo(title, titleOverrides);
+            return;
         }
 
-        // Realm Type, if No Custom
-        if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out RoyalTitleOverride realmTypeOverrides))
-        {
-            ApplyTitleOverrides(title, realmTypeOverrides);
-        }
+        // Realm Type, if there is no Custom title.
+        if (RealmTypeDef.TitlesWithOverrides.TryGetValue(title, out var realmTypeOverrides))
+            ApplyTitleOverridesTo(title, realmTypeOverrides); // Found one
         else
-        {
-            ApplyTitleOverrides(title, title.originalTitleFields);
-        }
+            ApplyTitleOverridesTo(title, title.originalTitleFields); // No override found, create a default one.
     }
 
-    private static void ApplyTitleOverrides(PlayerTitleDef title, RoyalTitleOverride titleOverrides, bool isRealmType = false)
+    private static void ApplyTitleOverridesTo(PlayerTitleDef title, RoyalTitleOverride overrides)
     {
-        if (titleOverrides.HasTitle())
+        if (overrides.HasTitle())
         {
-            title.label = titleOverrides.label;
-            title.labelFemale = titleOverrides.HasFemaleTitle() ? titleOverrides.labelFemale : null;
+            title.label = overrides.label;
+            title.labelFemale = overrides.HasFemaleTitle() ? overrides.labelFemale : null;
         }
         else
         {
@@ -97,15 +74,15 @@ public class GameComponent_TitularRoyalty : GameComponent
             title.labelFemale = title.originalTitleFields.labelFemale;
         }
 
-        title.titleTier = titleOverrides.titleTier ?? title.originalTitleFields.titleTier ?? TitleTiers.Lowborn;
-        title.allowDignifiedMeditationFocus = titleOverrides.allowDignifiedMeditationFocus ?? title.originalTitleFields.allowDignifiedMeditationFocus ?? false;
+        title.titleTier = overrides.titleTier ?? title.originalTitleFields.titleTier ?? TitleTiers.Lowborn;
+        title.allowDignifiedMeditationFocus = overrides.allowDignifiedMeditationFocus ?? title.originalTitleFields.allowDignifiedMeditationFocus ?? false;
 
-        title.iconName = titleOverrides.iconName.NullOrEmpty() ? null : titleOverrides.iconName;
+        title.iconName = overrides.iconName.NullOrEmpty() ? null : overrides.iconName;
 
-        title.TRInheritable = titleOverrides.TRInheritable ?? title.originalTitleFields.TRInheritable ?? false;
+        title.TRInheritable = overrides.TRInheritable ?? title.originalTitleFields.TRInheritable ?? false;
         title.canBeInherited = TitularRoyaltyMod.Settings.inheritanceEnabled && title.TRInheritable;
 
-        title.minExpectation = titleOverrides.minExpectation ?? title.originalTitleFields.minExpectation ?? ExpectationDefOf.ExtremelyLow;
+        title.minExpectation = overrides.minExpectation ?? title.originalTitleFields.minExpectation ?? ExpectationDefOf.ExtremelyLow;
 
         title.ClearCachedData();
     }
@@ -130,14 +107,12 @@ public class GameComponent_TitularRoyalty : GameComponent
     public RoyalTitleOverride GetCustomTitleOverrideFor(PlayerTitleDef titleDef)
     {
         if (CustomTitles.TryGetValue(titleDef, out var titleOverride))
-        {
             return titleOverride;
-        }
+        
         Log.Error($"Titular Royalty: Could not find custom title override for {titleDef.defName} {titleDef.label}");
         return null;
     }
-
-
+    
     public void SaveTitleChange(PlayerTitleDef title, RoyalTitleOverride newOverride)
     {
         customTitles[title] = newOverride;

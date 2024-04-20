@@ -40,7 +40,7 @@ public class TitularRoyaltyMod : Mod
             postfix: new HarmonyMethod(typeof(QuestGen_Patches), nameof(QuestGen_Patches.IsGoodPawn_Postfix)));
 
         // Add a widget to the playsettings to open the Dialog_ManageTitles
-        harmony.Patch(original: AccessTools.Method(typeof(PlaySettings), "DoPlaySettingsGlobalControls", (Type[])null, (Type[])null),
+        harmony.Patch(original: AccessTools.Method(typeof(PlaySettings), "DoPlaySettingsGlobalControls"),
             postfix: new HarmonyMethod(typeof(ManageTitlesWidget), nameof(ManageTitlesWidget.AddWidget)));
             
         // Add icons to the Royal Titles
@@ -64,7 +64,7 @@ public class TitularRoyaltyMod : Mod
         listingStandard.AddHorizontalLine();
 
         //Miscellanous Toggles
-        listingStandard.Gap(12);
+        listingStandard.Gap();
 
         var miscOptionsTitleRect = listingStandard.GetRect(32);
         Text.Font = GameFont.Medium;
@@ -72,7 +72,7 @@ public class TitularRoyaltyMod : Mod
         Widgets.Label(miscOptionsTitleRect, "TR_miscoptionstitle".Translate());
         Text.Font = GameFont.Small;
         Text.Anchor = TextAnchor.UpperLeft;
-        listingStandard.Gap(12);
+        listingStandard.Gap();
 
         //First row of checkbox options
         var checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
