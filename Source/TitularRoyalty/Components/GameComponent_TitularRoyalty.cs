@@ -110,17 +110,16 @@ public class GameComponent_TitularRoyalty : GameComponent
     /// </summary>
     private void OnGameStart(bool newGame)
     {
-        SetupAllTitles();
         Current = this;
+        if (realmTypeDef == null)
+        {
+            if (!newGame) Log.Warning("Realm Type Def was not found, resetting to kingdom, if you are updating to TR 1.9, ignore this.");
+            realmTypeDef = DefDatabase<RealmTypeDef>.GetNamed("RealmType_Kingdom");
+        }
         Faction.OfPlayer.allowGoodwillRewards = false;
         Faction.OfPlayer.allowRoyalFavorRewards = false;
         StartupSetup.ApplyModSettings();
-
-        if (realmTypeDef == null)
-        {
-            if (newGame) Log.Warning("Realm Type Def was not found, resetting to kingdom, if you are updating to TR 1.9, ignore this.");
-            realmTypeDef = DefDatabase<RealmTypeDef>.GetNamed("RealmType_Kingdom");
-        }
+        SetupAllTitles();
     }
 
     public override void LoadedGame() => OnGameStart(false);
