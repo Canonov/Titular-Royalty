@@ -1,6 +1,4 @@
-﻿//using System;
-
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TitularRoyalty;
 
@@ -42,9 +40,17 @@ public class Comp_ManageTitles : ThingComp
 		}, itemIcon: Resources.CrownIcon, iconColor: Color.white);
 
 		//Set Heir Option
-		if (TitularRoyaltyMod.Settings.inheritanceEnabled == false ||
+		if (TRSettings.inheritanceEnabled == false ||
 		    (selPawnTitle = selPawn.royalty?.GetCurrentTitleInFaction(Faction.OfPlayer)?.def) == null ||
 		    !selPawnTitle.canBeInherited) yield break;
+
+		//Target pawn for selection
+		var setHeirOption = new FloatMenuOption("TR_Command_setheir_label".Translate(selPawn.Name.ToStringShort),
+			delegate { Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), SetHeirAction); });
+
+		//Return the float option
+		yield return setHeirOption;
+		yield break;
 
 		//Define action to run when selected
 		void SetHeirAction(LocalTargetInfo targetinfo)
@@ -64,12 +70,5 @@ public class Comp_ManageTitles : ThingComp
 				Messages.Message("TR_setheir_failed_sameorhighertitle".Translate(targetinfo.Pawn.Name.ToStringShort), MessageTypeDefOf.RejectInput);
 			}
 		}
-
-		//Target pawn for selection
-		var setHeirOption = new FloatMenuOption("TR_Command_setheir_label".Translate(selPawn.Name.ToStringShort),
-			delegate { Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(), SetHeirAction); });
-
-		//Return the float option
-		yield return setHeirOption;
 	}
 }

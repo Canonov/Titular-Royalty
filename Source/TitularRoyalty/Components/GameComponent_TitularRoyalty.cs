@@ -66,7 +66,7 @@ public class GameComponent_TitularRoyalty : GameComponent
         title.iconName = overrides.iconName.NullOrEmpty() ? null : overrides.iconName;
 
         title.TRInheritable = overrides.TRInheritable ?? title.originalTitleFields.TRInheritable ?? false;
-        title.canBeInherited = TitularRoyaltyMod.Settings.inheritanceEnabled && title.TRInheritable;
+        title.canBeInherited = TRSettings.inheritanceEnabled && title.TRInheritable;
 
         title.minExpectation = overrides.minExpectation ?? title.originalTitleFields.minExpectation ?? ExpectationDefOf.ExtremelyLow;
 

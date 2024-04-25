@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
 using SettingsHelper;
 using HarmonyLib;
-using JetBrains.Annotations;
-using RimWorld.QuestGen;
-using TitularRoyalty.Patches;
 
 namespace TitularRoyalty;
 
 public class TRSettings : ModSettings
 {
-    public bool inheritanceEnabled;
-    public bool clothingQualityRequirements;
+    internal static bool inheritanceEnabled;
+    internal static bool clothingQualityRequirements;
 
     public override void ExposeData()
     {
@@ -20,16 +17,11 @@ public class TRSettings : ModSettings
     }
 }
 
-[UsedImplicitly]
 public class TitularRoyaltyMod : Mod
 {
-    public static TRSettings Settings { get; private set; }
-    
     public TitularRoyaltyMod(ModContentPack content) : base(content)
     {
-        Settings = GetSettings<TRSettings>();
         Log.Message($"Loading Titular Royalty v-{content.ModMetaData.ModVersion}");
-
         ApplyPatches();
     }
     
@@ -68,8 +60,8 @@ public class TitularRoyaltyMod : Mod
 
         //First row of checkbox options
         var checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
-        checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref Settings.inheritanceEnabled);
-        checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
+        checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref TRSettings.inheritanceEnabled);
+        checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref TRSettings.clothingQualityRequirements);
         checkboxes.End();
             
         listingStandard.End();

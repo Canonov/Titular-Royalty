@@ -7,15 +7,13 @@ public class StartupSetup
 {
     public static void ApplyModSettings()
     {
-        var settings = TitularRoyaltyMod.Settings;
-
         foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
         {
             //Apply Vanilla Inheritance
             title.UpdateInheritance();
 
             //Apply Quality Requirements
-            title.requiredMinimumApparelQuality = settings.clothingQualityRequirements
+            title.requiredMinimumApparelQuality = TRSettings.clothingQualityRequirements
                 ? title.GetApparelQualityfromTier()
                 : QualityCategory.Awful;
         }
