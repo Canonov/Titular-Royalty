@@ -25,11 +25,11 @@ public class TRSettings : ModSettings
 public class TitularRoyaltyMod : Mod
 {
     public static TRSettings Settings { get; private set; }
-
-    // A mandatory constructor which resolves the reference to our settings.
+    
     public TitularRoyaltyMod(ModContentPack content) : base(content)
     {
         Settings = GetSettings<TRSettings>();
+        Log.Message($"Loading Titular Royalty v-{content.ModMetaData.ModVersion}");
 
         // Harmony Stuff
         // Use Patch Categories next harmony update?
