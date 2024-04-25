@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using SettingsHelper;
 using HarmonyLib;
+using JetBrains.Annotations;
 
 namespace TitularRoyalty;
 
+[UsedImplicitly]
 public class TRSettings : ModSettings
 {
     internal static bool inheritanceEnabled;
@@ -17,6 +19,7 @@ public class TRSettings : ModSettings
     }
 }
 
+[UsedImplicitly]
 public class TitularRoyaltyMod : Mod
 {
     public TitularRoyaltyMod(ModContentPack content) : base(content)
