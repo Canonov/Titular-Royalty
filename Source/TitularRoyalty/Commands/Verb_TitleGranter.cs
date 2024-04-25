@@ -1,7 +1,6 @@
 ﻿//using System;
 
 using Verse.AI;
-using JetBrains.Annotations;
 using UnityEngine;
 
 namespace TitularRoyalty;

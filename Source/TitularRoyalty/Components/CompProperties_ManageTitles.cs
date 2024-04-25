@@ -1,8 +1,5 @@
 ﻿//using System;
 
-using JetBrains.Annotations;
-
-
 namespace TitularRoyalty;
 
 public class CompProperties_ManageTitles : CompProperties

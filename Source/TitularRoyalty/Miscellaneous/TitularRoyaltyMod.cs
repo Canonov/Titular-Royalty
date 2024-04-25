@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using SettingsHelper;
 using HarmonyLib;
-using JetBrains.Annotations;
 
 namespace TitularRoyalty;
 

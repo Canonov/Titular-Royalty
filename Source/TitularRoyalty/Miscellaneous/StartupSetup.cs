@@ -1,6 +1,4 @@
-﻿using JetBrains.Annotations;
-
-namespace TitularRoyalty;
+﻿namespace TitularRoyalty;
 
 [StaticConstructorOnStartup, UsedImplicitly]
 public class StartupSetup
