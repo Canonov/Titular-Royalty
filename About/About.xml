@@ -24,21 +24,9 @@
     <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
     <li>OskarPotocki.VFE.Empire</li>
   </loadAfter>
-  <description>Adds titles to the player faction you can grant to your pawns with the Staff of Royalty or at Any Throne
- (VERSION 1.7) 
- - Title Editor UI available in the Manage Titles menu.
- - You can use this to override the title labels, whether it can be inherited, can use meditation focus, what icon it uses and what expectations it has.
- - Can now open the manage titles UI using the crown button on the bottom right buttons
- - You can also change the Icons the title uses, it takes any icon in Textures/TRIcons or the default for the Title Tier
- - Vanilla Factions Expanded - Empire Integrations (Sophiamundan Titleset with their Icons, All titles show icons on infocard, these require it to be active and dont include any files themselves)
- (VERSION 1.7.1) 
- - Fixed Support with VFEE (def icons)
- - Minor Code Changes
- (VERSION 1.7.2) 
- - Allowed thrones from EGI Holograms and Projectors to be used as Thrones for the highest title
- (VERSION 1.7.3) 
- - Updated to support Rimworld 1.5
- - Dropped 1.3 support, download an old version from the github if you still really need it.
+  <description>Adds titles to the player faction you can grant to your pawns with the Staff of Royalty or at Any Throne.
+    
+    v1.8.0
 </description>
 
 </ModMetaData>
