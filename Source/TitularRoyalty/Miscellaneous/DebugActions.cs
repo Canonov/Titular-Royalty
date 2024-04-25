@@ -2,7 +2,6 @@
 using System.Text;
 using LudeonTK;
 
-
 namespace TitularRoyalty;
 
 public static class DebugActions
@@ -10,29 +9,24 @@ public static class DebugActions
     [DebugAction("Titular Royalty", "TR: Edit Title", allowedGameStates = AllowedGameStates.PlayingOnMap)]
     public static void EditTitle()
     {
-        var options = DefDatabase<PlayerTitleDef>.AllDefsListForReading
-            .Select(title => new DebugMenuOption($"{title.GetLabelForBothGenders()}", DebugMenuOptionMode.Action,
-                delegate
-                {
-                    var comp = Current.Game.GetComponent<GameComponent_TitularRoyalty>();
-                    Find.WindowStack.Add(new Dialog_RoyalTitleEditor(comp, title, null));
-                }))
-            .ToList();
+        var titles = DefDatabase<PlayerTitleDef>.AllDefsListForReading;
+        var options = titles.Select(title => new DebugMenuOption(title.GetLabelForBothGenders(), DebugMenuOptionMode.Action, () => 
+            Find.WindowStack.Add(new Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty.Current, title, null))
+        ));
 
-        Find.WindowStack.Add(new Dialog_DebugOptionListLister(options));
+        Find.WindowStack.Add(new Dialog_DebugOptionListLister(options.ToList()));
     }
 
-    [DebugAction("Titular Royalty", "TR: Reset Custom Titles",
-        allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    [DebugAction("Titular Royalty", "TR: Reset Custom Titles", allowedGameStates = AllowedGameStates.PlayingOnMap)]
     public static void TryResetCustomTitles()
     {
-        Current.Game.GetComponent<GameComponent_TitularRoyalty>().ResetTitles();
+        GameComponent_TitularRoyalty.Current.ResetTitles();
     }
 
     [DebugAction("Titular Royalty", "TR: Refresh Titles", allowedGameStates = AllowedGameStates.PlayingOnMap)]
     public static void UpdateTitles()
     {
-        Current.Game.GetComponent<GameComponent_TitularRoyalty>().SetupAllTitles();
+        GameComponent_TitularRoyalty.Current.SetupAllTitles();
     }
 
     [DebugAction("Titular Royalty", "Try Apply ModSettings", allowedGameStates = AllowedGameStates.Playing)]
@@ -41,8 +35,7 @@ public static class DebugActions
         StartupSetup.ApplyModSettings();
     }
 
-    [DebugAction("Titular Royalty", "Export Titlelist to Doc",
-        allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    [DebugAction("Titular Royalty", "Export Titlelist to Doc", allowedGameStates = AllowedGameStates.PlayingOnMap)]
     public static void ExportTitlesToDoc()
     {
         var doc = new StringBuilder();
