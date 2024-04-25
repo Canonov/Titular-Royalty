@@ -39,13 +39,6 @@ public class PlayerTitleDef : RoyalTitleDef
 
     public void UpdateInheritance()
     {
-        if (TitularRoyaltyMod.Settings.inheritanceEnabled) 
-        {
-            canBeInherited = TRInheritable;
-        }
-        else
-        {
-            canBeInherited = false;
-        }
+        canBeInherited = TRSettings.inheritanceEnabled && TRInheritable;
     }
 }
