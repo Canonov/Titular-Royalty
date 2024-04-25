@@ -11,13 +11,11 @@ public class TRSettings : ModSettings
 {
     public bool inheritanceEnabled;
     public bool clothingQualityRequirements;
-    public bool titlesGivePermitPoints;
 
     public override void ExposeData()
     {
         Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", true);
         Scribe_Values.Look(ref clothingQualityRequirements, "clothingQualityRequirements", true);
-        Scribe_Values.Look(ref titlesGivePermitPoints, "titlesGivePermitPoints", true);
         base.ExposeData();
     }
 }
@@ -72,7 +70,6 @@ public class TitularRoyaltyMod : Mod
         var checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
         checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref Settings.inheritanceEnabled);
         checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref Settings.clothingQualityRequirements);
-        //Checkboxes.CheckboxLabeled("TR_checkbox_titlegivespermitpoints".Translate(), ref Settings.titlesGivePermitPoints);
         checkboxes.End();
             
         listingStandard.End();
