@@ -3,6 +3,7 @@ using SettingsHelper;
 using HarmonyLib;
 using JetBrains.Annotations;
 using RimWorld.QuestGen;
+using TitularRoyalty.Patches;
 
 namespace TitularRoyalty;
 
@@ -31,26 +32,14 @@ public class TitularRoyaltyMod : Mod
         Settings = GetSettings<TRSettings>();
         Log.Message($"Loading Titular Royalty v-{content.ModMetaData.ModVersion}");
 
-        // Harmony Stuff
-        // Use Patch Categories next harmony update?
         var harmony = new Harmony("com.TitularRoyalty.patches");
-
-        // Prevent Player pawns from giving you royalty quests
-        harmony.Patch(original: AccessTools.Method(typeof(QuestNode_GetPawn), "IsGoodPawn"),
-            postfix: new HarmonyMethod(typeof(QuestGen_Patches), nameof(QuestGen_Patches.IsGoodPawn_Postfix)));
-
-        // Add a widget to the playsettings to open the Dialog_ManageTitles
-        harmony.Patch(original: AccessTools.Method(typeof(PlaySettings), "DoPlaySettingsGlobalControls"),
-            postfix: new HarmonyMethod(typeof(ManageTitlesWidget), nameof(ManageTitlesWidget.AddWidget)));
-            
+        
         // Add icons to the Royal Titles
-        /* Temporarily disabled until compatible with 1.5
-        if (ModLister.HasActiveModWithName("Vanilla Factions Expanded - Empire"))
-        {
-            harmony.Patch(original: AccessTools.Method(typeof(Widgets), nameof(Widgets.DefIcon)),
-                prefix: new HarmonyMethod(typeof(DefIcon_RoyalIconsPrefix), "Patch"));
-        } */
-
+        if (ModLister.HasActiveModWithName("Vanilla Factions Expanded - Empire")) 
+            harmony.PatchCategory("VFEEmpire");
+        
+        // Apply Patches
+        harmony.PatchAllUncategorized();
     }
 
     //Name that shows at the top
