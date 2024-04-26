@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using LudeonTK;
+using UnityEngine;
 
 namespace TitularRoyalty;
 
@@ -39,7 +40,6 @@ public static class DebugActions
     public static void ExportTitlesToDoc()
     {
         var doc = new StringBuilder();
-
         foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
         {
             doc.AppendLine($"  <li> <!--{title.originalTitleFields.label.CapitalizeFirst()}-->");
@@ -48,8 +48,19 @@ public static class DebugActions
             doc.AppendLine($"    <labelFemale>{title.labelFemale ?? "None"}</labelFemale>");
             doc.AppendLine($"  </li>");
         }
-
-        File.WriteAllText($"RealmTypeList-{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()}.xml", doc.ToString());
-        Log.Message("Saved to your rimworld folder.");
+        
+        string exportsFolderPath = Path.Combine(GenFilePaths.ConfigFolderPath, "Titular Royalty", "Exports");
+        string filePath = Path.Combine(exportsFolderPath, $"RealmType-{Faction.OfPlayer.Name}-{Rand.Int}.xml");
+        try
+        {
+            File.WriteAllText(filePath, doc.ToString());
+            Log.Message("Saved to your rimworld folder.");
+        }
+        catch (IOException)
+        {
+            Log.Error($"Failed exporting title list, ensure you have access to write.");
+            throw;
+        }
+        
     }
 }
