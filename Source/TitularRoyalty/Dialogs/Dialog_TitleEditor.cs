@@ -3,7 +3,7 @@ using Verse.Grammar;
 
 namespace TitularRoyalty;
 
-public class Dialog_RoyalTitleEditor : Window
+public class Dialog_TitleEditor : Window
 {
     public override Vector2 InitialSize => new Vector2(550, 410);
 
@@ -21,21 +21,17 @@ public class Dialog_RoyalTitleEditor : Window
 
     private ExpectationDef minExpectation;
     private TitleTiers titleTier;
-
-    private GameComponent_TitularRoyalty TRComponent;
-    private PlayerTitleDef titleDef;
+    
     private RoyalTitleOverride originalOverrides;
-    private Dialog_ManageTitles manageTitles;
+    private readonly PlayerTitleDef titleDef;
+    private readonly Dialog_ManageTitles manageTitles;
 
-    public Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty trComponent, PlayerTitleDef titleDef,
-        Dialog_ManageTitles manageTitles)
+    public Dialog_TitleEditor(PlayerTitleDef titleDef, Dialog_ManageTitles manageTitles)
     {
         doCloseX = true;
         forcePause = true;
         draggable = true;
         closeOnClickedOutside = true;
-        TRComponent = trComponent;
-
         this.titleDef = titleDef;
 
         if (manageTitles != null)
@@ -44,8 +40,7 @@ public class Dialog_RoyalTitleEditor : Window
             this.manageTitles.titleEditorOpen = true;
         }
 
-        originalOverrides = TRComponent.GetCustomTitleOverrideFor(this.titleDef);
-
+        originalOverrides = GameComponent_TitularRoyalty.Current.GetCustomTitleOverrideFor(this.titleDef);
         SetDefaultVariables();
     }
 
@@ -58,9 +53,9 @@ public class Dialog_RoyalTitleEditor : Window
         }
     }
 
-    public void SetDefaultVariables()
+    private void SetDefaultVariables()
     {
-        if (originalOverrides.label == "None" || originalOverrides.label == null)
+        if (originalOverrides.label is "None" or null)
         {
             curName = titleDef.label;
             curNameFemale = titleDef.labelFemale;
@@ -129,13 +124,12 @@ public class Dialog_RoyalTitleEditor : Window
         var rightButtonRect = bottomRowRect.RightHalf();
 
         // Icon
-        if (Widgets.ButtonImage(iconRect, Resources.CustomIcons.TryGetValue(iconName) ??
-                                          Resources.GetTitleIcon(titleDef, TRComponent) ?? BaseContent.BadTex))
+        if (Widgets.ButtonImage(iconRect, Resources.CustomIcons.TryGetValue(iconName) ?? Resources.GetTitleIcon(titleDef) ?? BaseContent.BadTex))
         {
             var menuOptions = new List<FloatMenuOption>
             {
                 new FloatMenuOption("Default", delegate { iconName = null; },
-                    itemIcon: Resources.GetTitleIcon(titleTier, TRComponent.realmTypeDef), iconColor: Color.white)
+                    itemIcon: Resources.GetTitleIcon(titleTier, GameComponent_TitularRoyalty.Current.realmTypeDef), iconColor: Color.white)
             };
             foreach (string key in Resources.CustomIcons.Keys)
             {
@@ -284,7 +278,7 @@ public class Dialog_RoyalTitleEditor : Window
     private void ResetTitleOverride()
     {
         originalOverrides = new RoyalTitleOverride();
-        TRComponent.SaveTitleChange(titleDef, originalOverrides);
+        GameComponent_TitularRoyalty.Current.SaveTitleChange(titleDef, originalOverrides);
         SetDefaultVariables();
     }
 
@@ -314,7 +308,7 @@ public class Dialog_RoyalTitleEditor : Window
         originalOverrides.allowDignifiedMeditationFocus = allowDignifiedMeditation;
         originalOverrides.minExpectation = minExpectation ?? ExpectationDefOf.Low;
 
-        TRComponent.SetupTitle(titleDef);
+        GameComponent_TitularRoyalty.Current.SetupTitle(titleDef);
         Messages.Message("Titular Royalty: Change Title Success", MessageTypeDefOf.NeutralEvent, false);
     }
 }
