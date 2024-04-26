@@ -8,24 +8,6 @@ public class Dialog_ManageTitles : Window
     public Vector2 scrollPosition = new Vector2(0, 0); 
     public override Vector2 InitialSize => new Vector2(475, 720);
 
-    // TITLE LISTS
-    public List<PlayerTitleDef> Titles
-    {
-        get
-        {
-            return DefDatabase<PlayerTitleDef>.AllDefsListForReading;
-        }
-    }
-
-    private List<PlayerTitleDef> titlesBySeniority;
-    public List<PlayerTitleDef> TitlesBySeniority
-    {
-        get
-        {
-            return titlesBySeniority ??= Titles.OrderBy(x => x.seniority).ToList();
-        }
-    }
-
     public bool titleEditorOpen = false;
 
     // Variables for Updating and Setting the Lists
@@ -38,7 +20,6 @@ public class Dialog_ManageTitles : Window
     private Rect ButtonsRect;
     private Rect LeftButtonRect;
     private Rect RightButtonRect;
-    private GameComponent_TitularRoyalty TRComponent;
     private Vector2 titleListScrollPos = new Vector2(0, 0);
 
     // CONSTRUCTOR
@@ -47,7 +28,6 @@ public class Dialog_ManageTitles : Window
         doCloseX = true;
         forcePause = true;
         draggable = true;
-        TRComponent = Current.Game.GetComponent<GameComponent_TitularRoyalty>();
     }
     
     private void DrawRow(Rect rect, PlayerTitleDef titleDef)
@@ -62,30 +42,7 @@ public class Dialog_ManageTitles : Window
             // Right Click Options
             if (Event.current.type == EventType.MouseDown && Event.current.button == 1)
             {
-                var menuOptions = new List<FloatMenuOption>
-                {
-                    // Grant Title
-                    new FloatMenuOption("TR_managetitles_m2option_granttitle".Translate(), delegate
-                    {
-                        Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(),
-                            action: delegate(LocalTargetInfo targetInfo)
-                            {
-                                targetInfo.Pawn?.royalty?.SetTitle(Faction.OfPlayer, titleDef, true);
-                            });
-                        this.Close();
-                    }, itemIcon: Resources.TRCrownWidget, iconColor: Color.white),
-                    // Edit Title
-                    new FloatMenuOption("TR_managetitles_m2option_edittitle".Translate(),
-                        action: delegate { Find.WindowStack.Add(new Dialog_RoyalTitleEditor(TRComponent, titleDef, this)); },
-                        itemIcon: TexButton.Rename, iconColor: Color.white),
-                    // Reset Title
-                    new FloatMenuOption("TR_managetitles_m2option_resettitle".Translate(),
-                        action: delegate { TRComponent.SaveTitleChange(titleDef, new RoyalTitleOverride()); },
-                        itemIcon: TexButton.RenounceTitle, iconColor: Color.white)
-                };
-
-                Find.WindowStack.Add(new FloatMenu(menuOptions));
-                Event.current.Use();
+                DoRightClickMenu(titleDef);
             }
         }
 
@@ -93,7 +50,7 @@ public class Dialog_ManageTitles : Window
 
         var widgetRow = new WidgetRow(0f, (rect.height - 24f) / 2);
         widgetRow.Gap(4f);
-        widgetRow.Icon(Resources.GetTitleIcon(titleDef, TRComponent) ?? BaseContent.BadTex);
+        widgetRow.Icon(Resources.GetTitleIcon(titleDef) ?? BaseContent.BadTex);
 
         float width = rect.width - widgetRow.FinalX - 28f
                       - (Text.CalcSize("TR_managetitles_edit".Translate()).x + 6)
@@ -104,7 +61,7 @@ public class Dialog_ManageTitles : Window
         // Edit Button, opens the title editor window
         if (widgetRow.ButtonText("TR_managetitles_edit".Translate(), active: !titleEditorOpen)) 
         {
-            Find.WindowStack.Add(new Dialog_RoyalTitleEditor(TRComponent, titleDef, this));
+            Find.WindowStack.Add(new Dialog_TitleEditor(titleDef, this));
         }
         // Grant Button, opens a targeter, closes the window and grants the title to who you select
         if (widgetRow.ButtonText("TR_managetitles_grant".Translate(), active: !titleEditorOpen))
@@ -119,6 +76,42 @@ public class Dialog_ManageTitles : Window
         Widgets.EndGroup();
     }
 
+    private void DoRightClickMenu(PlayerTitleDef titleDef)
+    {
+        var menuOptions = new List<FloatMenuOption>
+        {
+            // Grant Title
+            new FloatMenuOption("TR_managetitles_m2option_granttitle".Translate(), delegate
+            {
+                Find.Targeter.BeginTargeting(TargetingParameters.ForColonist(),
+                    action: delegate(LocalTargetInfo targetInfo)
+                    {
+                        targetInfo.Pawn?.royalty?.SetTitle(Faction.OfPlayer, titleDef, true);
+                    });
+                this.Close();
+            }, itemIcon: Resources.TRCrownWidget, iconColor: Color.white),
+                    
+            // Edit Title
+            new FloatMenuOption("TR_managetitles_m2option_edittitle".Translate(),
+                action: delegate
+                {
+                    Find.WindowStack.Add(new Dialog_TitleEditor(titleDef, this));
+                },
+                itemIcon: TexButton.Rename, iconColor: Color.white),
+                    
+            // Reset Title
+            new FloatMenuOption("TR_managetitles_m2option_resettitle".Translate(),
+                action: delegate
+                {
+                    GameComponent_TitularRoyalty.Current.SaveTitleChange(titleDef, new RoyalTitleOverride());
+                },
+                itemIcon: TexButton.RenounceTitle, iconColor: Color.white)
+        };
+
+        Find.WindowStack.Add(new FloatMenu(menuOptions));
+        Event.current.Use();
+    }
+
     /// <summary>
     /// (Re)loads the title list
     /// </summary>
@@ -129,7 +122,7 @@ public class Dialog_ManageTitles : Window
 
         TitleList.Gap(6f);
 
-        foreach (var title in TitlesBySeniority)
+        foreach (var title in TitleDatabase.TitlesBySeniority)
         {
             DrawRow(TitleList.GetRect(28f), title);
         }
@@ -172,13 +165,13 @@ public class Dialog_ManageTitles : Window
         RealmTypeButtonRect = RealmTypeRect.RightHalf().ContractedBy(4);
         var realmTypeOptions = new List<FloatMenuOption>();
             
-        if (Widgets.ButtonText(RealmTypeButtonRect, TRComponent.realmTypeDef.label, active: !titleEditorOpen)) 
+        if (Widgets.ButtonText(RealmTypeButtonRect, GameComponent_TitularRoyalty.Current.realmTypeDef.label, active: !titleEditorOpen)) 
         {
             foreach (var realmTypeDef in DefDatabase<RealmTypeDef>.AllDefsListForReading)
             {
                 realmTypeOptions.Add(new FloatMenuOption(realmTypeDef.label, delegate
                 {
-                    TRComponent.realmTypeDef = realmTypeDef;
+                    GameComponent_TitularRoyalty.Current.realmTypeDef = realmTypeDef;
                     Messages.Message("TR_realmtypechanged_notify".Translate(), MessageTypeDefOf.NeutralEvent);
                 }, realmTypeDef.Icon ? realmTypeDef.Icon : BaseContent.BadTex, Color.white));   
             }
@@ -197,7 +190,7 @@ public class Dialog_ManageTitles : Window
         //Titles List
         ContentViewRect = new Rect(ContentRect);
         ContentViewRect.width -= 20f;
-        ContentViewRect.height = GetContentHeight(TitlesBySeniority.Count);
+        ContentViewRect.height = GetContentHeight(TitleDatabase.Titles.Count);
 
         Widgets.BeginScrollView(ContentRect, ref titleListScrollPos, ContentViewRect);
         DrawTitleList();
@@ -226,14 +219,13 @@ public class Dialog_ManageTitles : Window
         // Buttons
         if (Widgets.ButtonText(LeftButtonRect, "TR_managetitles_update".Translate(), active: !titleEditorOpen))
         {
-            TRComponent.SetupAllTitles();
-            titlesBySeniority = null;
+            GameComponent_TitularRoyalty.Current.SetupAllTitles();
             DrawTitleList();
             Messages.Message("TR_managetitles_update_notif".Translate(), MessageTypeDefOf.NeutralEvent);
         }
         if (Widgets.ButtonText(RightButtonRect, "TR_managetitles_resetcustom".Translate(), active: !titleEditorOpen))
         {
-            TRComponent.ResetTitles();
+            GameComponent_TitularRoyalty.Current.ResetTitles();
             Messages.Message("TR_managetitles_resetcustom_notif".Translate(), MessageTypeDefOf.NeutralEvent);
         }
         TooltipHandler.TipRegion(LeftButtonRect, "TR_managetitles_update_tooltip".Translate());

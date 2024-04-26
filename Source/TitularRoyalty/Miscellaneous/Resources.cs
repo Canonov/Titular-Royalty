@@ -9,7 +9,6 @@ public class Resources
 	public static readonly Texture2D TRWidget = ContentFinder<Texture2D>.Get("UI/TRwidget");
 	public static readonly Texture2D TRCrownWidget = ContentFinder<Texture2D>.Get("UI/TRcrownwidget");
 
-
 	private static Dictionary<string, Texture2D> customIcons;
 	public static Dictionary<string, Texture2D> CustomIcons
 	{
@@ -45,28 +44,28 @@ public class Resources
 		return CustomIcons.TryGetValue($"RankIcon{(int)titleTiers}", BaseContent.BadTex);
 	}
 
-	public static Texture2D GetTitleIcon(PlayerTitleDef playerTitleDef, GameComponent_TitularRoyalty TRComponent)
+	public static Texture2D GetTitleIcon(PlayerTitleDef playerTitleDef)
 	{
-		if (TRComponent.realmTypeDef.TitlesWithOverrides.TryGetValue(playerTitleDef, out var titleOverride) && titleOverride.RTIconOverride != null)
+		var trComponent = GameComponent_TitularRoyalty.Current;
+		var titlesWithOverride = trComponent.realmTypeDef.TitlesWithOverrides;
+		
+		if (titlesWithOverride.TryGetValue(playerTitleDef, out var titleOverride) && titleOverride.RTIconOverride != null)
 		{
 			return titleOverride.RTIconOverride;
 		}
-
-		if (!playerTitleDef.iconName.NullOrEmpty())
+		if (playerTitleDef.iconName.NullOrEmpty())
 		{
-			if (CustomIcons.TryGetValue(playerTitleDef.iconName, out var resultTex))
-			{
-				return resultTex;
-			}
-			else
-			{
-				Log.Warning($"{playerTitleDef.label} failed to get icon from name {playerTitleDef.iconName}, it may be missing, reassign it in edit titles");
-				playerTitleDef.iconName = null;
-			}
+			return GetTitleIcon(playerTitleDef.titleTier, trComponent.realmTypeDef);
+		}
+		if (CustomIcons.TryGetValue(playerTitleDef.iconName, out var resultTex))
+		{
+			return resultTex;
 		}
 
-		return GetTitleIcon(playerTitleDef.titleTier,
-			Current.Game.GetComponent<GameComponent_TitularRoyalty>().realmTypeDef);
+		Log.Warning($"{playerTitleDef.label} failed to get icon from name {playerTitleDef.iconName}, it may be missing, reassign it in edit titles");
+		playerTitleDef.iconName = null;
+		
+		return BaseContent.BadTex;
 	}
 
 

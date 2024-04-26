@@ -11,7 +11,7 @@ public static class DebugActions
     {
         var titles = DefDatabase<PlayerTitleDef>.AllDefsListForReading;
         var options = titles.Select(title => new DebugMenuOption(title.GetLabelForBothGenders(), DebugMenuOptionMode.Action, () => 
-            Find.WindowStack.Add(new Dialog_RoyalTitleEditor(GameComponent_TitularRoyalty.Current, title, null))
+            Find.WindowStack.Add(new Dialog_TitleEditor(title, null))
         ));
 
         Find.WindowStack.Add(new Dialog_DebugOptionListLister(options.ToList()));

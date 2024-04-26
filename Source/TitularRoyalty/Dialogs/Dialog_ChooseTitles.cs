@@ -7,7 +7,6 @@ public class Dialog_ChooseTitles : Window
     private readonly Pawn chosenPawn;
     private Vector2 scrollPosition = new Vector2(0, 0);
     private const int ColumnCount = 1;
-    private readonly List<PlayerTitleDef> titlesBySeniority;
 
     public Dialog_ChooseTitles(Pawn targPawn)
     {
@@ -15,8 +14,6 @@ public class Dialog_ChooseTitles : Window
         doCloseX = true;
         doCloseButton = true;
         closeOnClickedOutside = true;
-
-        titlesBySeniority = DefDatabase<PlayerTitleDef>.AllDefsListForReading.OrderBy(def => def.seniority).ToList();
     }
     private static string GetDisplayTitle(RoyalTitleDef titleDef, Gender gender)
     {
@@ -38,27 +35,20 @@ public class Dialog_ChooseTitles : Window
         var outRect = new Rect(inRect);
         outRect.yMin += 30f;
         outRect.yMax -= 40f;
-
-        if (titlesBySeniority.Count == 0)
-        {
-            Widgets.Label(new Rect(0, 10, 300f, 30f), "TR_NoTitles".Translate());
-            Log.Error($"Titular Royalty: Couldn't fill title dialog, relevant variables for author: {titlesBySeniority.Count}");
-            return;
-        }
-
+        
         Text.Font = GameFont.Medium;
         Text.Anchor = TextAnchor.MiddleCenter;
         Widgets.Label(new Rect(0, 10, inRect.width, 30f), "TR_choosetitle".Translate()); 
         Text.Font = GameFont.Small;
         Text.Anchor = TextAnchor.UpperLeft;
-        var viewRect = new Rect(0f, 30f, outRect.width - 16f, titlesBySeniority.Count / 4 * 128f + 256f);
+        var viewRect = new Rect(0f, 30f, outRect.width - 16f, TitleDatabase.Titles.Count / 4 * 128f + 256f);
         Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
 
         var rectIconFirst = new Rect(10, 20f, 80f, 24f);
         TooltipHandler.TipRegion(rectIconFirst, "TR_CurrentTitle".Translate());
 
         int i = 0;
-        foreach (var titleDef in titlesBySeniority)
+        foreach (var titleDef in TitleDatabase.TitlesBySeniority)
         {
             // work with pair.Key and pair.Value
             var iconRect = new Rect(

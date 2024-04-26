@@ -10,15 +10,10 @@ public class GameComponent_TitularRoyalty : GameComponent
     
     public RealmTypeDef realmTypeDef;
 
-    // Get the Titles List in Order and Cache it
-    private static List<PlayerTitleDef> titlesBySeniority;
-    public static List<PlayerTitleDef> TitlesBySeniority => titlesBySeniority ??=
-        DefDatabase<PlayerTitleDef>.AllDefsListForReading.OrderBy(x => x.seniority).ToList();
-
     // Custom Titles
     private Dictionary<PlayerTitleDef, RoyalTitleOverride> customTitles;
     private Dictionary<PlayerTitleDef, RoyalTitleOverride> CustomTitles 
-        => customTitles ??= TitlesBySeniority.ToDictionary(x => x, _ => new RoyalTitleOverride());
+        => customTitles ??= TitleDatabase.TitlesBySeniority.ToDictionary(x => x, _ => new RoyalTitleOverride());
 
     // Required for ExposeData
     private List<PlayerTitleDef> customTitles_List1;
@@ -27,7 +22,7 @@ public class GameComponent_TitularRoyalty : GameComponent
     /// <summary>
     /// Passes on the Realmtype 
     /// </summary>
-    public void SetupAllTitles() => TitlesBySeniority.ForEach(SetupTitle);
+    public void SetupAllTitles() => TitleDatabase.TitlesBySeniority.ForEach(SetupTitle);
 
     public void SetupTitle(PlayerTitleDef title)
     {
@@ -77,11 +72,11 @@ public class GameComponent_TitularRoyalty : GameComponent
     public void ResetTitles()
     {
         customTitles = null;
-        titlesBySeniority = null;
         customTitles_List1 = null;
         customTitles_List2 = null;
+        TitleDatabase.Notify_TitleSeniorityChanged();
 
-        foreach (var title in TitlesBySeniority)
+        foreach (var title in TitleDatabase.TitlesBySeniority)
         {
             title.ResetToDefaultValues();
             SetupTitle(title);

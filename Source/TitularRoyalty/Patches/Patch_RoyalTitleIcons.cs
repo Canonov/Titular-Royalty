@@ -12,7 +12,7 @@ public static class Patch_RoyalTitleIcons
 		if (def is not PlayerTitleDef titleDef) 
 			return true;
 		
-		var icon = Resources.GetTitleIcon(titleDef, GameComponent_TitularRoyalty.Current);
+		var icon = Resources.GetTitleIcon(titleDef);
 		
 		if (icon != null)
 		{
