@@ -7,6 +7,7 @@ namespace TitularRoyalty.Patches;
 [HarmonyPatch(typeof(Widgets), nameof(Widgets.DefIcon))]
 public static class Patch_RoyalTitleIcons
 {
+	/*
 	private static bool Prefix(Rect rect, Def def, float scale = 1f)
 	{
 		if (def is not PlayerTitleDef titleDef) 
@@ -22,5 +23,5 @@ public static class Patch_RoyalTitleIcons
 
 		Log.Message("Titular Royalty: Could not find icon for " + titleDef.defName + " in DefIcon_RoyalIconsPrefix.");
 		return true;
-	}
+	}*/
 }

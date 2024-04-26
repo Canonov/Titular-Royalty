@@ -9,9 +9,10 @@ public class Patch_AddManageTitlesWidget
 	[HarmonyPostfix]
 	private static void PlaySettings_DoPlaySettingsGlobalControls_Postfix(WidgetRow row, bool worldView)
 	{
-		if (!worldView && row.ButtonIcon(Resources.TRWidget, "Open Titular Royalty Manager"))
+		if (!worldView && row.ButtonIcon(BaseContent.BadTex, "Open Titular Royalty Manager"))
 		{
-			Find.WindowStack.Add(new Dialog_ManageTitles());
+			Log.Warning("Not Yet Readded"); // todo 
+			//Find.WindowStack.Add(new Dialog_ManageTitles());
 		}
 	}
 }

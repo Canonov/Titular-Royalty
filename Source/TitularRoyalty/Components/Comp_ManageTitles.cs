@@ -20,8 +20,9 @@ public class Comp_ManageTitles : ThingComp
 			defaultDesc = "TR_Command_managetitles_desc".Translate(),
 			action = delegate
 			{
-				var window = new Dialog_ManageTitles();
-				Find.WindowStack.Add(window);
+				Log.Warning("Not Yet Readded"); // todo 
+				//var window = new Dialog_ManageTitles();
+				//Find.WindowStack.Add(window);
 			}
 		};
 
@@ -35,9 +36,10 @@ public class Comp_ManageTitles : ThingComp
 		//Manage Titles Dialog
 		yield return new FloatMenuOption("TR_Command_managetitles_label".Translate(), delegate
 		{
-			var window = new Dialog_ManageTitles();
-			Find.WindowStack.Add(window);
-		}, itemIcon: Resources.CrownIcon, iconColor: Color.white);
+			Log.Warning("Not Yet Readded"); // todo 
+			//var window = new Dialog_ManageTitles();
+			//Find.WindowStack.Add(window);
+		}, itemIcon: BaseContent.BadTex, iconColor: Color.white);
 
 		//Set Heir Option
 		if (TRSettings.inheritanceEnabled == false ||

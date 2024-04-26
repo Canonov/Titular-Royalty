@@ -35,4 +35,18 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Dialogs\Dialog_ChooseTitles.cs" />
+    <None Include="Dialogs-Disabled\Dialog_ChooseTitles.cs" />
+    <Compile Remove="Dialogs\Dialog_ManageTitles.cs" />
+    <None Include="Dialogs-Disabled\Dialog_ManageTitles.cs" />
+    <Compile Remove="Dialogs\Dialog_TitleEditor.cs" />
+    <None Include="Dialogs-Disabled\Dialog_TitleEditor.cs" />
+    <Compile Remove="Dialogs-Disabled\Dialog_ChooseTitles.cs" />
+    <None Include="Dialogs-Disabled\Dialog_ChooseTitles.cs" />
+    <Compile Remove="Dialogs-Disabled\Dialog_ManageTitles.cs" />
+    <None Include="Dialogs-Disabled\Dialog_ManageTitles.cs" />
+    <Compile Remove="Dialogs-Disabled\Dialog_TitleEditor.cs" />
+    <None Include="Dialogs-Disabled\Dialog_TitleEditor.cs" />
+  </ItemGroup>
 </Project>
