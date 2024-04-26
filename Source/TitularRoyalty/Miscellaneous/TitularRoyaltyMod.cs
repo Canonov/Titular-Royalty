@@ -7,8 +7,8 @@ namespace TitularRoyalty;
 [UsedImplicitly]
 public class TRSettings : ModSettings
 {
-    internal static bool inheritanceEnabled;
-    internal static bool clothingQualityRequirements;
+    internal static bool inheritanceEnabled = true;
+    internal static bool clothingQualityRequirements = true;
 
     public override void ExposeData()
     {
@@ -24,6 +24,7 @@ public class TitularRoyaltyMod : Mod
     public TitularRoyaltyMod(ModContentPack content) : base(content)
     {
         Log.Message($"Loading Titular Royalty v-{content.ModMetaData.ModVersion}");
+        GetSettings<TRSettings>(); //Required to bind this mod class with the settings class.
         ApplyPatches();
     }
     
