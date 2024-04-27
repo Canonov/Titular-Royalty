@@ -35,6 +35,16 @@ public class TitleDatabase : IExposable
     {
         return TRGameComponent.Current.titleDatabase;
     }
+    
+    public TitleRecord GetRecordFromDef(PlayerTitleDef def)
+    {
+        var result = Titles.FirstOrDefault(record => record.def == def);
+        if (result is null)
+        {
+            Log.Error($"Couldn't find title with defName {def.defName} in titles with data");
+        }
+        return result;
+    }
 
     public void RegisterTitle(PlayerTitleData data)
     {
