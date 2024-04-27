@@ -14,7 +14,7 @@ public static class DebugActions
     [DebugAction("Titular Royalty", "Log all Titles", allowedGameStates = AllowedGameStates.Playing)]
     public static void LogAllPlayerTitlesInGame()
     {
-        foreach (PlayerTitleDef title in TitleDatabase.Get().Titles)`
+        foreach (PlayerTitleDef title in TitleDatabase.Get().Titles)
             Log.Message($"{title.defName} ({title.numberGenerated})");
     }
     
