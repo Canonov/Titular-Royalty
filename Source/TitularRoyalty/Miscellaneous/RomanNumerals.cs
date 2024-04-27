@@ -38,7 +38,7 @@ public static class RomanNumerals
         };
     }
 
-    public static string To(int number)
+    public static string FromInt(int number)
     {
         var roman = new StringBuilder();
 
@@ -54,7 +54,7 @@ public static class RomanNumerals
         return roman.ToString();
     }
 
-    public static int From(string roman)
+    public static int ToInt(string roman)
     {
         int total = 0;
         char previousRoman = '\0';

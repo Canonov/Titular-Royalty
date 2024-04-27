@@ -4,7 +4,7 @@ public static class TitleDefGenerator
 {
     public static IEnumerable<PlayerTitleDef> GeneratedPlayerTitleDefs()
     {
-        for (int i = 1; i < 51; i++)
+        for (int i = 1; i <= TRSettings.titlesToGenerate; i++)
         {
             yield return CreateTitleDef(i);
         }
@@ -12,13 +12,24 @@ public static class TitleDefGenerator
 
     private static PlayerTitleDef CreateTitleDef(int titleNumber)
     {
-        string defName = $"TR_TitleDef_{RomanNumerals.To(titleNumber)}";
+        string defName = $"TR_TitleDef_{RomanNumerals.FromInt(titleNumber)}";
         
-        var titleDef = new PlayerTitleDef();
-        titleDef.defName = defName;
-        titleDef.numberGenerated = titleNumber;
-        titleDef.tags = new List<string> {"PlayerTitle"};
-        
+        var titleDef = new PlayerTitleDef
+        {
+            defName = defName,
+            numberGenerated = titleNumber,
+        };
+        titleDef.ResetToDefault();
+
         return titleDef;
+    }
+    
+    public static void GenerateImpliedDefs_PreResolve()
+    {
+        foreach (var titleDef in TitleDefGenerator.GeneratedPlayerTitleDefs())
+        {
+            DefGenerator.AddImpliedDef(titleDef);
+            DefDatabase<RoyalTitleDef>.Add(titleDef);
+        }
     }
 }

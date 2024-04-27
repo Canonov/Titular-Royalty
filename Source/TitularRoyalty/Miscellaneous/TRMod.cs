@@ -7,21 +7,19 @@ namespace TitularRoyalty;
 [UsedImplicitly]
 public class TRSettings : ModSettings
 {
-    internal static bool inheritanceEnabled = true;
-    internal static bool clothingQualityRequirements = true;
-
+    internal static int titlesToGenerate = 30; // todo add to settings
+    
     public override void ExposeData()
     {
-        Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", true);
-        Scribe_Values.Look(ref clothingQualityRequirements, "clothingQualityRequirements", true);
+        Scribe_Values.Look(ref titlesToGenerate, "titlesToGenerate", 30);
         base.ExposeData();
     }
 }
 
 [UsedImplicitly]
-public class TitularRoyaltyMod : Mod
+public class TRMod : Mod
 {
-    public TitularRoyaltyMod(ModContentPack content) : base(content)
+    public TRMod(ModContentPack content) : base(content)
     {
         Log.Message($"Loading Titular Royalty v-{content.ModMetaData.ModVersion}");
         GetSettings<TRSettings>(); //Required to bind this mod class with the settings class.
@@ -41,7 +39,7 @@ public class TitularRoyaltyMod : Mod
     }
 
     //Name that shows at the top
-    public override string SettingsCategory() => "TR_modname".Translate();
+    public override string SettingsCategory() => "TR.modname".Translate();
 
     //Main Rendering
     public override void DoSettingsWindowContents(Rect inRect)
@@ -56,15 +54,13 @@ public class TitularRoyaltyMod : Mod
         var miscOptionsTitleRect = listingStandard.GetRect(32);
         Text.Font = GameFont.Medium;
         Text.Anchor = TextAnchor.MiddleCenter;
-        Widgets.Label(miscOptionsTitleRect, "TR_miscoptionstitle".Translate());
+        Widgets.Label(miscOptionsTitleRect, "TR_miscoptionstitle");
         Text.Font = GameFont.Small;
         Text.Anchor = TextAnchor.UpperLeft;
         listingStandard.Gap();
 
         //First row of checkbox options
-        var checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
-        checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref TRSettings.inheritanceEnabled);
-        checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref TRSettings.clothingQualityRequirements);
+        var checkboxes = listingStandard.GetRect(24).BeginListingStandard(6);
         checkboxes.End();
             
         listingStandard.End();
