@@ -9,9 +9,6 @@ public static class Patch_DefGenerator
     [HarmonyPatch(nameof(DefGenerator.GenerateImpliedDefs_PreResolve))]
     public static void GenerateImpliedDefs_PreResolve_Postfix()
     {
-        foreach (var titleDef in TitleDefGenerator.GeneratedPlayerTitleDefs())
-        {
-            DefGenerator.AddImpliedDef(titleDef);
-        }
+        TitleDefGenerator.GenerateImpliedDefs_PreResolve();
     }
 }
