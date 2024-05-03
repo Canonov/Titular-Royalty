@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <TitularRoyalty.PlayerTitleDef Abstract="True" Name="BasePlayerTitle">
+        <tags>
+            <li>PlayerTitle</li>
+        </tags>
+        <awardThought>GainedTitle</awardThought>
+        <lostThought>LostTitle</lostThought>
+    </TitularRoyalty.PlayerTitleDef>
+
+    <!-- Lowest Level -->
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleLow" ParentName="BasePlayerTitle" Abstract="True">
+        <favorCost>100</favorCost>
+        <canBeInherited>False</canBeInherited>
+        <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+        <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+        <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+
+        <titleTier>Lowborn</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
+
+    <!-- The Gentry -->
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleMid" ParentName="BasePlayerTitle" Abstract="True">
+        <favorCost>100</favorCost>
+        <canBeInherited>False</canBeInherited>
+        <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+        <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
+        <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+        <minExpectation>Moderate</minExpectation>
+
+        <titleTier>Gentry</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
+
+    <!-- Baronet Plus -->
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleNoble" ParentName="BasePlayerTitle" Abstract="True">
+        <favorCost>100</favorCost>
+        <canBeInherited>False</canBeInherited>
+        <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+        <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+        <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+        <minExpectation>High</minExpectation>
+
+
+
+        <TRInheritable>True</TRInheritable>
+        <titleTier>LowNoble</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
+
+
+    <!-- Count Level -->
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleHighNoble" ParentName="BasePlayerTitle" Abstract="True">
+        <favorCost>100</favorCost>
+        <canBeInherited>False</canBeInherited>
+        <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+        <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+        <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+        <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+        <minExpectation>Noble</minExpectation>
+        <decreeTags>
+            <li>All</li>
+        </decreeTags>
+        <disabledJoyKinds>
+            <li>Gaming_Dexterity</li>
+        </disabledJoyKinds>
+        <disabledWorkTags>
+            <li>ManualDumb</li>
+            <li>PlantWork</li>
+            <li>Mining</li>
+        </disabledWorkTags>
+        <foodRequirement>
+            <minQuality>MealFine</minQuality>
+            <allowedTypes>Processed, Liquor</allowedTypes>
+            <allowedDefs>
+                <li>Ambrosia</li>
+                <li>Milk</li>
+                <li>RawBerries</li>
+            </allowedDefs>
+        </foodRequirement>
+
+
+
+        <TRInheritable>True</TRInheritable>
+        <titleTier>LowNoble</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
+
+
+    <!-- Duke Level -->
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleDukePlus" ParentName="BasePlayerTitle" Abstract="True">
+        <favorCost>100</favorCost>
+        <canBeInherited>False</canBeInherited>
+        <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+        <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+        <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+        <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+        <minExpectation>Noble</minExpectation>
+        <grantedAbilities>
+            <li>Speech</li>
+        </grantedAbilities>
+        <speechCooldown>1200000</speechCooldown>
+        <decreeTags>
+            <li>All</li>
+        </decreeTags>
+        <disabledJoyKinds>
+            <li>Gaming_Dexterity</li>
+        </disabledJoyKinds>
+        <disabledWorkTags>
+            <li>ManualDumb</li>
+            <li>PlantWork</li>
+            <li>Mining</li>
+        </disabledWorkTags>
+        <foodRequirement>
+            <minQuality>MealFine</minQuality>
+            <allowedTypes>Processed, Liquor</allowedTypes>
+            <allowedDefs>
+                <li>Ambrosia</li>
+                <li>Milk</li>
+                <li>RawBerries</li>
+            </allowedDefs>
+        </foodRequirement>
+        <throneRoomRequirements>
+            <li Class="RoomRequirement_HasAssignedThroneAnyOf">
+                <things>
+                    <li>Throne</li>
+                    <li>GrandThrone</li>
+                </things>
+            </li>
+            <li Class="RoomRequirement_Area">
+                <area>8</area>
+            </li>
+            <li Class="RoomRequirement_Impressiveness">
+                <impressiveness>45</impressiveness>
+            </li>
+        </throneRoomRequirements>
+
+
+
+        <TRInheritable>True</TRInheritable>
+        <titleTier>HighNoble</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
+
+    <!-- Family of the King / Emperor -->
+    <TitularRoyalty.PlayerTitleDef Name="TitularRoyalty_BaseTitleRoyalFamily" ParentName="BasePlayerTitle" Abstract="True">
+        <favorCost>100</favorCost>
+        <canBeInherited>False</canBeInherited>
+        <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+        <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+        <requiredMinimumApparelQuality>Good</requiredMinimumApparelQuality>
+        <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+        <minExpectation>High</minExpectation>
+        <disabledWorkTags>
+            <li>ManualDumb</li>
+            <li>PlantWork</li>
+            <li>Mining</li>
+        </disabledWorkTags>
+        <foodRequirement>
+            <minQuality>MealFine</minQuality>
+            <allowedTypes>Processed, Liquor</allowedTypes>
+            <allowedDefs>
+                <li>Ambrosia</li>
+                <li>Milk</li>
+                <li>RawBerries</li>
+            </allowedDefs>
+        </foodRequirement>
+
+        <TRInheritable>False</TRInheritable>
+        <titleTier>Royalty</titleTier>
+    </TitularRoyalty.PlayerTitleDef>
+</Defs>

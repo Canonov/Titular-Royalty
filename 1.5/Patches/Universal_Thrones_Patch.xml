@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[thingClass="Building_Throne"]/comps</xpath>
+    <value>
+      <li Class="TitularRoyalty.CompProperties_ManageTitles">
+        <managetitlesIconPath>UI/Gizmos/givetitleicon</managetitlesIconPath>
+      </li>
+    </value>
+  </Operation>
+  
+</Patch>

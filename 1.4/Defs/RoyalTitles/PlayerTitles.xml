@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ================= The Peasantry ============================= -->
+
+  <!-- Freeman -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+    <defName>TitularRoyalty_T_LR_Freeman</defName>
+    <label>Freeholder</label>
+    <description>No Description.</description>
+    <seniority>100</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Yeoman -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+    <defName>TitularRoyalty_T_LR_Yeoman</defName>
+    <label>Yeoman</label>
+    <description>No Description.</description>
+    <seniority>200</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- ================= The Gentry  ============================= -->
+  <!-- Gentleman -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+    <defName>TitularRoyalty_T_LR_Gentleman</defName>
+    <label>Gentleman</label>
+    <labelFemale>Lady</labelFemale>
+    <description>No Description.</description>
+    <seniority>300</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Squire -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleLow">
+    <defName>TitularRoyalty_T_LR_Squire</defName>
+    <label>Squire</label>
+    <description>No Description.</description>
+    <seniority>400</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Esquire -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+    <defName>TitularRoyalty_T_MR_Esquire</defName>
+    <label>Esquire</label>
+    <description>No Description.</description>
+    <seniority>500</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Knight -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+    <defName>TitularRoyalty_T_MR_Knight</defName>
+    <label>Knight</label>
+    <labelFemale>Dame</labelFemale>
+    <description>No Description.</description>
+    <seniority>600</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Knight-Bannerete -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+    <defName>TitularRoyalty_T_MR_Bannerete</defName>
+    <label>Knight-banneret</label>
+    <description>Medieval noble honorary title of military nobility. Such knights lead other knights.</description>
+    <seniority>610</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Knight-Commander -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+    <defName>TitularRoyalty_T_MR_Knight_Commander</defName>
+    <label>Lord Commander</label>
+    <labelFemale>Lady Commander</labelFemale>
+    <description>Medieval noble honorary title of military nobility. The head of the knights of the realm.</description>
+    <seniority>620</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+
+  <!-- Baronet -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleMid">
+    <defName>TitularRoyalty_T_MR_Baronet</defName>
+    <label>Baronet</label>
+    <labelFemale>Baronetess</labelFemale>
+    <canBeInherited>False</canBeInherited>
+    <TRInheritable>True</TRInheritable>
+    <description>No Description.</description>
+    <seniority>700</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- ================= Low Nobility ============================ -->
+
+  <!-- Baron -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
+    <defName>TitularRoyalty_T_HR_Baron</defName>
+    <label>Baron</label>
+    <labelFemale>Baroness</labelFemale>
+    <description>No Description.</description>
+    <seniority>800</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Viscount -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleNoble">
+    <defName>TitularRoyalty_T_HR_Viscount</defName>
+    <label>Viscount</label>
+    <labelFemale>Viscountess</labelFemale>
+    <description>No Description.</description>
+    <seniority>900</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- ================= High Nobility ============================ -->
+
+  <!-- Count -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleHighNoble">
+    <defName>TitularRoyalty_T_HR_Count</defName>
+    <label>Count</label>
+    <labelFemale>Countess</labelFemale>
+    <description>No Description.</description>
+    <seniority>1000</seniority>
+    <minExpectation>Noble</minExpectation>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Duke -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+    <defName>TitularRoyalty_T_HR_Duke</defName>
+    <label>Duke</label>
+    <labelFemale>Duchess</labelFemale>
+    <description>No Description.</description>
+    <seniority>1100</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Arch Duke -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+    <defName>TitularRoyalty_T_HR_Archduke</defName>
+    <label>Archduke</label>
+    <labelFemale>Archduchess</labelFemale>
+    <description>No Description.</description>
+    <seniority>1200</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- ================= Royalty ============================ -->
+
+  <!-- Prince -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
+    <defName>TitularRoyalty_T_RY_Prince</defName>
+    <label>Prince</label>
+    <labelFemale>Princess</labelFemale>
+    <description>No Description.</description>
+    <seniority>1300</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Crown Prince -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleDukePlus">
+    <defName>TitularRoyalty_T_RY_CrownPrince</defName>
+    <label>Crown Prince</label>
+    <labelFemale>Crown Princess</labelFemale>
+    <canBeInherited>False</canBeInherited>
+    <description>The Main heir of the Realm.</description>
+    <seniority>1350</seniority>
+    <titleTier>Royalty</titleTier>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- Consort -->
+  <TitularRoyalty.PlayerTitleDef ParentName="TitularRoyalty_BaseTitleRoyalFamily">
+    <defName>TitularRoyalty_T_RY_Consort</defName>
+    <label>Prince Consort</label>
+    <labelFemale>Queen</labelFemale>
+    <description>Spouse of the ruler.</description>
+    <seniority>1400</seniority>
+  </TitularRoyalty.PlayerTitleDef>
+
+  <!-- King -->
+
+  <TitularRoyalty.PlayerTitleDef ParentName="BasePlayerTitle">
+    <defName>TitularRoyalty_T_RY_King</defName>
+    <label>King</label>
+    <labelFemale>Queen</labelFemale>
+    <description>Ruler of your colony.</description>
+    <seniority>1500</seniority>
+    <favorCost>100</favorCost>
+    <canBeInherited>False</canBeInherited>
+    <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+    <allowDignifiedMeditationFocus>True</allowDignifiedMeditationFocus>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <minExpectation>Royal</minExpectation>
+    <grantedAbilities>
+      <li>Speech</li>
+    </grantedAbilities>
+    <speechCooldown>900000</speechCooldown>
+    <disabledWorkTags>
+      <li>ManualDumb</li>
+      <li>PlantWork</li>
+      <li>Mining</li>
+    </disabledWorkTags>
+    <decreeTags>
+      <li>All</li>
+    </decreeTags>
+    <disabledJoyKinds>
+      <li>Gaming_Dexterity</li>
+    </disabledJoyKinds>
+    <foodRequirement>
+      <minQuality>MealFine</minQuality>
+      <allowedTypes>Processed, Liquor</allowedTypes>
+      <allowedDefs>
+        <li>Ambrosia</li>
+        <li>Milk</li>
+        <li>RawBerries</li>
+      </allowedDefs>
+    </foodRequirement>
+    <throneRoomRequirements>
+      <li Class="RoomRequirement_HasAssignedThroneAnyOf">
+        <things>
+          <li>Throne</li>
+          <li>GrandThrone</li>
+          <li MayRequire="vesper.egihologramsandprojectors">ProjectorThrone</li>
+          <li MayRequire="vesper.egihologramsandprojectors">GrandProjectorThrone</li>
+        </things>
+      </li>
+      <li Class="RoomRequirement_Area">
+        <area>8</area>
+      </li>
+      <li Class="RoomRequirement_Impressiveness">
+        <impressiveness>45</impressiveness>
+      </li>
+    </throneRoomRequirements>
+
+    <titleTier>Sovereign</titleTier>
+    <TRInheritable>True</TRInheritable>
+  </TitularRoyalty.PlayerTitleDef>
+
+</Defs>
