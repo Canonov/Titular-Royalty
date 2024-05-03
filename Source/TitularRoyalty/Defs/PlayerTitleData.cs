@@ -11,14 +11,24 @@ public class PlayerTitleData : IExposable
     public ExpectationDef? minExpectation;
     public List<ApparelRequirement> requiredApparel = new List<ApparelRequirement>();
 
+    public PlayerTitleData() { } // ONLY FOR EXPOSEDATA USE
+    
     public PlayerTitleData(string maleTitle, string? femaleTitle = null)
     {
         this.maleTitle = maleTitle;
         this.femaleTitle = femaleTitle;
     }
-
-    public PlayerTitleData() { } // ONLY FOR EXPOSEDATA USE
-
+    
+    public PlayerTitleData(PlayerTitleData other)
+    {
+        maleTitle = other.maleTitle;
+        femaleTitle = other.femaleTitle;
+        description = other.description;
+        inheritable = other.inheritable;
+        minExpectation = other.minExpectation;
+        requiredApparel = new List<ApparelRequirement>(other.requiredApparel);
+    }
+    
     public void Apply(PlayerTitleDef titleDef)
     {
         titleDef.label = maleTitle;
@@ -26,7 +36,7 @@ public class PlayerTitleData : IExposable
         titleDef.description = description;
         titleDef.canBeInherited = inheritable;
         titleDef.minExpectation = minExpectation ?? ExpectationDefOf.ExtremelyLow;
-        titleDef.requiredApparel = requiredApparel;
+        titleDef.requiredApparel = new List<ApparelRequirement>(requiredApparel);
     }
 
     public void ExposeData()

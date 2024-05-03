@@ -36,30 +36,13 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Dialogs\Dialog_ChooseTitles.cs" />
-    <Compile Remove="Dialogs\Dialog_ManageTitles.cs" />
-    <Compile Remove="Dialogs\Dialog_TitleEditor.cs" />
-    <Compile Remove="Dialogs-Disabled\Dialog_ChooseTitles.cs" />
-    <Compile Remove="Dialogs-Disabled\Dialog_ManageTitles.cs" />
-    <Compile Remove="Dialogs-Disabled\Dialog_TitleEditor.cs" />
-    <Compile Remove="Components\Comp_ManageTitles.cs" />
-    <None Include="Components\Comp_ManageTitles.disabled.cs" />
-    <Compile Remove="Components\Comp_ManageTitles.disabled.cs" />
-    <None Include="Components\Comp_ManageTitles.disabled.cs" />
-    <None Include="Dialogs\Unused\Dialog_ChooseTitles.cs" />
-    <None Include="Dialogs\Unused\Dialog_ManageTitles.cs" />
-    <None Include="Dialogs\Unused\Dialog_TitleEditor.cs" />
-    <Compile Remove="Dialogs-Disabled\Unused\Dialog_ChooseTitles.cs" />
-    <None Include="Dialogs\Unused\Dialog_ChooseTitles.cs" />
-    <Compile Remove="Dialogs-Disabled\Unused\Dialog_ManageTitles.cs" />
-    <None Include="Dialogs\Unused\Dialog_ManageTitles.cs" />
-    <Compile Remove="Dialogs-Disabled\Unused\Dialog_TitleEditor.cs" />
-    <None Include="Dialogs\Unused\Dialog_TitleEditor.cs" />
     <Compile Remove="Dialogs\Unused\Dialog_ChooseTitles.cs" />
     <None Include="Dialogs\Unused\Dialog_ChooseTitles.cs" />
     <Compile Remove="Dialogs\Unused\Dialog_ManageTitles.cs" />
     <None Include="Dialogs\Unused\Dialog_ManageTitles.cs" />
     <Compile Remove="Dialogs\Unused\Dialog_TitleEditor.cs" />
     <None Include="Dialogs\Unused\Dialog_TitleEditor.cs" />
+    <Compile Remove="Components\Comp_ManageTitles.disabled.cs" />
+    <None Include="Components\Comp_ManageTitles.disabled.cs" />
   </ItemGroup>
 </Project>
