@@ -12,7 +12,9 @@
     <techLevel>Medieval</techLevel>
     <tradeability>None</tradeability>
     <tradeNeverStack>true</tradeNeverStack>
-    <weaponTags>
+    <generateCommonality>0</generateCommonality>
+    <generateAllowChance>0</generateAllowChance>
+    <weaponTags inherit="False">
       <li>TitleGrantingStaff</li>
     </weaponTags>
     <weaponClasses>
@@ -58,6 +60,7 @@
         <targetable>true</targetable>
         <violent>false</violent>
         <isPrimary>false</isPrimary>
+        <onlyManualCast>true</onlyManualCast>
         <targetParams>
           <canTargetLocations>false</canTargetLocations>
           <canTargetAnimals>false</canTargetAnimals>
