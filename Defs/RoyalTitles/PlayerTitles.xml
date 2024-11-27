@@ -206,6 +206,7 @@
         <things>
           <li>Throne</li>
           <li>GrandThrone</li>
+          <li MayRequire="OskarPotocki.VFE.Empire">VFEE_StellicThrone</li>
           <li MayRequire="vesper.egihologramsandprojectors">ProjectorThrone</li>
           <li MayRequire="vesper.egihologramsandprojectors">GrandProjectorThrone</li>
         </things>
