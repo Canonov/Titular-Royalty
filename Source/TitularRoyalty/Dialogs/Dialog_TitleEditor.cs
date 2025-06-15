@@ -129,12 +129,12 @@ public class Dialog_TitleEditor : Window
             var menuOptions = new List<FloatMenuOption>
             {
                 new FloatMenuOption("Default", delegate { iconName = null; },
-                    itemIcon: Resources.GetTitleIcon(titleTier, GameComponent_TitularRoyalty.Current.realmTypeDef), iconColor: Color.white)
+                    iconTex: Resources.GetTitleIcon(titleTier, GameComponent_TitularRoyalty.Current.realmTypeDef), iconColor: Color.white)
             };
             foreach (string key in Resources.CustomIcons.Keys)
             {
                 menuOptions.Add(new FloatMenuOption(key, delegate { iconName = key; },
-                    itemIcon: Resources.CustomIcons.TryGetValue(key, BaseContent.BadTex), iconColor: Color.white));
+                    iconTex: Resources.CustomIcons.TryGetValue(key, BaseContent.BadTex), iconColor: Color.white));
             }
 
             Find.WindowStack.Add(new FloatMenu(menuOptions));

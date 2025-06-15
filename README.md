@@ -1,4 +1,4 @@
-# Titular Royalty ![GitHub release (latest by date)](https://img.shields.io/github/v/release/CanonOverseer/Rimworld-Titular-Royalty-Mod) [![RimWorld 1.5](https://img.shields.io/badge/RimWorld-1.5-green.svg?longCache=true&style=flat)](http://rimworldgame.com/)
+# Titular Royalty ![GitHub release (latest by date)](https://img.shields.io/github/v/release/CanonOverseer/Rimworld-Titular-Royalty-Mod) [![RimWorld 1.6](https://img.shields.io/badge/RimWorld-1.6-green.svg?longCache=true&style=flat)](http://rimworldgame.com/)
  
  A mod for Rimworld aiming to add Royalty DLC titles to the player's faction for roleplaying purposes.
 

@@ -3,10 +3,12 @@
   <Excluded>
     <exclude>.git</exclude>
     <exclude>About\preview_alt.pdn</exclude>
-    <exclude>About\preview1.3.pdn</exclude>
     <exclude>About\preview1.4.pdn</exclude>
+    <exclude>About\preview1.5.pdn</exclude>
+    <exclude>About\preview1.6.pdn</exclude>
     <exclude>About\preview3.pdn</exclude>
     <exclude>About\preview4.pdn</exclude>
+    <exclude>About\preview5.pdn</exclude>
     <exclude>LICENSE.md</exclude>
     <exclude>README.md</exclude>
     <exclude>Source</exclude>

@@ -89,7 +89,7 @@ public class Dialog_ManageTitles : Window
                         targetInfo.Pawn?.royalty?.SetTitle(Faction.OfPlayer, titleDef, true);
                     });
                 this.Close();
-            }, itemIcon: Resources.TRCrownWidget, iconColor: Color.white),
+            }, iconTex: Resources.TRCrownWidget, iconColor: Color.white),
                     
             // Edit Title
             new FloatMenuOption("TR_managetitles_m2option_edittitle".Translate(),
@@ -97,7 +97,7 @@ public class Dialog_ManageTitles : Window
                 {
                     Find.WindowStack.Add(new Dialog_TitleEditor(titleDef, this));
                 },
-                itemIcon: TexButton.Rename, iconColor: Color.white),
+                iconTex: TexButton.Rename, iconColor: Color.white),
                     
             // Reset Title
             new FloatMenuOption("TR_managetitles_m2option_resettitle".Translate(),
@@ -105,7 +105,7 @@ public class Dialog_ManageTitles : Window
                 {
                     GameComponent_TitularRoyalty.Current.SaveTitleChange(titleDef, new RoyalTitleOverride());
                 },
-                itemIcon: TexButton.RenounceTitle, iconColor: Color.white)
+                iconTex: TexButton.RenounceTitle, iconColor: Color.white)
         };
 
         Find.WindowStack.Add(new FloatMenu(menuOptions));

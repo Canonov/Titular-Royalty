@@ -37,7 +37,7 @@ public class Comp_ManageTitles : ThingComp
 		{
 			var window = new Dialog_ManageTitles();
 			Find.WindowStack.Add(window);
-		}, itemIcon: Resources.CrownIcon, iconColor: Color.white);
+		}, iconTex: Resources.CrownIcon, iconColor: Color.white);
 
 		//Set Heir Option
 		if (TRSettings.inheritanceEnabled == false ||
