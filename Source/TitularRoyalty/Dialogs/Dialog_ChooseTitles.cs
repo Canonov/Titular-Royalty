@@ -48,8 +48,10 @@ public class Dialog_ChooseTitles : Window
         TooltipHandler.TipRegion(rectIconFirst, "TR_CurrentTitle".Translate());
 
         int i = 0;
-        foreach (var titleDef in TitleDatabase.TitlesBySeniority)
+        Log.Warning(TitleDatabase.TitlesBySeniority.Count.ToString());
+        foreach (PlayerTitleDef title in TitleDatabase.TitlesBySeniority)
         {
+            Log.Warning(title.defName);
             // work with pair.Key and pair.Value
             var iconRect = new Rect(
                 32 * (i % ColumnCount) + 10,
@@ -57,22 +59,22 @@ public class Dialog_ChooseTitles : Window
                 125f, 32f);
             i++;
                     
-            TooltipHandler.TipRegion(iconRect, GetDisplayTitle(titleDef, chosenPawn!.gender));
-            if (!Widgets.ButtonText(iconRect, GetDisplayTitle(titleDef, chosenPawn!.gender), drawBackground: true))
-                break;
-                    
-            if (chosenPawn.royalty != null && chosenPawn.royalty.GetCurrentTitle(Faction.OfPlayer) != titleDef)
+            TooltipHandler.TipRegion(iconRect, GetDisplayTitle(title, chosenPawn!.gender));
+            if (Widgets.ButtonText(iconRect, GetDisplayTitle(title, chosenPawn!.gender), drawBackground: true))
             {
-                try
+                if (chosenPawn.royalty != null && chosenPawn.royalty.GetCurrentTitle(Faction.OfPlayer) != title)
                 {
-                    chosenPawn.royalty.SetTitle(Faction.OfPlayer, titleDef, grantRewards: true, sendLetter: true);
-                }
-                catch (NullReferenceException ex)
-                {
-                    Log.Error($"Titular Royalty: Failed vanilla royalty set title\nException Info: {ex}");
+                    try
+                    {
+                        chosenPawn.royalty.SetTitle(Faction.OfPlayer, title, grantRewards: true, sendLetter: true);
+                        this.Close();
+                    }
+                    catch (NullReferenceException ex)
+                    {
+                        Log.Error($"Titular Royalty: Failed vanilla royalty set title\nException Info: {ex}");
+                    }
                 }
             }
-            this.Close();
         }
             
         Widgets.EndScrollView();
