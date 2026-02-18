@@ -8,7 +8,7 @@
     <graphicData>
       <texPath>Things/Item/Equipment/RoyalScepter</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>  
+    </graphicData>
     <techLevel>Medieval</techLevel>
     <tradeability>None</tradeability>
     <tradeNeverStack>true</tradeNeverStack>
@@ -46,33 +46,11 @@
         <cooldownTime>2.6</cooldownTime>
       </li>
     </tools>
-    <verbs>
-      <li> <!-- GRANT TITLES -->
-        <label>Grant Title</label>
-        <verbClass>TitularRoyalty.Verb_TitleGranter</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <commandIcon>UI/Gizmos/givetitleicon</commandIcon>
-        <warmupTime>0.5</warmupTime>
-        <range>10 </range>
-        <!--<burstShotCount>1</burstShotCount>-->
-        <!--<soundAiming>OrbitalTargeter_Aiming</soundAiming>-->
-        <!--<soundCast>OrbitalTargeter_Fire</soundCast>-->
-        <targetable>true</targetable>
-        <violent>false</violent>
-        <isPrimary>false</isPrimary>
-        <onlyManualCast>true</onlyManualCast>
-        <targetParams>
-          <canTargetLocations>false</canTargetLocations>
-          <canTargetAnimals>false</canTargetAnimals>
-          <canTargetSelf>true</canTargetSelf>
-          <canTargetBuildings>false</canTargetBuildings>
-          <canTargetMechs>false</canTargetMechs>
-          <onlyTargetColonists>true</onlyTargetColonists>
-          <neverTargetIncapacitated>true</neverTargetIncapacitated>
-        </targetParams>
+    <comps inherit="False">
+      <li Class="CompProperties_EquippableAbility">
+        <abilityDef>TitularRoyalty_Ability_GrantTitle</abilityDef>
       </li>
-    </verbs>
-    <comps>
+      <li Class="CompProperties_Forbiddable"/>
     </comps>
   </ThingDef>
 

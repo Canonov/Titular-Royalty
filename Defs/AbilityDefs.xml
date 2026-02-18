@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <AbilityDef>
+    <defName>TitularRoyalty_Ability_GrantTitle</defName>
+    <label>Grant Title</label>
+    <iconPath>Things/Item/Equipment/RoyalScepter</iconPath>
+    <gizmoClass>Command_Ability</gizmoClass>
+    <displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
+    <targetRequired>True</targetRequired>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>TitularRoyalty.Verb_TitleGranter</verbClass>
+      <range>10</range>
+      <warmupTime>0.5</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetLocations>false</canTargetLocations>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetMechs>false</canTargetMechs>
+        <onlyTargetColonists>true</onlyTargetColonists>
+        <neverTargetIncapacitated>true</neverTargetIncapacitated>
+      </targetParams>
+    </verbProperties>
+  </AbilityDef>
+</Defs>
