@@ -48,10 +48,8 @@ public class Dialog_ChooseTitles : Window
         TooltipHandler.TipRegion(rectIconFirst, "TR_CurrentTitle".Translate());
 
         int i = 0;
-        Log.Warning(TitleDatabase.TitlesBySeniority.Count.ToString());
         foreach (PlayerTitleDef title in TitleDatabase.TitlesBySeniority)
         {
-            Log.Warning(title.defName);
             // work with pair.Key and pair.Value
             var iconRect = new Rect(
                 32 * (i % ColumnCount) + 10,
