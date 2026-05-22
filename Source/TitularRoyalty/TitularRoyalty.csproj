@@ -17,18 +17,30 @@
     <DebugType>portable</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>$(NoWarn);CA1707</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <!-- Rimworld -->
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*-*" />
-    
-    <!-- Harmony -->
-    <PackageReference Include="Lib.Harmony" Version="2.3.6" ExcludeAssets="runtime" />
-    
     <!-- SettingsHelper Library for Menu Extensions -->
     <Reference Include="1SettingsHelper">
       <HintPath>..\..\1.6\Assemblies\1SettingsHelper.dll</HintPath>
       <Private>False</Private>
     </Reference>
+  </ItemGroup>
+  
+  <!-- Other References -->
+  <ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*-*" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.*" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <!-- Global Usings -->
+  <ItemGroup>
+    <Using Include="Verse"/>
+    <Using Include="RimWorld"/>
+    <Using Include="System"/>
+    <Using Include="System.Linq"/>
+    <Using Include="System.IO"/>
+    <Using Include="System.Collections.Generic"/>
+    <Using Include="JetBrains.Annotations"/>
   </ItemGroup>
 </Project>
