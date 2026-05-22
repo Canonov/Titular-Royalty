@@ -1,4 +1,4 @@
-# Titular Royalty ![GitHub release (latest by date)](https://img.shields.io/github/v/release/CanonOverseer/Rimworld-Titular-Royalty-Mod) [![RimWorld 1.6](https://img.shields.io/badge/RimWorld-1.6-green.svg?longCache=true&style=flat)](http://rimworldgame.com/)
+# Titular Royalty ![GitHub release (latest by date)](https://img.shields.io/github/v/release/CanonOverseer/Rimworld-Titular-Royalty-Mod) [![RimWorld 1.5-1.6](https://img.shields.io/badge/RimWorld-1.5--1.6-green.svg?longCache=true&style=flat)](http://rimworldgame.com/)
  
  A mod for Rimworld aiming to add Royalty DLC titles to the player's faction for roleplaying purposes.
 
@@ -19,10 +19,13 @@
 - You can also change the Icons the title uses, it takes any icon in Textures/TRIcons or the default for the Title Tier
 - Vanilla Factions Expanded - Empire Integrations 
 
-## 1.8 Update Plans
-- Ability to change order of titles, with a GUI for it, mostly just a preliminary for 1.9/2.0
+## 1.8 Update
+- Added title-related mood and opinion thoughts for titled pawns and their families.
+- Title thought state now refreshes when titles or custom title overrides change.
+- Dropped RimWorld 1.4 support and removed the 1.4 load folder.
 
 ## 1.9 Update Plans
+- Ability to change order of titles, with a GUI for it, mostly just a preliminary for 2.0
 - New Royal Staff Granting UI
 - Adding/Removing Titles, might have to be called 2.0 depending on how complex it turns out
 
