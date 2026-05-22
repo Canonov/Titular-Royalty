@@ -81,6 +81,8 @@ public class GameComponent_TitularRoyalty : GameComponent
             title.ResetToDefaultValues();
             SetupTitle(title);
         }
+
+        TitleThoughtUtility.Notify_TitlesChanged();
     }
 
     public RoyalTitleOverride GetCustomTitleOverrideFor(PlayerTitleDef titleDef)
@@ -96,6 +98,7 @@ public class GameComponent_TitularRoyalty : GameComponent
     {
         customTitles[title] = newOverride;
         SetupTitle(title);
+        TitleThoughtUtility.Notify_TitlesChanged();
     }
 
     /// <summary>
@@ -113,6 +116,7 @@ public class GameComponent_TitularRoyalty : GameComponent
         Faction.OfPlayer.allowRoyalFavorRewards = false;
         StartupSetup.ApplyModSettings();
         SetupAllTitles();
+        TitleThoughtUtility.Notify_TitlesChanged();
     }
 
     public override void LoadedGame() => OnGameStart(false);

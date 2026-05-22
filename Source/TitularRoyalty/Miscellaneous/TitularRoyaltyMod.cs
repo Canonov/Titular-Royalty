@@ -9,11 +9,15 @@ public class TRSettings : ModSettings
 {
     internal static bool inheritanceEnabled = true;
     internal static bool clothingQualityRequirements = true;
+    internal static bool titleHolderMoodBonus = true;
+    internal static bool familyTitleMoodBonus = true;
 
     public override void ExposeData()
     {
         Scribe_Values.Look(ref inheritanceEnabled, "inheritanceEnabled", true);
         Scribe_Values.Look(ref clothingQualityRequirements, "clothingQualityRequirements", true);
+        Scribe_Values.Look(ref titleHolderMoodBonus, "titleHolderMoodBonus", true);
+        Scribe_Values.Look(ref familyTitleMoodBonus, "familyTitleMoodBonus", true);
         base.ExposeData();
     }
 }
@@ -66,6 +70,11 @@ public class TitularRoyaltyMod : Mod
         checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref TRSettings.inheritanceEnabled);
         checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref TRSettings.clothingQualityRequirements);
         checkboxes.End();
+
+        var moodCheckboxes = listingStandard.GetRect(24).BeginListingStandard(2);
+        moodCheckboxes.CheckboxLabeled("TR_checkbox_titleholdermoodbonus".Translate(), ref TRSettings.titleHolderMoodBonus);
+        moodCheckboxes.CheckboxLabeled("TR_checkbox_familytitlemoodbonus".Translate(), ref TRSettings.familyTitleMoodBonus);
+        moodCheckboxes.End();
             
         listingStandard.End();
         base.DoSettingsWindowContents(inRect);

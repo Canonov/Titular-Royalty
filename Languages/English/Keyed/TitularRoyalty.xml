@@ -61,6 +61,8 @@
 	<TR_miscoptionstitle>Miscellaneous Options</TR_miscoptionstitle>
 	<TR_checkbox_vanillainheritance>Vanilla Inheritance</TR_checkbox_vanillainheritance>
 	<TR_checkbox_needsclothesquality>Clothing Quality</TR_checkbox_needsclothesquality>
+	<TR_checkbox_titleholdermoodbonus>Title Holder Mood Bonus</TR_checkbox_titleholdermoodbonus>
+	<TR_checkbox_familytitlemoodbonus>Family Title Mood Bonus</TR_checkbox_familytitlemoodbonus>
 	<TR_checkbox_needsmealquality>Meal Requirements</TR_checkbox_needsmealquality>
 	<TR_checkbox_disableworkroyals>Disable Worktypes</TR_checkbox_disableworkroyals> <!-- Unused, For Now-->
 	<TR_checkbox_titlegivespermitpoints>Title Permit Points</TR_checkbox_titlegivespermitpoints>
