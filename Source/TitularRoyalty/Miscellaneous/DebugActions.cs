@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using System.Text;
 using LudeonTK;
 using UnityEngine;
@@ -10,7 +11,7 @@ public static class DebugActions
     [DebugAction("Titular Royalty", "TR: Edit Title", allowedGameStates = AllowedGameStates.PlayingOnMap)]
     public static void EditTitle()
     {
-        var titles = DefDatabase<PlayerTitleDef>.AllDefsListForReading;
+        List<PlayerTitleDef> titles = DefDatabase<PlayerTitleDef>.AllDefsListForReading;
         var options = titles.Select(title => new DebugMenuOption(title.GetLabelForBothGenders(), DebugMenuOptionMode.Action, () => 
             Find.WindowStack.Add(new Dialog_TitleEditor(title, null))
         ));
@@ -42,10 +43,10 @@ public static class DebugActions
         var doc = new StringBuilder();
         foreach (var title in DefDatabase<PlayerTitleDef>.AllDefsListForReading)
         {
-            doc.AppendLine($"  <li> <!--{title.originalTitleFields.label.CapitalizeFirst()}-->");
-            doc.AppendLine($"    <titleDef>{title.defName}</titleDef>");
-            doc.AppendLine($"    <label>{title.label}</label>");
-            doc.AppendLine($"    <labelFemale>{title.labelFemale ?? "None"}</labelFemale>");
+            doc.AppendLine(CultureInfo.InvariantCulture, $"  <li> <!--{title.originalTitleFields.label.CapitalizeFirst()}-->");
+            doc.AppendLine(CultureInfo.InvariantCulture, $"    <titleDef>{title.defName}</titleDef>");
+            doc.AppendLine(CultureInfo.InvariantCulture, $"    <label>{title.label}</label>");
+            doc.AppendLine(CultureInfo.InvariantCulture, $"    <labelFemale>{title.labelFemale ?? "None"}</labelFemale>");
             doc.AppendLine($"  </li>");
         }
         

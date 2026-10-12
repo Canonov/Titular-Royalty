@@ -7,6 +7,7 @@
   <supportedVersions>
     <li>1.5</li>
     <li>1.6</li>
+    <li>1.7</li>
   </supportedVersions>
   <modDependencies>
     <li>
@@ -25,6 +26,9 @@
     <li>OskarPotocki.VFE.Empire</li>
   </loadAfter>
   <description>Adds titles to the player faction you can grant to your pawns with the Staff of Royalty or at Any Throne.
+
+    v1.8.1
+    - Rebuild for RimWorld 1.7
     
     v1.8.1
     - Fixed custom title changes resetting after reloading a save in RimWorld 1.6.

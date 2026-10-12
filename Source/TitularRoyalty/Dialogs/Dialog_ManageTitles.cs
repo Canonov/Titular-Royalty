@@ -8,7 +8,7 @@ public class Dialog_ManageTitles : Window
     public Vector2 scrollPosition = new Vector2(0, 0); 
     public override Vector2 InitialSize => new Vector2(475, 720);
 
-    public bool titleEditorOpen = false;
+    public bool titleEditorOpen;
 
     // Variables for Updating and Setting the Lists
     private Listing_Standard TitleList;
@@ -122,9 +122,9 @@ public class Dialog_ManageTitles : Window
 
         TitleList.Gap(6f);
 
-        foreach (var title in TitleDatabase.TitlesBySeniority)
+        foreach (PlayerTitleDef titleDef in TitleDatabase.TitlesBySeniority)
         {
-            DrawRow(TitleList.GetRect(28f), title);
+            DrawRow(TitleList.GetRect(28f), titleDef);
         }
 
         TitleList.Gap(6f);
@@ -167,7 +167,7 @@ public class Dialog_ManageTitles : Window
             
         if (Widgets.ButtonText(RealmTypeButtonRect, GameComponent_TitularRoyalty.Current.realmTypeDef.label, active: !titleEditorOpen)) 
         {
-            foreach (var realmTypeDef in DefDatabase<RealmTypeDef>.AllDefsListForReading)
+            foreach (RealmTypeDef realmTypeDef in DefDatabase<RealmTypeDef>.AllDefsListForReading)
             {
                 realmTypeOptions.Add(new FloatMenuOption(realmTypeDef.label, delegate
                 {

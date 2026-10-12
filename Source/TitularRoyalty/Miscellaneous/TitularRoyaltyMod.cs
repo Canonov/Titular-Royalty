@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using SettingsHelper;
 using HarmonyLib;
 
 namespace TitularRoyalty;
@@ -52,29 +51,23 @@ public class TitularRoyaltyMod : Mod
     {
         var listingStandard = new Listing_Standard();
         listingStandard.Begin(inRect);
-        listingStandard.AddHorizontalLine();
-
+        
         //Miscellanous Toggles
         listingStandard.Gap();
 
-        var miscOptionsTitleRect = listingStandard.GetRect(32);
+        Rect miscOptions = listingStandard.GetRect(32);
         Text.Font = GameFont.Medium;
         Text.Anchor = TextAnchor.MiddleCenter;
-        Widgets.Label(miscOptionsTitleRect, "TR_miscoptionstitle".Translate());
+        Widgets.Label(miscOptions, "TR_miscoptionstitle".Translate());
         Text.Font = GameFont.Small;
         Text.Anchor = TextAnchor.UpperLeft;
         listingStandard.Gap();
 
         //First row of checkbox options
-        var checkboxes = listingStandard.GetRect(24).BeginListingStandard(2);
-        checkboxes.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref TRSettings.inheritanceEnabled);
-        checkboxes.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref TRSettings.clothingQualityRequirements);
-        checkboxes.End();
-
-        var moodCheckboxes = listingStandard.GetRect(24).BeginListingStandard(2);
-        moodCheckboxes.CheckboxLabeled("TR_checkbox_titleholdermoodbonus".Translate(), ref TRSettings.titleHolderMoodBonus);
-        moodCheckboxes.CheckboxLabeled("TR_checkbox_familytitlemoodbonus".Translate(), ref TRSettings.familyTitleMoodBonus);
-        moodCheckboxes.End();
+        listingStandard.CheckboxLabeled("TR_checkbox_vanillainheritance".Translate(), ref TRSettings.inheritanceEnabled);
+        listingStandard.CheckboxLabeled("TR_checkbox_needsclothesquality".Translate(), ref TRSettings.clothingQualityRequirements);
+        listingStandard.CheckboxLabeled("TR_checkbox_titleholdermoodbonus".Translate(), ref TRSettings.titleHolderMoodBonus);
+        listingStandard.CheckboxLabeled("TR_checkbox_familytitlemoodbonus".Translate(), ref TRSettings.familyTitleMoodBonus);
             
         listingStandard.End();
         base.DoSettingsWindowContents(inRect);

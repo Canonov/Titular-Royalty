@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThoughtDef>
+    <defName>TitularRoyalty_TitledPawnOpinion</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>TitularRoyalty.ThoughtWorkers.ThoughtWorker_TitledPawnOpinion</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>minor distinction</label>
+        <baseOpinionOffset>5</baseOpinionOffset>
+      </li>
+      <li>
+        <label>recognized standing</label>
+        <baseOpinionOffset>7</baseOpinionOffset>
+      </li>
+      <li>
+        <label>noble standing</label>
+        <baseOpinionOffset>10</baseOpinionOffset>
+      </li>
+      <li>
+        <label>highborn standing</label>
+        <baseOpinionOffset>12</baseOpinionOffset>
+      </li>
+      <li>
+        <label>royal standing</label>
+        <baseOpinionOffset>15</baseOpinionOffset>
+      </li>
+      <li>
+        <label>sovereign authority</label>
+        <baseOpinionOffset>20</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>TitularRoyalty_HasTitleMood</defName>
+    <workerClass>TitularRoyalty.ThoughtWorkers.ThoughtWorker_HasTitle</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>I have a minor title</label>
+        <description>My title gives me a little more standing among the colony.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+      <li>
+        <label>I have a honorary title</label>
+        <description>My title marks me as someone of recognized status in the colony.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>I am nobility</label>
+        <description>My noble title affirms my place above common colonists.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>I am high nobility</label>
+        <description>My high noble title grants me a place of real prominence in the colony.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+      <li>
+        <label>I have royal standing</label>
+        <description>My royal title gives me prestige that few in the colony can claim.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+      <li>
+        <label>I have sovereign authority</label>
+        <description>My title places me at the height of the colony's social order.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>TitularRoyalty_FamilyHasTitleMood</defName>
+    <workerClass>TitularRoyalty.ThoughtWorkers.ThoughtWorker_FamilyHasTitle</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>family member has a minor title</label>
+        <description>A close family member's title gives our family a little more standing among the colony.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>family member has honorary standing</label>
+        <description>A close family member's title marks our family as one of recognized status in the colony.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>family member is nobility</label>
+        <description>A close family member's noble title raises our family above common colonists.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>family member is high nobility</label>
+        <description>A close family member's high noble title gives our family real prominence in the colony.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+      <li>
+        <label>family member is a royal</label>
+        <description>A close family member's royal title gives our family prestige that few in the colony can claim.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+      <li>
+        <label>family member is a sovereign</label>
+        <description>A close family member's title places our family at the height of the colony's social order.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

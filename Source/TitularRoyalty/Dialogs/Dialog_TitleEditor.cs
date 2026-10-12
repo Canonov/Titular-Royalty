@@ -7,7 +7,7 @@ public class Dialog_TitleEditor : Window
 {
     public override Vector2 InitialSize => new Vector2(550, 410);
 
-    private int MaxNameLength => 28;
+    private const int MaxNameLength = 28;
 
     private string curName;
     private string curNameFemale;
@@ -64,14 +64,7 @@ public class Dialog_TitleEditor : Window
         {
             curName = originalOverrides.label;
 
-            if (originalOverrides.labelFemale == "None")
-            {
-                curNameFemale = null;
-            }
-            else
-            {
-                curNameFemale = originalOverrides.labelFemale ?? null;
-            }
+            curNameFemale = originalOverrides.labelFemale == "None" ? null : originalOverrides.labelFemale;
         }
 
         iconName = originalOverrides.iconName ?? titleDef.iconName;
@@ -189,8 +182,8 @@ public class Dialog_TitleEditor : Window
 
     private void DrawTiersAndExpectationsDropdowns(Rect dropdownRect)
     {
-        var titleTiersRect = dropdownRect.LeftHalf();
-        var minExpectationsRect = dropdownRect.RightHalf();
+        Rect titleTiersRect = dropdownRect.LeftHalf();
+        Rect minExpectationsRect = dropdownRect.RightHalf();
 
         titleTiersRect.width -= 8;
         minExpectationsRect.width -= 8;
@@ -201,19 +194,17 @@ public class Dialog_TitleEditor : Window
 
         if (Widgets.ButtonText(titleTiersRect, "TR_titleeditor_titletier".Translate(titleTier.ToString())))
         {
-            var options = new List<FloatMenuOption>();
-            
-            foreach (TitleTiers tier in Enum.GetValues(typeof(TitleTiers))) 
-                options.Add(new FloatMenuOption(tier.ToString(), delegate { titleTier = tier; }));
+            List<FloatMenuOption> options = Enum.GetValues<TitleTiers>()
+                .Select(tier => new FloatMenuOption(tier.ToString(), () => { titleTier = tier; }))
+                .ToList();
 
             Find.WindowStack.Add(new FloatMenu(options));
         }
         if (Widgets.ButtonText(minExpectationsRect, "TR_titleeditor_expectations".Translate(minExpectation.ToStringSafe())))
         {
-            var options = new List<FloatMenuOption>();
-            
-            foreach (var expectation in DefDatabase<ExpectationDef>.AllDefsListForReading) 
-                options.Add(new FloatMenuOption(expectation.LabelCap, delegate { minExpectation = expectation; }));
+            List<FloatMenuOption> options = DefDatabase<ExpectationDef>.AllDefsListForReading
+                .Select(expectation => new FloatMenuOption(expectation.LabelCap, delegate { minExpectation = expectation; }))
+                .ToList();
 
             Find.WindowStack.Add(new FloatMenu(options));
         }
@@ -222,10 +213,10 @@ public class Dialog_TitleEditor : Window
     private void DrawTitleNamesRow(Rect namesRect)
     {
         // Labels
-        var labelsRect = namesRect.TopPartPixels(namesRect.height - 35 - (GenUI.GapSmall / 2));
+        Rect labelsRect = namesRect.TopPartPixels(namesRect.height - 35 - (GenUI.GapSmall / 2));
         labelsRect.y += GenUI.GapSmall / 2;
-        var maleLabelRect = labelsRect.LeftHalf();
-        var femaleLabelRect = labelsRect.RightHalf();
+        Rect maleLabelRect = labelsRect.LeftHalf();
+        Rect femaleLabelRect = labelsRect.RightHalf();
 
         Text.Anchor = TextAnchor.MiddleCenter;
         Widgets.Label(maleLabelRect, "TR_titleeditor_title".Translate());
@@ -233,9 +224,9 @@ public class Dialog_TitleEditor : Window
         Text.Anchor = TextAnchor.UpperLeft;
 
         // Input Rects
-        var textFieldsRect = namesRect.BottomPartPixels(35);
-        var maleNameRect = textFieldsRect.LeftHalf();
-        var femaleNameRect = textFieldsRect.RightHalf();
+        Rect textFieldsRect = namesRect.BottomPartPixels(35);
+        Rect maleNameRect = textFieldsRect.LeftHalf();
+        Rect femaleNameRect = textFieldsRect.RightHalf();
 
         maleNameRect.width -= 8;
         femaleNameRect.width -= 8;
@@ -252,11 +243,11 @@ public class Dialog_TitleEditor : Window
         newNameFemale = curNameFemale?.Trim();
     }
 
-    private void DrawDoubleCheckboxRow(Rect checkboxRect, string checkbox1Label, ref bool checkbox1Value,
+    private static void DrawDoubleCheckboxRow(Rect checkboxRect, string checkbox1Label, ref bool checkbox1Value,
         string checkbox2Label, ref bool checkbox2Value)
     {
-        var leftRect = checkboxRect.LeftHalf();
-        var rightRect = checkboxRect.RightHalf();
+        Rect leftRect = checkboxRect.LeftHalf();
+        Rect rightRect = checkboxRect.RightHalf();
 
         leftRect.width -= 8;
         rightRect.width -= 8;
@@ -266,12 +257,11 @@ public class Dialog_TitleEditor : Window
         Widgets.CheckboxLabeled(rightRect, checkbox2Label, ref checkbox2Value, placeCheckboxNearText: false);
     }
 
-    private bool IsValidName(string name, bool femaleTitle = false)
+    private static bool IsValidName(string name, bool femaleTitle = false)
     {
-        if ((!femaleTitle && name.Length == 0) || name.Length > MaxNameLength || GrammarResolver.ContainsSpecialChars(name))
-            return false;
-        
-        return true;
+        return (femaleTitle || name.Length != 0) 
+               && name.Length <= MaxNameLength 
+               && !GrammarResolver.ContainsSpecialChars(name);
     }
 
     /* APPLY METHODS */
